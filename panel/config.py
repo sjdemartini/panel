@@ -175,6 +175,10 @@ class _config(_base_config):
         default='WARNING', objects=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'],
         doc="Log level of Panel loggers")
 
+    _admin_log_level = param.Selector(
+        default='DEBUG', objects=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'],
+        doc="Log level of the Admin Panel logger")
+
     _nthreads = param.Integer(default=None, doc="""
         When set to a non-None value a thread pool will be started.
         Whenever an event arrives from the frontend it will be
@@ -292,6 +296,11 @@ class _config(_base_config):
     def _update_log_level(self):
         panel_log_handler.setLevel(self._log_level)
 
+    @param.depends('_admin_log_level', watch=True)
+    def _update_admin_log_level(self):
+        from .io.admin import log_handler as admin_log_handler
+        admin_log_handler.setLevel(self._log_level)
+
     def __getattribute__(self, attr):
         from .io.state import state
         init = super().__getattribute__('initialized')
@@ -366,6 +375,11 @@ class _config(_base_config):
     def log_level(self):
         log_level = os.environ.get('PANEL_LOG_LEVEL', self._log_level)
         return log_level.upper() if log_level else None
+
+    @property
+    def admin_log_level(self):
+        admin_log_level = os.environ.get('PANEL_ADMIN_LOG_LEVEL', self._admin_log_level)
+        return admin_log_level.upper() if admin_log_level else None
 
     @property
     def nthreads(self):
