@@ -1,0 +1,13 @@
+<map id="inheritance4eaaae03f7" name="inheritance4eaaae03f7">
+<area shape="rect" id="node1" href="#panel.layout.accordion.Accordion" target="_top" title="The `Accordion` layout is a type of `Card` layout that allows switching" alt="" coords="1001,19,1149,35"/>
+<area shape="rect" id="node2" href="#panel.layout.base.NamedListPanel" target="_top" title="panel.layout.base.NamedListPanel" alt="" coords="819,19,972,35"/>
+<area shape="rect" id="node3" href="#panel.layout.base.NamedListLike" target="_top" title="panel.layout.base.NamedListLike" alt="" coords="503,3,651,19"/>
+<area shape="rect" id="node4" title="params(name=String)" alt="" coords="3,35,165,50"/>
+<area shape="rect" id="node9" title="Baseclass for objects which can be rendered to a Bokeh model." alt="" coords="201,35,323,50"/>
+<area shape="rect" id="node10" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="Layoutable defines shared style and layout related parameters" alt="" coords="201,65,323,81"/>
+<area shape="rect" id="node5" href="#panel.layout.base.Panel" target="_top" title="Abstract baseclass for a layout of Viewables." alt="" coords="680,35,790,50"/>
+<area shape="rect" id="node6" href="panel.reactive.html#panel.reactive.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="522,35,631,50"/>
+<area shape="rect" id="node7" title="Syncable is an extension of the Renderable object which can not" alt="" coords="361,35,471,50"/>
+<area shape="rect" id="node8" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all visual components in the panel" alt="" coords="359,65,473,81"/>
+<area shape="rect" id="node11" title="Mixin to define methods shared by objects which can served." alt="" coords="194,96,329,111"/>
+</map>

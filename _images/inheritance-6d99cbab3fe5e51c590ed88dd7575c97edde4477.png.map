@@ -1,0 +1,8 @@
+<map id="inheritance7435272304" name="inheritance7435272304">
+<area shape="rect" id="node1" title="Base class for all class types that have Bokeh properties." alt="" coords="79,5,300,30"/>
+<area shape="rect" id="node2" title="Base class for all objects stored in Bokeh &#160;|Document| instances." alt="" coords="420,77,608,102"/>
+<area shape="rect" id="node6" title="The base class for layoutable components." alt="" coords="655,77,892,102"/>
+<area shape="rect" id="node4" title="A mixin class to provide an interface for registering and" alt="" coords="5,101,373,125"/>
+<area shape="rect" id="node5" title="A mixin class to provide an interface for registering and" alt="" coords="14,149,365,173"/>
+<area shape="rect" id="node7" href="#panel.models.plotly.PlotlyPlot" target="_top" title="A bokeh model that wraps around a plotly plot and renders it inside" alt="" coords="939,77,1147,102"/>
+</map>

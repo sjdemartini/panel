@@ -1,0 +1,12 @@
+<map id="inheritancee65a9a9a3e" name="inheritancee65a9a9a3e">
+<area shape="rect" id="node1" title="Base class for all class types that have Bokeh properties." alt="" coords="61,41,232,60"/>
+<area shape="rect" id="node4" title="Base class for all objects stored in Bokeh &#160;|Document| instances." alt="" coords="325,97,471,116"/>
+<area shape="rect" id="node2" title="Base class for all Bokeh events." alt="" coords="90,4,203,23"/>
+<area shape="rect" id="node3" title="Base class for all Bokeh Model events." alt="" coords="327,4,470,23"/>
+<area shape="rect" id="node10" href="#panel.models.jsoneditor.JSONEditEvent" target="_top" title="panel.models.jsoneditor.JSONEditEvent" alt="" coords="507,4,714,23"/>
+<area shape="rect" id="node9" title="The base class for layoutable components." alt="" coords="519,97,703,116"/>
+<area shape="rect" id="node6" title="A mixin class to provide an interface for registering and" alt="" coords="4,115,289,134"/>
+<area shape="rect" id="node7" title="A mixin class to provide an interface for registering and" alt="" coords="11,152,283,171"/>
+<area shape="rect" id="node8" title="A component which size is determined by its HTML content." alt="" coords="750,97,923,116"/>
+<area shape="rect" id="node11" href="#panel.models.jsoneditor.JSONEditor" target="_top" title="A bokeh model that allows editing JSON." alt="" coords="959,97,1148,116"/>
+</map>

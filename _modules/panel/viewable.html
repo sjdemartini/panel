@@ -1,0 +1,2357 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>panel.viewable — Panel v0.14.0</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../../_static/mystnb.css" rel="stylesheet" type="text/css">
+<link href="../../_static/graphviz.css" rel="stylesheet" type="text/css">
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css">
+<link href="../../_static/runbutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/dataframe.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695" rel="preload"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/sphinx_highlight.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/run_cell.js"></script>
+<script src="../../_static/WorkerHandler.js"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../../_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../_static/design-tabs.js"></script>
+<script src="../../_static/ServiceHandler.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/panel.min.js"></script>
+<script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-154795830-2', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
+<link href="../../_static/favicon.ico" rel="shortcut icon">
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></link></link></head>
+<body data-default-mode="light" data-offset="180" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="bd-header-announcement container-fluid" id="banner">
+</div>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+<div id="navbar-start">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../_static/logo_horizontal.png"/>
+<img alt="Logo image" class="logo__image only-dark" src="../../_static/logo_horizontal.png"/>
+</a>
+</div>
+<button aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-collapsible" data-toggle="collapse" type="button">
+<span class="fas fa-bars"></span>
+</button>
+<div class="col-lg-9 collapse navbar-collapse" id="navbar-collapsible">
+<div class="mr-auto" id="navbar-center">
+<div class="navbar-center-item">
+<ul class="navbar-nav" id="navbar-main-elements">
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../index.html">
+  Overview
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../gallery/index.html">
+  Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../reference/index.html">
+  Reference Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../developer_guide/index.html">
+  Developer Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../api/index.html">
+  API Reference
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../releases.html">
+  Releases
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../FAQ.html">
+  FAQ
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../about/index.html">
+  About
+ </a>
+</li>
+</ul>
+</div>
+</div>
+<div id="navbar-end">
+<div class="navbar-end-item">
+<ul aria-label="Icon Links" class="navbar-nav" id="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/holoviz/panel" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://twitter.com/Panel_Org" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://discourse.holoviz.org/c/panel/5" rel="noopener" target="_blank" title="Discourse"><span><i class="fab fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bd-container container-xl">
+<div class="bd-container__inner row">
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-2 bd-sidebar">
+<div class="sidebar-start-items"><form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search the docs ..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../index.html">
+   Overview
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../getting_started/index.html">
+   Getting Started
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../getting_started/installation.html">
+     Installation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../getting_started/build_app.html">
+     Build an app
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../getting_started/core_concepts.html">
+     Core Concepts
+    </a>
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../user_guide/index.html">
+   User Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Overview.html">
+     Overview
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Components.html">
+     Components
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/APIs.html">
+     APIs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Customization.html">
+     Customization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Interact.html">
+     Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Widgets.html">
+     Widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Param.html">
+     Parameters
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Links.html">
+     Linking
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Pipelines.html">
+     Pipelines
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Templates.html">
+     Templates
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Performance_and_Debugging.html">
+     Performance and Debugging
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Session_State_and_Callbacks.html">
+     Session state &amp; Callbacks
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Async_and_Concurrency.html">
+     Asynchronous and Concurrent Process
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Display_and_Export.html">
+     Display &amp; Export
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Running_in_Webassembly.html">
+     Running Panel in the Browser with WASM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Server_Configuration.html">
+     Server Configuration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Server_Deployment.html">
+     Server Deployment
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Authentication.html">
+     Authentication
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Django.html">
+     Django Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/FastAPI.html">
+     FastAPI Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Custom_Components.html">
+     Building Custom Components
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../gallery/index.html">
+   Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/VTKInteractive.html">
+     VTKInteractive
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/VTKSlicer.html">
+     VTKSlicer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/VTKWarp.html">
+     VTKWarp
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/attractors.html">
+     Attractors
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/gapminders.html">
+     Gapminders
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/glaciers.html">
+     Glaciers
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/nyc_taxi.html">
+     Nyc Taxi
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/portfolio-optimizer.html">
+     Portfolio-optimizer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/altair_brushing.html">
+     Altair Brushing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/altair_choropleth.html">
+     Altair Choropleth
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/clifford_interact.html">
+     Clifford Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/color_speech_recognition.html">
+     Color Speech Recognition
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/deckgl_game_of_life.html">
+     Deckgl Game Of Life
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/defer_data_load.html">
+     Defer Data Load
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/file_download_examples.html">
+     File Download Examples
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/hvplot_explorer.html">
+     Hvplot Explorer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/iris_kmeans.html">
+     Iris Kmeans
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/loading_spinner.html">
+     Loading Spinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/random_number_generator.html">
+     Random Number Generator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/save_filtered_df.html">
+     Save Filtered Df
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/sync_location.html">
+     Sync Location
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/temperature_distribution.html">
+     Temperature Distribution
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/xgboost_classifier.html">
+     Xgboost Classifier
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/apis/stocks_altair.html">
+     Stocks Altair
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/apis/stocks_hvplot.html">
+     Stocks Hvplot
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/apis/stocks_matplotlib.html">
+     Stocks Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/apis/stocks_plotly.html">
+     Stocks Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/layout/distribution_tabs.html">
+     Distribution Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/layout/dynamic_tabs.html">
+     Dynamic Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/layout/plot_with_columns.html">
+     Plot With Columns
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/dynamic/dynamic_plot_layout.html">
+     Dynamic Plot Layout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/dynamic/dynamic_timeseries_image_analysis.html">
+     Dynamic Timeseries Image Analysis
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/dynamic/dynamic_ui.html">
+     Dynamic Ui
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/dynamic/dynamic_widget_values.html">
+     Dynamic Widget Values
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/action_button.html">
+     Action Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/deck_gl_global_power_plants.html">
+     Deck Gl Global Power Plants
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/download_upload_csv.html">
+     Download Upload Csv
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/loading_indicator.html">
+     Loading Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/param_subobjects.html">
+     Param Subobjects
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/precedence.html">
+     Precedence
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/reactive_plots.html">
+     Reactive Plots
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/reactive_tables.html">
+     Reactive Tables
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/streaming/hardware_automation.html">
+     Hardware Automation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/streaming/streaming_bokeh.html">
+     Streaming Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/streaming/streaming_indicator.html">
+     Streaming Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/streaming/streaming_perspective.html">
+     Streaming Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/streaming/streaming_tabulator.html">
+     Streaming Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/components/CanvasDraw.html">
+     CanvasDraw
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/components/LeafletHeatMap.html">
+     LeafletHeatMap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/components/MaterialUI.html">
+     MaterialUI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/links/bokeh_property_editor.html">
+     Bokeh Property Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/links/deck_gl_json_editor.html">
+     Deck Gl Json Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/links/holoviews_glyph_link.html">
+     Holoviews Glyph Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/links/plotly_link.html">
+     Plotly Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/links/vega_heatmap_link.html">
+     Vega Heatmap Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/styles/MatplotlibStyle.html">
+     MatplotlibStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/styles/PlotlyStyle.html">
+     PlotlyStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/styles/SeabornStyle.html">
+     SeabornStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/styles/VegaAltairStyle.html">
+     VegaAltairStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/external/DataTable.html">
+     DataTable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/external/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/external/deck.gl.html">
+     Deck.gl
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../reference/index.html">
+   Reference Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Alert.html">
+     Alert
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Audio.html">
+     Audio
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Bokeh.html">
+     Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/DeckGL.html">
+     DeckGL
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/ECharts.html">
+     ECharts
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/GIF.html">
+     GIF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/HTML.html">
+     HTML
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/HoloViews.html">
+     HoloViews
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/IDOM.html">
+     IDOM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/IPyWidget.html">
+     IPyWidget
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/JPG.html">
+     JPG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/JSON.html">
+     JSON
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/LaTeX.html">
+     LaTeX
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Markdown.html">
+     Markdown
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Matplotlib.html">
+     Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/PDF.html">
+     PDF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/PNG.html">
+     PNG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Param.html">
+     Param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Perspective.html">
+     Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Plotly.html">
+     Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/SVG.html">
+     SVG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Str.html">
+     Str
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Streamz.html">
+     Streamz
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/VTK.html">
+     VTK
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/VTKJS.html">
+     VTKJS
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/VTKVolume.html">
+     VTKVolume
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Vega.html">
+     Vega
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/panes/Video.html">
+     Video
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/layouts/Accordion.html">
+     Accordion
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/layouts/Card.html">
+     Card
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/layouts/Column.html">
+     Column
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/layouts/Divider.html">
+     Divider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/layouts/FlexBox.html">
+     FlexBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/layouts/GridBox.html">
+     GridBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/layouts/GridSpec.html">
+     GridSpec
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/layouts/GridStack.html">
+     GridStack
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/layouts/Row.html">
+     Row
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/layouts/Tabs.html">
+     Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/layouts/WidgetBox.html">
+     WidgetBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/templates/Bootstrap.html">
+     Bootstrap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/templates/FastGridTemplate.html">
+     FastGridTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/templates/FastListTemplate.html">
+     FastListTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/templates/GoldenLayout.html">
+     GoldenLayout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/templates/Material.html">
+     Material
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/templates/React.html">
+     React
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/templates/Vanilla.html">
+     Vanilla
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/global/Notifications.html">
+     Notifications
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/indicators/BooleanStatus.html">
+     BooleanStatus
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/indicators/Dial.html">
+     Dial
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/indicators/Gauge.html">
+     Gauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/indicators/LinearGauge.html">
+     LinearGauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/indicators/LoadingSpinner.html">
+     LoadingSpinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/indicators/Number.html">
+     Number
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/indicators/Progress.html">
+     Progress
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/indicators/Tqdm.html">
+     Tqdm
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/indicators/Trend.html">
+     Trend
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/Ace.html">
+     Ace
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/ArrayInput.html">
+     ArrayInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/AutocompleteInput.html">
+     AutocompleteInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/Button.html">
+     Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/CheckBoxGroup.html">
+     CheckBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/CheckButtonGroup.html">
+     CheckButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/Checkbox.html">
+     Checkbox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/ColorPicker.html">
+     ColorPicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/CrossSelector.html">
+     CrossSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/DatePicker.html">
+     DatePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/DateRangeSlider.html">
+     DateRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/DateSlider.html">
+     DateSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/DatetimeInput.html">
+     DatetimeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/DatetimePicker.html">
+     DatetimePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/DatetimeRangeInput.html">
+     DatetimeRangeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/DatetimeRangePicker.html">
+     DatetimeRangePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/DatetimeRangeSlider.html">
+     DatetimeRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/Debugger.html">
+     Debugger
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/DiscretePlayer.html">
+     DiscretePlayer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/DiscreteSlider.html">
+     DiscreteSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/EditableFloatSlider.html">
+     EditableFloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/EditableIntSlider.html">
+     EditableIntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/EditableRangeSlider.html">
+     EditableRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/FileDownload.html">
+     FileDownload
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/FileInput.html">
+     FileInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/FileSelector.html">
+     FileSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/FloatInput.html">
+     FloatInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/FloatSlider.html">
+     FloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/IntInput.html">
+     IntInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/IntRangeSlider.html">
+     IntRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/IntSlider.html">
+     IntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/JSONEditor.html">
+     JSONEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/LiteralInput.html">
+     LiteralInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/MenuButton.html">
+     MenuButton
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/MultiChoice.html">
+     MultiChoice
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/MultiSelect.html">
+     MultiSelect
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/PasswordInput.html">
+     PasswordInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/Player.html">
+     Player
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/RadioBoxGroup.html">
+     RadioBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/RadioButtonGroup.html">
+     RadioButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/RangeSlider.html">
+     RangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/Select.html">
+     Select
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/SpeechToText.html">
+     SpeechToText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/StaticText.html">
+     StaticText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/Tabulator.html">
+     Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/Terminal.html">
+     Terminal
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/TextAreaInput.html">
+     TextAreaInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/TextEditor.html">
+     TextEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/TextInput.html">
+     TextInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/TextToSpeech.html">
+     TextToSpeech
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/Toggle.html">
+     Toggle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/ToggleGroup.html">
+     ToggleGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../reference/widgets/VideoStream.html">
+     VideoStream
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../developer_guide/index.html">
+   Developer Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../developer_guide/testing.html">
+     Testing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../developer_guide/Developing_Custom_Models.html">
+     Developing custom models
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../api/index.html">
+   API Reference
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.io.html">
+     io
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.layout.html">
+     layout
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../api/panel.pane.html">
+     pane
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.pane.vtk.html">
+       panel.vtk Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.param.html">
+     param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.pipeline.html">
+     pipeline
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../api/panel.template.html">
+     template
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.template.bootstrap.html">
+       panel.bootstrap Package
+      </a>
+</li>
+<li class="toctree-l3 has-children">
+<a class="reference internal" href="../../api/panel.template.fast.html">
+       panel.fast Package
+      </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l4">
+<a class="reference internal" href="../../api/panel.template.fast.grid.html">
+         panel.grid Package
+        </a>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="../../api/panel.template.fast.list.html">
+         panel.list Package
+        </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.template.golden.html">
+       panel.golden Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.template.material.html">
+       panel.material Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.template.react.html">
+       panel.react Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.template.theme.html">
+       panel.theme Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.template.vanilla.html">
+       panel.vanilla Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.widgets.html">
+     widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.viewable.html">
+     viewable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.util.html">
+     util
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../releases.html">
+   Releases
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../FAQ.html">
+   FAQ
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../about/index.html">
+   About
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../about/comparisons.html">
+     Comparisons
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class="sidebar-end-items">
+</div>
+</div>
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+</div>
+<div class="bd-content col-12 col-md-10 col-xl-8" role="main">
+<article class="bd-article" role="main">
+<h1>Source code for panel.viewable</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""</span>
+<span class="sd">Defines the baseclasses that make a component render to a bokeh model</span>
+<span class="sd">and become viewable including:</span>
+
+<span class="sd">* Layoutable: Defines parameters concerned with layout and style</span>
+<span class="sd">* ServableMixin: Mixin class that defines methods to serve object on server</span>
+<span class="sd">* Renderable: Defines methods to render a component as a bokeh model</span>
+<span class="sd">* Viewable: Defines methods to view the component in the</span>
+<span class="sd">  notebook, on the server or in static exports</span>
+<span class="sd">"""</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">IO</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">ClassVar</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">param</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">bokeh.document</span> <span class="kn">import</span> <span class="n">Document</span>
+<span class="kn">from</span> <span class="nn">bokeh.resources</span> <span class="kn">import</span> <span class="n">Resources</span>
+<span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Template</span>
+<span class="kn">from</span> <span class="nn">pyviz_comms</span> <span class="kn">import</span> <span class="n">Comm</span><span class="p">,</span> <span class="n">JupyterCommManager</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">.config</span> <span class="kn">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">panel_extension</span>
+<span class="kn">from</span> <span class="nn">.io</span> <span class="kn">import</span> <span class="n">serve</span>
+<span class="kn">from</span> <span class="nn">.io.document</span> <span class="kn">import</span> <span class="n">init_doc</span>
+<span class="kn">from</span> <span class="nn">.io.embed</span> <span class="kn">import</span> <span class="n">embed_state</span>
+<span class="kn">from</span> <span class="nn">.io.loading</span> <span class="kn">import</span> <span class="n">start_loading_spinner</span><span class="p">,</span> <span class="n">stop_loading_spinner</span>
+<span class="kn">from</span> <span class="nn">.io.model</span> <span class="kn">import</span> <span class="n">add_to_doc</span><span class="p">,</span> <span class="n">patch_cds_msg</span>
+<span class="kn">from</span> <span class="nn">.io.notebook</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ipywidget</span><span class="p">,</span> <span class="n">render_mimebundle</span><span class="p">,</span> <span class="n">render_model</span><span class="p">,</span> <span class="n">show_embed</span><span class="p">,</span> <span class="n">show_server</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.io.save</span> <span class="kn">import</span> <span class="n">save</span>
+<span class="kn">from</span> <span class="nn">.io.state</span> <span class="kn">import</span> <span class="n">curdoc_locked</span><span class="p">,</span> <span class="n">state</span>
+<span class="kn">from</span> <span class="nn">.util</span> <span class="kn">import</span> <span class="n">escape</span><span class="p">,</span> <span class="n">param_reprs</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">bokeh.model</span> <span class="kn">import</span> <span class="n">Model</span>
+    <span class="kn">from</span> <span class="nn">bokeh.server.contexts</span> <span class="kn">import</span> <span class="n">BokehSessionContext</span>
+    <span class="kn">from</span> <span class="nn">bokeh.server.server</span> <span class="kn">import</span> <span class="n">Server</span>
+
+    <span class="kn">from</span> <span class="nn">.io.location</span> <span class="kn">import</span> <span class="n">Location</span>
+
+
+<div class="viewcode-block" id="Layoutable"><a class="viewcode-back" href="../../api/panel.viewable.html#panel.viewable.Layoutable">[docs]</a><span class="k">class</span> <span class="nc">Layoutable</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Layoutable defines shared style and layout related parameters</span>
+<span class="sd">    for all Panel components with a visual representation.</span>
+<span class="sd">    """</span>
+
+    <span class="n">align</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ClassSelector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">'start'</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">),</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Whether the object should be aligned with the start, end or</span>
+<span class="s2">        center of its container. If set as a tuple it will declare</span>
+<span class="s2">        (vertical, horizontal) alignment."""</span><span class="p">)</span>
+
+    <span class="n">aspect_ratio</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Describes the proportional relationship between component's</span>
+<span class="s2">        width and height.  This works if any of component's dimensions</span>
+<span class="s2">        are flexible in size. If set to a number, ``width / height =</span>
+<span class="s2">        aspect_ratio`` relationship will be maintained.  Otherwise, if</span>
+<span class="s2">        set to ``"auto"``, component's preferred width and height will</span>
+<span class="s2">        be used to determine the aspect (if not set, no aspect will be</span>
+<span class="s2">        preserved)."""</span><span class="p">)</span>
+
+    <span class="n">background</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Background color of the component."""</span><span class="p">)</span>
+
+    <span class="n">css_classes</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        CSS classes to apply to the layout."""</span><span class="p">)</span>
+
+    <span class="n">width</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        The width of the component (in pixels). This can be either</span>
+<span class="s2">        fixed or preferred width, depending on width sizing policy."""</span><span class="p">)</span>
+
+    <span class="n">height</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        The height of the component (in pixels).  This can be either</span>
+<span class="s2">        fixed or preferred height, depending on height sizing policy."""</span><span class="p">)</span>
+
+    <span class="n">min_width</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Minimal width of the component (in pixels) if width is adjustable."""</span><span class="p">)</span>
+
+    <span class="n">min_height</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Minimal height of the component (in pixels) if height is adjustable."""</span><span class="p">)</span>
+
+    <span class="n">max_width</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Minimal width of the component (in pixels) if width is adjustable."""</span><span class="p">)</span>
+
+    <span class="n">max_height</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Minimal height of the component (in pixels) if height is adjustable."""</span><span class="p">)</span>
+
+    <span class="n">margin</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Allows to create additional space around the component. May</span>
+<span class="s2">        be specified as a two-tuple of the form (vertical, horizontal)</span>
+<span class="s2">        or a four-tuple (top, right, bottom, left)."""</span><span class="p">)</span>
+
+    <span class="n">width_policy</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ObjectSelector</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="s1">'auto'</span><span class="p">,</span> <span class="s1">'fixed'</span><span class="p">,</span> <span class="s1">'fit'</span><span class="p">,</span> <span class="s1">'min'</span><span class="p">,</span> <span class="s1">'max'</span><span class="p">],</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Describes how the component should maintain its width.</span>
+
+<span class="s2">        ``"auto"``</span>
+<span class="s2">            Use component's preferred sizing policy.</span>
+
+<span class="s2">        ``"fixed"``</span>
+<span class="s2">            Use exactly ``width`` pixels. Component will overflow if</span>
+<span class="s2">            it can't fit in the available horizontal space.</span>
+
+<span class="s2">        ``"fit"``</span>
+<span class="s2">            Use component's preferred width (if set) and allow it to</span>
+<span class="s2">            fit into the available horizontal space within the minimum</span>
+<span class="s2">            and maximum width bounds (if set). Component's width</span>
+<span class="s2">            neither will be aggressively minimized nor maximized.</span>
+
+<span class="s2">        ``"min"``</span>
+<span class="s2">            Use as little horizontal space as possible, not less than</span>
+<span class="s2">            the minimum width (if set).  The starting point is the</span>
+<span class="s2">            preferred width (if set). The width of the component may</span>
+<span class="s2">            shrink or grow depending on the parent layout, aspect</span>
+<span class="s2">            management and other factors.</span>
+
+<span class="s2">        ``"max"``</span>
+<span class="s2">            Use as much horizontal space as possible, not more than</span>
+<span class="s2">            the maximum width (if set).  The starting point is the</span>
+<span class="s2">            preferred width (if set). The width of the component may</span>
+<span class="s2">            shrink or grow depending on the parent layout, aspect</span>
+<span class="s2">            management and other factors.</span>
+<span class="s2">    """</span><span class="p">)</span>
+
+    <span class="n">height_policy</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ObjectSelector</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="s1">'auto'</span><span class="p">,</span> <span class="s1">'fixed'</span><span class="p">,</span> <span class="s1">'fit'</span><span class="p">,</span> <span class="s1">'min'</span><span class="p">,</span> <span class="s1">'max'</span><span class="p">],</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Describes how the component should maintain its height.</span>
+
+<span class="s2">        ``"auto"``</span>
+<span class="s2">            Use component's preferred sizing policy.</span>
+
+<span class="s2">        ``"fixed"``</span>
+<span class="s2">            Use exactly ``height`` pixels. Component will overflow if</span>
+<span class="s2">            it can't fit in the available vertical space.</span>
+
+<span class="s2">        ``"fit"``</span>
+<span class="s2">            Use component's preferred height (if set) and allow to fit</span>
+<span class="s2">            into the available vertical space within the minimum and</span>
+<span class="s2">            maximum height bounds (if set). Component's height neither</span>
+<span class="s2">            will be aggressively minimized nor maximized.</span>
+
+<span class="s2">        ``"min"``</span>
+<span class="s2">            Use as little vertical space as possible, not less than</span>
+<span class="s2">            the minimum height (if set).  The starting point is the</span>
+<span class="s2">            preferred height (if set). The height of the component may</span>
+<span class="s2">            shrink or grow depending on the parent layout, aspect</span>
+<span class="s2">            management and other factors.</span>
+
+<span class="s2">        ``"max"``</span>
+<span class="s2">            Use as much vertical space as possible, not more than the</span>
+<span class="s2">            maximum height (if set).  The starting point is the</span>
+<span class="s2">            preferred height (if set). The height of the component may</span>
+<span class="s2">            shrink or grow depending on the parent layout, aspect</span>
+<span class="s2">            management and other factors.</span>
+<span class="s2">    """</span><span class="p">)</span>
+
+    <span class="n">sizing_mode</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ObjectSelector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="p">[</span>
+        <span class="s1">'fixed'</span><span class="p">,</span> <span class="s1">'stretch_width'</span><span class="p">,</span> <span class="s1">'stretch_height'</span><span class="p">,</span> <span class="s1">'stretch_both'</span><span class="p">,</span>
+        <span class="s1">'scale_width'</span><span class="p">,</span> <span class="s1">'scale_height'</span><span class="p">,</span> <span class="s1">'scale_both'</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        How the component should size itself.</span>
+
+<span class="s2">        This is a high-level setting for maintaining width and height</span>
+<span class="s2">        of the component. To gain more fine grained control over</span>
+<span class="s2">        sizing, use ``width_policy``, ``height_policy`` and</span>
+<span class="s2">        ``aspect_ratio`` instead (those take precedence over</span>
+<span class="s2">        ``sizing_mode``).</span>
+
+<span class="s2">        ``"fixed"``</span>
+<span class="s2">            Component is not responsive. It will retain its original</span>
+<span class="s2">            width and height regardless of any subsequent browser</span>
+<span class="s2">            window resize events.</span>
+
+<span class="s2">        ``"stretch_width"``</span>
+<span class="s2">            Component will responsively resize to stretch to the</span>
+<span class="s2">            available width, without maintaining any aspect ratio. The</span>
+<span class="s2">            height of the component depends on the type of the</span>
+<span class="s2">            component and may be fixed or fit to component's contents.</span>
+
+<span class="s2">        ``"stretch_height"``</span>
+<span class="s2">            Component will responsively resize to stretch to the</span>
+<span class="s2">            available height, without maintaining any aspect</span>
+<span class="s2">            ratio. The width of the component depends on the type of</span>
+<span class="s2">            the component and may be fixed or fit to component's</span>
+<span class="s2">            contents.</span>
+
+<span class="s2">        ``"stretch_both"``</span>
+<span class="s2">            Component is completely responsive, independently in width</span>
+<span class="s2">            and height, and will occupy all the available horizontal</span>
+<span class="s2">            and vertical space, even if this changes the aspect ratio</span>
+<span class="s2">            of the component.</span>
+
+<span class="s2">        ``"scale_width"``</span>
+<span class="s2">            Component will responsively resize to stretch to the</span>
+<span class="s2">            available width, while maintaining the original or</span>
+<span class="s2">            provided aspect ratio.</span>
+
+<span class="s2">        ``"scale_height"``</span>
+<span class="s2">            Component will responsively resize to stretch to the</span>
+<span class="s2">            available height, while maintaining the original or</span>
+<span class="s2">            provided aspect ratio.</span>
+
+<span class="s2">        ``"scale_both"``</span>
+<span class="s2">            Component will responsively resize to both the available</span>
+<span class="s2">            width and height, while maintaining the original or</span>
+<span class="s2">            provided aspect ratio.</span>
+<span class="s2">    """</span><span class="p">)</span>
+
+    <span class="n">visible</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Whether the component is visible. Setting visible to false will</span>
+<span class="s2">        hide the component entirely."""</span><span class="p">)</span>
+
+    <span class="n">__abstract</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'width'</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+            <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'height'</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+            <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'width_policy'</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+            <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'height_policy'</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+            <span class="s1">'sizing_mode'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">):</span>
+            <span class="n">params</span><span class="p">[</span><span class="s1">'sizing_mode'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'fixed'</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">sizing_mode</span><span class="o">.</span><span class="n">constant</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">sizing_mode</span><span class="o">.</span><span class="n">readonly</span><span class="p">)</span> <span class="ow">and</span>
+              <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">sizing_mode</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s1">'sizing_mode'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">sizing_mode</span> <span class="o">==</span> <span class="s1">'stretch_both'</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'height'</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">params</span><span class="p">[</span><span class="s1">'sizing_mode'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'stretch_width'</span>
+                <span class="k">elif</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'width'</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">params</span><span class="p">[</span><span class="s1">'sizing_mode'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'stretch_height'</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">params</span><span class="p">[</span><span class="s1">'sizing_mode'</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">sizing_mode</span>
+            <span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">sizing_mode</span> <span class="o">==</span> <span class="s1">'stretch_width'</span> <span class="ow">and</span> <span class="s1">'width'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                <span class="n">params</span><span class="p">[</span><span class="s1">'sizing_mode'</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">sizing_mode</span>
+            <span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">sizing_mode</span> <span class="o">==</span> <span class="s1">'stretch_height'</span> <span class="ow">and</span> <span class="s1">'height'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                <span class="n">params</span><span class="p">[</span><span class="s1">'sizing_mode'</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">sizing_mode</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span></div>
+
+
+<span class="k">class</span> <span class="nc">ServableMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Mixin to define methods shared by objects which can served.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span> <span class="nf">_modify_doc</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">server_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">doc</span><span class="p">:</span> <span class="n">Document</span><span class="p">,</span> <span class="n">location</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">'Location'</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Document</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Callback to handle FunctionHandler document creation.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">server_id</span><span class="p">:</span>
+            <span class="n">state</span><span class="o">.</span><span class="n">_servers</span><span class="p">[</span><span class="n">server_id</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">location</span><span class="p">)</span> <span class="c1"># type: ignore</span>
+
+    <span class="k">def</span> <span class="nf">_add_location</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">:</span> <span class="n">Document</span><span class="p">,</span> <span class="n">location</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">'Location'</span> <span class="o">|</span> <span class="nb">bool</span><span class="p">],</span>
+        <span class="n">root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">'Model'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Location'</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">.io.location</span> <span class="kn">import</span> <span class="n">Location</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">Location</span><span class="p">):</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="n">location</span>
+        <span class="k">elif</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">_locations</span><span class="p">:</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">_locations</span><span class="p">[</span><span class="n">doc</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">()</span>
+        <span class="n">state</span><span class="o">.</span><span class="n">_locations</span><span class="p">[</span><span class="n">doc</span><span class="p">]</span> <span class="o">=</span> <span class="n">loc</span>
+        <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">loc_model</span> <span class="o">=</span> <span class="n">loc</span><span class="o">.</span><span class="n">get_root</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">loc_model</span> <span class="o">=</span> <span class="n">loc</span><span class="o">.</span><span class="n">_get_model</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
+        <span class="n">loc_model</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'location'</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">add_root</span><span class="p">(</span><span class="n">loc_model</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loc</span>
+
+    <span class="k">def</span> <span class="nf">_on_msg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">manager</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Handles Protocol messages arriving from the client comm.</span>
+<span class="sd">        """</span>
+        <span class="n">root</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="n">comm</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">_views</span><span class="p">[</span><span class="n">ref</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">patch_cds_msg</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+        <span class="n">held</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">hold_value</span>
+        <span class="n">patch</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">hold</span><span class="p">()</span>
+        <span class="n">patch</span><span class="o">.</span><span class="n">apply_to_document</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">comm</span><span class="o">.</span><span class="n">id</span> <span class="k">if</span> <span class="n">comm</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">unhold</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">held</span><span class="p">:</span>
+            <span class="n">doc</span><span class="o">.</span><span class="n">hold</span><span class="p">(</span><span class="n">held</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_on_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span> <span class="ne">Exception</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ref</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">_handles</span> <span class="ow">or</span> <span class="n">config</span><span class="o">.</span><span class="n">console_output</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">'disable'</span><span class="p">]:</span>
+            <span class="k">return</span>
+        <span class="n">handle</span><span class="p">,</span> <span class="n">accumulator</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">_handles</span><span class="p">[</span><span class="n">ref</span><span class="p">]</span>
+        <span class="n">formatted</span> <span class="o">=</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">&lt;pre&gt;'</span><span class="o">+</span><span class="n">escape</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span><span class="o">+</span><span class="s1">'&lt;/pre&gt;</span><span class="se">\n</span><span class="s1">'</span>
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">console_output</span> <span class="o">==</span> <span class="s1">'accumulate'</span><span class="p">:</span>
+            <span class="n">accumulator</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">formatted</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">console_output</span> <span class="o">==</span> <span class="s1">'replace'</span><span class="p">:</span>
+            <span class="n">accumulator</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">formatted</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">accumulator</span><span class="p">:</span>
+            <span class="n">handle</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'text/html'</span><span class="p">:</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">accumulator</span><span class="p">)},</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_on_stdout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">stdout</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ref</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">_handles</span> <span class="ow">or</span> <span class="n">config</span><span class="o">.</span><span class="n">console_output</span> <span class="ow">is</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">'disable'</span><span class="p">]:</span>
+            <span class="k">return</span>
+        <span class="n">handle</span><span class="p">,</span> <span class="n">accumulator</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">_handles</span><span class="p">[</span><span class="n">ref</span><span class="p">]</span>
+        <span class="n">formatted</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"</span><span class="si">%s</span><span class="s2">&lt;/br&gt;"</span> <span class="o">%</span> <span class="n">o</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">stdout</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">console_output</span> <span class="o">==</span> <span class="s1">'accumulate'</span><span class="p">:</span>
+            <span class="n">accumulator</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">formatted</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">console_output</span> <span class="o">==</span> <span class="s1">'replace'</span><span class="p">:</span>
+            <span class="n">accumulator</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">formatted</span>
+        <span class="k">if</span> <span class="n">accumulator</span><span class="p">:</span>
+            <span class="n">handle</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'text/html'</span><span class="p">:</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">accumulator</span><span class="p">)},</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1">#----------------------------------------------------------------</span>
+    <span class="c1"># Public API</span>
+    <span class="c1">#----------------------------------------------------------------</span>
+
+    <span class="k">def</span> <span class="nf">servable</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">location</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="s1">'Location'</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">area</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'main'</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'ServableMixin'</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Serves the object or adds it to the configured</span>
+<span class="sd">        pn.state.template if in a `panel serve` context, writes to the</span>
+<span class="sd">        DOM if in a pyodide context and returns the Panel object to</span>
+<span class="sd">        allow it to display itself in a notebook context.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        title : str</span>
+<span class="sd">          A string title to give the Document (if served as an app)</span>
+<span class="sd">        location : boolean or panel.io.location.Location</span>
+<span class="sd">          Whether to create a Location component to observe and</span>
+<span class="sd">          set the URL location.</span>
+<span class="sd">        area: str (deprecated)</span>
+<span class="sd">          The area of a template to add the component too. Only has an</span>
+<span class="sd">          effect if pn.config.template has been set.</span>
+<span class="sd">        target: str</span>
+<span class="sd">          Target area to write to. If a template has been configured</span>
+<span class="sd">          on pn.config.template this refers to the target area in the</span>
+<span class="sd">          template while in pyodide this refers to the ID of the DOM</span>
+<span class="sd">          node to write to.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        The Panel object itself</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">curdoc_locked</span><span class="p">()</span><span class="o">.</span><span class="n">session_context</span><span class="p">:</span>
+            <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">'bokeh'</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">):</span>
+                    <span class="n">handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARN</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">template</span><span class="p">:</span>
+                <span class="n">area</span> <span class="o">=</span> <span class="n">target</span> <span class="ow">or</span> <span class="n">area</span> <span class="ow">or</span> <span class="s1">'main'</span>
+                <span class="n">template</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">template</span>
+                <span class="k">assert</span> <span class="n">template</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="k">if</span> <span class="n">template</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="n">template</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">default</span> <span class="ow">and</span> <span class="n">title</span><span class="p">:</span>
+                    <span class="n">template</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+                <span class="k">if</span> <span class="n">area</span> <span class="o">==</span> <span class="s1">'main'</span><span class="p">:</span>
+                    <span class="n">template</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">area</span> <span class="o">==</span> <span class="s1">'sidebar'</span><span class="p">:</span>
+                    <span class="n">template</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">area</span> <span class="o">==</span> <span class="s1">'modal'</span><span class="p">:</span>
+                    <span class="n">template</span><span class="o">.</span><span class="n">modal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">area</span> <span class="o">==</span> <span class="s1">'header'</span><span class="p">:</span>
+                    <span class="n">template</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">server_doc</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">)</span> <span class="c1"># type: ignore</span>
+        <span class="k">elif</span> <span class="n">state</span><span class="o">.</span><span class="n">_is_pyodide</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.io.pyodide</span> <span class="kn">import</span> <span class="n">write</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">target</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="s1">'_out'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">write</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="bp">self</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">websocket_origin</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">threaded</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="nb">open</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">location</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="s1">'Location'</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span> <span class="o">|</span> <span class="s1">'Server'</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Starts a Bokeh server and displays the Viewable in a new tab.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        title : str | None</span>
+<span class="sd">          A string title to give the Document (if served as an app)</span>
+<span class="sd">        port: int (optional, default=0)</span>
+<span class="sd">          Allows specifying a specific port</span>
+<span class="sd">        address : str</span>
+<span class="sd">          The address the server should listen on for HTTP requests.</span>
+<span class="sd">        websocket_origin: str or list(str) (optional)</span>
+<span class="sd">          A list of hosts that can connect to the websocket.</span>
+<span class="sd">          This is typically required when embedding a server app in</span>
+<span class="sd">          an external web site.</span>
+<span class="sd">          If None, "localhost" is used.</span>
+<span class="sd">        threaded: boolean (optional, default=False)</span>
+<span class="sd">          Whether to launch the Server on a separate thread, allowing</span>
+<span class="sd">          interactive use.</span>
+<span class="sd">        verbose: boolean (optional, default=True)</span>
+<span class="sd">          Whether to print the address and port</span>
+<span class="sd">        open : boolean (optional, default=True)</span>
+<span class="sd">          Whether to open the server in a new browser tab</span>
+<span class="sd">        location : boolean or panel.io.location.Location</span>
+<span class="sd">          Whether to create a Location component to observe and</span>
+<span class="sd">          set the URL location.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        server: bokeh.server.Server or threading.Thread</span>
+<span class="sd">          Returns the Bokeh server instance or the thread the server</span>
+<span class="sd">          was launched on (if threaded=True)</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="n">serve</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="n">address</span><span class="p">,</span> <span class="n">websocket_origin</span><span class="o">=</span><span class="n">websocket_origin</span><span class="p">,</span>
+            <span class="n">show</span><span class="o">=</span><span class="nb">open</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+            <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="n">threaded</span><span class="o">=</span><span class="n">threaded</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Renderable</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Baseclass for objects which can be rendered to a Bokeh model.</span>
+
+<span class="sd">    It therefore declare APIs for initializing the models from</span>
+<span class="sd">    parameter values.</span>
+<span class="sd">    """</span>
+
+    <span class="n">__abstract</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_documents</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_models</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_comms</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kernels</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_found_links</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'debug'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="p">,</span> <span class="n">level</span><span class="p">)(</span><span class="sa">f</span><span class="s1">'Session %s </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">curdoc</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_model</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">:</span> <span class="n">Document</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">'Model'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">parent</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">'Model'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">comm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Comm</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Model'</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Converts the objects being wrapped by the viewable into a</span>
+<span class="sd">        bokeh model that can be composed in a bokeh layout.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ----------</span>
+<span class="sd">        doc: bokeh.Document</span>
+<span class="sd">          Bokeh document the bokeh model will be attached to.</span>
+<span class="sd">        root: bokeh.Model</span>
+<span class="sd">          The root layout the viewable will become part of.</span>
+<span class="sd">        parent: bokeh.Model</span>
+<span class="sd">          The parent layout the viewable will become part of.</span>
+<span class="sd">        comm: pyviz_comms.Comm</span>
+<span class="sd">          Optional pyviz_comms when working in notebook</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        model: bokeh.Model</span>
+<span class="sd">        """</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">_cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">Model</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Clean up method which is called when a Viewable is destroyed.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        root: bokeh.model.Model</span>
+<span class="sd">          Bokeh model for the view being cleaned up</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">ref</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">ref</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">_handles</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">state</span><span class="o">.</span><span class="n">_handles</span><span class="p">[</span><span class="n">ref</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="s1">'Model'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Applies preprocessing hooks to the model.</span>
+<span class="sd">        """</span>
+        <span class="n">hooks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocessing_hooks</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_hooks</span>
+        <span class="k">for</span> <span class="n">hook</span> <span class="ow">in</span> <span class="n">hooks</span><span class="p">:</span>
+            <span class="n">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_render_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Document</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">comm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Comm</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Model'</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">doc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">doc</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">comm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">comm</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">_comm_manager</span><span class="o">.</span><span class="n">get_server_comm</span><span class="p">()</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_root</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">comm</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">embed</span><span class="p">:</span>
+            <span class="n">embed_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span>
+                        <span class="n">json</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">embed_json</span><span class="p">,</span>
+                        <span class="n">json_prefix</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">embed_json_prefix</span><span class="p">,</span>
+                        <span class="n">save_path</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">embed_save_path</span><span class="p">,</span>
+                        <span class="n">load_path</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">embed_load_path</span><span class="p">,</span>
+                        <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">add_to_doc</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span>
+
+    <span class="k">def</span> <span class="nf">_init_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">values</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">_server_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session_context</span><span class="p">:</span> <span class="s1">'BokehSessionContext'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Server lifecycle hook triggered when session is destroyed.</span>
+<span class="sd">        """</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">session_context</span><span class="o">.</span><span class="n">_document</span>
+        <span class="k">if</span> <span class="n">doc</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_documents</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_documents</span><span class="p">[</span><span class="n">doc</span><span class="p">]</span>
+        <span class="n">ref</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">ref</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cleanup</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_documents</span><span class="p">[</span><span class="n">doc</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">_views</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">state</span><span class="o">.</span><span class="n">_views</span><span class="p">[</span><span class="n">ref</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get_root</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Document</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">comm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Comm</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">preprocess</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Model</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Returns the root model and applies pre-processing hooks</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        doc: bokeh.Document</span>
+<span class="sd">          Bokeh document the bokeh model will be attached to.</span>
+<span class="sd">        comm: pyviz_comms.Comm</span>
+<span class="sd">          Optional pyviz_comms when working in notebook</span>
+<span class="sd">        preprocess: boolean (default=True)</span>
+<span class="sd">          Whether to run preprocessing hooks</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Returns the bokeh model corresponding to this panel object</span>
+<span class="sd">        """</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">init_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_model</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">comm</span><span class="o">=</span><span class="n">comm</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">preprocess</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+        <span class="n">ref</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">ref</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span>
+        <span class="n">state</span><span class="o">.</span><span class="n">_views</span><span class="p">[</span><span class="n">ref</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="n">comm</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">root</span>
+
+
+<div class="viewcode-block" id="Viewable"><a class="viewcode-back" href="../../api/panel.viewable.html#panel.viewable.Viewable">[docs]</a><span class="k">class</span> <span class="nc">Viewable</span><span class="p">(</span><span class="n">Renderable</span><span class="p">,</span> <span class="n">Layoutable</span><span class="p">,</span> <span class="n">ServableMixin</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Viewable is the baseclass all visual components in the panel</span>
+<span class="sd">    library are built on. It defines the interface for declaring any</span>
+<span class="sd">    object that displays itself by transforming the object(s) being</span>
+<span class="sd">    wrapped into models that can be served using bokeh's layout</span>
+<span class="sd">    engine. The class also defines various methods that allow Viewable</span>
+<span class="sd">    objects to be displayed in the notebook and on bokeh server.</span>
+<span class="sd">    """</span>
+
+    <span class="n">loading</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">doc</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">        Whether or not the Viewable is loading. If True a loading spinner</span>
+<span class="s2">        is shown on top of the Viewable."""</span><span class="p">)</span>
+
+    <span class="n">_preprocessing_hooks</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="s1">'Viewable'</span><span class="p">,</span> <span class="s1">'Model'</span><span class="p">],</span> <span class="kc">None</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="n">hooks</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'hooks'</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hooks</span> <span class="o">=</span> <span class="n">hooks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_loading</span><span class="p">()</span>
+        <span class="n">watcher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_loading</span><span class="p">,</span> <span class="s1">'loading'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">watcher</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_update_loading</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">loading</span><span class="p">:</span>
+            <span class="n">start_loading_spinner</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">stop_loading_spinner</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">'</span><span class="si">{cls}</span><span class="s1">(</span><span class="si">{params}</span><span class="s1">)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">cls</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                                        <span class="n">params</span><span class="o">=</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">param_reprs</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_repr_mimebundle_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">_is_pyodide</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.io.pyodide</span> <span class="kn">import</span> <span class="n">render_script</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="s1">'_out'</span><span class="p">):</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">_out</span> <span class="c1"># type: ignore</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Could not determine target node to write to."</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">'text/html'</span><span class="p">:</span> <span class="n">render_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">)},</span> <span class="p">{}</span>
+
+        <span class="n">loaded</span> <span class="o">=</span> <span class="n">panel_extension</span><span class="o">.</span><span class="n">_loaded</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">loaded</span> <span class="ow">and</span> <span class="s1">'holoviews'</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">holoviews</span> <span class="k">as</span> <span class="nn">hv</span>  <span class="c1"># type: ignore</span>
+            <span class="n">loaded</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">extension</span><span class="o">.</span><span class="n">_loaded</span>
+
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">comms</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">'vscode'</span><span class="p">,</span> <span class="s1">'ipywidgets'</span><span class="p">):</span>
+            <span class="n">widget</span> <span class="o">=</span> <span class="n">ipywidget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="s1">'_repr_mimebundle_'</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">widget</span><span class="o">.</span><span class="n">_repr_mimebundle_</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">include</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">)</span>
+            <span class="n">plaintext</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">plaintext</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">110</span><span class="p">:</span>
+                <span class="n">plaintext</span> <span class="o">=</span> <span class="n">plaintext</span><span class="p">[:</span><span class="mi">110</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'…'</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">'text/plain'</span><span class="p">:</span> <span class="n">plaintext</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">_view_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">'application/vnd.jupyter.widget-view+json'</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">'version_major'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                    <span class="s1">'version_minor'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="s1">'model_id'</span><span class="p">:</span> <span class="n">widget</span><span class="o">.</span><span class="n">_model_id</span>
+                <span class="p">}</span>
+            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">comms</span> <span class="o">==</span> <span class="s1">'vscode'</span><span class="p">:</span>
+                <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>  <span class="c1"># type: ignore</span>
+                <span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">return</span> <span class="p">{</span><span class="s1">'text/html'</span><span class="p">:</span> <span class="s1">'&lt;div style="display: none"&gt;&lt;/div&gt;'</span><span class="p">},</span> <span class="p">{}</span>
+            <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">loaded</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">'Displaying Panel objects in the notebook '</span>
+                               <span class="s1">'requires the panel extension to be loaded. '</span>
+                               <span class="s1">'Ensure you run pn.extension() before '</span>
+                               <span class="s1">'displaying objects in the notebook.'</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">comms</span> <span class="o">==</span> <span class="s1">'colab'</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.io.notebook</span> <span class="kn">import</span> <span class="n">load_notebook</span>
+            <span class="n">load_notebook</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">inline</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">get_ipython</span>  <span class="c1"># type: ignore</span>
+            <span class="k">assert</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="n">state</span><span class="o">.</span><span class="n">_comm_manager</span> <span class="o">=</span> <span class="n">JupyterCommManager</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">state</span><span class="o">.</span><span class="n">_views</span><span class="p">:</span>
+            <span class="c1"># Initialize the global Location</span>
+            <span class="kn">from</span> <span class="nn">.io.location</span> <span class="kn">import</span> <span class="n">Location</span>
+            <span class="n">state</span><span class="o">.</span><span class="n">_location</span> <span class="o">=</span> <span class="n">location</span> <span class="o">=</span> <span class="n">Location</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">location</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+        <span class="kn">from</span> <span class="nn">.models.comm_manager</span> <span class="kn">import</span> <span class="n">CommManager</span>
+
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+        <span class="n">comm</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">_comm_manager</span><span class="o">.</span><span class="n">get_server_comm</span><span class="p">()</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_model</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">comm</span><span class="p">)</span>
+        <span class="n">ref</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ref</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span>
+        <span class="n">manager</span> <span class="o">=</span> <span class="n">CommManager</span><span class="p">(</span><span class="n">comm_id</span><span class="o">=</span><span class="n">comm</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">plot_id</span><span class="o">=</span><span class="n">ref</span><span class="p">)</span>
+        <span class="n">client_comm</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">_comm_manager</span><span class="o">.</span><span class="n">get_client_comm</span><span class="p">(</span>
+            <span class="n">on_msg</span><span class="o">=</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_msg</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">manager</span><span class="p">),</span>
+            <span class="n">on_error</span><span class="o">=</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_error</span><span class="p">,</span> <span class="n">ref</span><span class="p">),</span>
+            <span class="n">on_stdout</span><span class="o">=</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_stdout</span><span class="p">,</span> <span class="n">ref</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_comms</span><span class="p">[</span><span class="n">ref</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">comm</span><span class="p">,</span> <span class="n">client_comm</span><span class="p">)</span>
+        <span class="n">manager</span><span class="o">.</span><span class="n">client_comm_id</span> <span class="o">=</span> <span class="n">client_comm</span><span class="o">.</span><span class="n">id</span>
+
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">console_output</span> <span class="o">!=</span> <span class="s1">'disable'</span><span class="p">:</span>
+            <span class="n">handle</span> <span class="o">=</span> <span class="n">display</span><span class="p">(</span><span class="n">display_id</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">)</span>
+            <span class="n">state</span><span class="o">.</span><span class="n">_handles</span><span class="p">[</span><span class="n">ref</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="p">[])</span>
+
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">embed</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">render_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render_mimebundle</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="n">comm</span><span class="p">,</span> <span class="n">manager</span><span class="p">,</span> <span class="n">location</span><span class="p">)</span>
+
+    <span class="c1">#----------------------------------------------------------------</span>
+    <span class="c1"># Public API</span>
+    <span class="c1">#----------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="Viewable.clone"><a class="viewcode-back" href="../../api/panel.viewable.html#panel.viewable.Viewable.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Viewable'</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Makes a copy of the object sharing the same parameters.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        params: Keyword arguments override the parameters on the clone.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Cloned Viewable object</span>
+<span class="sd">        """</span>
+        <span class="n">inherited</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">values</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">readonly</span><span class="p">}</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span><span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="n">inherited</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Viewable.pprint"><a class="viewcode-back" href="../../api/panel.viewable.html#panel.viewable.Viewable.pprint">[docs]</a>    <span class="k">def</span> <span class="nf">pprint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Prints a compositional repr of the class.</span>
+<span class="sd">        """</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Viewable.select"><a class="viewcode-back" href="../../api/panel.viewable.html#panel.viewable.Viewable.select">[docs]</a>    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">selector</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">type</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="s1">'Viewable'</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s1">'Viewable'</span><span class="p">]:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Iterates over the Viewable and any potential children in the</span>
+<span class="sd">        applying the Selector.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        selector: type or callable or None</span>
+<span class="sd">          The selector allows selecting a subset of Viewables by</span>
+<span class="sd">          declaring a type or callable function to filter by.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        viewables: list(Viewable)</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">selector</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span>
+            <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selector</span><span class="p">))</span> <span class="ow">or</span>
+            <span class="p">(</span><span class="n">callable</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="ow">and</span> <span class="n">selector</span><span class="p">(</span><span class="bp">self</span><span class="p">))):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="Viewable.app"><a class="viewcode-back" href="../../api/panel.viewable.html#panel.viewable.Viewable.app">[docs]</a>    <span class="k">def</span> <span class="nf">app</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notebook_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"localhost:8888"</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Server'</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Displays a bokeh server app inline in the notebook.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        notebook_url: str</span>
+<span class="sd">          URL to the notebook server</span>
+<span class="sd">        port: int (optional, default=0)</span>
+<span class="sd">          Allows specifying a specific port</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="n">show_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notebook_url</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Viewable.embed"><a class="viewcode-back" href="../../api/panel.viewable.html#panel.viewable.Viewable.embed">[docs]</a>    <span class="k">def</span> <span class="nf">embed</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">max_states</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">max_opts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">json</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">json_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span> <span class="n">save_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'./'</span><span class="p">,</span> <span class="n">load_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">states</span><span class="o">=</span><span class="p">{}</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Renders a static version of a panel in a notebook by evaluating</span>
+<span class="sd">        the set of states defined by the widgets in the model. Note</span>
+<span class="sd">        this will only work well for simple apps with a relatively</span>
+<span class="sd">        small state space.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        max_states: int</span>
+<span class="sd">          The maximum number of states to embed</span>
+<span class="sd">        max_opts: int</span>
+<span class="sd">          The maximum number of states for a single widget</span>
+<span class="sd">        json: boolean (default=True)</span>
+<span class="sd">          Whether to export the data to json files</span>
+<span class="sd">        json_prefix: str (default='')</span>
+<span class="sd">          Prefix for JSON filename</span>
+<span class="sd">        save_path: str (default='./')</span>
+<span class="sd">          The path to save json files to</span>
+<span class="sd">        load_path: str (default=None)</span>
+<span class="sd">          The path or URL the json files will be loaded from.</span>
+<span class="sd">        progress: boolean (default=False)</span>
+<span class="sd">          Whether to report progress</span>
+<span class="sd">        states: dict (default={})</span>
+<span class="sd">          A dictionary specifying the widget values to embed for each widget</span>
+<span class="sd">        """</span>
+        <span class="n">show_embed</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">max_states</span><span class="p">,</span> <span class="n">max_opts</span><span class="p">,</span> <span class="n">json</span><span class="p">,</span> <span class="n">json_prefix</span><span class="p">,</span> <span class="n">save_path</span><span class="p">,</span>
+            <span class="n">load_path</span><span class="p">,</span> <span class="n">progress</span><span class="p">,</span> <span class="n">states</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Viewable.save"><a class="viewcode-back" href="../../api/panel.viewable.html#panel.viewable.Viewable.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">|</span> <span class="n">IO</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">resources</span><span class="p">:</span> <span class="n">Resources</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">template</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Template</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">template_variables</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">embed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">max_states</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">max_opts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">embed_json</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">json_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">save_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">'./'</span><span class="p">,</span> <span class="n">load_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">embed_states</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
+        <span class="n">as_png</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Saves Panel objects to file.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        filename: str or file-like object</span>
+<span class="sd">           Filename to save the plot to</span>
+<span class="sd">        title: string</span>
+<span class="sd">           Optional title for the plot</span>
+<span class="sd">        resources: bokeh resources</span>
+<span class="sd">           One of the valid bokeh.resources (e.g. CDN or INLINE)</span>
+<span class="sd">        template:</span>
+<span class="sd">           passed to underlying io.save</span>
+<span class="sd">        template_variables:</span>
+<span class="sd">           passed to underlying io.save</span>
+<span class="sd">        embed: bool</span>
+<span class="sd">           Whether the state space should be embedded in the saved file.</span>
+<span class="sd">        max_states: int</span>
+<span class="sd">           The maximum number of states to embed</span>
+<span class="sd">        max_opts: int</span>
+<span class="sd">           The maximum number of states for a single widget</span>
+<span class="sd">        embed_json: boolean (default=True)</span>
+<span class="sd">           Whether to export the data to json files</span>
+<span class="sd">        json_prefix: str (default='')</span>
+<span class="sd">           Prefix for the auto-generated json directory</span>
+<span class="sd">        save_path: str (default='./')</span>
+<span class="sd">           The path to save json files to</span>
+<span class="sd">        load_path: str (default=None)</span>
+<span class="sd">           The path or URL the json files will be loaded from.</span>
+<span class="sd">        progress: boolean (default=True)</span>
+<span class="sd">          Whether to report progress</span>
+<span class="sd">        embed_states: dict (default={})</span>
+<span class="sd">          A dictionary specifying the widget values to embed for each widget</span>
+<span class="sd">        as_png: boolean (default=None)</span>
+<span class="sd">          To save as a .png. If None save_png will be true if filename is</span>
+<span class="sd">          string and ends with png.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="n">save</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">resources</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span>
+            <span class="n">template_variables</span><span class="p">,</span> <span class="n">embed</span><span class="p">,</span> <span class="n">max_states</span><span class="p">,</span> <span class="n">max_opts</span><span class="p">,</span>
+            <span class="n">embed_json</span><span class="p">,</span> <span class="n">json_prefix</span><span class="p">,</span> <span class="n">save_path</span><span class="p">,</span> <span class="n">load_path</span><span class="p">,</span> <span class="n">progress</span><span class="p">,</span>
+            <span class="n">embed_states</span><span class="p">,</span> <span class="n">as_png</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Viewable.server_doc"><a class="viewcode-back" href="../../api/panel.viewable.html#panel.viewable.Viewable.server_doc">[docs]</a>    <span class="k">def</span> <span class="nf">server_doc</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Document</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">location</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="s1">'Location'</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Document</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Returns a serveable bokeh Document with the panel attached</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        doc : bokeh.Document (optional)</span>
+<span class="sd">          The bokeh Document to attach the panel to as a root,</span>
+<span class="sd">          defaults to bokeh.io.curdoc()</span>
+<span class="sd">        title : str</span>
+<span class="sd">          A string title to give the Document</span>
+<span class="sd">        location : boolean or panel.io.location.Location</span>
+<span class="sd">          Whether to create a Location component to observe and</span>
+<span class="sd">          set the URL location.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        doc : bokeh.Document</span>
+<span class="sd">          The bokeh document the panel was attached to</span>
+<span class="sd">        """</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">init_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">title</span> <span class="ow">or</span> <span class="n">doc</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">'Bokeh Application'</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">title</span> <span class="ow">or</span> <span class="s1">'Panel Application'</span>
+            <span class="n">doc</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_root</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">on_session_destroyed</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">_destroy_session</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">on_session_destroyed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_server_destroy</span><span class="p">)</span> <span class="c1"># type: ignore</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_documents</span><span class="p">[</span><span class="n">doc</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="n">add_to_doc</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">location</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_add_location</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">notifications</span> <span class="ow">and</span> <span class="n">doc</span> <span class="ow">is</span> <span class="n">state</span><span class="o">.</span><span class="n">curdoc</span><span class="p">:</span>
+            <span class="n">notification_model</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">notifications</span><span class="o">.</span><span class="n">_get_model</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+            <span class="n">notification_model</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'notifications'</span>
+            <span class="n">doc</span><span class="o">.</span><span class="n">add_root</span><span class="p">(</span><span class="n">notification_model</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">doc</span></div></div>
+
+
+<div class="viewcode-block" id="Viewer"><a class="viewcode-back" href="../../api/panel.viewable.html#panel.viewable.Viewer">[docs]</a><span class="k">class</span> <span class="nc">Viewer</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    A baseclass for custom components that behave like a Panel object.</span>
+<span class="sd">    By implementing __panel__ method an instance of this class will</span>
+<span class="sd">    behave like the returned Panel component when placed in a layout,</span>
+<span class="sd">    render itself in a notebook and provide show and servable methods.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span> <span class="nf">__panel__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Subclasses should return a Panel component to be rendered.</span>
+<span class="sd">        """</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">_create_view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">.param</span> <span class="kn">import</span> <span class="n">ParamMethod</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__panel__</span><span class="p">,</span> <span class="s2">"_dinfo"</span><span class="p">):</span>
+            <span class="n">view</span> <span class="o">=</span> <span class="n">ParamMethod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__panel__</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__panel__</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">view</span>
+
+<div class="viewcode-block" id="Viewer.servable"><a class="viewcode-back" href="../../api/panel.viewable.html#panel.viewable.Viewer.servable">[docs]</a>    <span class="k">def</span> <span class="nf">servable</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">location</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="s1">'Location'</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">area</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'main'</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Viewer'</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_view</span><span class="p">()</span><span class="o">.</span><span class="n">servable</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">area</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span></div>
+
+    <span class="n">servable</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">ServableMixin</span><span class="o">.</span><span class="n">servable</span><span class="o">.</span><span class="vm">__doc__</span>
+
+<div class="viewcode-block" id="Viewer.show"><a class="viewcode-back" href="../../api/panel.viewable.html#panel.viewable.Viewer.show">[docs]</a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">websocket_origin</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">threaded</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="nb">open</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">location</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="s1">'Location'</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span> <span class="o">|</span> <span class="s1">'Server'</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_view</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">(</span>
+            <span class="n">title</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">websocket_origin</span><span class="p">,</span> <span class="n">threaded</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="p">,</span> <span class="nb">open</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span></div>
+
+    <span class="n">show</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">ServableMixin</span><span class="o">.</span><span class="n">show</span><span class="o">.</span><span class="vm">__doc__</span>
+
+    <span class="k">def</span> <span class="nf">_repr_mimebundle_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_view</span><span class="p">()</span><span class="o">.</span><span class="n">_repr_mimebundle_</span><span class="p">(</span><span class="n">include</span><span class="p">,</span> <span class="n">exclude</span><span class="p">)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">"Layoutable"</span><span class="p">,</span>
+    <span class="s2">"Viewable"</span><span class="p">,</span>
+    <span class="s2">"Viewer"</span>
+<span class="p">)</span>
+</pre></div>
+</article>
+<footer class="bd-footer-article">
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+</footer>
+</div>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+<footer class="bd-footer"><div class="bd-footer__inner container">
+<div class="footer-item">
+<p class="copyright">
+    © Copyright 2019-2022 Holoviz contributors.<br/>
+</p>
+</div>
+<div class="footer-item">
+<p class="last-updated">
+Last updated on 2022-10-05.<br/>
+</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1948 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
+<link href="../../site.webmanifest" rel="manifest"/>
+<title>JPG — Panel v0.14.0</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../../_static/mystnb.css" rel="stylesheet" type="text/css">
+<link href="../../_static/graphviz.css" rel="stylesheet" type="text/css">
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css">
+<link href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/dataframe.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695" rel="preload"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/sphinx_highlight.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../../_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../_static/design-tabs.js"></script>
+<script src="../../_static/ServiceHandler.js"></script>
+<script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-154795830-2', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
+<link href="../../_static/favicon.ico" rel="shortcut icon">
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="JSON.html" rel="next" title="JSON"/>
+<link href="IPyWidget.html" rel="prev" title="IPyWidget"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></link></link></head>
+<body data-default-mode="light" data-offset="180" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="bd-header-announcement container-fluid" id="banner">
+</div>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+<div id="navbar-start">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../_static/logo_horizontal.png"/>
+<img alt="Logo image" class="logo__image only-dark" src="../../_static/logo_horizontal.png"/>
+</a>
+</div>
+<button aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-collapsible" data-toggle="collapse" type="button">
+<span class="fas fa-bars"></span>
+</button>
+<div class="col-lg-9 collapse navbar-collapse" id="navbar-collapsible">
+<div class="mr-auto" id="navbar-center">
+<div class="navbar-center-item">
+<ul class="navbar-nav" id="navbar-main-elements">
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../index.html">
+  Overview
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../gallery/index.html">
+  Gallery
+ </a>
+</li>
+<li class="toctree-l1 current active nav-item">
+<a class="reference internal nav-link" href="../index.html">
+  Reference Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../developer_guide/index.html">
+  Developer Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../api/index.html">
+  API Reference
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../releases.html">
+  Releases
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../FAQ.html">
+  FAQ
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../about/index.html">
+  About
+ </a>
+</li>
+</ul>
+</div>
+</div>
+<div id="navbar-end">
+<div class="navbar-end-item">
+<ul aria-label="Icon Links" class="navbar-nav" id="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/holoviz/panel" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://twitter.com/Panel_Org" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://discourse.holoviz.org/c/panel/5" rel="noopener" target="_blank" title="Discourse"><span><i class="fab fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bd-container container-xl">
+<div class="bd-container__inner row">
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-2 bd-sidebar">
+<div class="sidebar-start-items"><form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search the docs ..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../index.html">
+   Overview
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../getting_started/index.html">
+   Getting Started
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../getting_started/installation.html">
+     Installation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../getting_started/build_app.html">
+     Build an app
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../getting_started/core_concepts.html">
+     Core Concepts
+    </a>
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../user_guide/index.html">
+   User Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Overview.html">
+     Overview
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Components.html">
+     Components
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/APIs.html">
+     APIs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Customization.html">
+     Customization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Interact.html">
+     Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Widgets.html">
+     Widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Param.html">
+     Parameters
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Links.html">
+     Linking
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Pipelines.html">
+     Pipelines
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Templates.html">
+     Templates
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Performance_and_Debugging.html">
+     Performance and Debugging
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Session_State_and_Callbacks.html">
+     Session state &amp; Callbacks
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Async_and_Concurrency.html">
+     Asynchronous and Concurrent Process
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Display_and_Export.html">
+     Display &amp; Export
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Running_in_Webassembly.html">
+     Running Panel in the Browser with WASM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Server_Configuration.html">
+     Server Configuration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Server_Deployment.html">
+     Server Deployment
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Authentication.html">
+     Authentication
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Django.html">
+     Django Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/FastAPI.html">
+     FastAPI Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../user_guide/Custom_Components.html">
+     Building Custom Components
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../gallery/index.html">
+   Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/VTKInteractive.html">
+     VTKInteractive
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/VTKSlicer.html">
+     VTKSlicer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/VTKWarp.html">
+     VTKWarp
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/attractors.html">
+     Attractors
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/gapminders.html">
+     Gapminders
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/glaciers.html">
+     Glaciers
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/nyc_taxi.html">
+     Nyc Taxi
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/demos/portfolio-optimizer.html">
+     Portfolio-optimizer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/altair_brushing.html">
+     Altair Brushing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/altair_choropleth.html">
+     Altair Choropleth
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/clifford_interact.html">
+     Clifford Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/color_speech_recognition.html">
+     Color Speech Recognition
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/deckgl_game_of_life.html">
+     Deckgl Game Of Life
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/defer_data_load.html">
+     Defer Data Load
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/file_download_examples.html">
+     File Download Examples
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/hvplot_explorer.html">
+     Hvplot Explorer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/iris_kmeans.html">
+     Iris Kmeans
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/loading_spinner.html">
+     Loading Spinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/random_number_generator.html">
+     Random Number Generator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/save_filtered_df.html">
+     Save Filtered Df
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/sync_location.html">
+     Sync Location
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/temperature_distribution.html">
+     Temperature Distribution
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/simple/xgboost_classifier.html">
+     Xgboost Classifier
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/apis/stocks_altair.html">
+     Stocks Altair
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/apis/stocks_hvplot.html">
+     Stocks Hvplot
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/apis/stocks_matplotlib.html">
+     Stocks Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/apis/stocks_plotly.html">
+     Stocks Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/layout/distribution_tabs.html">
+     Distribution Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/layout/dynamic_tabs.html">
+     Dynamic Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/layout/plot_with_columns.html">
+     Plot With Columns
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/dynamic/dynamic_plot_layout.html">
+     Dynamic Plot Layout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/dynamic/dynamic_timeseries_image_analysis.html">
+     Dynamic Timeseries Image Analysis
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/dynamic/dynamic_ui.html">
+     Dynamic Ui
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/dynamic/dynamic_widget_values.html">
+     Dynamic Widget Values
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/action_button.html">
+     Action Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/deck_gl_global_power_plants.html">
+     Deck Gl Global Power Plants
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/download_upload_csv.html">
+     Download Upload Csv
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/loading_indicator.html">
+     Loading Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/param_subobjects.html">
+     Param Subobjects
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/precedence.html">
+     Precedence
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/reactive_plots.html">
+     Reactive Plots
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/param/reactive_tables.html">
+     Reactive Tables
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/streaming/hardware_automation.html">
+     Hardware Automation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/streaming/streaming_bokeh.html">
+     Streaming Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/streaming/streaming_indicator.html">
+     Streaming Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/streaming/streaming_perspective.html">
+     Streaming Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/streaming/streaming_tabulator.html">
+     Streaming Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/components/CanvasDraw.html">
+     CanvasDraw
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/components/LeafletHeatMap.html">
+     LeafletHeatMap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/components/MaterialUI.html">
+     MaterialUI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/links/bokeh_property_editor.html">
+     Bokeh Property Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/links/deck_gl_json_editor.html">
+     Deck Gl Json Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/links/holoviews_glyph_link.html">
+     Holoviews Glyph Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/links/plotly_link.html">
+     Plotly Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/links/vega_heatmap_link.html">
+     Vega Heatmap Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/styles/MatplotlibStyle.html">
+     MatplotlibStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/styles/PlotlyStyle.html">
+     PlotlyStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/styles/SeabornStyle.html">
+     SeabornStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/styles/VegaAltairStyle.html">
+     VegaAltairStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/external/DataTable.html">
+     DataTable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/external/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../gallery/external/deck.gl.html">
+     Deck.gl
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="../index.html">
+   Reference Gallery
+  </a>
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="Alert.html">
+     Alert
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Audio.html">
+     Audio
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Bokeh.html">
+     Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="DeckGL.html">
+     DeckGL
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="ECharts.html">
+     ECharts
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="GIF.html">
+     GIF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="HTML.html">
+     HTML
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="HoloViews.html">
+     HoloViews
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="IDOM.html">
+     IDOM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="IPyWidget.html">
+     IPyWidget
+    </a>
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
+     JPG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="JSON.html">
+     JSON
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="LaTeX.html">
+     LaTeX
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Markdown.html">
+     Markdown
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Matplotlib.html">
+     Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="PDF.html">
+     PDF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="PNG.html">
+     PNG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Param.html">
+     Param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Perspective.html">
+     Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Plotly.html">
+     Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="SVG.html">
+     SVG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Str.html">
+     Str
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Streamz.html">
+     Streamz
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="VTK.html">
+     VTK
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="VTKJS.html">
+     VTKJS
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="VTKVolume.html">
+     VTKVolume
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Vega.html">
+     Vega
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Video.html">
+     Video
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../layouts/Accordion.html">
+     Accordion
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../layouts/Card.html">
+     Card
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../layouts/Column.html">
+     Column
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../layouts/Divider.html">
+     Divider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../layouts/FlexBox.html">
+     FlexBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../layouts/GridBox.html">
+     GridBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../layouts/GridSpec.html">
+     GridSpec
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../layouts/GridStack.html">
+     GridStack
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../layouts/Row.html">
+     Row
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../layouts/Tabs.html">
+     Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../layouts/WidgetBox.html">
+     WidgetBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../templates/Bootstrap.html">
+     Bootstrap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../templates/FastGridTemplate.html">
+     FastGridTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../templates/FastListTemplate.html">
+     FastListTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../templates/GoldenLayout.html">
+     GoldenLayout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../templates/Material.html">
+     Material
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../templates/React.html">
+     React
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../templates/Vanilla.html">
+     Vanilla
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../global/Notifications.html">
+     Notifications
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../indicators/BooleanStatus.html">
+     BooleanStatus
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../indicators/Dial.html">
+     Dial
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../indicators/Gauge.html">
+     Gauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../indicators/LinearGauge.html">
+     LinearGauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../indicators/LoadingSpinner.html">
+     LoadingSpinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../indicators/Number.html">
+     Number
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../indicators/Progress.html">
+     Progress
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../indicators/Tqdm.html">
+     Tqdm
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../indicators/Trend.html">
+     Trend
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/Ace.html">
+     Ace
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/ArrayInput.html">
+     ArrayInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/AutocompleteInput.html">
+     AutocompleteInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/Button.html">
+     Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/CheckBoxGroup.html">
+     CheckBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/CheckButtonGroup.html">
+     CheckButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/Checkbox.html">
+     Checkbox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/ColorPicker.html">
+     ColorPicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/CrossSelector.html">
+     CrossSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/DatePicker.html">
+     DatePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/DateRangeSlider.html">
+     DateRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/DateSlider.html">
+     DateSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/DatetimeInput.html">
+     DatetimeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/DatetimePicker.html">
+     DatetimePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/DatetimeRangeInput.html">
+     DatetimeRangeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/DatetimeRangePicker.html">
+     DatetimeRangePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/DatetimeRangeSlider.html">
+     DatetimeRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/Debugger.html">
+     Debugger
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/DiscretePlayer.html">
+     DiscretePlayer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/DiscreteSlider.html">
+     DiscreteSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/EditableFloatSlider.html">
+     EditableFloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/EditableIntSlider.html">
+     EditableIntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/EditableRangeSlider.html">
+     EditableRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/FileDownload.html">
+     FileDownload
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/FileInput.html">
+     FileInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/FileSelector.html">
+     FileSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/FloatInput.html">
+     FloatInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/FloatSlider.html">
+     FloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/IntInput.html">
+     IntInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/IntRangeSlider.html">
+     IntRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/IntSlider.html">
+     IntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/JSONEditor.html">
+     JSONEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/LiteralInput.html">
+     LiteralInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/MenuButton.html">
+     MenuButton
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/MultiChoice.html">
+     MultiChoice
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/MultiSelect.html">
+     MultiSelect
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/PasswordInput.html">
+     PasswordInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/Player.html">
+     Player
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/RadioBoxGroup.html">
+     RadioBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/RadioButtonGroup.html">
+     RadioButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/RangeSlider.html">
+     RangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/Select.html">
+     Select
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/SpeechToText.html">
+     SpeechToText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/StaticText.html">
+     StaticText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/Tabulator.html">
+     Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/Terminal.html">
+     Terminal
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/TextAreaInput.html">
+     TextAreaInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/TextEditor.html">
+     TextEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/TextInput.html">
+     TextInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/TextToSpeech.html">
+     TextToSpeech
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/Toggle.html">
+     Toggle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/ToggleGroup.html">
+     ToggleGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../widgets/VideoStream.html">
+     VideoStream
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../developer_guide/index.html">
+   Developer Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../developer_guide/testing.html">
+     Testing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../developer_guide/Developing_Custom_Models.html">
+     Developing custom models
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../api/index.html">
+   API Reference
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.io.html">
+     io
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.layout.html">
+     layout
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../api/panel.pane.html">
+     pane
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.pane.vtk.html">
+       panel.vtk Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.param.html">
+     param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.pipeline.html">
+     pipeline
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../api/panel.template.html">
+     template
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.template.bootstrap.html">
+       panel.bootstrap Package
+      </a>
+</li>
+<li class="toctree-l3 has-children">
+<a class="reference internal" href="../../api/panel.template.fast.html">
+       panel.fast Package
+      </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l4">
+<a class="reference internal" href="../../api/panel.template.fast.grid.html">
+         panel.grid Package
+        </a>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="../../api/panel.template.fast.list.html">
+         panel.list Package
+        </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.template.golden.html">
+       panel.golden Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.template.material.html">
+       panel.material Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.template.react.html">
+       panel.react Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.template.theme.html">
+       panel.theme Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../api/panel.template.vanilla.html">
+       panel.vanilla Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.widgets.html">
+     widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.viewable.html">
+     viewable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../api/panel.util.html">
+     util
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../releases.html">
+   Releases
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../FAQ.html">
+   FAQ
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../about/index.html">
+   About
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../about/comparisons.html">
+     Comparisons
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class="sidebar-end-items">
+</div>
+</div>
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+<div class="toc-item">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+<i class="fas fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#parameters">
+   Parameters:
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+<div class="toc-item">
+</div>
+</div>
+<div class="bd-content col-12 col-md-10 col-xl-8" role="main">
+<article class="bd-article" role="main">
+<section id="jpg">
+<h1>JPG<a class="headerlink" href="#jpg" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://raw.githubusercontent.com/holoviz/panel/master/examples/reference/panes/JPG.ipynb">Download this notebook from GitHub (right-click to download).</a></p>
+<hr class="docutils"/>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">panel</span> <span class="k">as</span> <span class="nn">pn</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">extension</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, js_modules, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+    if (js_modules == null) js_modules = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls.length === 0 && js_modules.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    var skip = [];
+    if (window.requirejs) {
+      window.requirejs.config({'packages': {}, 'paths': {'gridstack': 'https://cdn.jsdelivr.net/npm/gridstack@4.2.5/dist/gridstack-h5', 'notyf': 'https://cdn.jsdelivr.net/npm/notyf@3/notyf.min'}, 'shim': {'gridstack': {'exports': 'GridStack'}}});
+      require(["gridstack"], function(GridStack) {
+	window.GridStack = GridStack
+	on_load()
+      })
+      require(["notyf"], function() {
+	on_load()
+      })
+      root._bokeh_is_loading = css_urls.length + 2;
+    } else {
+      root._bokeh_is_loading = css_urls.length + js_urls.length + js_modules.length;
+    }    if (((window['GridStack'] !== undefined) && (!(window['GridStack'] instanceof HTMLElement))) || window.requirejs) {
+      var urls = ['https://cdn.holoviz.org/panel/0.14.0/dist/bundled/gridstack/gridstack@4.2.5/dist/gridstack-h5.js'];
+      for (var i = 0; i < urls.length; i++) {
+        skip.push(urls[i])
+      }
+    }    if (((window['Notyf'] !== undefined) && (!(window['Notyf'] instanceof HTMLElement))) || window.requirejs) {
+      var urls = ['https://cdn.holoviz.org/panel/0.14.0/dist/bundled/notificationarea/notyf@3/notyf.min.js'];
+      for (var i = 0; i < urls.length; i++) {
+        skip.push(urls[i])
+      }
+    }    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      if (skip.indexOf(url) >= 0) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    for (var i = 0; i < js_modules.length; i++) {
+      var url = js_modules[i];
+      if (skip.indexOf(url) >= 0) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      element.type = "module";
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    if (!js_urls.length && !js_modules.length) {
+      on_load()
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  var js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.3.min.js", "https://unpkg.com/@holoviz/panel@0.14.0/dist/panel.min.js"];
+  var js_modules = [];
+  var css_urls = ["https://cdn.holoviz.org/panel/0.14.0/dist/css/card.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/alerts.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/widgets.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/debugger.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/json.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/dataframe.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/markdown.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/loading.css"];
+  var inline_js = [    function(Bokeh) {
+      inject_raw_css("\n    .bk.pn-loading.arc:before {\n      background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=\");\n      background-size: auto calc(min(50%, 400px));\n    }\n    ");
+    },    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {} // ensure no trailing comma for IE
+  ];
+
+  function run_inline_js() {
+    if ((root.Bokeh !== undefined) || (force === true)) {
+      for (var i = 0; i < inline_js.length; i++) {
+        inline_js[i].call(root, root.Bokeh);
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, js_modules, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script><script type="application/javascript">
+if ((window.PyViz === undefined) || (window.PyViz instanceof HTMLElement)) {
+  window.PyViz = {comms: {}, comm_status:{}, kernels:{}, receivers: {}, plot_index: []}
+}
+
+
+    function JupyterCommManager() {
+    }
+
+    JupyterCommManager.prototype.register_target = function(plot_id, comm_id, msg_handler) {
+      if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        comm_manager.register_target(comm_id, function(comm) {
+          comm.on_msg(msg_handler);
+        });
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        window.PyViz.kernels[plot_id].registerCommTarget(comm_id, function(comm) {
+          comm.onMsg = msg_handler;
+        });
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        google.colab.kernel.comms.registerTarget(comm_id, (comm) => {
+          var messages = comm.messages[Symbol.asyncIterator]();
+          function processIteratorResult(result) {
+            var message = result.value;
+            console.log(message)
+            var content = {data: message.data, comm_id};
+            var buffers = []
+            for (var buffer of message.buffers || []) {
+              buffers.push(new DataView(buffer))
+            }
+            var metadata = message.metadata || {};
+            var msg = {content, buffers, metadata}
+            msg_handler(msg);
+            return messages.next().then(processIteratorResult);
+          }
+          return messages.next().then(processIteratorResult);
+        })
+      }
+    }
+
+    JupyterCommManager.prototype.get_client_comm = function(plot_id, comm_id, msg_handler) {
+      if (comm_id in window.PyViz.comms) {
+        return window.PyViz.comms[comm_id];
+      } else if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        var comm = comm_manager.new_comm(comm_id, {}, {}, {}, comm_id);
+        if (msg_handler) {
+          comm.on_msg(msg_handler);
+        }
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        var comm = window.PyViz.kernels[plot_id].connectToComm(comm_id);
+        comm.open();
+        if (msg_handler) {
+          comm.onMsg = msg_handler;
+        }
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        var comm_promise = google.colab.kernel.comms.open(comm_id)
+        comm_promise.then((comm) => {
+          window.PyViz.comms[comm_id] = comm;
+          if (msg_handler) {
+            var messages = comm.messages[Symbol.asyncIterator]();
+            function processIteratorResult(result) {
+              var message = result.value;
+              var content = {data: message.data};
+              var metadata = message.metadata || {comm_id};
+              var msg = {content, metadata}
+              msg_handler(msg);
+              return messages.next().then(processIteratorResult);
+            }
+            return messages.next().then(processIteratorResult);
+          }
+        }) 
+        var sendClosure = (data, metadata, buffers, disposeOnDone) => {
+          return comm_promise.then((comm) => {
+            comm.send(data, metadata, buffers, disposeOnDone);
+          });
+        };
+        var comm = {
+          send: sendClosure
+        };
+      }
+      window.PyViz.comms[comm_id] = comm;
+      return comm;
+    }
+    window.PyViz.comm_manager = new JupyterCommManager();
+    
+
+
+var JS_MIME_TYPE = 'application/javascript';
+var HTML_MIME_TYPE = 'text/html';
+var EXEC_MIME_TYPE = 'application/vnd.holoviews_exec.v0+json';
+var CLASS_NAME = 'output';
+
+/**
+ * Render data to the DOM node
+ */
+function render(props, node) {
+  var div = document.createElement("div");
+  var script = document.createElement("script");
+  node.appendChild(div);
+  node.appendChild(script);
+}
+
+/**
+ * Handle when a new output is added
+ */
+function handle_add_output(event, handle) {
+  var output_area = handle.output_area;
+  var output = handle.output;
+  if ((output.data == undefined) || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+    return
+  }
+  var id = output.metadata[EXEC_MIME_TYPE]["id"];
+  var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+  if (id !== undefined) {
+    var nchildren = toinsert.length;
+    var html_node = toinsert[nchildren-1].children[0];
+    html_node.innerHTML = output.data[HTML_MIME_TYPE];
+    var scripts = [];
+    var nodelist = html_node.querySelectorAll("script");
+    for (var i in nodelist) {
+      if (nodelist.hasOwnProperty(i)) {
+        scripts.push(nodelist[i])
+      }
+    }
+
+    scripts.forEach( function (oldScript) {
+      var newScript = document.createElement("script");
+      var attrs = [];
+      var nodemap = oldScript.attributes;
+      for (var j in nodemap) {
+        if (nodemap.hasOwnProperty(j)) {
+          attrs.push(nodemap[j])
+        }
+      }
+      attrs.forEach(function(attr) { newScript.setAttribute(attr.name, attr.value) });
+      newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
+    if (JS_MIME_TYPE in output.data) {
+      toinsert[nchildren-1].children[1].textContent = output.data[JS_MIME_TYPE];
+    }
+    output_area._hv_plot_id = id;
+    if ((window.Bokeh !== undefined) && (id in Bokeh.index)) {
+      window.PyViz.plot_index[id] = Bokeh.index[id];
+    } else {
+      window.PyViz.plot_index[id] = null;
+    }
+  } else if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+    var bk_div = document.createElement("div");
+    bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+    var script_attrs = bk_div.children[0].attributes;
+    for (var i = 0; i < script_attrs.length; i++) {
+      toinsert[toinsert.length - 1].childNodes[1].setAttribute(script_attrs[i].name, script_attrs[i].value);
+    }
+    // store reference to server id on output_area
+    output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+  }
+}
+
+/**
+ * Handle when an output is cleared or removed
+ */
+function handle_clear_output(event, handle) {
+  var id = handle.cell.output_area._hv_plot_id;
+  var server_id = handle.cell.output_area._bokeh_server_id;
+  if (((id === undefined) || !(id in PyViz.plot_index)) && (server_id !== undefined)) { return; }
+  var comm = window.PyViz.comm_manager.get_client_comm("hv-extension-comm", "hv-extension-comm", function () {});
+  if (server_id !== null) {
+    comm.send({event_type: 'server_delete', 'id': server_id});
+    return;
+  } else if (comm !== null) {
+    comm.send({event_type: 'delete', 'id': id});
+  }
+  delete PyViz.plot_index[id];
+  if ((window.Bokeh !== undefined) & (id in window.Bokeh.index)) {
+    var doc = window.Bokeh.index[id].model.document
+    doc.clear();
+    const i = window.Bokeh.documents.indexOf(doc);
+    if (i > -1) {
+      window.Bokeh.documents.splice(i, 1);
+    }
+  }
+}
+
+/**
+ * Handle kernel restart event
+ */
+function handle_kernel_cleanup(event, handle) {
+  delete PyViz.comms["hv-extension-comm"];
+  window.PyViz.plot_index = {}
+}
+
+/**
+ * Handle update_display_data messages
+ */
+function handle_update_output(event, handle) {
+  handle_clear_output(event, {cell: {output_area: handle.output_area}})
+  handle_add_output(event, handle)
+}
+
+function register_renderer(events, OutputArea) {
+  function append_mime(data, metadata, element) {
+    // create a DOM node to render to
+    var toinsert = this.create_output_subarea(
+    metadata,
+    CLASS_NAME,
+    EXEC_MIME_TYPE
+    );
+    this.keyboard_manager.register_events(toinsert);
+    // Render to node
+    var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+    render(props, toinsert[0]);
+    element.append(toinsert);
+    return toinsert
+  }
+
+  events.on('output_added.OutputArea', handle_add_output);
+  events.on('output_updated.OutputArea', handle_update_output);
+  events.on('clear_output.CodeCell', handle_clear_output);
+  events.on('delete.Cell', handle_clear_output);
+  events.on('kernel_ready.Kernel', handle_kernel_cleanup);
+
+  OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+    safe: true,
+    index: 0
+  });
+}
+
+if (window.Jupyter !== undefined) {
+  try {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  } catch(err) {
+  }
+}
+</script><div class="output text_html"><style>.bk-root, .bk-root .bk:before, .bk-root .bk:after {
+  font-family: var(--jp-ui-font-size1);
+  font-size: var(--jp-ui-font-size1);
+  color: var(--jp-ui-font-color1);
+}
+</style></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">JPG</span></code> pane embeds a <code class="docutils literal notranslate"><span class="pre">.jpg</span></code> or <code class="docutils literal notranslate"><span class="pre">.jpeg</span></code> image file in a panel if provided a local path, or it will link to a remote image if provided a URL.</p>
+<section id="parameters">
+<h2>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h2>
+<p>For layout and styling related parameters see the <a class="reference internal" href="../../user_guide/Customization.html"><span class="doc std std-doc">customization user guide</span></a>.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">alt_text</span></code></strong> (str, default=None): alt text to add to the image tag. The alt text is shown when a user cannot load or display the image.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">embed</span></code></strong> (boolean, default=False): If given a URL to an image this determines whether the image will be embedded as base64 or merely linked to.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">link_url</span></code></strong> (str, default=None): A link URL to make the image clickable and link to some other website.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">object</span></code></strong> (str or object): The JPEG file to display.  Can be a string pointing to a local or remote file, or an object with a <code class="docutils literal notranslate"><span class="pre">_repr_jpg_</span></code> method.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">style</span></code></strong> (dict): Dictionary specifying CSS styles</p></li>
+</ul>
+<hr class="docutils"/>
+<p>The <code class="docutils literal notranslate"><span class="pre">JPG</span></code> pane can be pointed at any local or remote <code class="docutils literal notranslate"><span class="pre">.jpg</span></code> file.  If given a URL starting with <code class="docutils literal notranslate"><span class="pre">http</span></code> or <code class="docutils literal notranslate"><span class="pre">https</span></code>, the <code class="docutils literal notranslate"><span class="pre">embed</span></code> parameter determines whether the image will be embedded or linked to:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jpg_pane</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">JPG</span><span class="p">(</span><span class="s1">'https://www.gstatic.com/webp/gallery/4.sm.jpg'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="n">jpg_pane</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="1002">
+<div class="bk-root" data-root-id="1002" id="1c42889c-a8b8-43d2-af78-9228764abbe4"></div>
+</div>
+<script type="application/javascript">(function(root) {
+  function embed_document(root) {
+    var docs_json = {"4a1e65b8-2c51-413e-8ae2-6fccb7a642eb":{"defs":[{"extends":null,"module":null,"name":"ReactiveHTML1","overrides":[],"properties":[]},{"extends":null,"module":null,"name":"FlexBox1","overrides":[],"properties":[{"default":"flex-start","kind":null,"name":"align_content"},{"default":"flex-start","kind":null,"name":"align_items"},{"default":"row","kind":null,"name":"flex_direction"},{"default":"wrap","kind":null,"name":"flex_wrap"},{"default":"flex-start","kind":null,"name":"justify_content"}]},{"extends":null,"module":null,"name":"GridStack1","overrides":[],"properties":[{"default":"warn","kind":null,"name":"mode"},{"default":null,"kind":null,"name":"ncols"},{"default":null,"kind":null,"name":"nrows"},{"default":true,"kind":null,"name":"allow_resize"},{"default":true,"kind":null,"name":"allow_drag"},{"default":[],"kind":null,"name":"state"}]},{"extends":null,"module":null,"name":"click1","overrides":[],"properties":[{"default":"","kind":null,"name":"terminal_output"},{"default":"","kind":null,"name":"debug_name"},{"default":0,"kind":null,"name":"clears"}]},{"extends":null,"module":null,"name":"NotificationAreaBase1","overrides":[],"properties":[{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"}]},{"extends":null,"module":null,"name":"NotificationArea1","overrides":[],"properties":[{"default":[],"kind":null,"name":"notifications"},{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"},{"default":[{"background":"#ffc107","icon":{"className":"fas fa-exclamation-triangle","color":"white","tagName":"i"},"type":"warning"},{"background":"#007bff","icon":{"className":"fas fa-info-circle","color":"white","tagName":"i"},"type":"info"}],"kind":null,"name":"types"}]},{"extends":null,"module":null,"name":"Notification","overrides":[],"properties":[{"default":null,"kind":null,"name":"background"},{"default":3000,"kind":null,"name":"duration"},{"default":null,"kind":null,"name":"icon"},{"default":"","kind":null,"name":"message"},{"default":null,"kind":null,"name":"notification_type"},{"default":false,"kind":null,"name":"_destroyed"}]},{"extends":null,"module":null,"name":"TemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]},{"extends":null,"module":null,"name":"MaterialTemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]}],"roots":{"references":[{"attributes":{"height":376,"margin":[5,5,5,5],"name":"JPG01375","text":"&lt;img src=&quot;data:image/jpg;base64,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&quot; width=&quot;500px&quot; height=&quot;376px&quot; alt=&quot;&quot;&gt;&lt;/img&gt;","width":500},"id":"1002","type":"panel.models.markup.HTML"},{"attributes":{"client_comm_id":"6cbf18d4ec0444ada51dc546d78f29a2","comm_id":"e26ee06ebf294d939cb3c8d3364b69a4","plot_id":"1002"},"id":"1003","type":"panel.models.comm_manager.CommManager"},{"attributes":{"reload":false},"id":"1004","type":"panel.models.location.Location"}],"root_ids":["1002","1003","1004"]},"title":"Bokeh Application","version":"2.4.3"}};
+    var render_items = [{"docid":"4a1e65b8-2c51-413e-8ae2-6fccb7a642eb","root_ids":["1002"],"roots":{"1002":"1c42889c-a8b8-43d2-af78-9228764abbe4"}}];
+    root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+    for (const render_item of render_items) {
+      for (const root_id of render_item.root_ids) {
+	const id_el = document.getElementById(root_id)
+	if (id_el.children.length && (id_el.children[0].className === 'bk-root')) {
+	  const root_el = id_el.children[0]
+	  root_el.id = root_el.id + '-rendered'
+	}
+      }
+    }
+  }
+  if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else if (document.readyState == "complete") {
+        attempts++;
+        if (attempts > 200) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 25, root)
+  }
+})(window);</script></div></div>
+</div>
+<p>Like any other pane, the <code class="docutils literal notranslate"><span class="pre">JPG</span></code> pane can be updated by setting the <code class="docutils literal notranslate"><span class="pre">object</span></code> parameter:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jpg_pane</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="s1">'https://www.gstatic.com/webp/gallery/1.sm.jpg'</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<div id="scroller-right">This web page was generated from a Jupyter notebook and not all interactivity will work on this website. <a href="https://raw.githubusercontent.com/holoviz/panel/v0.14.0/examples/reference/panes/JPG.ipynb">Right click to download and run locally</a> for full Python-backed interactivity.</div><hr class="docutils"/>
+<p><a class="reference external" href="https://raw.githubusercontent.com/holoviz/panel/master/examples/reference/panes/JPG.ipynb">Download this notebook from GitHub (right-click to download).</a></p>
+</section>
+</article>
+<footer class="bd-footer-article">
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="IPyWidget.html" id="prev-link" title="previous page">
+<i class="fas fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">IPyWidget</p>
+</div>
+</a>
+<a class="right-next" href="JSON.html" id="next-link" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">JSON</p>
+</div>
+<i class="fas fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+<footer class="bd-footer"><div class="bd-footer__inner container">
+<div class="footer-item">
+<p class="copyright">
+    © Copyright 2019-2022 Holoviz contributors.<br/>
+</p>
+</div>
+<div class="footer-item">
+<p class="last-updated">
+Last updated on 2022-10-05.<br/>
+</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

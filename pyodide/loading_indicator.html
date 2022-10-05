@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Loading Indicator</title>
+<link rel="icon" href="https://panel.holoviz.org/_static/icons/favicon.ico" type=""><link rel="manifest" href="site.webmanifest"><meta name="name" content="Loading Indicator">    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/card.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/alerts.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/widgets.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/debugger.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/json.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/dataframe.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/markdown.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/css/loading.css" type="text/css" />
+    <style>
+        
+    .bk.pn-loading.arc:before {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=");
+      background-size: auto calc(min(50%, 400px));
+    }
+    
+    </style>
+
+<script type="text/javascript">
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./serviceWorker.js').then(reg => {
+    reg.onupdatefound = () => {
+      const installingWorker = reg.installing;
+      installingWorker.onstatechange = () => {
+        if (installingWorker.state === 'installed' &&
+            navigator.serviceWorker.controller) {
+          // Reload page if service worker is replaced
+          location.reload();
+        }
+      }
+    }
+  })
+}
+</script>
+
+<script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script><script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.3.min.js"></script><script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script><script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script><script type="text/javascript" src="https://cdn.holoviz.org/panel/0.14.0/dist/panel.min.js"></script><script type="text/javascript">
+    Bokeh.set_log_level("info");
+</script><!-- Template CSS -->
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_root.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_bokeh.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_bokeh_slickgrid.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_panel.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_panel_dataframe.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_panel_widgets.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_panel_markdown.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_awesome.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastlisttemplate/fast_list_template.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastdefaulttheme/fast_root_default.css">
+<link rel="stylesheet" href="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastlisttemplate/default.css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+<style>
+  :root {
+    --body-font: Open Sans, sans-serif;
+  }
+  body {
+    color: #00aa41;
+    background-color: #ffffff;
+    font-family: var(--body-font);
+  }
+  #header a {
+    color: currentColor;
+  }
+  #header-design-provider {
+    --neutral-foreground-rest: #ffffff;
+  }
+  #sidebar {
+    width: 330px;
+  }
+  #header {
+      box-shadow: 2px 2px 10px silver;
+  }
+  #sidebar {
+      box-shadow: 2px 2px 10px silver;
+  }
+</style>
+
+<!-- Template JS -->
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/fastbasetemplate/fast_template.js"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/js/@microsoft/fast-colors@5.3.1/dist/index.js" type="module"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/bundled/js/@microsoft/fast-components@1.21.8/dist/fast-components.js" type="module"></script>
+
+<!-- Fast Script -->
+<script type="module">
+  import { parseColorHexRGB } from "https://cdn.holoviz.org/panel/0.14.0/dist/bundled/js/@microsoft/fast-colors@5.3.1/dist/index.js";
+  import {
+    createColorPalette,
+    accentFillActiveBehavior,
+    accentFillHoverBehavior,
+    accentFillRestBehavior,
+    accentForegroundActiveBehavior,
+    accentForegroundCutRestBehavior,
+    accentForegroundFocusBehavior,
+    accentForegroundHoverBehavior,
+    accentForegroundRestBehavior,
+    neutralDividerRestBehavior,
+    neutralFillHoverBehavior,
+    neutralFillInputActiveBehavior,
+    neutralFillInputHoverBehavior,
+    neutralFillInputRestBehavior,
+    neutralFillRestBehavior,
+    neutralFillStealthActiveBehavior,
+    neutralFillStealthHoverBehavior,
+    neutralFillStealthRestBehavior,
+    neutralFocusBehavior,
+    neutralFocusInnerAccentBehavior,
+    neutralForegroundActiveBehavior,
+    neutralForegroundHoverBehavior,
+    neutralLayerFloatingBehavior,
+    neutralOutlineActiveBehavior,
+    neutralOutlineHoverBehavior,
+    neutralOutlineRestBehavior
+  } from "https://cdn.holoviz.org/panel/0.14.0/dist/bundled/js/@microsoft/fast-components@1.21.8/dist/fast-components.js";
+
+  function standardize_color(str){
+    var ctx = document.createElement('canvas').getContext('2d');
+    ctx.fillStyle = str;
+    return ctx.fillStyle;
+  }
+
+  function setAccentColor(color, selector){
+      color = standardize_color(color);
+      const accent = color;
+      const palette = createColorPalette(parseColorHexRGB(accent));
+      const provider = document.querySelector(selector);
+      provider.accentBaseColor = accent;
+      provider.accentPalette = palette;
+  }
+  setAccentColor("#0072B5", "#body-design-provider");
+  setAccentColor("#ffffff", "#header-design-provider");
+
+  function setNeutralColor(color, selector){
+      color = standardize_color(color);
+      const palette = createColorPalette(parseColorHexRGB(color));
+      const provider = document.querySelector(selector);
+
+      provider.neutralPalette = palette;
+  }
+  setNeutralColor("#ffffff", "#header-design-provider");
+  setNeutralColor("#000000", "#body-design-provider");
+
+  function setBackgroundColor(color, selector){
+    color = standardize_color(color);
+    const provider = document.querySelector(selector);
+    provider.backgroundColor=color;
+  }
+  setBackgroundColor("#0072B5", "#header-design-provider");
+  setBackgroundColor("#ffffff", "#body-design-provider");
+
+  document.querySelector("#body-design-provider").cornerRadius=3;
+
+  function registerCSSCustomProperties(selector)  {
+    const provider = document.querySelector(selector);
+    provider.registerCSSCustomProperty(accentFillActiveBehavior)
+    provider.registerCSSCustomProperty(neutralFillRestBehavior)
+    provider.registerCSSCustomProperty(accentFillHoverBehavior)
+    provider.registerCSSCustomProperty(accentFillRestBehavior)
+    provider.registerCSSCustomProperty(accentForegroundActiveBehavior)
+    provider.registerCSSCustomProperty(accentForegroundCutRestBehavior)
+    provider.registerCSSCustomProperty(accentForegroundFocusBehavior)
+    provider.registerCSSCustomProperty(accentForegroundHoverBehavior)
+    provider.registerCSSCustomProperty(accentForegroundRestBehavior)
+    provider.registerCSSCustomProperty(neutralDividerRestBehavior)
+    provider.registerCSSCustomProperty(neutralFillHoverBehavior)
+    provider.registerCSSCustomProperty(neutralFillInputActiveBehavior)
+    provider.registerCSSCustomProperty(neutralFillInputHoverBehavior)
+    provider.registerCSSCustomProperty(neutralFillInputRestBehavior)
+    provider.registerCSSCustomProperty(neutralFillRestBehavior)
+    provider.registerCSSCustomProperty(neutralFillStealthActiveBehavior)
+    provider.registerCSSCustomProperty(neutralFillStealthHoverBehavior)
+    provider.registerCSSCustomProperty(neutralFillStealthRestBehavior)
+    provider.registerCSSCustomProperty(neutralFocusBehavior)
+    provider.registerCSSCustomProperty(neutralFocusInnerAccentBehavior)
+    provider.registerCSSCustomProperty(neutralForegroundActiveBehavior)
+    provider.registerCSSCustomProperty(neutralForegroundHoverBehavior)
+    provider.registerCSSCustomProperty(neutralLayerFloatingBehavior)
+    provider.registerCSSCustomProperty(neutralOutlineActiveBehavior)
+    provider.registerCSSCustomProperty(neutralOutlineHoverBehavior)
+    provider.registerCSSCustomProperty(neutralOutlineRestBehavior)
+  }
+  registerCSSCustomProperties("#header-design-provider")
+  registerCSSCustomProperties("#body-design-provider")
+
+  class FastDesignProvider {
+    setAccentColor(value, element){
+      setAccentColor(value, element);
+    }
+    setNeutralColor(value, element){
+      setNeutralColor(value, element);
+    }
+    setBackgroundColor(value, element){
+      setBackgroundColor(value, element)
+    }
+  }
+  window.fastDesignProvider = new FastDesignProvider()
+</script>
+  </head>
+  <body class="bk pn-loading arc">
+<fast-design-system-provider id="body-design-provider" use-defaults accent-foreground-cut-rest="#FFFFFF"
+background-color="#ffffff"accent-base-color="#0072B5"  >
+  <div id="container">
+  <fast-design-system-provider id="header-design-provider"
+background-color="#0072B5"  >
+  <nav id="header">
+    <div class="app-header">
+<a class="title" href="/" >&nbsp;Panel</a><span class="title">-</span><a class="title" href="" >Loading Indicator</a>    </div>
+    <div id="header-items">
+  </div>
+  <div class="pn-toggle-theme">
+    <fast-switch id="theme-switch" style="float: right;" onChange="toggleLightDarkTheme('default')" checked>
+      <span slot="checked-message">
+        <svg class="theme-toggle-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/></svg>
+      </span>
+      <span slot="unchecked-message">
+        <svg class="theme-toggle-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 2c-1.82 0-3.53.5-5 1.35C7.99 5.08 10 8.3 10 12s-2.01 6.92-5 8.65C6.47 21.5 8.18 22 10 22c5.52 0 10-4.48 10-10S15.52 2 10 2z"/></svg>
+      </span>
+    </fast-switch>
+    <fast-tooltip anchor="theme-switch" position="bottom">
+      Toggle the Theme
+    </fast-tooltip>
+  </div>
+	<div class="pn-busy-container" id="busy-container">
+	  <div class="bk-root" id="2ac06c0c-760f-4e11-9852-38da8ad58c21" data-root-id="1007"></div>
+	</div>
+  <fast-tooltip anchor="busy-container" position="left">
+    Busy Indicator
+  </fast-tooltip>
+
+  </nav>
+  </fast-design-system-provider>
+
+  <div class="row" id="content">
+
+    <div class="main" id="main"
+    style="margin-left: 0px;"
+    >
+      <div class="card-margin">
+<fast-card class="pn-wrapper">        <span class="fullscreen-button" onclick="toggleFullScreen(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18"><path d="M4.5 11H3v4h4v-1.5H4.5V11zM3 7h1.5V4.5H7V3H3v4zm10.5 6.5H11V15h4v-4h-1.5v2.5zM11 3v1.5h2.5V7H15V3h-4z"/></svg>
+        </span>
+        <div class="bk-root" id="b4469ade-7a50-49e6-8953-e4bb4d0dd57a" data-root-id="1008"></div>
+</fast-card>      </div>
+      <div class="card-margin">
+<fast-card class="pn-wrapper">        <span class="fullscreen-button" onclick="toggleFullScreen(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18"><path d="M4.5 11H3v4h4v-1.5H4.5V11zM3 7h1.5V4.5H7V3H3v4zm10.5 6.5H11V15h4v-4h-1.5v2.5zM11 3v1.5h2.5V7H15V3h-4z"/></svg>
+        </span>
+        <div class="bk-root" id="330633c9-af34-4038-955d-5a644e396e8c" data-root-id="1009"></div>
+</fast-card>      </div>
+
+      <fast-dialog id="pn-Modal" hidden style="--dialog-width: 80%; --dialog-height: auto; --background-color: var(--neutral-layer-floating);">
+        <fast-button class="pn-modal-close" id="pn-closeModal">&times;</fast-button>
+	<div>
+	</div>
+      </fast-dialog>
+  </div>
+  </div>
+</div>
+</fast-design-system-provider>
+<script>
+  
+</script>
+<script>
+  function openNav() {
+    document.getElementById("sidebar").style.left = 0;
+    document.getElementById("main").style.marginLeft = "360px";
+    document.getElementById("sidebar-button").onclick = closeNav;
+    var interval = setInterval(function () { window.dispatchEvent(new Event('resize')); }, 10);
+    setTimeout(function () { clearInterval(interval) }, 210)
+  }
+
+  function closeNav() {
+    document.getElementById("sidebar").style.left = "-360px";
+    document.getElementById("main").style.marginLeft = 0;
+    document.getElementById("sidebar-button").onclick = openNav;
+    var interval = setInterval(function () { window.dispatchEvent(new Event('resize')); }, 10);
+    setTimeout(function () { clearInterval(interval) }, 210)
+  }
+
+  var modal = document.getElementById("pn-Modal");
+  var span = document.getElementById("pn-closeModal");
+
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+<div class="bk-root" id="d36a9b40-5762-4a57-bd01-16037faad8c6" data-root-id="1004"></div>
+<div class="bk-root" id="c57cc094-3cf2-4400-b5ec-e191e1577e20" data-root-id="1006"></div>
+<div class="bk-root" id="a9341d48-ea22-4ae3-9b7b-4ebbcb928a3c" data-root-id="1002"></div>
+
+  
+    <script type="text/javascript">
+      const pyodideWorker = new Worker("./loading_indicator.js");
+      pyodideWorker.busy = false
+      pyodideWorker.queue = []
+      
+      function send_change(jsdoc, event) {
+        if (event.setter_id != null && event.setter_id == 'py') {
+          return
+        } else if (pyodideWorker.busy && event.model && event.attr) {
+          let events = []
+          for (const old_event of pyodideWorker.queue) {
+            if (!(old_event.model === event.model && old_event.attr === event.attr)) {
+              events.push(old_event)
+            }
+          }
+          events.push(event)
+          pyodideWorker.queue = events
+          return
+        }
+        const patch = jsdoc.create_json_patch_string([event])
+        pyodideWorker.busy = true
+        pyodideWorker.postMessage({type: 'patch', patch: patch})
+      }
+      
+      pyodideWorker.onmessage = async (event) => {
+        const msg = event.data
+      
+        const body = document.getElementsByTagName('body')[0]
+        const loading_msgs = document.getElementsByClassName('pn-loading-msg')
+        if (msg.type === 'idle') {
+          if (pyodideWorker.queue.length) {
+            const patch = pyodideWorker.jsdoc.create_json_patch_string(pyodideWorker.queue)
+            pyodideWorker.busy = true
+            pyodideWorker.queue = []
+            pyodideWorker.postMessage({type: 'patch', patch: patch})
+          } else {
+            pyodideWorker.busy = false
+          }
+        } else if (msg.type === 'status') {
+          let loading_msg
+          if (loading_msgs.length) {
+            loading_msg = loading_msgs[0]
+          } else if (body.classList.contains('pn-loading')) {
+            loading_msg = document.createElement('div')
+            loading_msg.classList.add('pn-loading-msg')
+            body.appendChild(loading_msg)
+          }
+          if (loading_msg != null) {
+            loading_msg.innerHTML = msg.msg
+          }
+        } else if (msg.type === 'render') {
+          const docs_json = JSON.parse(msg.docs_json)
+          const render_items = JSON.parse(msg.render_items)
+          const root_ids = JSON.parse(msg.root_ids)
+      
+          // Remap roots in message to element IDs
+          const root_els = document.getElementsByClassName('bk-root')
+          const data_roots = []
+          for (const el of root_els) {
+             el.innerHTML = ''
+             data_roots.push([parseInt(el.getAttribute('data-root-id')), el.id])
+          }
+          data_roots.sort((a, b) => a[0]<b[0] ? -1: 1)
+          const roots = {}
+          for (let i=0; i<data_roots.length; i++) {
+            roots[root_ids[i]] = data_roots[i][1]
+          }
+          render_items[0]['roots'] = roots
+          render_items[0]['root_ids'] = root_ids
+      
+          // Embed content
+          const [views] = await Bokeh.embed.embed_items(docs_json, render_items)
+      
+          // Remove loading spinner and message
+          body.classList.remove("bk", "pn-loading", "arc")
+          for (const loading_msg of loading_msgs) {
+            loading_msg.remove()
+          }
+      
+          // Setup bi-directional syncing
+          pyodideWorker.jsdoc = jsdoc = views[0].model.document
+          jsdoc.on_change(send_change.bind(null, jsdoc), false)
+          pyodideWorker.postMessage({'type': 'rendered'})
+          pyodideWorker.postMessage({'type': 'location', location: JSON.stringify(window.location)})
+        } else if (msg.type === 'patch') {
+          pyodideWorker.jsdoc.apply_json_patch(JSON.parse(msg.patch), msg.buffers, setter_id='py')
+        }
+      };
+    </script>
+    <script type="application/json" id="1119">
+      {"65e6fa25-2f01-47ed-b0b9-1ecae6a3d675":{"defs":[{"extends":null,"module":null,"name":"ReactiveHTML1","overrides":[],"properties":[]},{"extends":null,"module":null,"name":"FlexBox1","overrides":[],"properties":[{"default":"flex-start","kind":null,"name":"align_content"},{"default":"flex-start","kind":null,"name":"align_items"},{"default":"row","kind":null,"name":"flex_direction"},{"default":"wrap","kind":null,"name":"flex_wrap"},{"default":"flex-start","kind":null,"name":"justify_content"}]},{"extends":null,"module":null,"name":"GridStack1","overrides":[],"properties":[{"default":"warn","kind":null,"name":"mode"},{"default":null,"kind":null,"name":"ncols"},{"default":null,"kind":null,"name":"nrows"},{"default":true,"kind":null,"name":"allow_resize"},{"default":true,"kind":null,"name":"allow_drag"},{"default":[],"kind":null,"name":"state"}]},{"extends":null,"module":null,"name":"click1","overrides":[],"properties":[{"default":"","kind":null,"name":"terminal_output"},{"default":"","kind":null,"name":"debug_name"},{"default":0,"kind":null,"name":"clears"}]},{"extends":null,"module":null,"name":"NotificationAreaBase1","overrides":[],"properties":[{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"}]},{"extends":null,"module":null,"name":"NotificationArea1","overrides":[],"properties":[{"default":[],"kind":null,"name":"notifications"},{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"},{"default":[{"background":"#ffc107","icon":{"className":"fas fa-exclamation-triangle","color":"white","tagName":"i"},"type":"warning"},{"background":"#007bff","icon":{"className":"fas fa-info-circle","color":"white","tagName":"i"},"type":"info"}],"kind":null,"name":"types"}]},{"extends":null,"module":null,"name":"Notification","overrides":[],"properties":[{"default":null,"kind":null,"name":"background"},{"default":3000,"kind":null,"name":"duration"},{"default":null,"kind":null,"name":"icon"},{"default":"","kind":null,"name":"message"},{"default":null,"kind":null,"name":"notification_type"},{"default":false,"kind":null,"name":"_destroyed"}]},{"extends":null,"module":null,"name":"TemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]},{"extends":null,"module":null,"name":"MaterialTemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]}],"roots":{"references":[{"attributes":{},"id":"1065","type":"UnionRenderers"},{"attributes":{},"id":"1053","type":"BasicTickFormatter"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"green"},"hatch_alpha":{"value":0.1},"hatch_color":{"value":"green"},"line_alpha":{"value":0.1},"line_color":{"value":"green"},"size":{"value":8},"x":{"field":"x"},"y":{"field":"y"}},"id":"1047","type":"Scatter"},{"attributes":{"axis_label":"y","axis_label_standoff":10,"axis_label_text_color":"#2B2B2B","axis_label_text_font":"Open Sans, sans-serif","axis_label_text_font_size":"1.25em","axis_label_text_font_style":"normal","axis_line_alpha":0.1,"axis_line_color":"#2B2B2B","coordinates":null,"formatter":{"id":"1056"},"group":null,"major_label_policy":{"id":"1057"},"major_label_text_color":"#2B2B2B","major_label_text_font":"Open Sans, sans-serif","major_tick_line_alpha":0.5,"major_tick_line_color":"#2B2B2B","minor_tick_line_alpha":0.25,"minor_tick_line_color":"#2B2B2B","ticker":{"id":"1028"}},"id":"1027","type":"LinearAxis"},{"attributes":{"axis":{"id":"1023"},"coordinates":null,"grid_line_alpha":0.25,"grid_line_color":null,"group":null,"ticker":null},"id":"1026","type":"Grid"},{"attributes":{},"id":"1021","type":"LinearScale"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"139741834290752","sizing_mode":"stretch_width","tags":["main"],"text":"&amp;lt;p&amp;gt;Every pane, widget and layout provides the &amp;lt;strong&amp;gt;&amp;lt;code&amp;gt;loading&amp;lt;/code&amp;gt; parameter&amp;lt;/strong&amp;gt;. When set to &amp;lt;code&amp;gt;True&amp;lt;/code&amp;gt; a spinner will overlay the panel and indicate that the panel is currently loading. When you set &amp;lt;code&amp;gt;loading&amp;lt;/code&amp;gt; to false the spinner is removed. &amp;lt;/p&amp;gt;\n&amp;lt;p&amp;gt;Using the &amp;lt;code&amp;gt;pn.extension&amp;lt;/code&amp;gt; or by setting the equivalent parameters on &amp;lt;code&amp;gt;pn.config&amp;lt;/code&amp;gt; we can select between different visual styles and colors for the loading indicator.&amp;lt;/p&amp;gt;\n&amp;lt;div class=&amp;quot;codehilite&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;pn&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;.&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;extension&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;loading_spinner&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s1&amp;quot;&amp;gt;&amp;amp;#39;dots&amp;amp;#39;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;loading_color&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s1&amp;quot;&amp;gt;&amp;amp;#39;#00aa41&amp;amp;#39;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt;\n&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;\n\n&amp;lt;p&amp;gt;We can enable the loading indicator for reactive functions annotated with &amp;lt;code&amp;gt;depends&amp;lt;/code&amp;gt; or &amp;lt;code&amp;gt;bind&amp;lt;/code&amp;gt; globally using:&amp;lt;/p&amp;gt;\n&amp;lt;div class=&amp;quot;codehilite&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;pn&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;.&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;param&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;.&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;ParamMethod&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;.&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;loading_indicator&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;kc&amp;quot;&amp;gt;True&amp;lt;/span&amp;gt;\n&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;"},"id":"1008","type":"panel.models.markup.HTML"},{"attributes":{"data":{"id":"1005"},"margin":[0,0,0,0],"name":"actions","scripts":{"close_modal":["document.getElementById(&amp;#x27;pn-Modal&amp;#x27;).style.display = &amp;#x27;none&amp;#x27;"],"open_modal":["document.getElementById(&amp;#x27;pn-Modal&amp;#x27;).style.display = &amp;#x27;block&amp;#x27;"]},"subscribed_events":["dom_event"]},"id":"1006","type":"panel.models.reactive_html.ReactiveHTML"},{"attributes":{"data":{"x":{"__ndarray__":"RNvkB4kv6j+vl4B5BnDsPwWuYAhQOuA/P4JMSmIf6j/BgGCbq7DkPz/Xa/OLKeI/1qmNzauF1z+u/aqHHkrrP6BDqwUVMqo/5rgBg76R7T8wbeWUVS2hP8yTLkVSZec/OjuIcISH1j8CKWzL89fuPwhUVaTNoLM/sDgDF6XaoT8otIckzEzIPwpy3gno8uo/kFdM3x7lyz8e+vtDbQzhP66+6/HwftQ/sMGQ9Qwjvj9Dau+IJDfvPz1Z1YdCE+k/BtDQuqXB6z8gzgurVz/NP+s0OFvIhuA/Kf/IScAm5j/AJl6LQ1KFP6CDcja/lto/YrbIfOso6T+wi5IwRFnXPxxXIS7ECs0/pCT9qQhJ3z9ICTqBRBqzP9eBpGzO0Oo/f19JDyp97j9oSeMWIpjOP96VelooENI/9nNNXe6I2z8ar1XF9w7hP4czpEjWneU/8s2Ajl1g1D/wZPdjOKSxP0jbVPDlC+Q//BtlKXGKyD/Ewuq9IjPkP4yrAvqN++k/qjSQ5h905z9xTQYsWeDtPx5MSdQPNek/PDJ4GN+e6j8xUGMxgwflP5VfeCGDguQ/whPuuhNb6D9gv+owCqS5P5a2lBvGp+Y/+DbYYDrQtj8eJVdNclToP2h8unNN5Mk/0btY12Tz5T/g/HG/lSuvP4JkhgUEVek/St3WTJdx3j9q7738hmfjPxhvLnfNAbU/aDLKsCAazj8O3YCnyifVP1gY2rPyGsc/jGt9wWGH5T/04yPgyvnLPwyg9vYOFtE/fH8rqFpH0z8I3zRx8hndP+dBTkuio+A/xGdR4CQ+2z+eDgGHn1PfP1hgE+CLh+0/RY1Rn/wr5T/eJ5Jwtj7tP4rElN5sm+o/ESqk+y9n7j9SWQSg5uncPx3F7DYZ+uw/VMrdx/Zs5D8heBxPSl7nP9RO+OzSJtU/M79clA4E4T8SNuHyPe/mP1sEw3dylO8/oDO4RZguyT8l4N/G/lfjP3PkXZAUPOw/SAFniPYmzT8B1G6y4BHrPy7FbRg2F9Q/iG+eAG5qzT88ZNCXewvpPxAfkCQ0dKk/eoDfPYMt6j8=","dtype":"float64","order":"little","shape":[100]},"y":{"__ndarray__":"hM7eDltzwz9g9EtSzoWRP7j27lven8M/TkbKTxT84j/i9fvXtP/YP0AtImBNo8o/S+egcbs15z9QzFQAFhq/Pw5rFjG70+s/iLOoI6+csz+4zC7Yuy7eP+Yk5mgM2uI/9CgU77UHxz+AVPbHKlFzP/TZN9WD3dk/T0ncqz556j81yLYu2BLjP5CDOLyDTs4/OBMTqt6i2z91jNGVxj/oPx6l5JbYPNM/FJ2iR7fGzD+uz/wlX1LaP7MrhWLP+eo//lokV3Sk7T9wbH0B/EHLPzzl20FZQcY/Gj1ENQRD0D9cZ3YT9ibrP7CH+YaehbI/qGXJRXoi6j8pXGkNfr7sPwIRKxrEp+8/CBAHAmqzuT9g4Oom1NG3P7OPDMlAqu8/mI2KqfoetT9ULUH/Dd3cP+5bpyoOwtE/uJTBtz1Q2j8ijroq7nngP5wl4QJxLdk/HNM4o3017z9cuL9CwVvTP6ROd7OiSuU/2bTzXqTe6j8hZa5EFi7gPwiv8CCb/O8/v+wNtAix5j+yMUqL+1bpP4I/URjjf9A/a09WEJtn7j/4BQwg0jzCPwjXYxuUisU/zsj3Kls00D/aeZyit0DuP9h1psshC+U/0mhOhnAU4T9k60gaNHPeP+Dsp84lesw/2E9HA+HI1D9Kd17/4o/lP/IrO9iC5eM/ysZJJvyp4z/pGr8wV//sP2KV+wL0Ad0/WWGVQueD4T988CHtkCHaP05KmWaAiew/Qc12afYH5z+kjUjW2EHoP5tLwZ6dtuc/6Cztv1AC1T8XzMLeipDlPzSl8CrOxNw/qlunE1P32T+47aOzpUG1P1dea5KCmOE/kw8YMu3f5j9MZpGJeWbKPxDD4iU069g/KQrSLMpc5j9qoZimcinlP2AmNZm0pO0/99w7SFgj6D8UKYfl0xvbPzrIHd1z++I/iFpws0oi5j8vsHmizxXiP/WyZ//qIuw/RLOnFf+B6j/ZDn7k1ibpP7g2XBUe5b4/efUhzDSq4j/4q8XhDPW4P4Ao+X+/43s/20+iINfo7T9mMuATrwjsP73hRggik+k/8OYNjCrRxD8=","dtype":"float64","order":"little","shape":[100]}},"selected":{"id":"1044"},"selection_policy":{"id":"1065"}},"id":"1043","type":"ColumnDataSource"},{"attributes":{"name":"location","reload":false},"id":"1002","type":"panel.models.location.Location"},{"attributes":{"children":[{"id":"1014"}],"margin":[0,0,0,0],"name":"Row00783","sizing_mode":"stretch_width"},"id":"1011","type":"Row"},{"attributes":{},"id":"1031","type":"SaveTool"},{"attributes":{"angle":{"value":0.0},"fill_alpha":{"value":1.0},"fill_color":{"value":"green"},"hatch_alpha":{"value":1.0},"hatch_color":{"value":"green"},"hatch_scale":{"value":12.0},"hatch_weight":{"value":1.0},"line_alpha":{"value":1.0},"line_cap":{"value":"butt"},"line_color":{"value":"green"},"line_dash":{"value":[]},"line_dash_offset":{"value":0},"line_join":{"value":"bevel"},"line_width":{"value":1},"marker":{"value":"circle"},"size":{"value":8},"x":{"field":"x"},"y":{"field":"y"}},"id":"1051","type":"Scatter"},{"attributes":{"axis":{"id":"1027"},"coordinates":null,"dimension":1,"grid_line_alpha":0.25,"grid_line_color":null,"group":null,"ticker":null},"id":"1030","type":"Grid"},{"attributes":{"background_fill_color":"#ffffff","below":[{"id":"1023"}],"border_fill_alpha":0,"border_fill_color":"#F7F7F7","center":[{"id":"1026"},{"id":"1030"}],"height":400,"left":[{"id":"1027"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"outline_line_alpha":0.5,"outline_line_color":"#888888","outline_line_width":1,"renderers":[{"id":"1049"}],"sizing_mode":"stretch_width","title":{"id":"1015"},"toolbar":{"id":"1037"},"width":400,"x_range":{"id":"1012"},"x_scale":{"id":"1019"},"y_range":{"id":"1013"},"y_scale":{"id":"1021"}},"id":"1014","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1054","type":"AllLabels"},{"attributes":{},"id":"1024","type":"BasicTicker"},{"attributes":{"button_type":"primary","icon":null,"js_event_callbacks":{"button_click":[{"id":"1098"}]},"label":"UPDATE","margin":[5,10,5,10],"sizing_mode":"stretch_width","subscribed_events":["button_click"]},"id":"1010","type":"Button"},{"attributes":{},"id":"1044","type":"Selection"},{"attributes":{},"id":"1019","type":"LinearScale"},{"attributes":{},"id":"1035","type":"ResetTool"},{"attributes":{"args":{"bidirectional":false,"properties":{"event:button_click":"loading"},"source":{"id":"1010"},"target":{"id":"1011"}},"code":"\n    if ('event:button_click'.startsWith('event:')) {\n      var value = true\n    } else {\n      var value = source['event:button_click'];\n      value = value;\n    }\n    if (typeof value !== 'boolean' || source.labels !== ['Loading']) {\n      value = true\n    }\n    var css_classes = target.css_classes.slice()\n    var loading_css = ['pn-loading', 'dots']\n    if (value) {\n      for (var css of loading_css) {\n        if (!(css in css_classes)) {\n          css_classes.push(css)\n        }\n      }\n    } else {\n     for (var css of loading_css) {\n        var index = css_classes.indexOf(css)\n        if (index &gt; -1) {\n          css_classes.splice(index, 1)\n        }\n      }\n    }\n    target['css_classes'] = css_classes\n    ","tags":[[139741841231296,[null,"event:button_click"],[null,"loading"]]]},"id":"1098","type":"CustomJS"},{"attributes":{},"id":"1032","type":"PanTool"},{"attributes":{},"id":"1056","type":"BasicTickFormatter"},{"attributes":{"end":1.0845170064274252,"reset_end":1.0845170064274252,"reset_start":-0.08723520558475484,"start":-0.08723520558475484,"tags":[[["x","x",null]]]},"id":"1012","type":"Range1d"},{"attributes":{"coordinates":null,"data_source":{"id":"1043"},"glyph":{"id":"1046"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1048"},"nonselection_glyph":{"id":"1047"},"selection_glyph":{"id":"1051"},"view":{"id":"1050"}},"id":"1049","type":"GlyphRenderer"},{"attributes":{"overlay":{"id":"1036"}},"id":"1034","type":"BoxZoomTool"},{"attributes":{},"id":"1057","type":"AllLabels"},{"attributes":{"tools":[{"id":"1031"},{"id":"1032"},{"id":"1033"},{"id":"1034"},{"id":"1035"}]},"id":"1037","type":"Toolbar"},{"attributes":{"children":[{"id":"1010"},{"id":"1011"}],"margin":[0,0,0,0],"name":"139741841728512","sizing_mode":"stretch_width","tags":["main"]},"id":"1009","type":"Column"},{"attributes":{"end":1.0990726509652424,"reset_end":1.0990726509652424,"reset_start":-0.09477088223321678,"start":-0.09477088223321678,"tags":[[["y","y",null]]]},"id":"1013","type":"Range1d"},{"attributes":{"axis_label":"x","axis_label_standoff":10,"axis_label_text_color":"#2B2B2B","axis_label_text_font":"Open Sans, sans-serif","axis_label_text_font_size":"1.25em","axis_label_text_font_style":"normal","axis_line_alpha":0.1,"axis_line_color":"#2B2B2B","coordinates":null,"formatter":{"id":"1053"},"group":null,"major_label_policy":{"id":"1054"},"major_label_text_color":"#2B2B2B","major_label_text_font":"Open Sans, sans-serif","major_tick_line_alpha":0.5,"major_tick_line_color":"#2B2B2B","minor_tick_line_alpha":0.25,"minor_tick_line_color":"#2B2B2B","ticker":{"id":"1024"}},"id":"1023","type":"LinearAxis"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1036","type":"BoxAnnotation"},{"attributes":{"source":{"id":"1043"}},"id":"1050","type":"CDSView"},{"attributes":{"coordinates":null,"group":null,"text_color":"#2B2B2B","text_font":"Open Sans, sans-serif","text_font_size":"1.15em"},"id":"1015","type":"Title"},{"attributes":{"fill_color":{"value":"green"},"hatch_color":{"value":"green"},"line_color":{"value":"green"},"size":{"value":8},"x":{"field":"x"},"y":{"field":"y"}},"id":"1046","type":"Scatter"},{"attributes":{"height":0,"margin":[0,0,0,0],"name":"js_area","sizing_mode":"fixed","width":0},"id":"1004","type":"panel.models.markup.HTML"},{"attributes":{},"id":"1033","type":"WheelZoomTool"},{"attributes":{"name":"TemplateActions00816"},"id":"1005","type":"TemplateActions1"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"green"},"hatch_alpha":{"value":0.2},"hatch_color":{"value":"green"},"line_alpha":{"value":0.2},"line_color":{"value":"green"},"size":{"value":8},"x":{"field":"x"},"y":{"field":"y"}},"id":"1048","type":"Scatter"},{"attributes":{"css_classes":["loader","light"],"height":20,"margin":[5,10,5,10],"name":"busy_indicator","sizing_mode":"fixed","width":20},"id":"1007","type":"panel.models.markup.HTML"},{"attributes":{},"id":"1028","type":"BasicTicker"}],"root_ids":["1002","1004","1006","1007","1008","1009"]},"title":"Loading Indicator","version":"2.4.3"}}
+    </script>
+    <script type="text/javascript">
+      (function() {
+        const fn = function() {
+          Bokeh.safely(function() {
+            (function(root) {
+              function embed_document(root) {
+              const docs_json = document.getElementById('1119').textContent;
+              const render_items = [{"docid":"65e6fa25-2f01-47ed-b0b9-1ecae6a3d675","root_ids":["1002","1004","1006","1007","1008","1009"],"roots":{"1002":"a9341d48-ea22-4ae3-9b7b-4ebbcb928a3c","1004":"d36a9b40-5762-4a57-bd01-16037faad8c6","1006":"c57cc094-3cf2-4400-b5ec-e191e1577e20","1007":"2ac06c0c-760f-4e11-9852-38da8ad58c21","1008":"b4469ade-7a50-49e6-8953-e4bb4d0dd57a","1009":"330633c9-af34-4038-955d-5a644e396e8c"}}];
+              root.Bokeh.embed.embed_items(docs_json, render_items);
+              }
+              if (root.Bokeh !== undefined) {
+                embed_document(root);
+              } else {
+                let attempts = 0;
+                const timer = setInterval(function(root) {
+                  if (root.Bokeh !== undefined) {
+                    clearInterval(timer);
+                    embed_document(root);
+                  } else {
+                    attempts++;
+                    if (attempts > 100) {
+                      clearInterval(timer);
+                      console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                    }
+                  }
+                }, 10, root)
+              }
+            })(window);
+          });
+        };
+        if (document.readyState != "loading") fn();
+        else document.addEventListener("DOMContentLoaded", fn);
+      })();
+    </script>
+  </body>
+</html>

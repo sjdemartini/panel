@@ -1,0 +1,2429 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
+<link href="../site.webmanifest" rel="manifest"/>
+<title>Templates — Panel v0.14.0</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/mystnb.css" rel="stylesheet" type="text/css">
+<link href="../_static/graphviz.css" rel="stylesheet" type="text/css">
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/dataframe.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695" rel="preload"/>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/sphinx_highlight.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../_static/design-tabs.js"></script>
+<script src="../_static/ServiceHandler.js"></script>
+<script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-154795830-2', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
+<link href="../_static/favicon.ico" rel="shortcut icon">
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="Performance_and_Debugging.html" rel="next" title="Performance and Debugging"/>
+<link href="Pipelines.html" rel="prev" title="Pipelines"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></link></link></head>
+<body data-default-mode="light" data-offset="180" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="bd-header-announcement container-fluid" id="banner">
+</div>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+<div id="navbar-start">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../_static/logo_horizontal.png"/>
+<img alt="Logo image" class="logo__image only-dark" src="../_static/logo_horizontal.png"/>
+</a>
+</div>
+<button aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-collapsible" data-toggle="collapse" type="button">
+<span class="fas fa-bars"></span>
+</button>
+<div class="col-lg-9 collapse navbar-collapse" id="navbar-collapsible">
+<div class="mr-auto" id="navbar-center">
+<div class="navbar-center-item">
+<ul class="navbar-nav" id="navbar-main-elements">
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../index.html">
+  Overview
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+<li class="toctree-l1 current active nav-item">
+<a class="reference internal nav-link" href="index.html">
+  User Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../gallery/index.html">
+  Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../reference/index.html">
+  Reference Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../developer_guide/index.html">
+  Developer Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../api/index.html">
+  API Reference
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../releases.html">
+  Releases
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../FAQ.html">
+  FAQ
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../about/index.html">
+  About
+ </a>
+</li>
+</ul>
+</div>
+</div>
+<div id="navbar-end">
+<div class="navbar-end-item">
+<ul aria-label="Icon Links" class="navbar-nav" id="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/holoviz/panel" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://twitter.com/Panel_Org" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://discourse.holoviz.org/c/panel/5" rel="noopener" target="_blank" title="Discourse"><span><i class="fab fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bd-container container-xl">
+<div class="bd-container__inner row">
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-2 bd-sidebar">
+<div class="sidebar-start-items"><form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search the docs ..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../index.html">
+   Overview
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../getting_started/index.html">
+   Getting Started
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/installation.html">
+     Installation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/build_app.html">
+     Build an app
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/core_concepts.html">
+     Core Concepts
+    </a>
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="index.html">
+   User Guide
+  </a>
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="Overview.html">
+     Overview
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Components.html">
+     Components
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="APIs.html">
+     APIs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Customization.html">
+     Customization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Interact.html">
+     Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Widgets.html">
+     Widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Param.html">
+     Parameters
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Links.html">
+     Linking
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Pipelines.html">
+     Pipelines
+    </a>
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
+     Templates
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Performance_and_Debugging.html">
+     Performance and Debugging
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Session_State_and_Callbacks.html">
+     Session state &amp; Callbacks
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Async_and_Concurrency.html">
+     Asynchronous and Concurrent Process
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Display_and_Export.html">
+     Display &amp; Export
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Running_in_Webassembly.html">
+     Running Panel in the Browser with WASM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Server_Configuration.html">
+     Server Configuration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Server_Deployment.html">
+     Server Deployment
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Authentication.html">
+     Authentication
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Django.html">
+     Django Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="FastAPI.html">
+     FastAPI Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Custom_Components.html">
+     Building Custom Components
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../gallery/index.html">
+   Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKInteractive.html">
+     VTKInteractive
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKSlicer.html">
+     VTKSlicer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKWarp.html">
+     VTKWarp
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/attractors.html">
+     Attractors
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/gapminders.html">
+     Gapminders
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/glaciers.html">
+     Glaciers
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/nyc_taxi.html">
+     Nyc Taxi
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/portfolio-optimizer.html">
+     Portfolio-optimizer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_brushing.html">
+     Altair Brushing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_choropleth.html">
+     Altair Choropleth
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/clifford_interact.html">
+     Clifford Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/color_speech_recognition.html">
+     Color Speech Recognition
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/deckgl_game_of_life.html">
+     Deckgl Game Of Life
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/defer_data_load.html">
+     Defer Data Load
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/file_download_examples.html">
+     File Download Examples
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/hvplot_explorer.html">
+     Hvplot Explorer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/iris_kmeans.html">
+     Iris Kmeans
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/loading_spinner.html">
+     Loading Spinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/random_number_generator.html">
+     Random Number Generator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/save_filtered_df.html">
+     Save Filtered Df
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/sync_location.html">
+     Sync Location
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/temperature_distribution.html">
+     Temperature Distribution
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/xgboost_classifier.html">
+     Xgboost Classifier
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_altair.html">
+     Stocks Altair
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_hvplot.html">
+     Stocks Hvplot
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_matplotlib.html">
+     Stocks Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_plotly.html">
+     Stocks Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/distribution_tabs.html">
+     Distribution Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/dynamic_tabs.html">
+     Dynamic Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/plot_with_columns.html">
+     Plot With Columns
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_plot_layout.html">
+     Dynamic Plot Layout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_timeseries_image_analysis.html">
+     Dynamic Timeseries Image Analysis
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_ui.html">
+     Dynamic Ui
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_widget_values.html">
+     Dynamic Widget Values
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/action_button.html">
+     Action Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/deck_gl_global_power_plants.html">
+     Deck Gl Global Power Plants
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/download_upload_csv.html">
+     Download Upload Csv
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/loading_indicator.html">
+     Loading Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/param_subobjects.html">
+     Param Subobjects
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/precedence.html">
+     Precedence
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_plots.html">
+     Reactive Plots
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_tables.html">
+     Reactive Tables
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/hardware_automation.html">
+     Hardware Automation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_bokeh.html">
+     Streaming Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_indicator.html">
+     Streaming Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_perspective.html">
+     Streaming Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_tabulator.html">
+     Streaming Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/CanvasDraw.html">
+     CanvasDraw
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/LeafletHeatMap.html">
+     LeafletHeatMap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/MaterialUI.html">
+     MaterialUI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/bokeh_property_editor.html">
+     Bokeh Property Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/deck_gl_json_editor.html">
+     Deck Gl Json Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/holoviews_glyph_link.html">
+     Holoviews Glyph Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/plotly_link.html">
+     Plotly Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/vega_heatmap_link.html">
+     Vega Heatmap Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/MatplotlibStyle.html">
+     MatplotlibStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/PlotlyStyle.html">
+     PlotlyStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/SeabornStyle.html">
+     SeabornStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/VegaAltairStyle.html">
+     VegaAltairStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/DataTable.html">
+     DataTable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/deck.gl.html">
+     Deck.gl
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../reference/index.html">
+   Reference Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Alert.html">
+     Alert
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Audio.html">
+     Audio
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Bokeh.html">
+     Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DeckGL.html">
+     DeckGL
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/ECharts.html">
+     ECharts
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/GIF.html">
+     GIF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HTML.html">
+     HTML
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HoloViews.html">
+     HoloViews
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IDOM.html">
+     IDOM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IPyWidget.html">
+     IPyWidget
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JPG.html">
+     JPG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JSON.html">
+     JSON
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/LaTeX.html">
+     LaTeX
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Markdown.html">
+     Markdown
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Matplotlib.html">
+     Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PDF.html">
+     PDF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PNG.html">
+     PNG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Param.html">
+     Param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Perspective.html">
+     Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Plotly.html">
+     Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/SVG.html">
+     SVG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Str.html">
+     Str
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Streamz.html">
+     Streamz
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTK.html">
+     VTK
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKJS.html">
+     VTKJS
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKVolume.html">
+     VTKVolume
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Vega.html">
+     Vega
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Video.html">
+     Video
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Accordion.html">
+     Accordion
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Card.html">
+     Card
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Column.html">
+     Column
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Divider.html">
+     Divider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/FlexBox.html">
+     FlexBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridBox.html">
+     GridBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridSpec.html">
+     GridSpec
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridStack.html">
+     GridStack
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Row.html">
+     Row
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Tabs.html">
+     Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/WidgetBox.html">
+     WidgetBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Bootstrap.html">
+     Bootstrap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastGridTemplate.html">
+     FastGridTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastListTemplate.html">
+     FastListTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/GoldenLayout.html">
+     GoldenLayout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Material.html">
+     Material
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/React.html">
+     React
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Vanilla.html">
+     Vanilla
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/global/Notifications.html">
+     Notifications
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/BooleanStatus.html">
+     BooleanStatus
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Dial.html">
+     Dial
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Gauge.html">
+     Gauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LinearGauge.html">
+     LinearGauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LoadingSpinner.html">
+     LoadingSpinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Number.html">
+     Number
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Progress.html">
+     Progress
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Tqdm.html">
+     Tqdm
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Trend.html">
+     Trend
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Ace.html">
+     Ace
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ArrayInput.html">
+     ArrayInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/AutocompleteInput.html">
+     AutocompleteInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Button.html">
+     Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckBoxGroup.html">
+     CheckBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckButtonGroup.html">
+     CheckButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Checkbox.html">
+     Checkbox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ColorPicker.html">
+     ColorPicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CrossSelector.html">
+     CrossSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatePicker.html">
+     DatePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateRangeSlider.html">
+     DateRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateSlider.html">
+     DateSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeInput.html">
+     DatetimeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimePicker.html">
+     DatetimePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeInput.html">
+     DatetimeRangeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangePicker.html">
+     DatetimeRangePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeSlider.html">
+     DatetimeRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Debugger.html">
+     Debugger
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscretePlayer.html">
+     DiscretePlayer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscreteSlider.html">
+     DiscreteSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableFloatSlider.html">
+     EditableFloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableIntSlider.html">
+     EditableIntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableRangeSlider.html">
+     EditableRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileDownload.html">
+     FileDownload
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileInput.html">
+     FileInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileSelector.html">
+     FileSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatInput.html">
+     FloatInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatSlider.html">
+     FloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntInput.html">
+     IntInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntRangeSlider.html">
+     IntRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntSlider.html">
+     IntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/JSONEditor.html">
+     JSONEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/LiteralInput.html">
+     LiteralInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MenuButton.html">
+     MenuButton
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiChoice.html">
+     MultiChoice
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiSelect.html">
+     MultiSelect
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/PasswordInput.html">
+     PasswordInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Player.html">
+     Player
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioBoxGroup.html">
+     RadioBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioButtonGroup.html">
+     RadioButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RangeSlider.html">
+     RangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Select.html">
+     Select
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/SpeechToText.html">
+     SpeechToText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/StaticText.html">
+     StaticText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Tabulator.html">
+     Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Terminal.html">
+     Terminal
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextAreaInput.html">
+     TextAreaInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextEditor.html">
+     TextEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextInput.html">
+     TextInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextToSpeech.html">
+     TextToSpeech
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Toggle.html">
+     Toggle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ToggleGroup.html">
+     ToggleGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/VideoStream.html">
+     VideoStream
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../developer_guide/index.html">
+   Developer Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/testing.html">
+     Testing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/Developing_Custom_Models.html">
+     Developing custom models
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../api/index.html">
+   API Reference
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.io.html">
+     io
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.layout.html">
+     layout
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../api/panel.pane.html">
+     pane
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.pane.vtk.html">
+       panel.vtk Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.param.html">
+     param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.pipeline.html">
+     pipeline
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../api/panel.template.html">
+     template
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.bootstrap.html">
+       panel.bootstrap Package
+      </a>
+</li>
+<li class="toctree-l3 has-children">
+<a class="reference internal" href="../api/panel.template.fast.html">
+       panel.fast Package
+      </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l4">
+<a class="reference internal" href="../api/panel.template.fast.grid.html">
+         panel.grid Package
+        </a>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="../api/panel.template.fast.list.html">
+         panel.list Package
+        </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.golden.html">
+       panel.golden Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.material.html">
+       panel.material Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.react.html">
+       panel.react Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.theme.html">
+       panel.theme Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.vanilla.html">
+       panel.vanilla Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.widgets.html">
+     widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.viewable.html">
+     viewable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.util.html">
+     util
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../releases.html">
+   Releases
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../FAQ.html">
+   FAQ
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../about/index.html">
+   About
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../about/comparisons.html">
+     Comparisons
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class="sidebar-end-items">
+</div>
+</div>
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+<div class="toc-item">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+<i class="fas fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#what-is-a-template">
+   What is a template?
+  </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#using-default-templates">
+   Using default templates
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#supported-templates">
+     Supported templates
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#using-templates">
+     Using templates
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#explicit-constructor">
+       Explicit constructor
+      </a>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#global-template">
+     Global template
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#modal">
+     Modal
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#theming">
+     Theming
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#using-custom-templates">
+   Using custom templates
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#loading-template-from-file">
+     Loading template from file
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div class="toc-item">
+</div>
+</div>
+<div class="bd-content col-12 col-md-10 col-xl-8" role="main">
+<article class="bd-article" role="main">
+<section id="templates">
+<h1>Templates<a class="headerlink" href="#templates" title="Permalink to this heading">#</a></h1>
+<p>When deploying a Panel app or dashboard as a Bokeh application, it is rendered into a default template that serves the JS and CSS resources as well as the actual Panel object being shown. However, it is often desirable to customize the layout of the deployed app, or even to embed multiple separate panels into an app. The <code class="docutils literal notranslate"><span class="pre">Template</span></code> component in Panel allows customizing this default template, including the ability to rendering multiple components in a single document easily.</p>
+<section id="what-is-a-template">
+<h2>What is a template?<a class="headerlink" href="#what-is-a-template" title="Permalink to this heading">#</a></h2>
+<p>A template is defined using the <a class="reference external" href="http://jinja.pocoo.org/docs/">Jinja2</a> templating language, which makes it straightforward to extend the default template in various ways or even replace it entirely. However most users can avoid modifying the jinja2 template directly by using one of the default templates shipped with Panel itself.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">panel</span> <span class="k">as</span> <span class="nn">pn</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">holoviews</span> <span class="k">as</span> <span class="nn">hv</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sizing_mode</span><span class="o">=</span><span class="s1">'stretch_width'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, js_modules, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+    if (js_modules == null) js_modules = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls.length === 0 && js_modules.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    var skip = [];
+    if (window.requirejs) {
+      window.requirejs.config({'packages': {}, 'paths': {'gridstack': 'https://cdn.jsdelivr.net/npm/gridstack@4.2.5/dist/gridstack-h5', 'notyf': 'https://cdn.jsdelivr.net/npm/notyf@3/notyf.min'}, 'shim': {'gridstack': {'exports': 'GridStack'}}});
+      require(["gridstack"], function(GridStack) {
+	window.GridStack = GridStack
+	on_load()
+      })
+      require(["notyf"], function() {
+	on_load()
+      })
+      root._bokeh_is_loading = css_urls.length + 2;
+    } else {
+      root._bokeh_is_loading = css_urls.length + js_urls.length + js_modules.length;
+    }    if (((window['GridStack'] !== undefined) && (!(window['GridStack'] instanceof HTMLElement))) || window.requirejs) {
+      var urls = ['https://cdn.holoviz.org/panel/0.14.0/dist/bundled/gridstack/gridstack@4.2.5/dist/gridstack-h5.js'];
+      for (var i = 0; i < urls.length; i++) {
+        skip.push(urls[i])
+      }
+    }    if (((window['Notyf'] !== undefined) && (!(window['Notyf'] instanceof HTMLElement))) || window.requirejs) {
+      var urls = ['https://cdn.holoviz.org/panel/0.14.0/dist/bundled/notificationarea/notyf@3/notyf.min.js'];
+      for (var i = 0; i < urls.length; i++) {
+        skip.push(urls[i])
+      }
+    }    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      if (skip.indexOf(url) >= 0) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    for (var i = 0; i < js_modules.length; i++) {
+      var url = js_modules[i];
+      if (skip.indexOf(url) >= 0) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      element.type = "module";
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    if (!js_urls.length && !js_modules.length) {
+      on_load()
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  var js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.3.min.js", "https://unpkg.com/@holoviz/panel@0.14.0/dist/panel.min.js"];
+  var js_modules = [];
+  var css_urls = ["https://cdn.holoviz.org/panel/0.14.0/dist/css/card.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/alerts.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/widgets.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/debugger.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/json.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/dataframe.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/markdown.css", "https://cdn.holoviz.org/panel/0.14.0/dist/css/loading.css"];
+  var inline_js = [    function(Bokeh) {
+      inject_raw_css("\n    .bk.pn-loading.arc:before {\n      background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=\");\n      background-size: auto calc(min(50%, 400px));\n    }\n    ");
+    },    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {} // ensure no trailing comma for IE
+  ];
+
+  function run_inline_js() {
+    if ((root.Bokeh !== undefined) || (force === true)) {
+      for (var i = 0; i < inline_js.length; i++) {
+        inline_js[i].call(root, root.Bokeh);
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, js_modules, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script><script type="application/javascript">
+if ((window.PyViz === undefined) || (window.PyViz instanceof HTMLElement)) {
+  window.PyViz = {comms: {}, comm_status:{}, kernels:{}, receivers: {}, plot_index: []}
+}
+
+
+    function JupyterCommManager() {
+    }
+
+    JupyterCommManager.prototype.register_target = function(plot_id, comm_id, msg_handler) {
+      if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        comm_manager.register_target(comm_id, function(comm) {
+          comm.on_msg(msg_handler);
+        });
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        window.PyViz.kernels[plot_id].registerCommTarget(comm_id, function(comm) {
+          comm.onMsg = msg_handler;
+        });
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        google.colab.kernel.comms.registerTarget(comm_id, (comm) => {
+          var messages = comm.messages[Symbol.asyncIterator]();
+          function processIteratorResult(result) {
+            var message = result.value;
+            console.log(message)
+            var content = {data: message.data, comm_id};
+            var buffers = []
+            for (var buffer of message.buffers || []) {
+              buffers.push(new DataView(buffer))
+            }
+            var metadata = message.metadata || {};
+            var msg = {content, buffers, metadata}
+            msg_handler(msg);
+            return messages.next().then(processIteratorResult);
+          }
+          return messages.next().then(processIteratorResult);
+        })
+      }
+    }
+
+    JupyterCommManager.prototype.get_client_comm = function(plot_id, comm_id, msg_handler) {
+      if (comm_id in window.PyViz.comms) {
+        return window.PyViz.comms[comm_id];
+      } else if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        var comm = comm_manager.new_comm(comm_id, {}, {}, {}, comm_id);
+        if (msg_handler) {
+          comm.on_msg(msg_handler);
+        }
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        var comm = window.PyViz.kernels[plot_id].connectToComm(comm_id);
+        comm.open();
+        if (msg_handler) {
+          comm.onMsg = msg_handler;
+        }
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        var comm_promise = google.colab.kernel.comms.open(comm_id)
+        comm_promise.then((comm) => {
+          window.PyViz.comms[comm_id] = comm;
+          if (msg_handler) {
+            var messages = comm.messages[Symbol.asyncIterator]();
+            function processIteratorResult(result) {
+              var message = result.value;
+              var content = {data: message.data};
+              var metadata = message.metadata || {comm_id};
+              var msg = {content, metadata}
+              msg_handler(msg);
+              return messages.next().then(processIteratorResult);
+            }
+            return messages.next().then(processIteratorResult);
+          }
+        }) 
+        var sendClosure = (data, metadata, buffers, disposeOnDone) => {
+          return comm_promise.then((comm) => {
+            comm.send(data, metadata, buffers, disposeOnDone);
+          });
+        };
+        var comm = {
+          send: sendClosure
+        };
+      }
+      window.PyViz.comms[comm_id] = comm;
+      return comm;
+    }
+    window.PyViz.comm_manager = new JupyterCommManager();
+    
+
+
+var JS_MIME_TYPE = 'application/javascript';
+var HTML_MIME_TYPE = 'text/html';
+var EXEC_MIME_TYPE = 'application/vnd.holoviews_exec.v0+json';
+var CLASS_NAME = 'output';
+
+/**
+ * Render data to the DOM node
+ */
+function render(props, node) {
+  var div = document.createElement("div");
+  var script = document.createElement("script");
+  node.appendChild(div);
+  node.appendChild(script);
+}
+
+/**
+ * Handle when a new output is added
+ */
+function handle_add_output(event, handle) {
+  var output_area = handle.output_area;
+  var output = handle.output;
+  if ((output.data == undefined) || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+    return
+  }
+  var id = output.metadata[EXEC_MIME_TYPE]["id"];
+  var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+  if (id !== undefined) {
+    var nchildren = toinsert.length;
+    var html_node = toinsert[nchildren-1].children[0];
+    html_node.innerHTML = output.data[HTML_MIME_TYPE];
+    var scripts = [];
+    var nodelist = html_node.querySelectorAll("script");
+    for (var i in nodelist) {
+      if (nodelist.hasOwnProperty(i)) {
+        scripts.push(nodelist[i])
+      }
+    }
+
+    scripts.forEach( function (oldScript) {
+      var newScript = document.createElement("script");
+      var attrs = [];
+      var nodemap = oldScript.attributes;
+      for (var j in nodemap) {
+        if (nodemap.hasOwnProperty(j)) {
+          attrs.push(nodemap[j])
+        }
+      }
+      attrs.forEach(function(attr) { newScript.setAttribute(attr.name, attr.value) });
+      newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
+    if (JS_MIME_TYPE in output.data) {
+      toinsert[nchildren-1].children[1].textContent = output.data[JS_MIME_TYPE];
+    }
+    output_area._hv_plot_id = id;
+    if ((window.Bokeh !== undefined) && (id in Bokeh.index)) {
+      window.PyViz.plot_index[id] = Bokeh.index[id];
+    } else {
+      window.PyViz.plot_index[id] = null;
+    }
+  } else if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+    var bk_div = document.createElement("div");
+    bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+    var script_attrs = bk_div.children[0].attributes;
+    for (var i = 0; i < script_attrs.length; i++) {
+      toinsert[toinsert.length - 1].childNodes[1].setAttribute(script_attrs[i].name, script_attrs[i].value);
+    }
+    // store reference to server id on output_area
+    output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+  }
+}
+
+/**
+ * Handle when an output is cleared or removed
+ */
+function handle_clear_output(event, handle) {
+  var id = handle.cell.output_area._hv_plot_id;
+  var server_id = handle.cell.output_area._bokeh_server_id;
+  if (((id === undefined) || !(id in PyViz.plot_index)) && (server_id !== undefined)) { return; }
+  var comm = window.PyViz.comm_manager.get_client_comm("hv-extension-comm", "hv-extension-comm", function () {});
+  if (server_id !== null) {
+    comm.send({event_type: 'server_delete', 'id': server_id});
+    return;
+  } else if (comm !== null) {
+    comm.send({event_type: 'delete', 'id': id});
+  }
+  delete PyViz.plot_index[id];
+  if ((window.Bokeh !== undefined) & (id in window.Bokeh.index)) {
+    var doc = window.Bokeh.index[id].model.document
+    doc.clear();
+    const i = window.Bokeh.documents.indexOf(doc);
+    if (i > -1) {
+      window.Bokeh.documents.splice(i, 1);
+    }
+  }
+}
+
+/**
+ * Handle kernel restart event
+ */
+function handle_kernel_cleanup(event, handle) {
+  delete PyViz.comms["hv-extension-comm"];
+  window.PyViz.plot_index = {}
+}
+
+/**
+ * Handle update_display_data messages
+ */
+function handle_update_output(event, handle) {
+  handle_clear_output(event, {cell: {output_area: handle.output_area}})
+  handle_add_output(event, handle)
+}
+
+function register_renderer(events, OutputArea) {
+  function append_mime(data, metadata, element) {
+    // create a DOM node to render to
+    var toinsert = this.create_output_subarea(
+    metadata,
+    CLASS_NAME,
+    EXEC_MIME_TYPE
+    );
+    this.keyboard_manager.register_events(toinsert);
+    // Render to node
+    var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+    render(props, toinsert[0]);
+    element.append(toinsert);
+    return toinsert
+  }
+
+  events.on('output_added.OutputArea', handle_add_output);
+  events.on('output_updated.OutputArea', handle_update_output);
+  events.on('clear_output.CodeCell', handle_clear_output);
+  events.on('delete.Cell', handle_clear_output);
+  events.on('kernel_ready.Kernel', handle_kernel_cleanup);
+
+  OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+    safe: true,
+    index: 0
+  });
+}
+
+if (window.Jupyter !== undefined) {
+  try {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  } catch(err) {
+  }
+}
+</script><div class="output text_html"><style>.bk-root, .bk-root .bk:before, .bk-root .bk:after {
+  font-family: var(--jp-ui-font-size1);
+  font-size: var(--jp-ui-font-size1);
+  color: var(--jp-ui-font-color1);
+}
+</style></div></div>
+</div>
+</section>
+<section id="using-default-templates">
+<h2>Using default templates<a class="headerlink" href="#using-default-templates" title="Permalink to this heading">#</a></h2>
+<p>For a large variety of use cases we do not need complete control over the exact layout of each individual component on the page, instead we just want to achieve a more polished look and feel. For these cases Panel ships with a number of default templates, which are defined by declaring four main content areas on the page, which can be populated as desired:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">header</span></code></strong>: The header area of the HTML page</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">sidebar</span></code></strong>: A collapsible sidebar</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">main</span></code></strong>: The main area of the application</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">modal</span></code></strong>: A modal, i.e. a dialog box/popup window</p></li>
+</ul>
+<p>These four areas behave very similarly to other Panel layout components and have list-like semantics. This means we can easily append new components into these areas. Unlike other layout components however, the contents of the areas is fixed once rendered. If you need a dynamic layout you should therefore insert a regular Panel layout component (e.g. a <code class="docutils literal notranslate"><span class="pre">Column</span></code> or <code class="docutils literal notranslate"><span class="pre">Row</span></code>) and modify it in place once added to one of the content areas.</p>
+<p><img src="../assets/template_areas.png" style="margin-left: auto; margin-right: auto; display: block;"/></p>
+<section id="supported-templates">
+<h3>Supported templates<a class="headerlink" href="#supported-templates" title="Permalink to this heading">#</a></h3>
+<p>Panel ships with a number of these default themes built on different CSS frameworks:</p>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="../reference/templates/Material.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">MaterialTemplate</span></code></span></a></strong>: Built on <a class="reference external" href="https://material.io/develop/web/">Material Components for the web</a></p></li>
+<li><p><strong><a class="reference internal" href="../reference/templates/Bootstrap.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">BootstrapTemplate</span></code></span></a></strong>: Built on  <a class="reference external" href="https://getbootstrap.com/docs/4.0/getting-started/introduction/">Bootstrap v4</a></p></li>
+<li><p><strong><a class="reference internal" href="../reference/templates/Vanilla.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">VanillaTemplate</span></code></span></a></strong>: Built using pure CSS without relying on any specific framework</p></li>
+<li><p><strong><a class="reference internal" href="../reference/templates/FastListTemplate.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">FastListTemplate</span></code></span></a></strong>: Built on the <a class="reference external" href="https://fast.design/">Fast UI</a> framework using a list-like API</p></li>
+<li><p><strong><a class="reference internal" href="../reference/templates/FastGridTemplate.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">FastGridTemplate</span></code></span></a></strong>: Built on the <a class="reference external" href="https://fast.design/">Fast UI</a> framework using grid-like API</p></li>
+<li><p><strong><a class="reference internal" href="../reference/templates/GoldenLayout.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">GoldenTemplate</span></code></span></a></strong>: Built on the <a class="reference external" href="https://golden-layout.com/">Golden Layout</a> framework</p></li>
+</ul>
+</section>
+<section id="using-templates">
+<h3>Using templates<a class="headerlink" href="#using-templates" title="Permalink to this heading">#</a></h3>
+<p>There are two ways of building an application using these templates either we explicitly construct the template or we change the global template.</p>
+<section id="explicit-constructor">
+<h4>Explicit constructor<a class="headerlink" href="#explicit-constructor" title="Permalink to this heading">#</a></h4>
+<p>The explicit way to use templates is to instantiate them directly and adding components to the different parts of the template directly. Let us construct a very simple app containing two plots in the <code class="docutils literal notranslate"><span class="pre">main</span></code> area and two widgets in the sidebar based on the <code class="docutils literal notranslate"><span class="pre">BootstrapTemplate</span></code> class:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">BootstrapTemplate</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">'Bootstrap Template'</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Frequency"</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">phase</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Phase"</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="nd">@pn</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">sine</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">phase</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">hv</span><span class="o">.</span><span class="n">Curve</span><span class="p">((</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xs</span><span class="o">*</span><span class="n">freq</span><span class="o">+</span><span class="n">phase</span><span class="p">)))</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+        <span class="n">responsive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+
+<span class="nd">@pn</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cosine</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">phase</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">hv</span><span class="o">.</span><span class="n">Curve</span><span class="p">((</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xs</span><span class="o">*</span><span class="n">freq</span><span class="o">+</span><span class="n">phase</span><span class="p">)))</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+        <span class="n">responsive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+
+<span class="n">bootstrap</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+<span class="n">bootstrap</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phase</span><span class="p">)</span>
+
+<span class="n">bootstrap</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+        <span class="n">pn</span><span class="o">.</span><span class="n">Card</span><span class="p">(</span><span class="n">hv</span><span class="o">.</span><span class="n">DynamicMap</span><span class="p">(</span><span class="n">sine</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Sine'</span><span class="p">),</span>
+        <span class="n">pn</span><span class="o">.</span><span class="n">Card</span><span class="p">(</span><span class="n">hv</span><span class="o">.</span><span class="n">DynamicMap</span><span class="p">(</span><span class="n">cosine</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Cosine'</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="margin: auto 0;">
+<figure>
+<img src="../assets/template.png"/>
+<caption><b>Bootstrap Template</b>: A simple example demonstrating the Bootstrap template</caption>
+</figure>
+<p>A <code class="docutils literal notranslate"><span class="pre">Template</span></code> can be served or displayed just like any other Panel component, i.e. using <code class="docutils literal notranslate"><span class="pre">.servable()</span></code> or <code class="docutils literal notranslate"><span class="pre">.show()</span></code>.</p>
+</div></section>
+</section>
+<section id="global-template">
+<h3>Global template<a class="headerlink" href="#global-template" title="Permalink to this heading">#</a></h3>
+<p>Another, often simpler approach is to set the global template can be set via the <code class="docutils literal notranslate"><span class="pre">pn.extension()</span></code> call, e.g. we can set <code class="docutils literal notranslate"><span class="pre">pn.extension(template='material')</span></code> and even toggle between different themes with <code class="docutils literal notranslate"><span class="pre">pn.extension(template='material',</span> <span class="pre">theme='dark')</span></code>. Once selected we can easily add components to the template using <code class="docutils literal notranslate"><span class="pre">.servable(area=...)</span></code> calls, e.g. the same example looks like this when constructed via the global template</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s1">'bootstrap'</span><span class="p">)</span>
+
+<span class="n">freq</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Frequency"</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">servable</span><span class="p">(</span><span class="n">area</span><span class="o">=</span><span class="s1">'sidebar'</span><span class="p">)</span>
+<span class="n">phase</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Phase"</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">.</span><span class="n">servable</span><span class="p">(</span><span class="n">area</span><span class="o">=</span><span class="s1">'sidebar'</span><span class="p">)</span>
+
+<span class="nd">@pn</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">sine</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">phase</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">hv</span><span class="o">.</span><span class="n">Curve</span><span class="p">((</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xs</span><span class="o">*</span><span class="n">freq</span><span class="o">+</span><span class="n">phase</span><span class="p">)))</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+        <span class="n">responsive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+
+<span class="nd">@pn</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cosine</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">phase</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">hv</span><span class="o">.</span><span class="n">Curve</span><span class="p">((</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xs</span><span class="o">*</span><span class="n">freq</span><span class="o">+</span><span class="n">phase</span><span class="p">)))</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+        <span class="n">responsive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+    <span class="n">pn</span><span class="o">.</span><span class="n">Card</span><span class="p">(</span><span class="n">hv</span><span class="o">.</span><span class="n">DynamicMap</span><span class="p">(</span><span class="n">sine</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Sine'</span><span class="p">),</span>
+    <span class="n">pn</span><span class="o">.</span><span class="n">Card</span><span class="p">(</span><span class="n">hv</span><span class="o">.</span><span class="n">DynamicMap</span><span class="p">(</span><span class="n">cosine</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Cosine'</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">servable</span><span class="p">(</span><span class="n">area</span><span class="o">=</span><span class="s1">'main'</span><span class="p">)</span> <span class="c1"># Note 'main' is the default</span>
+</pre></div>
+</div>
+</section>
+<section id="modal">
+<h3>Modal<a class="headerlink" href="#modal" title="Permalink to this heading">#</a></h3>
+<p>A modal can be toggled opened and closed with <code class="docutils literal notranslate"><span class="pre">.open_modal()</span></code> and <code class="docutils literal notranslate"><span class="pre">.close_modal()</span></code> methods. For example, a temporary <em>About</em> modal could be added to the previous app with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Callback that will be called when the About button is clicked</span>
+<span class="k">def</span> <span class="nf">about_callback</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="n">bootstrap</span><span class="o">.</span><span class="n">open_modal</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">bootstrap</span><span class="o">.</span><span class="n">close_modal</span><span class="p">()</span>
+
+<span class="c1"># Create, link and add the button to the sidebar</span>
+<span class="n">btn</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"About"</span><span class="p">)</span>
+<span class="n">btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">about_callback</span><span class="p">)</span>
+<span class="n">bootstrap</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">btn</span><span class="p">)</span>
+
+<span class="c1"># Add some content to the modal</span>
+<span class="n">bootstrap</span><span class="o">.</span><span class="n">modal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"# About..."</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="theming">
+<h3>Theming<a class="headerlink" href="#theming" title="Permalink to this heading">#</a></h3>
+<p>Default template classes provide a unified approach to theming, which currently allow specifying custom CSS and the Bokeh <code class="docutils literal notranslate"><span class="pre">Theme</span></code> to apply to the <code class="docutils literal notranslate"><span class="pre">Template</span></code>. The way it is implemented a user declares a generic <code class="docutils literal notranslate"><span class="pre">Theme</span></code> class to use (e.g. <code class="docutils literal notranslate"><span class="pre">DarkTheme</span></code>) which loads the specific theme implementation (e.g. <code class="docutils literal notranslate"><span class="pre">MaterialDarkTheme</span></code>) for a particular <code class="docutils literal notranslate"><span class="pre">Template</span></code> (e.g <code class="docutils literal notranslate"><span class="pre">MaterialTemplate</span></code>). To make this more concrete, by default a Template uses the <code class="docutils literal notranslate"><span class="pre">DefaultTheme</span></code>, but then uses the <code class="docutils literal notranslate"><span class="pre">find_theme</span></code> method to look up the implementation of that theme for the Template being used:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">panel.template</span> <span class="kn">import</span> <span class="n">DefaultTheme</span>
+
+<span class="n">DefaultTheme</span><span class="o">.</span><span class="n">find_theme</span><span class="p">(</span><span class="n">pn</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">MaterialTemplate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>panel.template.material.MaterialDefaultTheme
+</pre></div>
+</div>
+</div>
+</div>
+<p>To implement your own theme you should therefore declare a generic class for use by the enduser and a specific implementation for all the themes that should be supported, e.g. here is an example of what the definition of a dark theme might look like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">param</span>
+
+<span class="kn">from</span> <span class="nn">panel.template.theme</span> <span class="kn">import</span> <span class="n">Theme</span>
+<span class="kn">from</span> <span class="nn">bokeh.themes</span> <span class="kn">import</span> <span class="n">DARK_MINIMAL</span>
+
+<span class="k">class</span> <span class="nc">DarkTheme</span><span class="p">(</span><span class="n">Theme</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    The DarkTheme provides a dark color palette</span>
+<span class="sd">    """</span>
+
+    <span class="n">bokeh_theme</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ClassSelector</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="p">(</span><span class="n">Theme</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="n">DARK_MINIMAL</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MaterialDarkTheme</span><span class="p">(</span><span class="n">DarkTheme</span><span class="p">):</span>
+
+    <span class="c1"># css = param.Filename() Here we could declare some custom CSS to apply</span>
+    
+    <span class="c1"># This tells Panel to use this implementation</span>
+    <span class="n">_template</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">MaterialTemplate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To apply the theme we now merely have to provide the generic <code class="docutils literal notranslate"><span class="pre">DarkTheme</span></code> class to the Template (we will import the <code class="docutils literal notranslate"><span class="pre">DarkTheme</span></code> that ships with panel here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">panel.template</span> <span class="kn">import</span> <span class="n">DarkTheme</span>
+
+<span class="n">dark_material</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">MaterialTemplate</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">'Material Template'</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="n">DarkTheme</span><span class="p">)</span>
+
+<span class="n">dark_material</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+<span class="n">dark_material</span><span class="o">.</span><span class="n">sidebar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phase</span><span class="p">)</span>
+
+<span class="n">dark_material</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+        <span class="n">pn</span><span class="o">.</span><span class="n">Card</span><span class="p">(</span><span class="n">hv</span><span class="o">.</span><span class="n">DynamicMap</span><span class="p">(</span><span class="n">sine</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Sine'</span><span class="p">),</span>
+        <span class="n">pn</span><span class="o">.</span><span class="n">Card</span><span class="p">(</span><span class="n">hv</span><span class="o">.</span><span class="n">DynamicMap</span><span class="p">(</span><span class="n">cosine</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">'Cosine'</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="margin: auto 0;">
+<figure>
+<img src="../assets/dark_theme.png"/>
+<caption><b>Dark Theme</b>: The MaterialTemplate with a DarkTheme applied</caption>
+</figure></div></section>
+</section>
+<section id="using-custom-templates">
+<h2>Using custom templates<a class="headerlink" href="#using-custom-templates" title="Permalink to this heading">#</a></h2>
+<p>Completely custom templates extend the default jinja2 template in various ways. Before we dive into modifying such a template let us take a look at the default template used by Panel:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% from macros import embed %}
+
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
+{% block head %}
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    {% block inner_head %}
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{% block title %}{{ title | e if title else "Panel App" }}{% endblock %}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    {% block preamble %}{% endblock %}
+    {% block resources %}
+        {% block css_resources %}
+        {{ bokeh_css | indent(8) if bokeh_css }}
+        {% endblock %}
+        {% block js_resources %}
+        {{ bokeh_js | indent(8) if bokeh_js }}
+        {% endblock %}
+    {% endblock %}
+    {% block postamble %}{% endblock %}
+    {% endblock %}
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+{% endblock %}
+{% block body %}
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    {% block inner_body %}
+    {% block contents %}
+        {% for doc in docs %}
+        {{ embed(doc) if doc.elementid }}
+        {% for root in doc.roots %}
+            {{ embed(root) | indent(10) }}
+        {% endfor %}
+        {% endfor %}
+    {% endblock %}
+    {{ plot_script | indent(8) }}
+    {% endblock %}
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+{% endblock %}
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>As you may be able to note if you are familiar with jinja2 templating or similar languages, this template can easily be extended by overriding the existing <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">block</span> <span class="pre">...</span> <span class="pre">%}</span></code> definitions. However it is also possible to completely override this default template instead.</p>
+<p>That said it is usually easiest to simply extend an existing template by overriding certain blocks. To begin with we start by using <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">extends</span> <span class="pre">base</span> <span class="pre">%}</span></code> to declare that we are merely extending an existing template rather than defining a whole new one; otherwise we would have to repeat the entire header sections of the full template to ensure all the appropriate resources are loaded.</p>
+<p>In this case we will extend the postamble block of the header to load some additional resources, and the contents block to redefine how the components will be laid out. Specifically, we will load bootstrap.css in the preamble allowing us to use the bootstrap grid system to lay out the output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">{</span><span class="si">% e</span><span class="s2">xtends base %}</span>
+
+<span class="s2">&lt;!-- goes in body --&gt;</span>
+<span class="s2">{% block postamble %}</span>
+<span class="s2">&lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"&gt;</span>
+<span class="s2">{</span><span class="si">% e</span><span class="s2">ndblock %}</span>
+
+<span class="s2">&lt;!-- goes in body --&gt;</span>
+<span class="s2">{% block contents %}</span>
+<span class="s2">{{ app_title }}</span>
+<span class="s2">&lt;p&gt;This is a Panel app with a custom template allowing us to compose multiple Panel objects into a single HTML document.&lt;/p&gt;</span>
+<span class="s2">&lt;br&gt;</span>
+<span class="s2">&lt;div class="container"&gt;</span>
+<span class="s2">  &lt;div class="row"&gt;</span>
+<span class="s2">    &lt;div class="col-sm"&gt;</span>
+<span class="s2">      {{ embed(roots.A) }}</span>
+<span class="s2">    &lt;/div&gt;</span>
+<span class="s2">    &lt;div class="col-sm"&gt;</span>
+<span class="s2">      {{ embed(roots.B) }}</span>
+<span class="s2">    &lt;/div&gt;</span>
+<span class="s2">  &lt;/div&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">{</span><span class="si">% e</span><span class="s2">ndblock %}</span>
+<span class="s2">"""</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you look closely we defined two different roots in the template using the <code class="docutils literal notranslate"><span class="pre">embed</span></code> macro. In order to be able to render the template we now have to first construct the <code class="docutils literal notranslate"><span class="pre">pn.Template</span></code> object with the template HTML and then populate the template with the two required roots, in this case <code class="docutils literal notranslate"><span class="pre">'A'</span></code> and <code class="docutils literal notranslate"><span class="pre">'B'</span></code> by using the <code class="docutils literal notranslate"><span class="pre">add_panel</span></code> method. If either of the roots is not defined the app is invalid and will fail to launch. The app will also fail to launch if any panels are added that are not referenced in the template.</p>
+<p>Additionally we have also declared a new <code class="docutils literal notranslate"><span class="pre">app_title</span></code> variable in the template, which we can populate by using the <code class="docutils literal notranslate"><span class="pre">add_variable</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmpl</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+
+<span class="n">tmpl</span><span class="o">.</span><span class="n">add_variable</span><span class="p">(</span><span class="s1">'app_title'</span><span class="p">,</span> <span class="s1">'&lt;h1&gt;Custom Template App&lt;/h1&gt;'</span><span class="p">)</span>
+
+<span class="n">tmpl</span><span class="o">.</span><span class="n">add_panel</span><span class="p">(</span><span class="s1">'A'</span><span class="p">,</span> <span class="n">hv</span><span class="o">.</span><span class="n">Curve</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="n">tmpl</span><span class="o">.</span><span class="n">add_panel</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="n">hv</span><span class="o">.</span><span class="n">Curve</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+
+<span class="n">tmpl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<h1>Custom Template App</h1>
+<p>This is a Panel app with a custom template allowing us to compose multiple Panel objects into a single HTML document.</p>
+<br/>
+<div class="container">
+<div class="row">
+<div class="col-sm">
+<div class="bk-root" data-root-id="1003" id="c949ec15-0a5a-40d2-a828-d2c8518ddf81"></div>
+</div>
+<div class="col-sm">
+<div class="bk-root" data-root-id="1080" id="5c803ff4-7f8b-4ced-a9be-61b5bd499db3"></div>
+</div>
+</div>
+</div>
+<script id="1268" type="application/json">
+          {"54473c58-8fc7-4191-b5bf-af381a0be998":{"defs":[{"extends":null,"module":null,"name":"ReactiveHTML1","overrides":[],"properties":[]},{"extends":null,"module":null,"name":"FlexBox1","overrides":[],"properties":[{"default":"flex-start","kind":null,"name":"align_content"},{"default":"flex-start","kind":null,"name":"align_items"},{"default":"row","kind":null,"name":"flex_direction"},{"default":"wrap","kind":null,"name":"flex_wrap"},{"default":"flex-start","kind":null,"name":"justify_content"}]},{"extends":null,"module":null,"name":"GridStack1","overrides":[],"properties":[{"default":"warn","kind":null,"name":"mode"},{"default":null,"kind":null,"name":"ncols"},{"default":null,"kind":null,"name":"nrows"},{"default":true,"kind":null,"name":"allow_resize"},{"default":true,"kind":null,"name":"allow_drag"},{"default":[],"kind":null,"name":"state"}]},{"extends":null,"module":null,"name":"click1","overrides":[],"properties":[{"default":"","kind":null,"name":"terminal_output"},{"default":"","kind":null,"name":"debug_name"},{"default":0,"kind":null,"name":"clears"}]},{"extends":null,"module":null,"name":"NotificationAreaBase1","overrides":[],"properties":[{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"}]},{"extends":null,"module":null,"name":"NotificationArea1","overrides":[],"properties":[{"default":[],"kind":null,"name":"notifications"},{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"},{"default":[{"background":"#ffc107","icon":{"className":"fas fa-exclamation-triangle","color":"white","tagName":"i"},"type":"warning"},{"background":"#007bff","icon":{"className":"fas fa-info-circle","color":"white","tagName":"i"},"type":"info"}],"kind":null,"name":"types"}]},{"extends":null,"module":null,"name":"Notification","overrides":[],"properties":[{"default":null,"kind":null,"name":"background"},{"default":3000,"kind":null,"name":"duration"},{"default":null,"kind":null,"name":"icon"},{"default":"","kind":null,"name":"message"},{"default":null,"kind":null,"name":"notification_type"},{"default":false,"kind":null,"name":"_destroyed"}]},{"extends":null,"module":null,"name":"TemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]},{"extends":null,"module":null,"name":"MaterialTemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]}],"roots":{"references":[{"attributes":{},"id":"1088","type":"LinearScale"},{"attributes":{},"id":"1036","type":"Selection"},{"attributes":{},"id":"1048","type":"BasicTickFormatter"},{"attributes":{"axis_label":"x","coordinates":null,"formatter":{"id":"1045"},"group":null,"major_label_policy":{"id":"1046"},"ticker":{"id":"1016"}},"id":"1015","type":"LinearAxis"},{"attributes":{"line_alpha":0.1,"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1116","type":"Line"},{"attributes":{"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1115","type":"Line"},{"attributes":{},"id":"1134","type":"UnionRenderers"},{"attributes":{},"id":"1045","type":"BasicTickFormatter"},{"attributes":{"end":2.0,"reset_end":2.0,"reset_start":0.0,"tags":[[["x","x",null]]]},"id":"1004","type":"Range1d"},{"attributes":{},"id":"1024","type":"PanTool"},{"attributes":{"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1043","type":"Line"},{"attributes":{},"id":"1046","type":"AllLabels"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1028","type":"BoxAnnotation"},{"attributes":{"line_alpha":0.2,"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1040","type":"Line"},{"attributes":{"data":{"x":[0,1,2],"y":[1,2,3]},"selected":{"id":"1036"},"selection_policy":{"id":"1057"}},"id":"1035","type":"ColumnDataSource"},{"attributes":{},"id":"1020","type":"BasicTicker"},{"attributes":{"tools":[{"id":"1100"},{"id":"1101"},{"id":"1102"},{"id":"1103"},{"id":"1104"}]},"id":"1106","type":"Toolbar"},{"attributes":{},"id":"1049","type":"AllLabels"},{"attributes":{"below":[{"id":"1092"}],"center":[{"id":"1095"},{"id":"1099"}],"height":300,"left":[{"id":"1096"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"renderers":[{"id":"1118"}],"sizing_mode":"stretch_width","title":{"id":"1084"},"toolbar":{"id":"1106"},"width":300,"x_range":{"id":"1004"},"x_scale":{"id":"1088"},"y_range":{"id":"1005"},"y_scale":{"id":"1090"}},"id":"1083","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1057","type":"UnionRenderers"},{"attributes":{},"id":"1013","type":"LinearScale"},{"attributes":{},"id":"1025","type":"WheelZoomTool"},{"attributes":{"coordinates":null,"data_source":{"id":"1035"},"glyph":{"id":"1038"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1040"},"nonselection_glyph":{"id":"1039"},"selection_glyph":{"id":"1043"},"view":{"id":"1042"}},"id":"1041","type":"GlyphRenderer"},{"attributes":{},"id":"1016","type":"BasicTicker"},{"attributes":{"coordinates":null,"group":null,"text_color":"black","text_font_size":"12pt"},"id":"1084","type":"Title"},{"attributes":{"overlay":{"id":"1028"}},"id":"1026","type":"BoxZoomTool"},{"attributes":{"line_alpha":0.2,"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1117","type":"Line"},{"attributes":{},"id":"1090","type":"LinearScale"},{"attributes":{},"id":"1093","type":"BasicTicker"},{"attributes":{"coordinates":null,"data_source":{"id":"1112"},"glyph":{"id":"1115"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1117"},"nonselection_glyph":{"id":"1116"},"selection_glyph":{"id":"1120"},"view":{"id":"1119"}},"id":"1118","type":"GlyphRenderer"},{"attributes":{},"id":"1113","type":"Selection"},{"attributes":{"client_comm_id":"e81824742fb54473ab916093b2e5894e","comm_id":"3d656fd6ec30487eb6741aa2794c2045","name":"comm_manager","plot_id":"1003"},"id":"1227","type":"panel.models.comm_manager.CommManager"},{"attributes":{"axis_label":"x","coordinates":null,"formatter":{"id":"1122"},"group":null,"major_label_policy":{"id":"1123"},"ticker":{"id":"1093"}},"id":"1092","type":"LinearAxis"},{"attributes":{"axis":{"id":"1019"},"coordinates":null,"dimension":1,"grid_line_color":null,"group":null,"ticker":null},"id":"1022","type":"Grid"},{"attributes":{},"id":"1101","type":"PanTool"},{"attributes":{},"id":"1125","type":"BasicTickFormatter"},{"attributes":{"axis":{"id":"1092"},"coordinates":null,"grid_line_color":null,"group":null,"ticker":null},"id":"1095","type":"Grid"},{"attributes":{"end":3.2,"reset_end":3.2,"reset_start":0.8,"start":0.8,"tags":[[["y","y",null]]]},"id":"1005","type":"Range1d"},{"attributes":{"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1120","type":"Line"},{"attributes":{"line_alpha":0.1,"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1039","type":"Line"},{"attributes":{"axis_label":"y","coordinates":null,"formatter":{"id":"1125"},"group":null,"major_label_policy":{"id":"1126"},"ticker":{"id":"1097"}},"id":"1096","type":"LinearAxis"},{"attributes":{"axis":{"id":"1096"},"coordinates":null,"dimension":1,"grid_line_color":null,"group":null,"ticker":null},"id":"1099","type":"Grid"},{"attributes":{"source":{"id":"1112"}},"id":"1119","type":"CDSView"},{"attributes":{},"id":"1123","type":"AllLabels"},{"attributes":{"children":[{"id":"1006"}],"margin":[0,0,0,0],"name":"A","sizing_mode":"stretch_width"},"id":"1003","type":"Row"},{"attributes":{},"id":"1097","type":"BasicTicker"},{"attributes":{},"id":"1102","type":"WheelZoomTool"},{"attributes":{},"id":"1122","type":"BasicTickFormatter"},{"attributes":{"source":{"id":"1035"}},"id":"1042","type":"CDSView"},{"attributes":{"axis":{"id":"1015"},"coordinates":null,"grid_line_color":null,"group":null,"ticker":null},"id":"1018","type":"Grid"},{"attributes":{"children":[{"id":"1083"}],"margin":[0,0,0,0],"name":"B","sizing_mode":"stretch_width"},"id":"1080","type":"Row"},{"attributes":{},"id":"1100","type":"SaveTool"},{"attributes":{},"id":"1126","type":"AllLabels"},{"attributes":{"tools":[{"id":"1023"},{"id":"1024"},{"id":"1025"},{"id":"1026"},{"id":"1027"}]},"id":"1029","type":"Toolbar"},{"attributes":{"overlay":{"id":"1105"}},"id":"1103","type":"BoxZoomTool"},{"attributes":{},"id":"1023","type":"SaveTool"},{"attributes":{},"id":"1011","type":"LinearScale"},{"attributes":{},"id":"1104","type":"ResetTool"},{"attributes":{"coordinates":null,"group":null,"text_color":"black","text_font_size":"12pt"},"id":"1007","type":"Title"},{"attributes":{"axis_label":"y","coordinates":null,"formatter":{"id":"1048"},"group":null,"major_label_policy":{"id":"1049"},"ticker":{"id":"1020"}},"id":"1019","type":"LinearAxis"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1105","type":"BoxAnnotation"},{"attributes":{"data":{"x":[0,1,2],"y":[1,2,3]},"selected":{"id":"1113"},"selection_policy":{"id":"1134"}},"id":"1112","type":"ColumnDataSource"},{"attributes":{"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1038","type":"Line"},{"attributes":{},"id":"1027","type":"ResetTool"},{"attributes":{"below":[{"id":"1015"}],"center":[{"id":"1018"},{"id":"1022"}],"height":300,"left":[{"id":"1019"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"renderers":[{"id":"1041"}],"sizing_mode":"stretch_width","title":{"id":"1007"},"toolbar":{"id":"1029"},"width":300,"x_range":{"id":"1004"},"x_scale":{"id":"1011"},"y_range":{"id":"1005"},"y_scale":{"id":"1013"}},"id":"1006","subtype":"Figure","type":"Plot"}],"root_ids":["1003","1080","1227"]},"title":"Panel Application","version":"2.4.3"}}
+        </script>
+<script type="text/javascript">
+          (function() {
+            const fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                  const docs_json = document.getElementById('1268').textContent;
+                  const render_items = [{"docid":"54473c58-8fc7-4191-b5bf-af381a0be998","root_ids":["1003","1080"],"roots":{"1003":"c949ec15-0a5a-40d2-a828-d2c8518ddf81","1080":"5c803ff4-7f8b-4ced-a9be-61b5bd499db3"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    let attempts = 0;
+                    const timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+</div></div>
+</div>
+<p>Embedding a different CSS framework (like Bootstrap) in the notebook can have undesirable side-effects so a <code class="docutils literal notranslate"><span class="pre">Template</span></code> may also be given a separate <code class="docutils literal notranslate"><span class="pre">nb_template</span></code> that will be used when rendering inside the notebook:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nb_template</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">{</span><span class="si">% e</span><span class="s2">xtends base %}</span>
+
+<span class="s2">{% block contents %}</span>
+<span class="s2">{{ app_title }}</span>
+<span class="s2">&lt;p&gt;This is a Panel app with a custom template allowing us to compose multiple Panel objects into a single HTML document.&lt;/p&gt;</span>
+<span class="s2">&lt;br&gt;</span>
+<span class="s2">&lt;div style="display:table; width: 100%"&gt;</span>
+<span class="s2">  &lt;div style="display:table-cell; margin: auto"&gt;</span>
+<span class="s2">    {{ embed(roots.A) }}</span>
+<span class="s2">  &lt;/div&gt;</span>
+<span class="s2">  &lt;div style="display:table-cell; margin: auto"&gt;</span>
+<span class="s2">    {{ embed(roots.B) }}</span>
+<span class="s2">  &lt;/div&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+<span class="s2">{</span><span class="si">% e</span><span class="s2">ndblock %}</span>
+<span class="s2">"""</span>
+
+<span class="n">tmpl</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">nb_template</span><span class="o">=</span><span class="n">nb_template</span><span class="p">)</span>
+
+<span class="n">tmpl</span><span class="o">.</span><span class="n">add_variable</span><span class="p">(</span><span class="s1">'app_title'</span><span class="p">,</span> <span class="s1">'&lt;h1&gt;Custom Template App&lt;/h1&gt;'</span><span class="p">)</span>
+
+<span class="n">tmpl</span><span class="o">.</span><span class="n">add_panel</span><span class="p">(</span><span class="s1">'A'</span><span class="p">,</span> <span class="n">hv</span><span class="o">.</span><span class="n">Curve</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="n">tmpl</span><span class="o">.</span><span class="n">add_panel</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="n">hv</span><span class="o">.</span><span class="n">Curve</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+
+<span class="n">tmpl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<h1>Custom Template App</h1>
+<p>This is a Panel app with a custom template allowing us to compose multiple Panel objects into a single HTML document.</p>
+<br/>
+<div style="display:table; width: 100%">
+<div style="display:table-cell; margin: auto">
+<div class="bk-root" data-root-id="1270" id="6b367598-fa5a-4558-87db-9ae773d804bd"></div>
+</div>
+<div style="display:table-cell; margin: auto">
+<div class="bk-root" data-root-id="1347" id="8e411e0f-4968-41fb-b403-8f4de19c05ba"></div>
+</div>
+</div>
+<script id="1535" type="application/json">
+          {"3bf008fa-6ed5-4812-a9ac-d567ebf56413":{"defs":[{"extends":null,"module":null,"name":"ReactiveHTML1","overrides":[],"properties":[]},{"extends":null,"module":null,"name":"FlexBox1","overrides":[],"properties":[{"default":"flex-start","kind":null,"name":"align_content"},{"default":"flex-start","kind":null,"name":"align_items"},{"default":"row","kind":null,"name":"flex_direction"},{"default":"wrap","kind":null,"name":"flex_wrap"},{"default":"flex-start","kind":null,"name":"justify_content"}]},{"extends":null,"module":null,"name":"GridStack1","overrides":[],"properties":[{"default":"warn","kind":null,"name":"mode"},{"default":null,"kind":null,"name":"ncols"},{"default":null,"kind":null,"name":"nrows"},{"default":true,"kind":null,"name":"allow_resize"},{"default":true,"kind":null,"name":"allow_drag"},{"default":[],"kind":null,"name":"state"}]},{"extends":null,"module":null,"name":"click1","overrides":[],"properties":[{"default":"","kind":null,"name":"terminal_output"},{"default":"","kind":null,"name":"debug_name"},{"default":0,"kind":null,"name":"clears"}]},{"extends":null,"module":null,"name":"NotificationAreaBase1","overrides":[],"properties":[{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"}]},{"extends":null,"module":null,"name":"NotificationArea1","overrides":[],"properties":[{"default":[],"kind":null,"name":"notifications"},{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"},{"default":[{"background":"#ffc107","icon":{"className":"fas fa-exclamation-triangle","color":"white","tagName":"i"},"type":"warning"},{"background":"#007bff","icon":{"className":"fas fa-info-circle","color":"white","tagName":"i"},"type":"info"}],"kind":null,"name":"types"}]},{"extends":null,"module":null,"name":"Notification","overrides":[],"properties":[{"default":null,"kind":null,"name":"background"},{"default":3000,"kind":null,"name":"duration"},{"default":null,"kind":null,"name":"icon"},{"default":"","kind":null,"name":"message"},{"default":null,"kind":null,"name":"notification_type"},{"default":false,"kind":null,"name":"_destroyed"}]},{"extends":null,"module":null,"name":"TemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]},{"extends":null,"module":null,"name":"MaterialTemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]}],"roots":{"references":[{"attributes":{"axis":{"id":"1282"},"coordinates":null,"grid_line_color":null,"group":null,"ticker":null},"id":"1285","type":"Grid"},{"attributes":{"source":{"id":"1379"}},"id":"1386","type":"CDSView"},{"attributes":{"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1387","type":"Line"},{"attributes":{},"id":"1280","type":"LinearScale"},{"attributes":{"axis":{"id":"1359"},"coordinates":null,"grid_line_color":null,"group":null,"ticker":null},"id":"1362","type":"Grid"},{"attributes":{"line_alpha":0.1,"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1306","type":"Line"},{"attributes":{},"id":"1368","type":"PanTool"},{"attributes":{"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1310","type":"Line"},{"attributes":{"below":[{"id":"1282"}],"center":[{"id":"1285"},{"id":"1289"}],"height":300,"left":[{"id":"1286"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"renderers":[{"id":"1308"}],"sizing_mode":"stretch_width","title":{"id":"1274"},"toolbar":{"id":"1296"},"width":300,"x_range":{"id":"1271"},"x_scale":{"id":"1278"},"y_range":{"id":"1272"},"y_scale":{"id":"1280"}},"id":"1273","subtype":"Figure","type":"Plot"},{"attributes":{"axis_label":"y","coordinates":null,"formatter":{"id":"1392"},"group":null,"major_label_policy":{"id":"1393"},"ticker":{"id":"1364"}},"id":"1363","type":"LinearAxis"},{"attributes":{"axis":{"id":"1363"},"coordinates":null,"dimension":1,"grid_line_color":null,"group":null,"ticker":null},"id":"1366","type":"Grid"},{"attributes":{},"id":"1364","type":"BasicTicker"},{"attributes":{},"id":"1369","type":"WheelZoomTool"},{"attributes":{"tools":[{"id":"1290"},{"id":"1291"},{"id":"1292"},{"id":"1293"},{"id":"1294"}]},"id":"1296","type":"Toolbar"},{"attributes":{"line_alpha":0.2,"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1307","type":"Line"},{"attributes":{"data":{"x":[0,1,2],"y":[1,2,3]},"selected":{"id":"1303"},"selection_policy":{"id":"1324"}},"id":"1302","type":"ColumnDataSource"},{"attributes":{},"id":"1367","type":"SaveTool"},{"attributes":{"coordinates":null,"data_source":{"id":"1302"},"glyph":{"id":"1305"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1307"},"nonselection_glyph":{"id":"1306"},"selection_glyph":{"id":"1310"},"view":{"id":"1309"}},"id":"1308","type":"GlyphRenderer"},{"attributes":{"overlay":{"id":"1372"}},"id":"1370","type":"BoxZoomTool"},{"attributes":{"source":{"id":"1302"}},"id":"1309","type":"CDSView"},{"attributes":{"children":[{"id":"1350"}],"margin":[0,0,0,0],"name":"B","sizing_mode":"stretch_width"},"id":"1347","type":"Row"},{"attributes":{},"id":"1371","type":"ResetTool"},{"attributes":{},"id":"1294","type":"ResetTool"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1372","type":"BoxAnnotation"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1295","type":"BoxAnnotation"},{"attributes":{},"id":"1278","type":"LinearScale"},{"attributes":{},"id":"1355","type":"LinearScale"},{"attributes":{"tools":[{"id":"1367"},{"id":"1368"},{"id":"1369"},{"id":"1370"},{"id":"1371"}]},"id":"1373","type":"Toolbar"},{"attributes":{"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1305","type":"Line"},{"attributes":{},"id":"1380","type":"Selection"},{"attributes":{"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1382","type":"Line"},{"attributes":{"axis_label":"x","coordinates":null,"formatter":{"id":"1389"},"group":null,"major_label_policy":{"id":"1390"},"ticker":{"id":"1360"}},"id":"1359","type":"LinearAxis"},{"attributes":{},"id":"1390","type":"AllLabels"},{"attributes":{"coordinates":null,"group":null,"text_color":"black","text_font_size":"12pt"},"id":"1351","type":"Title"},{"attributes":{},"id":"1316","type":"AllLabels"},{"attributes":{"line_alpha":0.1,"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1383","type":"Line"},{"attributes":{"end":3.2,"reset_end":3.2,"reset_start":0.8,"start":0.8,"tags":[[["y","y",null]]]},"id":"1272","type":"Range1d"},{"attributes":{},"id":"1290","type":"SaveTool"},{"attributes":{},"id":"1313","type":"AllLabels"},{"attributes":{},"id":"1312","type":"BasicTickFormatter"},{"attributes":{},"id":"1292","type":"WheelZoomTool"},{"attributes":{},"id":"1389","type":"BasicTickFormatter"},{"attributes":{"end":2.0,"reset_end":2.0,"reset_start":0.0,"tags":[[["x","x",null]]]},"id":"1271","type":"Range1d"},{"attributes":{},"id":"1324","type":"UnionRenderers"},{"attributes":{},"id":"1392","type":"BasicTickFormatter"},{"attributes":{},"id":"1401","type":"UnionRenderers"},{"attributes":{"children":[{"id":"1273"}],"margin":[0,0,0,0],"name":"A","sizing_mode":"stretch_width"},"id":"1270","type":"Row"},{"attributes":{},"id":"1315","type":"BasicTickFormatter"},{"attributes":{},"id":"1287","type":"BasicTicker"},{"attributes":{},"id":"1393","type":"AllLabels"},{"attributes":{},"id":"1283","type":"BasicTicker"},{"attributes":{"below":[{"id":"1359"}],"center":[{"id":"1362"},{"id":"1366"}],"height":300,"left":[{"id":"1363"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"renderers":[{"id":"1385"}],"sizing_mode":"stretch_width","title":{"id":"1351"},"toolbar":{"id":"1373"},"width":300,"x_range":{"id":"1271"},"x_scale":{"id":"1355"},"y_range":{"id":"1272"},"y_scale":{"id":"1357"}},"id":"1350","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1291","type":"PanTool"},{"attributes":{"coordinates":null,"group":null,"text_color":"black","text_font_size":"12pt"},"id":"1274","type":"Title"},{"attributes":{"line_alpha":0.2,"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1384","type":"Line"},{"attributes":{},"id":"1360","type":"BasicTicker"},{"attributes":{},"id":"1303","type":"Selection"},{"attributes":{"axis_label":"y","coordinates":null,"formatter":{"id":"1315"},"group":null,"major_label_policy":{"id":"1316"},"ticker":{"id":"1287"}},"id":"1286","type":"LinearAxis"},{"attributes":{"data":{"x":[0,1,2],"y":[1,2,3]},"selected":{"id":"1380"},"selection_policy":{"id":"1401"}},"id":"1379","type":"ColumnDataSource"},{"attributes":{"coordinates":null,"data_source":{"id":"1379"},"glyph":{"id":"1382"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1384"},"nonselection_glyph":{"id":"1383"},"selection_glyph":{"id":"1387"},"view":{"id":"1386"}},"id":"1385","type":"GlyphRenderer"},{"attributes":{"axis":{"id":"1286"},"coordinates":null,"dimension":1,"grid_line_color":null,"group":null,"ticker":null},"id":"1289","type":"Grid"},{"attributes":{"client_comm_id":"a2cb7d0ce15745d8a265a05c8092a2bf","comm_id":"2083677110a94323965eddd34a576fa4","name":"comm_manager","plot_id":"1270"},"id":"1494","type":"panel.models.comm_manager.CommManager"},{"attributes":{},"id":"1357","type":"LinearScale"},{"attributes":{"overlay":{"id":"1295"}},"id":"1293","type":"BoxZoomTool"},{"attributes":{"axis_label":"x","coordinates":null,"formatter":{"id":"1312"},"group":null,"major_label_policy":{"id":"1313"},"ticker":{"id":"1283"}},"id":"1282","type":"LinearAxis"}],"root_ids":["1270","1347","1494"]},"title":"Panel Application","version":"2.4.3"}}
+        </script>
+<script type="text/javascript">
+          (function() {
+            const fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                  const docs_json = document.getElementById('1535').textContent;
+                  const render_items = [{"docid":"3bf008fa-6ed5-4812-a9ac-d567ebf56413","root_ids":["1270","1347"],"roots":{"1270":"6b367598-fa5a-4558-87db-9ae773d804bd","1347":"8e411e0f-4968-41fb-b403-8f4de19c05ba"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    let attempts = 0;
+                    const timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+</div></div>
+</div>
+<section id="loading-template-from-file">
+<h3>Loading template from file<a class="headerlink" href="#loading-template-from-file" title="Permalink to this heading">#</a></h3>
+<p>If the template is larger it is often cleaner to define it in a separate file. You can either read it in as a string, or use the official loading mechanism available for Jinja2 templates by defining a <code class="docutils literal notranslate"><span class="pre">Environment</span></code> along with a <code class="docutils literal notranslate"><span class="pre">loader</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">FileSystemLoader</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="s1">'.'</span><span class="p">))</span>
+<span class="n">jinja_template</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">'sample_template.html'</span><span class="p">)</span>
+
+<span class="n">tmpl</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="n">jinja_template</span><span class="p">)</span>
+
+<span class="n">tmpl</span><span class="o">.</span><span class="n">add_panel</span><span class="p">(</span><span class="s1">'A'</span><span class="p">,</span> <span class="n">hv</span><span class="o">.</span><span class="n">Curve</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="n">tmpl</span><span class="o">.</span><span class="n">add_panel</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="n">hv</span><span class="o">.</span><span class="n">Curve</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="n">tmpl</span><span class="o">.</span><span class="n">servable</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<h1>Custom Template App</h1>
+<p>This is a Panel app with a custom template allowing us to compose multiple Panel objects into a single HTML document.</p>
+<br/>
+<div class="container">
+<div class="row">
+<div class="col-sm">
+<div class="bk-root" data-root-id="1537" id="97d00f5a-fb39-4a76-aafb-3f9239eab947"></div>
+</div>
+<div class="col-sm">
+<div class="bk-root" data-root-id="1614" id="d3f17626-f813-4e0d-b0e1-f19cfa67e8da"></div>
+</div>
+</div>
+</div>
+<script id="1802" type="application/json">
+          {"e8c8fa04-fc76-42eb-8d10-090c0adc50ca":{"defs":[{"extends":null,"module":null,"name":"ReactiveHTML1","overrides":[],"properties":[]},{"extends":null,"module":null,"name":"FlexBox1","overrides":[],"properties":[{"default":"flex-start","kind":null,"name":"align_content"},{"default":"flex-start","kind":null,"name":"align_items"},{"default":"row","kind":null,"name":"flex_direction"},{"default":"wrap","kind":null,"name":"flex_wrap"},{"default":"flex-start","kind":null,"name":"justify_content"}]},{"extends":null,"module":null,"name":"GridStack1","overrides":[],"properties":[{"default":"warn","kind":null,"name":"mode"},{"default":null,"kind":null,"name":"ncols"},{"default":null,"kind":null,"name":"nrows"},{"default":true,"kind":null,"name":"allow_resize"},{"default":true,"kind":null,"name":"allow_drag"},{"default":[],"kind":null,"name":"state"}]},{"extends":null,"module":null,"name":"click1","overrides":[],"properties":[{"default":"","kind":null,"name":"terminal_output"},{"default":"","kind":null,"name":"debug_name"},{"default":0,"kind":null,"name":"clears"}]},{"extends":null,"module":null,"name":"NotificationAreaBase1","overrides":[],"properties":[{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"}]},{"extends":null,"module":null,"name":"NotificationArea1","overrides":[],"properties":[{"default":[],"kind":null,"name":"notifications"},{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"},{"default":[{"background":"#ffc107","icon":{"className":"fas fa-exclamation-triangle","color":"white","tagName":"i"},"type":"warning"},{"background":"#007bff","icon":{"className":"fas fa-info-circle","color":"white","tagName":"i"},"type":"info"}],"kind":null,"name":"types"}]},{"extends":null,"module":null,"name":"Notification","overrides":[],"properties":[{"default":null,"kind":null,"name":"background"},{"default":3000,"kind":null,"name":"duration"},{"default":null,"kind":null,"name":"icon"},{"default":"","kind":null,"name":"message"},{"default":null,"kind":null,"name":"notification_type"},{"default":false,"kind":null,"name":"_destroyed"}]},{"extends":null,"module":null,"name":"TemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]},{"extends":null,"module":null,"name":"MaterialTemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]}],"roots":{"references":[{"attributes":{},"id":"1558","type":"PanTool"},{"attributes":{},"id":"1550","type":"BasicTicker"},{"attributes":{},"id":"1659","type":"BasicTickFormatter"},{"attributes":{"children":[{"id":"1540"}],"margin":[0,0,0,0],"name":"A","sizing_mode":"stretch_width"},"id":"1537","type":"Row"},{"attributes":{"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1577","type":"Line"},{"attributes":{"axis":{"id":"1553"},"coordinates":null,"dimension":1,"grid_line_color":null,"group":null,"ticker":null},"id":"1556","type":"Grid"},{"attributes":{},"id":"1554","type":"BasicTicker"},{"attributes":{"below":[{"id":"1549"}],"center":[{"id":"1552"},{"id":"1556"}],"height":300,"left":[{"id":"1553"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"renderers":[{"id":"1575"}],"sizing_mode":"stretch_width","title":{"id":"1541"},"toolbar":{"id":"1563"},"width":300,"x_range":{"id":"1538"},"x_scale":{"id":"1545"},"y_range":{"id":"1539"},"y_scale":{"id":"1547"}},"id":"1540","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1559","type":"WheelZoomTool"},{"attributes":{},"id":"1660","type":"AllLabels"},{"attributes":{},"id":"1557","type":"SaveTool"},{"attributes":{"end":3.2,"reset_end":3.2,"reset_start":0.8,"start":0.8,"tags":[[["y","y",null]]]},"id":"1539","type":"Range1d"},{"attributes":{"below":[{"id":"1626"}],"center":[{"id":"1629"},{"id":"1633"}],"height":300,"left":[{"id":"1630"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"renderers":[{"id":"1652"}],"sizing_mode":"stretch_width","title":{"id":"1618"},"toolbar":{"id":"1640"},"width":300,"x_range":{"id":"1538"},"x_scale":{"id":"1622"},"y_range":{"id":"1539"},"y_scale":{"id":"1624"}},"id":"1617","subtype":"Figure","type":"Plot"},{"attributes":{"axis":{"id":"1549"},"coordinates":null,"grid_line_color":null,"group":null,"ticker":null},"id":"1552","type":"Grid"},{"attributes":{"coordinates":null,"group":null,"text_color":"black","text_font_size":"12pt"},"id":"1541","type":"Title"},{"attributes":{},"id":"1668","type":"UnionRenderers"},{"attributes":{"overlay":{"id":"1562"}},"id":"1560","type":"BoxZoomTool"},{"attributes":{},"id":"1561","type":"ResetTool"},{"attributes":{},"id":"1635","type":"PanTool"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1562","type":"BoxAnnotation"},{"attributes":{"axis_label":"x","coordinates":null,"formatter":{"id":"1656"},"group":null,"major_label_policy":{"id":"1657"},"ticker":{"id":"1627"}},"id":"1626","type":"LinearAxis"},{"attributes":{},"id":"1627","type":"BasicTicker"},{"attributes":{"source":{"id":"1646"}},"id":"1653","type":"CDSView"},{"attributes":{"coordinates":null,"data_source":{"id":"1646"},"glyph":{"id":"1649"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1651"},"nonselection_glyph":{"id":"1650"},"selection_glyph":{"id":"1654"},"view":{"id":"1653"}},"id":"1652","type":"GlyphRenderer"},{"attributes":{"data":{"x":[0,1,2],"y":[1,2,3]},"selected":{"id":"1647"},"selection_policy":{"id":"1668"}},"id":"1646","type":"ColumnDataSource"},{"attributes":{"axis_label":"x","coordinates":null,"formatter":{"id":"1579"},"group":null,"major_label_policy":{"id":"1580"},"ticker":{"id":"1550"}},"id":"1549","type":"LinearAxis"},{"attributes":{},"id":"1647","type":"Selection"},{"attributes":{"tools":[{"id":"1557"},{"id":"1558"},{"id":"1559"},{"id":"1560"},{"id":"1561"}]},"id":"1563","type":"Toolbar"},{"attributes":{},"id":"1570","type":"Selection"},{"attributes":{"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1572","type":"Line"},{"attributes":{},"id":"1591","type":"UnionRenderers"},{"attributes":{},"id":"1622","type":"LinearScale"},{"attributes":{},"id":"1624","type":"LinearScale"},{"attributes":{},"id":"1545","type":"LinearScale"},{"attributes":{"line_alpha":0.2,"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1651","type":"Line"},{"attributes":{"line_alpha":0.1,"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1573","type":"Line"},{"attributes":{},"id":"1636","type":"WheelZoomTool"},{"attributes":{"coordinates":null,"group":null,"text_color":"black","text_font_size":"12pt"},"id":"1618","type":"Title"},{"attributes":{"end":2.0,"reset_end":2.0,"reset_start":0.0,"tags":[[["x","x",null]]]},"id":"1538","type":"Range1d"},{"attributes":{},"id":"1583","type":"AllLabels"},{"attributes":{"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1654","type":"Line"},{"attributes":{},"id":"1579","type":"BasicTickFormatter"},{"attributes":{"axis":{"id":"1626"},"coordinates":null,"grid_line_color":null,"group":null,"ticker":null},"id":"1629","type":"Grid"},{"attributes":{"axis_label":"y","coordinates":null,"formatter":{"id":"1582"},"group":null,"major_label_policy":{"id":"1583"},"ticker":{"id":"1554"}},"id":"1553","type":"LinearAxis"},{"attributes":{},"id":"1656","type":"BasicTickFormatter"},{"attributes":{"line_alpha":0.2,"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1574","type":"Line"},{"attributes":{"axis":{"id":"1630"},"coordinates":null,"dimension":1,"grid_line_color":null,"group":null,"ticker":null},"id":"1633","type":"Grid"},{"attributes":{"axis_label":"y","coordinates":null,"formatter":{"id":"1659"},"group":null,"major_label_policy":{"id":"1660"},"ticker":{"id":"1631"}},"id":"1630","type":"LinearAxis"},{"attributes":{"line_alpha":0.1,"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1650","type":"Line"},{"attributes":{},"id":"1580","type":"AllLabels"},{"attributes":{"client_comm_id":"23d44064c7de42539abc89a0e44d5cb3","comm_id":"c62ba586800a4dad9a5e3380ee256791","name":"comm_manager","plot_id":"1537"},"id":"1761","type":"panel.models.comm_manager.CommManager"},{"attributes":{"coordinates":null,"data_source":{"id":"1569"},"glyph":{"id":"1572"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1574"},"nonselection_glyph":{"id":"1573"},"selection_glyph":{"id":"1577"},"view":{"id":"1576"}},"id":"1575","type":"GlyphRenderer"},{"attributes":{},"id":"1631","type":"BasicTicker"},{"attributes":{"line_color":"#30a2da","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"1649","type":"Line"},{"attributes":{"source":{"id":"1569"}},"id":"1576","type":"CDSView"},{"attributes":{"overlay":{"id":"1639"}},"id":"1637","type":"BoxZoomTool"},{"attributes":{"tools":[{"id":"1634"},{"id":"1635"},{"id":"1636"},{"id":"1637"},{"id":"1638"}]},"id":"1640","type":"Toolbar"},{"attributes":{},"id":"1638","type":"ResetTool"},{"attributes":{"children":[{"id":"1617"}],"margin":[0,0,0,0],"name":"B","sizing_mode":"stretch_width"},"id":"1614","type":"Row"},{"attributes":{"data":{"x":[0,1,2],"y":[1,2,3]},"selected":{"id":"1570"},"selection_policy":{"id":"1591"}},"id":"1569","type":"ColumnDataSource"},{"attributes":{},"id":"1634","type":"SaveTool"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1639","type":"BoxAnnotation"},{"attributes":{},"id":"1547","type":"LinearScale"},{"attributes":{},"id":"1582","type":"BasicTickFormatter"},{"attributes":{},"id":"1657","type":"AllLabels"}],"root_ids":["1537","1614","1761"]},"title":"Panel Application","version":"2.4.3"}}
+        </script>
+<script type="text/javascript">
+          (function() {
+            const fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                  const docs_json = document.getElementById('1802').textContent;
+                  const render_items = [{"docid":"e8c8fa04-fc76-42eb-8d10-090c0adc50ca","root_ids":["1537","1614"],"roots":{"1537":"97d00f5a-fb39-4a76-aafb-3f9239eab947","1614":"d3f17626-f813-4e0d-b0e1-f19cfa67e8da"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    let attempts = 0;
+                    const timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+</div></div>
+</div>
+</section>
+</section>
+<div id="scroller-right">This web page was generated from a Jupyter notebook and not all interactivity will work on this website. <a href="https://raw.githubusercontent.com/holoviz/panel/v0.14.0/examples/user_guide/Templates.ipynb">Right click to download and run locally</a> for full Python-backed interactivity.</div><hr class="docutils"/>
+<p><a class="reference external" href="https://raw.githubusercontent.com/holoviz/panel/master/examples/user_guide/Templates.ipynb">Right click to download this notebook from GitHub.</a></p>
+</section>
+</article>
+<footer class="bd-footer-article">
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="Pipelines.html" id="prev-link" title="previous page">
+<i class="fas fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Pipelines</p>
+</div>
+</a>
+<a class="right-next" href="Performance_and_Debugging.html" id="next-link" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Performance and Debugging</p>
+</div>
+<i class="fas fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+<footer class="bd-footer"><div class="bd-footer__inner container">
+<div class="footer-item">
+<p class="copyright">
+    © Copyright 2019-2022 Holoviz contributors.<br/>
+</p>
+</div>
+<div class="footer-item">
+<p class="last-updated">
+Last updated on 2022-10-05.<br/>
+</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

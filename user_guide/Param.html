@@ -1,0 +1,1928 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
+<link href="../site.webmanifest" rel="manifest"/>
+<title>Using Param with Panel — Panel v0.14.0</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/mystnb.css" rel="stylesheet" type="text/css">
+<link href="../_static/graphviz.css" rel="stylesheet" type="text/css">
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/runbutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/dataframe.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695" rel="preload"/>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/sphinx_highlight.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/run_cell.js"></script>
+<script src="../_static/WorkerHandler.js"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../_static/design-tabs.js"></script>
+<script src="../_static/ServiceHandler.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/panel.min.js"></script>
+<script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-154795830-2', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
+<link href="../_static/favicon.ico" rel="shortcut icon">
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="Links.html" rel="next" title="Linking objects in Panel"/>
+<link href="Widgets.html" rel="prev" title="Widgets"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></link></link></head>
+<body data-default-mode="light" data-offset="180" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="bd-header-announcement container-fluid" id="banner">
+</div>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+<div id="navbar-start">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../_static/logo_horizontal.png"/>
+<img alt="Logo image" class="logo__image only-dark" src="../_static/logo_horizontal.png"/>
+</a>
+</div>
+<button aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-collapsible" data-toggle="collapse" type="button">
+<span class="fas fa-bars"></span>
+</button>
+<div class="col-lg-9 collapse navbar-collapse" id="navbar-collapsible">
+<div class="mr-auto" id="navbar-center">
+<div class="navbar-center-item">
+<ul class="navbar-nav" id="navbar-main-elements">
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../index.html">
+  Overview
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+<li class="toctree-l1 current active nav-item">
+<a class="reference internal nav-link" href="index.html">
+  User Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../gallery/index.html">
+  Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../reference/index.html">
+  Reference Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../developer_guide/index.html">
+  Developer Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../api/index.html">
+  API Reference
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../releases.html">
+  Releases
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../FAQ.html">
+  FAQ
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../about/index.html">
+  About
+ </a>
+</li>
+</ul>
+</div>
+</div>
+<div id="navbar-end">
+<div class="navbar-end-item">
+<ul aria-label="Icon Links" class="navbar-nav" id="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/holoviz/panel" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://twitter.com/Panel_Org" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://discourse.holoviz.org/c/panel/5" rel="noopener" target="_blank" title="Discourse"><span><i class="fab fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bd-container container-xl">
+<div class="bd-container__inner row">
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-2 bd-sidebar">
+<div class="sidebar-start-items"><form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search the docs ..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../index.html">
+   Overview
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../getting_started/index.html">
+   Getting Started
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/installation.html">
+     Installation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/build_app.html">
+     Build an app
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/core_concepts.html">
+     Core Concepts
+    </a>
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="index.html">
+   User Guide
+  </a>
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="Overview.html">
+     Overview
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Components.html">
+     Components
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="APIs.html">
+     APIs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Customization.html">
+     Customization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Interact.html">
+     Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Widgets.html">
+     Widgets
+    </a>
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
+     Parameters
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Links.html">
+     Linking
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Pipelines.html">
+     Pipelines
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Templates.html">
+     Templates
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Performance_and_Debugging.html">
+     Performance and Debugging
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Session_State_and_Callbacks.html">
+     Session state &amp; Callbacks
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Async_and_Concurrency.html">
+     Asynchronous and Concurrent Process
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Display_and_Export.html">
+     Display &amp; Export
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Running_in_Webassembly.html">
+     Running Panel in the Browser with WASM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Server_Configuration.html">
+     Server Configuration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Server_Deployment.html">
+     Server Deployment
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Authentication.html">
+     Authentication
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Django.html">
+     Django Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="FastAPI.html">
+     FastAPI Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Custom_Components.html">
+     Building Custom Components
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../gallery/index.html">
+   Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKInteractive.html">
+     VTKInteractive
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKSlicer.html">
+     VTKSlicer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKWarp.html">
+     VTKWarp
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/attractors.html">
+     Attractors
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/gapminders.html">
+     Gapminders
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/glaciers.html">
+     Glaciers
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/nyc_taxi.html">
+     Nyc Taxi
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/portfolio-optimizer.html">
+     Portfolio-optimizer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_brushing.html">
+     Altair Brushing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_choropleth.html">
+     Altair Choropleth
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/clifford_interact.html">
+     Clifford Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/color_speech_recognition.html">
+     Color Speech Recognition
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/deckgl_game_of_life.html">
+     Deckgl Game Of Life
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/defer_data_load.html">
+     Defer Data Load
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/file_download_examples.html">
+     File Download Examples
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/hvplot_explorer.html">
+     Hvplot Explorer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/iris_kmeans.html">
+     Iris Kmeans
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/loading_spinner.html">
+     Loading Spinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/random_number_generator.html">
+     Random Number Generator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/save_filtered_df.html">
+     Save Filtered Df
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/sync_location.html">
+     Sync Location
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/temperature_distribution.html">
+     Temperature Distribution
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/xgboost_classifier.html">
+     Xgboost Classifier
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_altair.html">
+     Stocks Altair
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_hvplot.html">
+     Stocks Hvplot
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_matplotlib.html">
+     Stocks Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_plotly.html">
+     Stocks Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/distribution_tabs.html">
+     Distribution Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/dynamic_tabs.html">
+     Dynamic Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/plot_with_columns.html">
+     Plot With Columns
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_plot_layout.html">
+     Dynamic Plot Layout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_timeseries_image_analysis.html">
+     Dynamic Timeseries Image Analysis
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_ui.html">
+     Dynamic Ui
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_widget_values.html">
+     Dynamic Widget Values
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/action_button.html">
+     Action Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/deck_gl_global_power_plants.html">
+     Deck Gl Global Power Plants
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/download_upload_csv.html">
+     Download Upload Csv
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/loading_indicator.html">
+     Loading Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/param_subobjects.html">
+     Param Subobjects
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/precedence.html">
+     Precedence
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_plots.html">
+     Reactive Plots
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_tables.html">
+     Reactive Tables
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/hardware_automation.html">
+     Hardware Automation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_bokeh.html">
+     Streaming Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_indicator.html">
+     Streaming Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_perspective.html">
+     Streaming Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_tabulator.html">
+     Streaming Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/CanvasDraw.html">
+     CanvasDraw
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/LeafletHeatMap.html">
+     LeafletHeatMap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/MaterialUI.html">
+     MaterialUI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/bokeh_property_editor.html">
+     Bokeh Property Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/deck_gl_json_editor.html">
+     Deck Gl Json Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/holoviews_glyph_link.html">
+     Holoviews Glyph Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/plotly_link.html">
+     Plotly Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/vega_heatmap_link.html">
+     Vega Heatmap Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/MatplotlibStyle.html">
+     MatplotlibStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/PlotlyStyle.html">
+     PlotlyStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/SeabornStyle.html">
+     SeabornStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/VegaAltairStyle.html">
+     VegaAltairStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/DataTable.html">
+     DataTable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/deck.gl.html">
+     Deck.gl
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../reference/index.html">
+   Reference Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Alert.html">
+     Alert
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Audio.html">
+     Audio
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Bokeh.html">
+     Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DeckGL.html">
+     DeckGL
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/ECharts.html">
+     ECharts
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/GIF.html">
+     GIF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HTML.html">
+     HTML
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HoloViews.html">
+     HoloViews
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IDOM.html">
+     IDOM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IPyWidget.html">
+     IPyWidget
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JPG.html">
+     JPG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JSON.html">
+     JSON
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/LaTeX.html">
+     LaTeX
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Markdown.html">
+     Markdown
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Matplotlib.html">
+     Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PDF.html">
+     PDF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PNG.html">
+     PNG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Param.html">
+     Param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Perspective.html">
+     Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Plotly.html">
+     Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/SVG.html">
+     SVG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Str.html">
+     Str
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Streamz.html">
+     Streamz
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTK.html">
+     VTK
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKJS.html">
+     VTKJS
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKVolume.html">
+     VTKVolume
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Vega.html">
+     Vega
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Video.html">
+     Video
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Accordion.html">
+     Accordion
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Card.html">
+     Card
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Column.html">
+     Column
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Divider.html">
+     Divider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/FlexBox.html">
+     FlexBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridBox.html">
+     GridBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridSpec.html">
+     GridSpec
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridStack.html">
+     GridStack
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Row.html">
+     Row
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Tabs.html">
+     Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/WidgetBox.html">
+     WidgetBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Bootstrap.html">
+     Bootstrap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastGridTemplate.html">
+     FastGridTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastListTemplate.html">
+     FastListTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/GoldenLayout.html">
+     GoldenLayout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Material.html">
+     Material
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/React.html">
+     React
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Vanilla.html">
+     Vanilla
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/global/Notifications.html">
+     Notifications
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/BooleanStatus.html">
+     BooleanStatus
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Dial.html">
+     Dial
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Gauge.html">
+     Gauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LinearGauge.html">
+     LinearGauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LoadingSpinner.html">
+     LoadingSpinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Number.html">
+     Number
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Progress.html">
+     Progress
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Tqdm.html">
+     Tqdm
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Trend.html">
+     Trend
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Ace.html">
+     Ace
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ArrayInput.html">
+     ArrayInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/AutocompleteInput.html">
+     AutocompleteInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Button.html">
+     Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckBoxGroup.html">
+     CheckBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckButtonGroup.html">
+     CheckButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Checkbox.html">
+     Checkbox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ColorPicker.html">
+     ColorPicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CrossSelector.html">
+     CrossSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatePicker.html">
+     DatePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateRangeSlider.html">
+     DateRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateSlider.html">
+     DateSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeInput.html">
+     DatetimeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimePicker.html">
+     DatetimePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeInput.html">
+     DatetimeRangeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangePicker.html">
+     DatetimeRangePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeSlider.html">
+     DatetimeRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Debugger.html">
+     Debugger
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscretePlayer.html">
+     DiscretePlayer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscreteSlider.html">
+     DiscreteSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableFloatSlider.html">
+     EditableFloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableIntSlider.html">
+     EditableIntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableRangeSlider.html">
+     EditableRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileDownload.html">
+     FileDownload
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileInput.html">
+     FileInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileSelector.html">
+     FileSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatInput.html">
+     FloatInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatSlider.html">
+     FloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntInput.html">
+     IntInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntRangeSlider.html">
+     IntRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntSlider.html">
+     IntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/JSONEditor.html">
+     JSONEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/LiteralInput.html">
+     LiteralInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MenuButton.html">
+     MenuButton
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiChoice.html">
+     MultiChoice
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiSelect.html">
+     MultiSelect
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/PasswordInput.html">
+     PasswordInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Player.html">
+     Player
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioBoxGroup.html">
+     RadioBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioButtonGroup.html">
+     RadioButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RangeSlider.html">
+     RangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Select.html">
+     Select
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/SpeechToText.html">
+     SpeechToText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/StaticText.html">
+     StaticText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Tabulator.html">
+     Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Terminal.html">
+     Terminal
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextAreaInput.html">
+     TextAreaInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextEditor.html">
+     TextEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextInput.html">
+     TextInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextToSpeech.html">
+     TextToSpeech
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Toggle.html">
+     Toggle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ToggleGroup.html">
+     ToggleGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/VideoStream.html">
+     VideoStream
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../developer_guide/index.html">
+   Developer Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/testing.html">
+     Testing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/Developing_Custom_Models.html">
+     Developing custom models
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../api/index.html">
+   API Reference
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.io.html">
+     io
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.layout.html">
+     layout
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../api/panel.pane.html">
+     pane
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.pane.vtk.html">
+       panel.vtk Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.param.html">
+     param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.pipeline.html">
+     pipeline
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../api/panel.template.html">
+     template
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.bootstrap.html">
+       panel.bootstrap Package
+      </a>
+</li>
+<li class="toctree-l3 has-children">
+<a class="reference internal" href="../api/panel.template.fast.html">
+       panel.fast Package
+      </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l4">
+<a class="reference internal" href="../api/panel.template.fast.grid.html">
+         panel.grid Package
+        </a>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="../api/panel.template.fast.list.html">
+         panel.list Package
+        </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.golden.html">
+       panel.golden Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.material.html">
+       panel.material Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.react.html">
+       panel.react Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.theme.html">
+       panel.theme Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.vanilla.html">
+       panel.vanilla Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.widgets.html">
+     widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.viewable.html">
+     viewable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.util.html">
+     util
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../releases.html">
+   Releases
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../FAQ.html">
+   FAQ
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../about/index.html">
+   About
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../about/comparisons.html">
+     Comparisons
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class="sidebar-end-items">
+</div>
+</div>
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+<div class="toc-item">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+<i class="fas fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#parameters-and-widgets">
+   Parameters and widgets
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#custom-widgets">
+     Custom widgets
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#custom-name">
+     Custom name
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#sort">
+     Sort
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#parameter-dependencies">
+   Parameter dependencies
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#parameter-subobjects">
+     Parameter subobjects
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div class="toc-item">
+</div>
+</div>
+<div class="bd-content col-12 col-md-10 col-xl-8" role="main">
+<article class="bd-article" role="main">
+<section class="tex2jax_ignore mathjax_ignore" id="using-param-with-panel">
+<h1>Using Param with Panel<a class="headerlink" href="#using-param-with-panel" title="Permalink to this heading">#</a></h1>
+<p>Panel supports using parameters and dependencies between parameters as expressed by <code class="docutils literal notranslate"><span class="pre">param</span></code> in a simple way to encapsulate dashboards as declarative, self-contained classes.</p>
+<p>Parameters are Python attributes extended using the <a class="reference external" href="https://github.com/holoviz/param">Param library</a> to support types, ranges, and documentation, which turns out to be just the information you need to automatically create widgets for each parameter.</p>
+<p>Additionally Panel provides support for linking parameters to the URL query string to allow parameterizing an app very easily.</p>
+<section id="parameters-and-widgets">
+<h2>Parameters and widgets<a class="headerlink" href="#parameters-and-widgets" title="Permalink to this heading">#</a></h2>
+<p>To use this approach, first declare some Parameterized classes with various Parameters:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">param</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+
+<span class="k">class</span> <span class="nc">BaseClass</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+    <span class="n">x</span>                       <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">3.14</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"X position"</span><span class="p">)</span>
+    <span class="n">y</span>                       <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">"Not editable"</span><span class="p">,</span> <span class="n">constant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">string_value</span>            <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">"str"</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"A string"</span><span class="p">)</span>
+    <span class="n">num_int</span>                 <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100000</span><span class="p">))</span>
+    <span class="n">unbounded_int</span>           <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
+    <span class="n">float_with_hard_bounds</span>  <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="mf">8.2</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">float_with_soft_bounds</span>  <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">softbounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">unbounded_float</span>         <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="mf">30.01</span><span class="p">,</span> <span class="n">precedence</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">hidden_parameter</span>        <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="mf">2.718</span><span class="p">,</span> <span class="n">precedence</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">integer_range</span>           <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">float_range</span>             <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.57</span><span class="p">),</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.145</span><span class="p">))</span>
+    <span class="n">dictionary</span>              <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Dict</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">:</span> <span class="mi">9</span><span class="p">})</span>
+
+
+<span class="k">class</span> <span class="nc">Example</span><span class="p">(</span><span class="n">BaseClass</span><span class="p">):</span>
+    <span class="sd">"""An example Parameterized class"""</span>
+    <span class="n">timestamps</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">boolean</span>                 <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">"A sample Boolean parameter"</span><span class="p">)</span>
+    <span class="n">color</span>                   <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">'#FFFFFF'</span><span class="p">)</span>
+    <span class="n">date</span>                    <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                                         <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+    <span class="n">dataframe</span>               <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">_testing</span><span class="o">.</span><span class="n">makeDataFrame</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">select_string</span>           <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ObjectSelector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">"yellow"</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"yellow"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">])</span>
+    <span class="n">select_fn</span>               <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ObjectSelector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span><span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="nb">set</span><span class="p">,</span> <span class="nb">dict</span><span class="p">])</span>
+    <span class="n">int_list</span>                <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ListSelector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">precedence</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">single_file</span>             <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">FileSelector</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">'../../*/*.py*'</span><span class="p">,</span> <span class="n">precedence</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">multiple_files</span>          <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">MultiFileSelector</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">'../../*/*.py?'</span><span class="p">,</span> <span class="n">precedence</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">record_timestamp</span>        <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Action</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">timestamps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()),</span>
+                                           <span class="n">doc</span><span class="o">=</span><span class="s2">"""Record timestamp."""</span><span class="p">,</span> <span class="n">precedence</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">Example</span><span class="o">.</span><span class="n">num_int</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell0-py"></pre><pre class="pyodide-stderr" id="stderr-codecell0-py"></pre><div class="pyodide-output embedded" id="output-codecell0-py"><pre>50000</pre></div>
+<p>As you can see, declaring Parameters depends only on the separate Param library.  Parameters are a simple idea with some properties that are crucial for helping you create clean, usable code:</p>
+<ul class="simple">
+<li><p>The Param library is pure Python with no dependencies, which makes it easy to include in any code without tying it to a particular GUI or widgets library, or even to the Jupyter notebook.</p></li>
+<li><p>Parameter declarations focus on semantic information relevant to your domain, allowing you to avoid polluting your domain-specific code with anything that ties it to a particular way of displaying or interacting with it.</p></li>
+<li><p>Parameters can be defined wherever they make sense in your inheritance hierarchy, allowing you to document, type, and range-limit them <em>once</em>, with all of those properties inherited by any base class.  E.g. parameters work the same here whether they were declared in <code class="docutils literal notranslate"><span class="pre">BaseClass</span></code> or <code class="docutils literal notranslate"><span class="pre">Example</span></code>, which makes it easy to provide this metadata once, and avoiding duplicating it throughout the code wherever ranges or types need checking or documentation needs to be stored.</p></li>
+</ul>
+<p>If you then decide to use these Parameterized classes in a notebook or web-server environment, you can <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">panel</span></code> and easily display and edit the parameter values as an optional additional step:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">panel</span> <span class="k">as</span> <span class="nn">pn</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">extension</span><span class="p">()</span>
+
+<span class="n">base</span> <span class="o">=</span> <span class="n">BaseClass</span><span class="p">()</span>
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">Example</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">base</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell1-py"></pre><pre class="pyodide-stderr" id="stderr-codecell1-py"></pre><div class="pyodide-output embedded" id="output-codecell1-py"></div>
+<script>
+              async function embed_bokeh_2 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell1-py", "root_id": "1002", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {}, "id": "1023", "type": "CellEditor"}, {"attributes": {"margin": [5, 10, 5, 10], "title": "Date", "value": "2017-01-01 00:00:00"}, "id": "1018", "type": "TextInput"}, {"attributes": {"margin": [5, 10, 5, 10], "title": "Dictionary", "value": "{'a': 2, 'b': 9}"}, "id": "1090", "type": "TextInput"}, {"attributes": {"end": 2, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "Float with soft bounds", "value": 0.5}, "id": "1012", "type": "Slider"}, {"attributes": {"end": 10, "margin": [5, 10, 5, 10], "start": 7.5, "step": 0.1, "title": "Float with hard bounds", "value": 8.2}, "id": "1011", "type": "Slider"}, {"attributes": {"margin": [5, 10, 5, 10], "options": ["1", "3", "5", "7", "9"], "title": "Int list", "value": ["3", "5"]}, "id": "1051", "type": "MultiSelect"}, {"attributes": {"end": 3.145, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "Float range", "value": [0, 1.57]}, "id": "1014", "type": "RangeSlider"}, {"attributes": {"end": 10, "margin": [5, 10, 5, 10], "start": 0, "title": "Integer range", "value": [3, 7]}, "id": "1013", "type": "RangeSlider"}, {"attributes": {"margin": [5, 10, 5, 10], "max_length": 5000, "title": "String value", "value": "str"}, "id": "1008", "type": "TextInput"}, {"attributes": {"margin": [5, 10, 5, 10], "placeholder": "0", "step": 0.1, "title": "Unbounded float", "value": 30.01, "value_throttled": 30.01}, "id": "1005", "type": "Spinner"}, {"attributes": {"margin": [5, 10, 5, 10], "mode": "int", "placeholder": "0", "title": "Unbounded int", "value": 23, "value_throttled": 23}, "id": "1010", "type": "Spinner"}, {"attributes": {"margin": [5, 10, 5, 10], "title": "X", "value": "3.14"}, "id": "1006", "type": "TextInput"}, {"attributes": {"color": "#ffffff", "margin": [5, 10, 5, 10], "title": "Color"}, "id": "1017", "type": "ColorPicker"}, {"attributes": {"children": [{"id": "1004"}, {"id": "1005"}, {"id": "1006"}, {"id": "1007"}, {"id": "1008"}, {"id": "1009"}, {"id": "1010"}, {"id": "1011"}, {"id": "1012"}, {"id": "1013"}, {"id": "1014"}, {"id": "1015"}, {"id": "1016"}, {"id": "1017"}, {"id": "1018"}, {"id": "1047"}, {"id": "1049"}, {"id": "1050"}, {"id": "1051"}, {"id": "1052"}, {"id": "1053"}, {"id": "1077"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "Example", "width": 300}, "id": "1003", "type": "Column"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["<class 'list'>", "list"], ["<class 'set'>", "set"], ["<class 'dict'>", "dict"]], "title": "Select fn", "value": "<class 'list'>"}, "id": "1050", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"name": "location", "reload": false}, "id": "1097", "type": "panel.models.location.Location"}, {"attributes": {"data": {"A": {"__ndarray__": "aiJ1iJt+lr/rSu8xPbLVP5iqG3vnu9m/", "dtype": "float64", "order": "little", "shape": [3]}, "B": {"__ndarray__": "CqN/Em5x6D+TdmB09S/9P8Y1V8rQqtm/", "dtype": "float64", "order": "little", "shape": [3]}, "C": {"__ndarray__": "00VVmt7j4T9BLiVDDLXrP0v2M1+q5/w/", "dtype": "float64", "order": "little", "shape": [3]}, "D": {"__ndarray__": "iEOUx8PU5T+GnkboiRXxP2hjO5XRaOi/", "dtype": "float64", "order": "little", "shape": [3]}, "index": ["aek00LXJsy", "YlmNuEgz1D", "ecyLBRWBwr"]}, "selected": {"id": "1020"}, "selection_policy": {"id": "1091"}}, "id": "1019", "type": "ColumnDataSource"}, {"attributes": {"children": [{"id": "1055"}, {"id": "1056"}, {"id": "1057"}, {"id": "1058"}, {"id": "1059"}, {"id": "1060"}], "margin": [0, 0, 0, 0], "name": "Row04946", "width_policy": "max"}, "id": "1054", "type": "Row"}, {"attributes": {"end": 2, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "Float with soft bounds", "value": 0.5}, "id": "1087", "type": "Slider"}, {"attributes": {"margin": [5, 10, 5, 10], "title": "Dictionary", "value": "{'a': 2, 'b': 9}"}, "id": "1015", "type": "TextInput"}, {"attributes": {"disabled": true, "icon": null, "label": "\u25c0", "margin": [5, 10, 0, 0], "min_width": 25, "subscribed_events": ["button_click"], "width": 25}, "id": "1055", "type": "Button"}, {"attributes": {"icon": null, "label": "Record timestamp", "margin": [5, 10, 5, 10], "subscribed_events": ["button_click"]}, "id": "1077", "type": "Button"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["../../panel/dodo.py", "panel/dodo.py"], ["../../panel/setup.py", "panel/setup.py"]], "title": "Single file", "value": "../../panel/dodo.py"}, "id": "1052", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {}, "id": "1091", "type": "UnionRenderers"}, {"attributes": {"disabled": true, "icon": null, "label": "\u25b6", "margin": [5, 10, 5, 10], "min_width": 25, "subscribed_events": ["button_click"], "width": 25}, "id": "1056", "type": "Button"}, {"attributes": {"children": [{"id": "1054"}, {"id": "1061"}, {"id": "1062"}], "margin": [5, 10, 20, 10], "name": "Column04924", "sizing_mode": "stretch_width"}, "id": "1053", "type": "Column"}, {"attributes": {"disabled": true, "icon": null, "label": "\u2b06", "margin": [5, 10, 5, 10], "min_width": 25, "subscribed_events": ["button_click"], "width": 25}, "id": "1057", "type": "Button"}, {"attributes": {"icon": null, "label": "<<", "margin": [5, 10, 5, 10], "min_width": 50, "subscribed_events": ["button_click"], "width": 50}, "id": "1071", "type": "Button"}, {"attributes": {"disabled": true, "icon": null, "label": "\u2b07", "margin": [5, 10, 0, 0], "min_width": 25, "subscribed_events": ["button_click"], "width": 25}, "id": "1059", "type": "Button"}, {"attributes": {"margin": [5, 10, 5, 10], "max_length": 5000, "value": "/home/runner/work/panel/panel/doc", "width_policy": "max"}, "id": "1058", "type": "TextInput"}, {"attributes": {"end": 3.145, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "Float range", "value": [0, 1.57]}, "id": "1089", "type": "RangeSlider"}, {"attributes": {"icon": null, "label": "\u21bb", "margin": [5, 15, 0, 10], "min_width": 25, "subscribed_events": ["button_click"], "width": 25}, "id": "1060", "type": "Button"}, {"attributes": {"css_classes": ["markdown"], "margin": [0, 0, 0, 0], "name": "Markdown04950", "text": "&lt;h3&gt;File Browser&lt;/h3&gt;"}, "id": "1064", "type": "panel.models.markup.HTML"}, {"attributes": {"margin": [0, 0, 0, 0], "name": "Divider04947", "style": {"height": "100%", "width": "100%"}, "text": "<hr style=\"margin: 0px\">", "width_policy": "fit"}, "id": "1061", "type": "Div"}, {"attributes": {"children": [{"id": "1063"}, {"id": "1067"}, {"id": "1073"}], "margin": [0, 0, 0, 0], "name": "Row04926", "sizing_mode": "stretch_both", "width": 600}, "id": "1062", "type": "Row"}, {"attributes": {"margin": [5, 5, 5, 5], "name": "VSpacer04937", "sizing_mode": "stretch_height"}, "id": "1068", "type": "Spacer"}, {"attributes": {"children": [{"id": "1064"}, {"id": "1065"}, {"id": "1066"}], "margin": [0, 0, 0, 0], "name": "Column04934", "sizing_mode": "stretch_both"}, "id": "1063", "type": "Column"}, {"attributes": {"children": [{"id": "1070"}, {"id": "1071"}], "margin": [0, 5, 0, 5], "name": "Column04936"}, "id": "1069", "type": "Column"}, {"attributes": {"format": "0,0.0[00000]", "text_align": "right"}, "id": "1027", "type": "NumberFormatter"}, {"attributes": {"children": [{"id": "1068"}, {"id": "1069"}, {"id": "1072"}], "margin": [0, 0, 0, 0], "name": "Column04939"}, "id": "1067", "type": "Column"}, {"attributes": {}, "id": "1028", "type": "NumberEditor"}, {"attributes": {"editor": {"id": "1028"}, "field": "A", "formatter": {"id": "1027"}, "title": "A", "width": 0}, "id": "1029", "type": "TableColumn"}, {"attributes": {"margin": [0, 0, 10, 0], "max_length": 5000, "placeholder": "Filter available options", "width_policy": "max"}, "id": "1065", "type": "TextInput"}, {"attributes": {"columns": [{"id": "1024"}, {"id": "1029"}, {"id": "1034"}, {"id": "1039"}, {"id": "1044"}], "configuration": {"columns": [{"field": "index"}, {"field": "A"}, {"field": "B"}, {"field": "C"}, {"field": "D"}], "dataTree": false, "selectable": true}, "indexes": ["index"], "layout": "fit_data_table", "margin": [5, 10, 5, 10], "name": "Dataframe", "page": 1, "page_size": 20, "select_mode": true, "selectable_rows": null, "source": {"id": "1019"}, "styles": {"data": {}, "id": "728c15868bce4ef0a580cd8cb318348d"}, "subscribed_events": ["cell-click", "table-edit"], "theme_url": "static/extensions/panel/bundled/datatabulator/tabulator-tables@5.3.2/dist/css/"}, "id": "1047", "type": "panel.models.tabulator.DataTabulator"}, {"attributes": {"format": "0,0.0[00000]", "text_align": "right"}, "id": "1032", "type": "NumberFormatter"}, {"attributes": {}, "id": "1033", "type": "NumberEditor"}, {"attributes": {"indices": []}, "id": "1020", "type": "Selection"}, {"attributes": {"margin": [0, 0, 10, 0], "max_length": 5000, "placeholder": "Filter selected options", "width_policy": "max"}, "id": "1075", "type": "TextInput"}, {"attributes": {"disabled": true, "margin": [0, 0, 0, 0], "max_length": 5000, "placeholder": "To select an item highlight it on the left and use the arrow button to move it to the right.", "sizing_mode": "stretch_both"}, "id": "1076", "type": "TextAreaInput"}, {"attributes": {"active": [0], "labels": ["Boolean"], "margin": [5, 10, 5, 10]}, "id": "1016", "type": "CheckboxGroup"}, {"attributes": {"editor": {"id": "1033"}, "field": "B", "formatter": {"id": "1032"}, "title": "B", "width": 0}, "id": "1034", "type": "TableColumn"}, {"attributes": {"children": [{"id": "1079"}, {"id": "1080"}, {"id": "1081"}, {"id": "1082"}, {"id": "1083"}, {"id": "1084"}, {"id": "1085"}, {"id": "1086"}, {"id": "1087"}, {"id": "1088"}, {"id": "1089"}, {"id": "1090"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "BaseClass", "width": 300}, "id": "1078", "type": "Column"}, {"attributes": {"disabled": true, "margin": [5, 10, 5, 10], "title": "Y", "value": "'Not editable'"}, "id": "1007", "type": "TextInput"}, {"attributes": {"margin": [0, 0, 0, 0], "options": ["\ud83d\udcc1_static", "\ud83d\udcc1_templates", "\ud83d\udcc1about", "\ud83d\udcc1api", "\ud83d\udcc1developer_guide", "\ud83d\udcc1gallery", "\ud83d\udcc1getting_started", "\ud83d\udcc1json_cb72e4a4cbac4fbf8456a19bf1fedeff", "\ud83d\udcc1reference", "\ud83d\udcc1user_guide", "FAQ.rst", "conf.py", "generate_modules.py", "homepage.ipynb", "homepage.rst", "index.md", "releases.md"], "size": 10, "sizing_mode": "stretch_both"}, "id": "1066", "type": "MultiSelect"}, {"attributes": {"editor": {"id": "1023"}, "field": "index", "formatter": {"id": "1021"}, "title": "index", "width": 0}, "id": "1024", "type": "TableColumn"}, {"attributes": {"format": "0,0.0[00000]", "text_align": "right"}, "id": "1037", "type": "NumberFormatter"}, {"attributes": {}, "id": "1038", "type": "NumberEditor"}, {"attributes": {"end": 10, "margin": [5, 10, 5, 10], "start": 0, "title": "Integer range", "value": [3, 7]}, "id": "1088", "type": "RangeSlider"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>BaseClass</b>"}, "id": "1079", "type": "Div"}, {"attributes": {"disabled": true, "margin": [5, 10, 5, 10], "title": "Y", "value": "'Not editable'"}, "id": "1082", "type": "TextInput"}, {"attributes": {"editor": {"id": "1038"}, "field": "C", "formatter": {"id": "1037"}, "title": "C", "width": 0}, "id": "1039", "type": "TableColumn"}, {"attributes": {"margin": [5, 5, 5, 5], "name": "VSpacer04938", "sizing_mode": "stretch_height"}, "id": "1072", "type": "Spacer"}, {"attributes": {"end": 100000, "margin": [5, 10, 5, 10], "start": -200, "title": "Num int", "value": 50000}, "id": "1084", "type": "Slider"}, {"attributes": {"children": [{"id": "1003"}, {"id": "1078"}], "margin": [0, 0, 0, 0], "name": "Row04983"}, "id": "1002", "type": "Row"}, {"attributes": {"children": [{"id": "1074"}, {"id": "1075"}, {"id": "1076"}], "margin": [0, 0, 0, 0], "name": "Column04935", "sizing_mode": "stretch_both"}, "id": "1073", "type": "Column"}, {"attributes": {"margin": [5, 10, 5, 10], "placeholder": "0", "step": 0.1, "title": "Unbounded float", "value": 30.01, "value_throttled": 30.01}, "id": "1080", "type": "Spinner"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>Example</b>"}, "id": "1004", "type": "Div"}, {"attributes": {"margin": [5, 10, 5, 10], "title": "X", "value": "3.14"}, "id": "1081", "type": "TextInput"}, {"attributes": {"format": "0,0.0[00000]", "text_align": "right"}, "id": "1042", "type": "NumberFormatter"}, {"attributes": {"css_classes": ["markdown"], "margin": [0, 0, 0, 0], "name": "Markdown04948", "text": "&lt;h3&gt;Selected files&lt;/h3&gt;"}, "id": "1074", "type": "panel.models.markup.HTML"}, {"attributes": {"margin": [5, 10, 5, 10], "max_length": 5000, "title": "String value", "value": "str"}, "id": "1083", "type": "TextInput"}, {"attributes": {}, "id": "1043", "type": "NumberEditor"}, {"attributes": {"icon": null, "label": ">>", "margin": [5, 10, 5, 10], "min_width": 50, "subscribed_events": ["button_click"], "width": 50}, "id": "1070", "type": "Button"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["red", "red"], ["yellow", "yellow"], ["green", "green"]], "title": "Select string", "value": "yellow"}, "id": "1049", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"end": 10, "margin": [5, 10, 5, 10], "start": 7.5, "step": 0.1, "title": "Float with hard bounds", "value": 8.2}, "id": "1086", "type": "Slider"}, {"attributes": {}, "id": "1021", "type": "StringFormatter"}, {"attributes": {"margin": [5, 10, 5, 10], "mode": "int", "placeholder": "0", "title": "Unbounded int", "value": 23, "value_throttled": 23}, "id": "1085", "type": "Spinner"}, {"attributes": {"editor": {"id": "1043"}, "field": "D", "formatter": {"id": "1042"}, "title": "D", "width": 0}, "id": "1044", "type": "TableColumn"}, {"attributes": {"end": 100000, "margin": [5, 10, 5, 10], "start": -200, "title": "Num int", "value": 50000}, "id": "1009", "type": "Slider"}], "root_ids": ["1002", "1097"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_2, 200)
+                }
+              };
+              embed_bokeh_2()
+            </script>
+<p>As you can see, Panel does not need to be provided with any knowledge of your domain-specific application, not even the names of your parameters; it simply displays widgets for whatever Parameters may have been defined on that object.  Using Param with Panel thus achieves a nearly complete separation between your domain-specific code and your display code, making it vastly easier to maintain both of them over time.  Here even the <code class="docutils literal notranslate"><span class="pre">msg</span></code> button behavior was specified declaratively, as an action that can be invoked (printing “Hello”) independently of whether it is used in a GUI or other context.</p>
+<p>Interacting with the widgets above is only supported in the notebook and on Bokeh server, but you can also export static renderings of the widgets to a file or web page.</p>
+<p>By default, editing values in this way requires you to run the notebook cell by cell – when you get to the above cell, edit the values as you like, and then move on to execute subsequent cells, where any reference to those parameter values will use your interactively selected setting:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Example</span><span class="o">.</span><span class="n">unbounded_int</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell2-py"></pre><pre class="pyodide-stderr" id="stderr-codecell2-py"></pre><div class="pyodide-output embedded" id="output-codecell2-py"><pre>23</pre></div>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Example</span><span class="o">.</span><span class="n">num_int</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell3-py"></pre><pre class="pyodide-stderr" id="stderr-codecell3-py"></pre><div class="pyodide-output embedded" id="output-codecell3-py"><pre>50000</pre></div>
+<p>The reverse is possible; editing a parameter from Python will automatically update any widgets that were generated from the parameter:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Example</span><span class="o">.</span><span class="n">int_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell4-py"></pre><pre class="pyodide-stderr" id="stderr-codecell4-py"></pre><p>Example.timestamps records the times you pressed the “record timestamp” button.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Example</span><span class="o">.</span><span class="n">timestamps</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell5-py"></pre><pre class="pyodide-stderr" id="stderr-codecell5-py"></pre><div class="pyodide-output embedded" id="output-codecell5-py"><pre>[]</pre></div>
+<p>Passing the <code class="docutils literal notranslate"><span class="pre">.param</span></code> object renders the full set of widgets, while passing a single parameter will display just one widget. In this way we can easily declare exactly which parameters to display:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">Example</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">float_range</span><span class="p">,</span> <span class="n">Example</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">num_int</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell6-py"></pre><pre class="pyodide-stderr" id="stderr-codecell6-py"></pre><div class="pyodide-output embedded" id="output-codecell6-py"></div>
+<script>
+              async function embed_bokeh_7 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell6-py", "root_id": "1104", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"children": [{"id": "1105"}, {"id": "1106"}], "margin": [0, 0, 0, 0], "name": "Row04995"}, "id": "1104", "type": "Row"}, {"attributes": {"end": 100000, "margin": [5, 10, 5, 10], "start": -200, "title": "Num int", "value": 50000}, "id": "1106", "type": "Slider"}, {"attributes": {"name": "location", "reload": false}, "id": "1107", "type": "panel.models.location.Location"}, {"attributes": {"end": 3.145, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "Float range", "value": [0, 1.57]}, "id": "1105", "type": "RangeSlider"}], "root_ids": ["1104", "1107"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_7, 200)
+                }
+              };
+              embed_bokeh_7()
+            </script>
+<p>As you can see, you can access the parameter values at the class level from within the notebook to control behavior explicitly, e.g. to select what to show in subsequent cells.  Moreover, any instances of the Parameterized classes in your own code will now use the new parameter values unless specifically overridden in that instance, so you can now import and use your domain-specific library however you like, knowing that it will use your interactive selections wherever those classes appear.  None of the domain-specific code needs to know or care that you used Panel; it will simply see new values for whatever attributes were changed interactively.  Panel thus allows you to provide notebook-specific, domain-specific interactive functionality without ever tying your domain-specific code to the notebook environment. This default behavior can also be modified if you wish, as outlined below.</p>
+<section id="custom-widgets">
+<h3>Custom widgets<a class="headerlink" href="#custom-widgets" title="Permalink to this heading">#</a></h3>
+<p>In the previous section we saw how parameters can automatically be turned into widgets. This is possible because internally Panel maintains a mapping between parameter types and widget types. However, sometimes the default widget does not provide the most convenient UI and we want to provide an explicit hint to Panel to tell it how to render a parameter. This is possible using the <code class="docutils literal notranslate"><span class="pre">widgets</span></code> argument to the <code class="docutils literal notranslate"><span class="pre">Param</span></code> pane. Using the <code class="docutils literal notranslate"><span class="pre">widgets</span></code> keyword we can declare a mapping between the parameter name and the type of widget that is desired (as long as the widget type supports the types of values held by the parameter type).</p>
+<p>As an example, we can map a string and a number Selector to a RadioButtonGroup and DiscretePlayer respectively.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomExample</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+    <span class="sd">"""An example Parameterized class"""</span>
+
+    <span class="n">select_string</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Selector</span><span class="p">(</span><span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"yellow"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">])</span>
+    <span class="n">autocomplete_string</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Selector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"yellow"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">],</span> <span class="n">check_on_set</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">select_number</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Selector</span><span class="p">(</span><span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">CustomExample</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">widgets</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">'select_string'</span><span class="p">:</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtonGroup</span><span class="p">,</span>
+    <span class="s1">'autocomplete_string'</span><span class="p">:</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">AutocompleteInput</span><span class="p">,</span>
+    <span class="s1">'select_number'</span><span class="p">:</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">DiscretePlayer</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell7-py"></pre><pre class="pyodide-stderr" id="stderr-codecell7-py"></pre><div class="pyodide-output embedded" id="output-codecell7-py"></div>
+<script>
+              async function embed_bokeh_8 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell7-py", "root_id": "1108", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"active": 0, "labels": ["red", "yellow", "green"], "margin": [5, 10, 5, 10]}, "id": "1110", "type": "RadioButtonGroup"}, {"attributes": {"children": [{"id": "1109"}, {"id": "1110"}, {"id": "1111"}, {"id": "1112"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "CustomExample", "width": 300}, "id": "1108", "type": "Column"}, {"attributes": {"end": 3, "height": 80, "margin": [5, 10, 5, 10], "min_height": 80, "min_width": 510, "width": 510}, "id": "1112", "type": "panel.models.widgets.Player"}, {"attributes": {"completions": ["red", "yellow", "green"], "margin": [5, 10, 5, 10], "title": "Autocomplete string"}, "id": "1111", "type": "AutocompleteInput"}, {"attributes": {"name": "location", "reload": false}, "id": "1113", "type": "panel.models.location.Location"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>CustomExample</b>"}, "id": "1109", "type": "Div"}], "root_ids": ["1108", "1113"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_8, 200)
+                }
+              };
+              embed_bokeh_8()
+            </script>
+<p>Also, it’s possible to pass arguments to the widget in order to customize it. Instead of passing the widget, pass a dictionary with the desired options. Use the <code class="docutils literal notranslate"><span class="pre">widget_type</span></code> keyword to map the widget.</p>
+<p>Taking up the previous example.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">CustomExample</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">widgets</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">'select_string'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'widget_type'</span><span class="p">:</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtonGroup</span><span class="p">,</span> <span class="s1">'button_type'</span><span class="p">:</span> <span class="s1">'success'</span><span class="p">},</span>
+    <span class="s1">'autocomplete_string'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'widget_type'</span><span class="p">:</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">AutocompleteInput</span><span class="p">,</span> <span class="s1">'placeholder'</span><span class="p">:</span> <span class="s1">'Find a color...'</span><span class="p">},</span>
+    <span class="s1">'select_number'</span><span class="p">:</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">DiscretePlayer</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell8-py"></pre><pre class="pyodide-stderr" id="stderr-codecell8-py"></pre><div class="pyodide-output embedded" id="output-codecell8-py"></div>
+<script>
+              async function embed_bokeh_9 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell8-py", "root_id": "1114", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>CustomExample</b>"}, "id": "1115", "type": "Div"}, {"attributes": {"name": "location", "reload": false}, "id": "1119", "type": "panel.models.location.Location"}, {"attributes": {"active": 0, "button_type": "success", "labels": ["red", "yellow", "green"], "margin": [5, 10, 5, 10]}, "id": "1116", "type": "RadioButtonGroup"}, {"attributes": {"children": [{"id": "1115"}, {"id": "1116"}, {"id": "1117"}, {"id": "1118"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "CustomExample", "width": 300}, "id": "1114", "type": "Column"}, {"attributes": {"end": 3, "height": 80, "margin": [5, 10, 5, 10], "min_height": 80, "min_width": 510, "width": 510}, "id": "1118", "type": "panel.models.widgets.Player"}, {"attributes": {"completions": ["red", "yellow", "green"], "margin": [5, 10, 5, 10], "placeholder": "Find a color...", "title": "Autocomplete string"}, "id": "1117", "type": "AutocompleteInput"}], "root_ids": ["1114", "1119"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_9, 200)
+                }
+              };
+              embed_bokeh_9()
+            </script>
+<p>However it is also possible to explicitly construct a widget from a parameter using the <code class="docutils literal notranslate"><span class="pre">.from_param</span></code> method, which makes it easy to override widget settings using keyword arguments:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="o">.</span><span class="n">from_param</span><span class="p">(</span><span class="n">Example</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">unbounded_int</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell9-py"></pre><pre class="pyodide-stderr" id="stderr-codecell9-py"></pre><div class="pyodide-output embedded" id="output-codecell9-py"></div>
+<script>
+              async function embed_bokeh_10 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell9-py", "root_id": "1120", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"end": 100, "margin": [5, 10, 5, 10], "start": 0, "title": "Unbounded int", "value": 23}, "id": "1120", "type": "Slider"}, {"attributes": {"name": "location", "reload": false}, "id": "1121", "type": "panel.models.location.Location"}], "root_ids": ["1120", "1121"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_10, 200)
+                }
+              };
+              embed_bokeh_10()
+            </script>
+</section>
+<section id="custom-name">
+<h3>Custom name<a class="headerlink" href="#custom-name" title="Permalink to this heading">#</a></h3>
+<p>By default, a param Pane has a title that is derived from the class name of its <code class="docutils literal notranslate"><span class="pre">Parameterized</span></code> object. Using the <code class="docutils literal notranslate"><span class="pre">name</span></code> keyword we can set any title to the pane, e.g. to improve the user interface.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">CustomExample</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Custom Name"</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell10-py"></pre><pre class="pyodide-stderr" id="stderr-codecell10-py"></pre><div class="pyodide-output embedded" id="output-codecell10-py"></div>
+<script>
+              async function embed_bokeh_11 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell10-py", "root_id": "1122", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"margin": [5, 10, 5, 10], "options": [["red", "red"], ["yellow", "yellow"], ["green", "green"]], "title": "Select string", "value": "red"}, "id": "1124", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"children": [{"id": "1123"}, {"id": "1124"}, {"id": "1125"}, {"id": "1126"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "Custom Name", "width": 300}, "id": "1122", "type": "Column"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["0", "0"], ["1", "1"], ["10", "10"], ["100", "100"]], "title": "Select number", "value": "0"}, "id": "1126", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"name": "location", "reload": false}, "id": "1127", "type": "panel.models.location.Location"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>Custom Name</b>"}, "id": "1123", "type": "Div"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["red", "red"], ["yellow", "yellow"], ["green", "green"]], "title": "Autocomplete string"}, "id": "1125", "type": "panel.models.widgets.CustomSelect"}], "root_ids": ["1122", "1127"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_11, 200)
+                }
+              };
+              embed_bokeh_11()
+            </script>
+</section>
+<section id="sort">
+<h3>Sort<a class="headerlink" href="#sort" title="Permalink to this heading">#</a></h3>
+<p>You can sort the widgets alphabetically by setting <code class="docutils literal notranslate"><span class="pre">sort=True</span></code></p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">CustomExample</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Sort by Label Example"</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell11-py"></pre><pre class="pyodide-stderr" id="stderr-codecell11-py"></pre><div class="pyodide-output embedded" id="output-codecell11-py"></div>
+<script>
+              async function embed_bokeh_12 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell11-py", "root_id": "1128", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"margin": [5, 10, 5, 10], "options": [["0", "0"], ["1", "1"], ["10", "10"], ["100", "100"]], "title": "Select number", "value": "0"}, "id": "1131", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["red", "red"], ["yellow", "yellow"], ["green", "green"]], "title": "Select string", "value": "red"}, "id": "1132", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>Sort by Label Example</b>"}, "id": "1129", "type": "Div"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["red", "red"], ["yellow", "yellow"], ["green", "green"]], "title": "Autocomplete string", "value": "red"}, "id": "1130", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"name": "location", "reload": false}, "id": "1133", "type": "panel.models.location.Location"}, {"attributes": {"children": [{"id": "1129"}, {"id": "1130"}, {"id": "1131"}, {"id": "1132"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "Sort by Label Example", "width": 300}, "id": "1128", "type": "Column"}], "root_ids": ["1128", "1133"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_12, 200)
+                }
+              };
+              embed_bokeh_12()
+            </script>
+<p>You can also specify a custom sort function that takes the (parameter name, Parameter instance) as input.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sort_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+<span class="n">pn</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">CustomExample</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort_func</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Sort by Label Length Example"</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell12-py"></pre><pre class="pyodide-stderr" id="stderr-codecell12-py"></pre><div class="pyodide-output embedded" id="output-codecell12-py"></div>
+<script>
+              async function embed_bokeh_13 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell12-py", "root_id": "1134", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"margin": [5, 10, 5, 10], "options": [["red", "red"], ["yellow", "yellow"], ["green", "green"]], "title": "Select string", "value": "red"}, "id": "1136", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["red", "red"], ["yellow", "yellow"], ["green", "green"]], "title": "Autocomplete string", "value": "red"}, "id": "1138", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"children": [{"id": "1135"}, {"id": "1136"}, {"id": "1137"}, {"id": "1138"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "Sort by Label Length Example", "width": 300}, "id": "1134", "type": "Column"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["0", "0"], ["1", "1"], ["10", "10"], ["100", "100"]], "title": "Select number", "value": "0"}, "id": "1137", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"name": "location", "reload": false}, "id": "1139", "type": "panel.models.location.Location"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>Sort by Label Length Example</b>"}, "id": "1135", "type": "Div"}], "root_ids": ["1134", "1139"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_13, 200)
+                }
+              };
+              embed_bokeh_13()
+            </script>
+</section>
+</section>
+<section id="parameter-dependencies">
+<h2>Parameter dependencies<a class="headerlink" href="#parameter-dependencies" title="Permalink to this heading">#</a></h2>
+<p>Declaring parameters is usually only the beginning of a workflow. In most applications these parameters are then tied to some computation. To express the relationship between a computation and the parameters it depends on, the <code class="docutils literal notranslate"><span class="pre">param.depends</span></code> decorator may be used on Parameterized methods. This decorator provides a hint to Panel and other Param-based libraries (e.g. HoloViews) that the method should be re-evaluated when a parameter changes.</p>
+<p>As a straightforward example without any additional dependencies we will write a small class that returns an ASCII representation of a sine wave, which depends on <code class="docutils literal notranslate"><span class="pre">phase</span></code> and <code class="docutils literal notranslate"><span class="pre">frequency</span></code> parameters. If we supply the <code class="docutils literal notranslate"><span class="pre">.view</span></code> method to a panel, it will automatically recompute and update the view when one or more of the parameters changes:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="k">class</span> <span class="nc">Sine</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+
+    <span class="n">phase</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+
+    <span class="n">frequency</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="s1">'phase'</span><span class="p">,</span> <span class="s1">'frequency'</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">phase</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">ptp</span><span class="p">())</span> <span class="o">*</span> <span class="mi">20</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="p">[</span><span class="nb">list</span><span class="p">((</span><span class="s1">' '</span> <span class="o">*</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'*'</span><span class="p">)</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">y</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">Str</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">array</span><span class="o">.</span><span class="n">T</span><span class="p">]),</span> <span class="n">height</span><span class="o">=</span><span class="mi">380</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+
+<span class="n">sine</span> <span class="o">=</span> <span class="n">Sine</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'ASCII Sine Wave'</span><span class="p">)</span>
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">sine</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">sine</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell13-py"></pre><pre class="pyodide-stderr" id="stderr-codecell13-py"></pre><div class="pyodide-output embedded" id="output-codecell13-py"></div>
+<script>
+              async function embed_bokeh_14 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell13-py", "root_id": "1140", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"name": "location", "reload": false}, "id": "1147", "type": "panel.models.location.Location"}, {"attributes": {"end": 2, "margin": [5, 10, 5, 10], "start": 0.1, "step": 0.1, "title": "Frequency", "value": 1}, "id": "1144", "type": "Slider"}, {"attributes": {"children": [{"id": "1142"}, {"id": "1143"}, {"id": "1144"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "ASCII Sine Wave", "width": 300}, "id": "1141", "type": "Column"}, {"attributes": {"children": [{"id": "1146"}], "margin": [0, 0, 0, 0], "name": "Row05079"}, "id": "1145", "type": "Row"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>ASCII Sine Wave</b>"}, "id": "1142", "type": "Div"}, {"attributes": {"children": [{"id": "1141"}, {"id": "1145"}], "margin": [0, 0, 0, 0], "name": "Row05082"}, "id": "1140", "type": "Row"}, {"attributes": {"end": 3.141592653589793, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "Phase", "value": 0}, "id": "1143", "type": "Slider"}, {"attributes": {"height": 380, "margin": [5, 5, 5, 5], "name": "Str05077", "sizing_mode": "fixed", "text": "&lt;pre&gt;                  ****                  \n                 *    *                 \n                *      *                \n                                        \n               *        *               \n                                        \n                                        \n              *          *              \n                                        \n*            *            *            *\n                                        \n *          *              *          * \n                                        \n                                        \n  *        *                *        *  \n                                        \n   *      *                  *      *   \n    *    *                    *    *    \n     *  *                      *  *     \n      **                        **      &lt;/pre&gt;", "width": 500}, "id": "1146", "type": "panel.models.markup.HTML"}], "root_ids": ["1140", "1147"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_14, 200)
+                }
+              };
+              embed_bokeh_14()
+            </script>
+<p>The parameterized and annotated <code class="docutils literal notranslate"><span class="pre">view</span></code> method could return any one of the types handled by the <a class="reference external" href="./Components.md#Panes">Pane objects</a> Panel provides, making it easy to link parameters and their associated widgets to a plot or other output. Parameterized classes can therefore be a very useful pattern for encapsulating a part of a computational workflow with an associated visualization, declaratively expressing the dependencies between the parameters and the computation.</p>
+<p>By default, a Param pane will show widgets for all parameters with a <code class="docutils literal notranslate"><span class="pre">precedence</span></code> value above the value <code class="docutils literal notranslate"><span class="pre">pn.Param.display_threshold</span></code>, so you can use <code class="docutils literal notranslate"><span class="pre">precedence</span></code> to automatically hide parameters that are not meant to have widgets.  You can also explicitly choose which parameters should have widgets in a given pane, by passing a <code class="docutils literal notranslate"><span class="pre">parameters</span></code> argument.  For example, this code gives a <code class="docutils literal notranslate"><span class="pre">phase</span></code> widget, while maintaining <code class="docutils literal notranslate"><span class="pre">sine.frequency</span></code> at the initial value of <code class="docutils literal notranslate"><span class="pre">1</span></code>:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">pn</span><span class="o">.</span><span class="n">panel</span><span class="p">(</span><span class="n">sine</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">'phase'</span><span class="p">]),</span> <span class="n">sine</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell14-py"></pre><pre class="pyodide-stderr" id="stderr-codecell14-py"></pre><div class="pyodide-output embedded" id="output-codecell14-py"></div>
+<script>
+              async function embed_bokeh_15 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell14-py", "root_id": "1148", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"children": [{"id": "1150"}, {"id": "1151"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "ASCII Sine Wave", "width": 300}, "id": "1149", "type": "Column"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>ASCII Sine Wave</b>"}, "id": "1150", "type": "Div"}, {"attributes": {"end": 3.141592653589793, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "Phase", "value": 0}, "id": "1151", "type": "Slider"}, {"attributes": {"name": "location", "reload": false}, "id": "1154", "type": "panel.models.location.Location"}, {"attributes": {"children": [{"id": "1149"}, {"id": "1152"}], "margin": [0, 0, 0, 0], "name": "Row05097"}, "id": "1148", "type": "Row"}, {"attributes": {"height": 380, "margin": [5, 5, 5, 5], "name": "Str05092", "sizing_mode": "fixed", "text": "&lt;pre&gt;                  ****                  \n                 *    *                 \n                *      *                \n                                        \n               *        *               \n                                        \n                                        \n              *          *              \n                                        \n*            *            *            *\n                                        \n *          *              *          * \n                                        \n                                        \n  *        *                *        *  \n                                        \n   *      *                  *      *   \n    *    *                    *    *    \n     *  *                      *  *     \n      **                        **      &lt;/pre&gt;", "width": 500}, "id": "1153", "type": "panel.models.markup.HTML"}, {"attributes": {"children": [{"id": "1153"}], "margin": [0, 0, 0, 0], "name": "Row05094"}, "id": "1152", "type": "Row"}], "root_ids": ["1148", "1154"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_15, 200)
+                }
+              };
+              embed_bokeh_15()
+            </script>
+<p>Another common pattern is linking the values of one parameter to another parameter, e.g. when dependencies between parameters exist. In the example below we will define two parameters, one for the continent and one for the country. Since we want the selection of valid countries to change when we change the continent, we define a method to do that for us. In order to link the two we express the dependency using the <code class="docutils literal notranslate"><span class="pre">param.depends</span></code> decorator and then ensure that we will run the method whenever the continent changes by setting <code class="docutils literal notranslate"><span class="pre">watch=True</span></code>.</p>
+<p>We also define a <code class="docutils literal notranslate"><span class="pre">view</span></code> method that returns an HTML iframe displaying the country using Google Maps.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GoogleMapViewer</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+
+    <span class="n">continent</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ObjectSelector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">'Asia'</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="s1">'Africa'</span><span class="p">,</span> <span class="s1">'Asia'</span><span class="p">,</span> <span class="s1">'Europe'</span><span class="p">])</span>
+
+    <span class="n">country</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ObjectSelector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">'China'</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="s1">'China'</span><span class="p">,</span> <span class="s1">'Thailand'</span><span class="p">,</span> <span class="s1">'Japan'</span><span class="p">])</span>
+
+    <span class="n">_countries</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Africa'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Ghana'</span><span class="p">,</span> <span class="s1">'Togo'</span><span class="p">,</span> <span class="s1">'South Africa'</span><span class="p">,</span> <span class="s1">'Tanzania'</span><span class="p">],</span>
+                  <span class="s1">'Asia'</span>  <span class="p">:</span> <span class="p">[</span><span class="s1">'China'</span><span class="p">,</span> <span class="s1">'Thailand'</span><span class="p">,</span> <span class="s1">'Japan'</span><span class="p">],</span>
+                  <span class="s1">'Europe'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Austria'</span><span class="p">,</span> <span class="s1">'Bulgaria'</span><span class="p">,</span> <span class="s1">'Greece'</span><span class="p">,</span> <span class="s1">'Portugal'</span><span class="p">,</span> <span class="s1">'Switzerland'</span><span class="p">]}</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="s1">'continent'</span><span class="p">,</span> <span class="n">watch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_update_countries</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">countries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_countries</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">continent</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">'country'</span><span class="p">]</span><span class="o">.</span><span class="n">objects</span> <span class="o">=</span> <span class="n">countries</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">country</span> <span class="o">=</span> <span class="n">countries</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="s1">'country'</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">iframe</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">        &lt;iframe width="800" height="400" src="https://maps.google.com/maps?q=</span><span class="si">{country}</span><span class="s2">&amp;z=6&amp;output=embed"</span>
+<span class="s2">        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"&gt;&lt;/iframe&gt;</span>
+<span class="s2">        """</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">country</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">country</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">iframe</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+
+<span class="n">viewer</span> <span class="o">=</span> <span class="n">GoogleMapViewer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Google Map Viewer'</span><span class="p">)</span>
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">viewer</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell15-py"></pre><pre class="pyodide-stderr" id="stderr-codecell15-py"></pre><div class="pyodide-output embedded" id="output-codecell15-py"></div>
+<script>
+              async function embed_bokeh_16 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell15-py", "root_id": "1155", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"children": [{"id": "1161"}], "margin": [0, 0, 0, 0], "name": "Row05112"}, "id": "1160", "type": "Row"}, {"attributes": {"children": [{"id": "1156"}, {"id": "1160"}], "margin": [0, 0, 0, 0], "name": "Row05117"}, "id": "1155", "type": "Row"}, {"attributes": {"name": "location", "reload": false}, "id": "1162", "type": "panel.models.location.Location"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["Africa", "Africa"], ["Asia", "Asia"], ["Europe", "Europe"]], "title": "Continent", "value": "Asia"}, "id": "1158", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>Google Map Viewer</b>"}, "id": "1157", "type": "Div"}, {"attributes": {"height": 400, "margin": [5, 5, 5, 5], "name": "HTML05113", "text": "\n        &lt;iframe width=&quot;800&quot; height=&quot;400&quot; src=&quot;https://maps.google.com/maps?q=China&amp;z=6&amp;output=embed&quot;\n        frameborder=&quot;0&quot; scrolling=&quot;no&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot;&gt;&lt;/iframe&gt;\n        "}, "id": "1161", "type": "panel.models.markup.HTML"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["China", "China"], ["Thailand", "Thailand"], ["Japan", "Japan"]], "title": "Country", "value": "China"}, "id": "1159", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"children": [{"id": "1157"}, {"id": "1158"}, {"id": "1159"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "Google Map Viewer", "width": 300}, "id": "1156", "type": "Column"}], "root_ids": ["1155", "1162"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_16, 200)
+                }
+              };
+              embed_bokeh_16()
+            </script>
+<p>Whenever the continent changes Param will now eagerly execute the <code class="docutils literal notranslate"><span class="pre">_update_countries</span></code> method to change the list of countries that is displayed, which in turn triggers an update in the view method updating the map. Note that there is no need to add <code class="docutils literal notranslate"><span class="pre">watch=True</span></code> to decorators of methods that are passed to a Panel layout (e.g. <code class="docutils literal notranslate"><span class="pre">viewer.View</span></code> being passed to <code class="docutils literal notranslate"><span class="pre">pn.Row</span></code> here), because Panel will already handle dependencies on those methods, executing the method automatically when the dependent parameters change. Indeed, if you specify <code class="docutils literal notranslate"><span class="pre">watch=True</span></code> for such a method, the method will get invoked <em>twice</em> each time a dependency changes (once by Param internally and once by Panel), so you should reserve <code class="docutils literal notranslate"><span class="pre">watch=True</span></code> only for methods that aren’t otherwise being monitored for dependencies.</p>
+<section id="parameter-subobjects">
+<h3>Parameter subobjects<a class="headerlink" href="#parameter-subobjects" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Parameterized</span></code> objects often have parameter values which are themselves <code class="docutils literal notranslate"><span class="pre">Parameterized</span></code> objects, forming a tree-like structure. Panel allows you to edit not just the main object’s parameters but also lets you drill down to the subobject. Let us first define some classes declaring a hierarchy of Shape classes which draw a Bokeh plot of the selected shape:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+
+<span class="k">class</span> <span class="nc">Shape</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+
+    <span class="n">radius</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Shape</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">y_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_coords</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">_get_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[],</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span>
+
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">precedence</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angles</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angles</span><span class="p">))</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="s1">'radius'</span><span class="p">,</span> <span class="n">watch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_coords</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">data_source</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'x'</span><span class="p">:</span> <span class="n">xs</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">:</span> <span class="n">ys</span><span class="p">})</span>
+
+
+<span class="k">class</span> <span class="nc">NGon</span><span class="p">(</span><span class="n">Circle</span><span class="p">):</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">precedence</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="s1">'radius'</span><span class="p">,</span> <span class="s1">'n'</span><span class="p">,</span> <span class="n">watch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_coords</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">data_source</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'x'</span><span class="p">:</span> <span class="n">xs</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">:</span> <span class="n">ys</span><span class="p">})</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell16-py"></pre><pre class="pyodide-stderr" id="stderr-codecell16-py"></pre><p>Now that we have multiple Shape classes we can make instances of them and declare a <code class="docutils literal notranslate"><span class="pre">ShapeViewer</span></code> to select between them. We can also declare two methods with parameter dependencies, updating the plot and the plot title. The important thing to note here is that the <code class="docutils literal notranslate"><span class="pre">param.depends</span></code> decorator can not only depend on parameters on the object itself but also on specific parameters on the subobject, e.g. <code class="docutils literal notranslate"><span class="pre">shape.radius</span></code>, or on all parameters of the subobject, expressed as <code class="docutils literal notranslate"><span class="pre">shape.param</span></code>.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">shapes</span> <span class="o">=</span> <span class="p">[</span><span class="n">NGon</span><span class="p">(),</span> <span class="n">Circle</span><span class="p">()]</span>
+
+<span class="k">class</span> <span class="nc">ShapeViewer</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">ObjectSelector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">shapes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">objects</span><span class="o">=</span><span class="n">shapes</span><span class="p">)</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="s1">'shape'</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="s1">'shape'</span><span class="p">,</span> <span class="s1">'shape.radius'</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">title</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">'## </span><span class="si">%s</span><span class="s1"> (radius=</span><span class="si">%.1f</span><span class="s1">)'</span> <span class="o">%</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">panel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell17-py"></pre><pre class="pyodide-stderr" id="stderr-codecell17-py"></pre><p>Now that we have a class with subobjects we can display it as usual.  Three main options control how the subobject is rendered:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">expand</span></code>: Whether the subobject is expanded on initialization (<code class="docutils literal notranslate"><span class="pre">default=False</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand_button</span></code>: Whether there should be a button to toggle expansion; otherwise it is fixed to the initial <code class="docutils literal notranslate"><span class="pre">expand</span></code> value (<code class="docutils literal notranslate"><span class="pre">default=True</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand_layout</span></code>: A layout type or instance to expand the plot into (<code class="docutils literal notranslate"><span class="pre">default=Column</span></code>).</p></li>
+</ul>
+<p>Let us start with the default view, which provides a toggle button to expand the subobject as desired:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">ShapeViewer</span><span class="p">()</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">viewer</span><span class="o">.</span><span class="n">panel</span><span class="p">())</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell18-py"></pre><pre class="pyodide-stderr" id="stderr-codecell18-py"></pre><div class="pyodide-output embedded" id="output-codecell18-py"></div>
+<script>
+              async function embed_bokeh_19 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell18-py", "root_id": "1237", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {}, "id": "1185", "type": "HelpTool"}, {"attributes": {"line_alpha": 0.1, "line_color": "#1f77b4", "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1196", "type": "Line"}, {"attributes": {}, "id": "1168", "type": "LinearScale"}, {"attributes": {"axis": {"id": "1172"}, "coordinates": null, "group": null, "ticker": null}, "id": "1175", "type": "Grid"}, {"attributes": {}, "id": "1173", "type": "BasicTicker"}, {"attributes": {"source": {"id": "1194"}}, "id": "1199", "type": "CDSView"}, {"attributes": {"start": -1}, "id": "1166", "type": "Range1d"}, {"attributes": {"tools": [{"id": "1180"}, {"id": "1181"}, {"id": "1182"}, {"id": "1183"}, {"id": "1184"}, {"id": "1185"}]}, "id": "1187", "type": "Toolbar"}, {"attributes": {"line_alpha": 0.2, "line_color": "#1f77b4", "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1197", "type": "Line"}, {"attributes": {"coordinates": null, "data_source": {"id": "1194"}, "glyph": {"id": "1195"}, "group": null, "hover_glyph": null, "muted_glyph": {"id": "1197"}, "nonselection_glyph": {"id": "1196"}, "view": {"id": "1199"}}, "id": "1198", "type": "GlyphRenderer"}, {"attributes": {}, "id": "1181", "type": "WheelZoomTool"}, {"attributes": {}, "id": "1250", "type": "BasicTickFormatter"}, {"attributes": {}, "id": "1251", "type": "AllLabels"}, {"attributes": {"align": "end", "button_type": "primary", "height_policy": "fit", "icon": null, "label": "\u22ee", "margin": [0, 0, 5, 10], "max_height": 30, "max_width": 20}, "id": "1242", "type": "Toggle"}, {"attributes": {}, "id": "1177", "type": "BasicTicker"}, {"attributes": {"children": [{"id": "1238"}, {"id": "1243"}], "margin": [0, 0, 0, 0], "name": "Row05145"}, "id": "1237", "type": "Row"}, {"attributes": {"bottom_units": "screen", "coordinates": null, "fill_alpha": 0.5, "fill_color": "lightgrey", "group": null, "left_units": "screen", "level": "overlay", "line_alpha": 1.0, "line_color": "black", "line_dash": [4, 4], "line_width": 2, "right_units": "screen", "syncable": false, "top_units": "screen"}, "id": "1186", "type": "BoxAnnotation"}, {"attributes": {"coordinates": null, "formatter": {"id": "1253"}, "group": null, "major_label_policy": {"id": "1254"}, "ticker": {"id": "1173"}}, "id": "1172", "type": "LinearAxis"}, {"attributes": {"name": "location", "reload": false}, "id": "1291", "type": "panel.models.location.Location"}, {"attributes": {"margin": [5, 0, 5, 10], "min_width": 240, "options": [["<NGon NGon05119>", "NGon05119"], ["<Circle Circle05120>", "Circle05120"]], "title": "Shape", "value": "<NGon NGon05119>", "width": 240}, "id": "1241", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {}, "id": "1255", "type": "UnionRenderers"}, {"attributes": {"children": [{"id": "1239"}, {"id": "1240"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "ShapeViewer", "width": 300}, "id": "1238", "type": "Column"}, {"attributes": {"coordinates": null, "group": null}, "id": "1247", "type": "Title"}, {"attributes": {"line_color": "#1f77b4", "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1195", "type": "Line"}, {"attributes": {"children": [{"id": "1241"}, {"id": "1242"}], "margin": [0, 0, 0, 0], "name": "Row05144", "width_policy": "max"}, "id": "1240", "type": "Row"}, {"attributes": {"children": [{"id": "1244"}, {"id": "1246"}], "margin": [0, 0, 0, 0], "name": "Column05136"}, "id": "1243", "type": "Column"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>ShapeViewer</b>"}, "id": "1239", "type": "Div"}, {"attributes": {"children": [{"id": "1245"}], "margin": [0, 0, 0, 0], "name": "Row05126"}, "id": "1244", "type": "Row"}, {"attributes": {}, "id": "1256", "type": "Selection"}, {"attributes": {}, "id": "1254", "type": "AllLabels"}, {"attributes": {"axis": {"id": "1176"}, "coordinates": null, "dimension": 1, "group": null, "ticker": null}, "id": "1179", "type": "Grid"}, {"attributes": {"below": [{"id": "1172"}], "center": [{"id": "1175"}, {"id": "1179"}], "left": [{"id": "1176"}], "renderers": [{"id": "1198"}], "title": {"id": "1247"}, "toolbar": {"id": "1187"}, "x_range": {"id": "1164"}, "x_scale": {"id": "1168"}, "y_range": {"id": "1166"}, "y_scale": {"id": "1170"}}, "id": "1163", "subtype": "Figure", "type": "Plot"}, {"attributes": {}, "id": "1253", "type": "BasicTickFormatter"}, {"attributes": {"data": {"x": {"__ndarray__": "AAAAAAAAAACrTFjoerbrP6dMWOh6tuu/B1wUMyamsbw=", "dtype": "float64", "order": "little", "shape": [4]}, "y": {"__ndarray__": "AAAAAAAA8D/7///////fvwMAAAAAAOC/AAAAAAAA8D8=", "dtype": "float64", "order": "little", "shape": [4]}}, "selected": {"id": "1256"}, "selection_policy": {"id": "1255"}}, "id": "1194", "type": "ColumnDataSource"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "ParamMethod05122", "text": "&lt;h2&gt;NGon (radius=1.0)&lt;/h2&gt;"}, "id": "1245", "type": "panel.models.markup.HTML"}, {"attributes": {}, "id": "1180", "type": "PanTool"}, {"attributes": {}, "id": "1184", "type": "ResetTool"}, {"attributes": {"start": -1}, "id": "1164", "type": "Range1d"}, {"attributes": {}, "id": "1170", "type": "LinearScale"}, {"attributes": {}, "id": "1183", "type": "SaveTool"}, {"attributes": {"overlay": {"id": "1186"}}, "id": "1182", "type": "BoxZoomTool"}, {"attributes": {"children": [{"id": "1163"}], "margin": [0, 0, 0, 0], "name": "Row05133"}, "id": "1246", "type": "Row"}, {"attributes": {"coordinates": null, "formatter": {"id": "1250"}, "group": null, "major_label_policy": {"id": "1251"}, "ticker": {"id": "1177"}}, "id": "1176", "type": "LinearAxis"}], "root_ids": ["1237", "1291"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_19, 200)
+                }
+              };
+              embed_bokeh_19()
+            </script>
+<p>Alternatively we can provide a completely separate <code class="docutils literal notranslate"><span class="pre">expand_layout</span></code> instance to the Param pane and request that it always remains expanded using the <code class="docutils literal notranslate"><span class="pre">expand</span></code> and <code class="docutils literal notranslate"><span class="pre">expand_button</span></code> option. This allows us to lay out the main widgets and the subobject’s widgets separately:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">ShapeViewer</span><span class="p">()</span>
+
+<span class="n">expand_layout</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">()</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+    <span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+        <span class="n">pn</span><span class="o">.</span><span class="n">panel</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">expand_button</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">expand_layout</span><span class="o">=</span><span class="n">expand_layout</span><span class="p">),</span>
+        <span class="s2">"#### Subobject parameters:"</span><span class="p">,</span>
+        <span class="n">expand_layout</span><span class="p">),</span>
+    <span class="n">viewer</span><span class="o">.</span><span class="n">panel</span><span class="p">())</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell19-py"></pre><pre class="pyodide-stderr" id="stderr-codecell19-py"></pre><div class="pyodide-output embedded" id="output-codecell19-py"></div>
+<script>
+              async function embed_bokeh_20 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell19-py", "root_id": "1325", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {}, "id": "1185", "type": "HelpTool"}, {"attributes": {"name": "location", "reload": false}, "id": "1395", "type": "panel.models.location.Location"}, {"attributes": {"children": [{"id": "1338"}], "margin": [0, 0, 0, 0], "name": "Row05170"}, "id": "1337", "type": "Row"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>NGon05119</b>"}, "id": "1333", "type": "Div"}, {"attributes": {"children": [{"id": "1326"}, {"id": "1336"}], "margin": [0, 0, 0, 0], "name": "Row05181"}, "id": "1325", "type": "Row"}, {"attributes": {"line_alpha": 0.1, "line_color": "#1f77b4", "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1196", "type": "Line"}, {"attributes": {}, "id": "1168", "type": "LinearScale"}, {"attributes": {"end": 1, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "Radius", "value": 1}, "id": "1334", "type": "Slider"}, {"attributes": {"axis": {"id": "1172"}, "coordinates": null, "group": null, "ticker": null}, "id": "1175", "type": "Grid"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>ShapeViewer</b>"}, "id": "1328", "type": "Div"}, {"attributes": {"end": 10, "margin": [5, 10, 5, 10], "start": 3, "title": "N", "value": 3}, "id": "1335", "type": "Slider"}, {"attributes": {}, "id": "1173", "type": "BasicTicker"}, {"attributes": {"source": {"id": "1194"}}, "id": "1199", "type": "CDSView"}, {"attributes": {"start": -1}, "id": "1166", "type": "Range1d"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "ParamMethod05166", "text": "&lt;h2&gt;NGon (radius=1.0)&lt;/h2&gt;"}, "id": "1338", "type": "panel.models.markup.HTML"}, {"attributes": {"tools": [{"id": "1180"}, {"id": "1181"}, {"id": "1182"}, {"id": "1183"}, {"id": "1184"}, {"id": "1185"}]}, "id": "1187", "type": "Toolbar"}, {"attributes": {"line_alpha": 0.2, "line_color": "#1f77b4", "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1197", "type": "Line"}, {"attributes": {"coordinates": null, "data_source": {"id": "1194"}, "glyph": {"id": "1195"}, "group": null, "hover_glyph": null, "muted_glyph": {"id": "1197"}, "nonselection_glyph": {"id": "1196"}, "view": {"id": "1199"}}, "id": "1198", "type": "GlyphRenderer"}, {"attributes": {}, "id": "1181", "type": "WheelZoomTool"}, {"attributes": {"children": [{"id": "1328"}, {"id": "1329"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "ShapeViewer", "width": 300}, "id": "1327", "type": "Column"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "Markdown05163", "text": "&lt;h4&gt;Subobject parameters:&lt;/h4&gt;"}, "id": "1330", "type": "panel.models.markup.HTML"}, {"attributes": {}, "id": "1250", "type": "BasicTickFormatter"}, {"attributes": {"children": [{"id": "1327"}, {"id": "1330"}, {"id": "1331"}], "margin": [0, 0, 0, 0], "name": "Column05165"}, "id": "1326", "type": "Column"}, {"attributes": {}, "id": "1251", "type": "AllLabels"}, {"attributes": {}, "id": "1177", "type": "BasicTicker"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["<NGon NGon05119>", "NGon05119"], ["<Circle Circle05120>", "Circle05120"]], "title": "Shape", "value": "<NGon NGon05119>"}, "id": "1329", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"bottom_units": "screen", "coordinates": null, "fill_alpha": 0.5, "fill_color": "lightgrey", "group": null, "left_units": "screen", "level": "overlay", "line_alpha": 1.0, "line_color": "black", "line_dash": [4, 4], "line_width": 2, "right_units": "screen", "syncable": false, "top_units": "screen"}, "id": "1186", "type": "BoxAnnotation"}, {"attributes": {"overlay": {"id": "1186"}}, "id": "1182", "type": "BoxZoomTool"}, {"attributes": {"coordinates": null, "formatter": {"id": "1253"}, "group": null, "major_label_policy": {"id": "1254"}, "ticker": {"id": "1173"}}, "id": "1172", "type": "LinearAxis"}, {"attributes": {}, "id": "1255", "type": "UnionRenderers"}, {"attributes": {"children": [{"id": "1337"}, {"id": "1339"}], "margin": [0, 0, 0, 0], "name": "Column05180"}, "id": "1336", "type": "Column"}, {"attributes": {"coordinates": null, "group": null}, "id": "1247", "type": "Title"}, {"attributes": {"line_color": "#1f77b4", "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1195", "type": "Line"}, {"attributes": {}, "id": "1256", "type": "Selection"}, {"attributes": {}, "id": "1254", "type": "AllLabels"}, {"attributes": {"axis": {"id": "1176"}, "coordinates": null, "dimension": 1, "group": null, "ticker": null}, "id": "1179", "type": "Grid"}, {"attributes": {"below": [{"id": "1172"}], "center": [{"id": "1175"}, {"id": "1179"}], "left": [{"id": "1176"}], "renderers": [{"id": "1198"}], "title": {"id": "1247"}, "toolbar": {"id": "1187"}, "x_range": {"id": "1164"}, "x_scale": {"id": "1168"}, "y_range": {"id": "1166"}, "y_scale": {"id": "1170"}}, "id": "1163", "subtype": "Figure", "type": "Plot"}, {"attributes": {}, "id": "1253", "type": "BasicTickFormatter"}, {"attributes": {"data": {"x": {"__ndarray__": "AAAAAAAAAACrTFjoerbrP6dMWOh6tuu/B1wUMyamsbw=", "dtype": "float64", "order": "little", "shape": [4]}, "y": {"__ndarray__": "AAAAAAAA8D/7///////fvwMAAAAAAOC/AAAAAAAA8D8=", "dtype": "float64", "order": "little", "shape": [4]}}, "selected": {"id": "1256"}, "selection_policy": {"id": "1255"}}, "id": "1194", "type": "ColumnDataSource"}, {"attributes": {}, "id": "1180", "type": "PanTool"}, {"attributes": {"children": [{"id": "1163"}], "margin": [0, 0, 0, 0], "name": "Row05177"}, "id": "1339", "type": "Row"}, {"attributes": {}, "id": "1184", "type": "ResetTool"}, {"attributes": {"start": -1}, "id": "1164", "type": "Range1d"}, {"attributes": {"children": [{"id": "1332"}], "margin": [0, 0, 0, 0], "name": "Column05148"}, "id": "1331", "type": "Column"}, {"attributes": {}, "id": "1170", "type": "LinearScale"}, {"attributes": {}, "id": "1183", "type": "SaveTool"}, {"attributes": {"children": [{"id": "1333"}, {"id": "1334"}, {"id": "1335"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "NGon05119", "width": 300}, "id": "1332", "type": "Column"}, {"attributes": {"coordinates": null, "formatter": {"id": "1250"}, "group": null, "major_label_policy": {"id": "1251"}, "ticker": {"id": "1177"}}, "id": "1176", "type": "LinearAxis"}], "root_ids": ["1325", "1395"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_20, 200)
+                }
+              };
+              embed_bokeh_20()
+            </script>
+<p>In this user guide we have seen how to leverage Param to declare parameters, which Panel can then turn into a GUI with little additionl effort or code. We have also seen how to link parameters to views and to other parameters using the <code class="docutils literal notranslate"><span class="pre">param.depends</span></code> operator. This approach allows building complex and reactive panels. In the <a class="reference internal" href="Pipelines.html"><span class="doc std std-doc">pipelines user guide</span></a> we can discover how to link multiple such classes into pipelines, making it possible to encapsulate complex workflows in clean self-contained classes.</p>
+</section>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="Widgets.html" id="prev-link" title="previous page">
+<i class="fas fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Widgets</p>
+</div>
+</a>
+<a class="right-next" href="Links.html" id="next-link" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Linking objects in Panel</p>
+</div>
+<i class="fas fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+<footer class="bd-footer"><div class="bd-footer__inner container">
+<div class="footer-item">
+<p class="copyright">
+    © Copyright 2019-2022 Holoviz contributors.<br/>
+</p>
+</div>
+<div class="footer-item">
+<p class="last-updated">
+Last updated on 2022-10-05.<br/>
+</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

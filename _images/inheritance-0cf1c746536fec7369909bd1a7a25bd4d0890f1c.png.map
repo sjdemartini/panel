@@ -1,0 +1,10 @@
+<map id="inheritance58a3b8e712" name="inheritance58a3b8e712">
+<area shape="rect" id="node1" title="Filter instances are used to perform arbitrary filtering of LogRecords." alt="" coords="83,104,189,129"/>
+<area shape="rect" id="node8" href="#panel.io.admin.LogFilter" target="_top" title="panel.io.admin.LogFilter" alt="" coords="315,104,493,129"/>
+<area shape="rect" id="node2" title="A base class for loggers and handlers which allows them to share" alt="" coords="76,55,196,80"/>
+<area shape="rect" id="node3" title="Handler instances dispatch logging events to specific destinations." alt="" coords="341,55,467,80"/>
+<area shape="rect" id="node4" title="A handler class which writes logging records, appropriately formatted," alt="" coords="541,55,713,80"/>
+<area shape="rect" id="node7" href="#panel.io.admin.LogDataHandler" target="_top" title="panel.io.admin.LogDataHandler" alt="" coords="761,55,989,80"/>
+<area shape="rect" id="node5" href="#panel.io.admin.Data" target="_top" title="panel.io.admin.Data" alt="" coords="327,5,481,31"/>
+<area shape="rect" id="node6" title="params(name=String)" alt="" coords="5,5,267,31"/>
+</map>

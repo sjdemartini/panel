@@ -1,0 +1,12 @@
+<map id="inheritancec903230097" name="inheritancec903230097">
+<area shape="rect" id="node1" href="panel.template.html#panel.template.base.BaseTemplate" target="_top" title="panel.template.base.BaseTemplate" alt="" coords="296,5,533,29"/>
+<area shape="rect" id="node4" href="panel.template.html#panel.template.base.BasicTemplate" target="_top" title="BasicTemplate provides a baseclass for templates with a basic" alt="" coords="583,5,823,29"/>
+<area shape="rect" id="node2" title="params(name=String)" alt="" coords="5,51,251,75"/>
+<area shape="rect" id="node10" href="panel.template.theme.html#panel.template.theme.Theme" target="_top" title="A Theme customizes the look and feel of a Template by providing" alt="" coords="313,51,516,75"/>
+<area shape="rect" id="node3" title="Mixin to define methods shared by objects which can served." alt="" coords="25,5,231,29"/>
+<area shape="rect" id="node9" href="#panel.template.react.ReactTemplate" target="_top" title="ReactTemplate is built on top of React Grid Layout web components." alt="" coords="888,5,1131,29"/>
+<area shape="rect" id="node5" href="#panel.template.react.ReactDarkTheme" target="_top" title="panel.template.react.ReactDarkTheme" alt="" coords="880,51,1139,75"/>
+<area shape="rect" id="node6" href="panel.template.theme.html#panel.template.theme.DarkTheme" target="_top" title="The DefaultTheme uses the standard Panel color palette." alt="" coords="587,51,819,75"/>
+<area shape="rect" id="node7" href="#panel.template.react.ReactDefaultTheme" target="_top" title="panel.template.react.ReactDefaultTheme" alt="" coords="872,98,1147,122"/>
+<area shape="rect" id="node8" href="panel.template.theme.html#panel.template.theme.DefaultTheme" target="_top" title="The DefaultTheme uses the standard Panel color palette." alt="" coords="579,98,827,122"/>
+</map>

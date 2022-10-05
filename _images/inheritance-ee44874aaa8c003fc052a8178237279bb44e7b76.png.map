@@ -1,0 +1,19 @@
+<map id="inheritance1bbae5e53c" name="inheritance1bbae5e53c">
+<area shape="rect" id="node1" title="Base class for all class types that have Bokeh properties." alt="" coords="43,41,162,55"/>
+<area shape="rect" id="node2" title="Base class for all objects stored in Bokeh &#160;|Document| instances." alt="" coords="227,80,329,94"/>
+<area shape="rect" id="node7" title="The base class for layoutable components." alt="" coords="355,80,483,94"/>
+<area shape="rect" id="node4" title="A mixin class to provide an interface for registering and" alt="" coords="3,93,202,106"/>
+<area shape="rect" id="node5" title="A mixin class to provide an interface for registering and" alt="" coords="7,119,198,132"/>
+<area shape="rect" id="node6" title="A component which size is determined by its HTML content." alt="" coords="518,55,639,68"/>
+<area shape="rect" id="node11" href="#panel.models.widgets.Audio" target="_top" title="panel.models.widgets.Audio" alt="" coords="697,3,805,16"/>
+<area shape="rect" id="node15" href="#panel.models.widgets.Progress" target="_top" title="panel.models.widgets.Progress" alt="" coords="692,29,810,42"/>
+<area shape="rect" id="node17" href="#panel.models.widgets.Video" target="_top" title="panel.models.widgets.Video" alt="" coords="697,55,805,68"/>
+<area shape="rect" id="node18" href="#panel.models.widgets.VideoStream" target="_top" title="panel.models.widgets.VideoStream" alt="" coords="684,80,817,94"/>
+<area shape="rect" id="node9" title="A base class for all interactive widget types." alt="" coords="509,106,648,120"/>
+<area shape="rect" id="node8" title="Abstract base class for input widgets." alt="" coords="674,106,828,120"/>
+<area shape="rect" id="node10" title="Single&#45;select widget." alt="" coords="854,80,988,94"/>
+<area shape="rect" id="node13" href="#panel.models.widgets.FileDownload" target="_top" title="panel.models.widgets.FileDownload" alt="" coords="853,106,988,120"/>
+<area shape="rect" id="node16" href="#panel.models.widgets.SingleSelect" target="_top" title="Single&#45;select widget." alt="" coords="855,132,986,145"/>
+<area shape="rect" id="node14" href="#panel.models.widgets.Player" target="_top" title="The Player widget provides controls to play through a number of frames." alt="" coords="696,132,806,145"/>
+<area shape="rect" id="node12" href="#panel.models.widgets.CustomSelect" target="_top" title="Custom widget that extends the base Bokeh Select" alt="" coords="1014,80,1149,94"/>
+</map>

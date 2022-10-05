@@ -1,0 +1,9 @@
+<map id="inheritanceff9cab3bef" name="inheritanceff9cab3bef">
+<area shape="rect" id="node1" title="Base class for all class types that have Bokeh properties." alt="" coords="59,4,223,22"/>
+<area shape="rect" id="node2" title="Base class for all objects stored in Bokeh &#160;|Document| instances." alt="" coords="313,58,454,76"/>
+<area shape="rect" id="node6" title="The base class for layoutable components." alt="" coords="488,58,666,76"/>
+<area shape="rect" id="node4" title="A mixin class to provide an interface for registering and" alt="" coords="4,75,278,93"/>
+<area shape="rect" id="node5" title="A mixin class to provide an interface for registering and" alt="" coords="10,111,272,129"/>
+<area shape="rect" id="node7" title="A base class for all interactive widget types." alt="" coords="700,58,893,76"/>
+<area shape="rect" id="node8" href="#panel.models.text_to_speech.TextToSpeech" target="_top" title="The TextToSpeek Bokeh Model wraps the HTML5 SpeechSynthesis API" alt="" coords="928,58,1148,76"/>
+</map>

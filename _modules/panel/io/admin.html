@@ -1,0 +1,1913 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>panel.io.admin — Panel v0.14.0</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/graphviz.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/runbutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/css/dataframe.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/sphinx_highlight.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script src="../../../_static/run_cell.js"></script>
+<script src="../../../_static/WorkerHandler.js"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../../../_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../../_static/design-tabs.js"></script>
+<script src="../../../_static/ServiceHandler.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/panel.min.js"></script>
+<script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-154795830-2', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
+<link href="../../../_static/favicon.ico" rel="shortcut icon">
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></link></link></head>
+<body data-default-mode="light" data-offset="180" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="bd-header-announcement container-fluid" id="banner">
+</div>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+<div id="navbar-start">
+<a class="navbar-brand logo" href="../../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../../_static/logo_horizontal.png"/>
+<img alt="Logo image" class="logo__image only-dark" src="../../../_static/logo_horizontal.png"/>
+</a>
+</div>
+<button aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-collapsible" data-toggle="collapse" type="button">
+<span class="fas fa-bars"></span>
+</button>
+<div class="col-lg-9 collapse navbar-collapse" id="navbar-collapsible">
+<div class="mr-auto" id="navbar-center">
+<div class="navbar-center-item">
+<ul class="navbar-nav" id="navbar-main-elements">
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../index.html">
+  Overview
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../gallery/index.html">
+  Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../reference/index.html">
+  Reference Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../developer_guide/index.html">
+  Developer Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../api/index.html">
+  API Reference
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../releases.html">
+  Releases
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../FAQ.html">
+  FAQ
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../about/index.html">
+  About
+ </a>
+</li>
+</ul>
+</div>
+</div>
+<div id="navbar-end">
+<div class="navbar-end-item">
+<ul aria-label="Icon Links" class="navbar-nav" id="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/holoviz/panel" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://twitter.com/Panel_Org" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://discourse.holoviz.org/c/panel/5" rel="noopener" target="_blank" title="Discourse"><span><i class="fab fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bd-container container-xl">
+<div class="bd-container__inner row">
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-2 bd-sidebar">
+<div class="sidebar-start-items"><form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search the docs ..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../../index.html">
+   Overview
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../getting_started/index.html">
+   Getting Started
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../getting_started/installation.html">
+     Installation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../getting_started/build_app.html">
+     Build an app
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../getting_started/core_concepts.html">
+     Core Concepts
+    </a>
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../user_guide/index.html">
+   User Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Overview.html">
+     Overview
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Components.html">
+     Components
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/APIs.html">
+     APIs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Customization.html">
+     Customization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Interact.html">
+     Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Widgets.html">
+     Widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Param.html">
+     Parameters
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Links.html">
+     Linking
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Pipelines.html">
+     Pipelines
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Templates.html">
+     Templates
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Performance_and_Debugging.html">
+     Performance and Debugging
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Session_State_and_Callbacks.html">
+     Session state &amp; Callbacks
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Async_and_Concurrency.html">
+     Asynchronous and Concurrent Process
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Display_and_Export.html">
+     Display &amp; Export
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Running_in_Webassembly.html">
+     Running Panel in the Browser with WASM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Server_Configuration.html">
+     Server Configuration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Server_Deployment.html">
+     Server Deployment
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Authentication.html">
+     Authentication
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Django.html">
+     Django Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/FastAPI.html">
+     FastAPI Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Custom_Components.html">
+     Building Custom Components
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../gallery/index.html">
+   Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/VTKInteractive.html">
+     VTKInteractive
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/VTKSlicer.html">
+     VTKSlicer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/VTKWarp.html">
+     VTKWarp
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/attractors.html">
+     Attractors
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/gapminders.html">
+     Gapminders
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/glaciers.html">
+     Glaciers
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/nyc_taxi.html">
+     Nyc Taxi
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/portfolio-optimizer.html">
+     Portfolio-optimizer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/altair_brushing.html">
+     Altair Brushing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/altair_choropleth.html">
+     Altair Choropleth
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/clifford_interact.html">
+     Clifford Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/color_speech_recognition.html">
+     Color Speech Recognition
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/deckgl_game_of_life.html">
+     Deckgl Game Of Life
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/defer_data_load.html">
+     Defer Data Load
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/file_download_examples.html">
+     File Download Examples
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/hvplot_explorer.html">
+     Hvplot Explorer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/iris_kmeans.html">
+     Iris Kmeans
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/loading_spinner.html">
+     Loading Spinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/random_number_generator.html">
+     Random Number Generator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/save_filtered_df.html">
+     Save Filtered Df
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/sync_location.html">
+     Sync Location
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/temperature_distribution.html">
+     Temperature Distribution
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/xgboost_classifier.html">
+     Xgboost Classifier
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/apis/stocks_altair.html">
+     Stocks Altair
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/apis/stocks_hvplot.html">
+     Stocks Hvplot
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/apis/stocks_matplotlib.html">
+     Stocks Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/apis/stocks_plotly.html">
+     Stocks Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/layout/distribution_tabs.html">
+     Distribution Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/layout/dynamic_tabs.html">
+     Dynamic Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/layout/plot_with_columns.html">
+     Plot With Columns
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/dynamic/dynamic_plot_layout.html">
+     Dynamic Plot Layout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/dynamic/dynamic_timeseries_image_analysis.html">
+     Dynamic Timeseries Image Analysis
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/dynamic/dynamic_ui.html">
+     Dynamic Ui
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/dynamic/dynamic_widget_values.html">
+     Dynamic Widget Values
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/action_button.html">
+     Action Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/deck_gl_global_power_plants.html">
+     Deck Gl Global Power Plants
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/download_upload_csv.html">
+     Download Upload Csv
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/loading_indicator.html">
+     Loading Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/param_subobjects.html">
+     Param Subobjects
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/precedence.html">
+     Precedence
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/reactive_plots.html">
+     Reactive Plots
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/reactive_tables.html">
+     Reactive Tables
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/streaming/hardware_automation.html">
+     Hardware Automation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/streaming/streaming_bokeh.html">
+     Streaming Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/streaming/streaming_indicator.html">
+     Streaming Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/streaming/streaming_perspective.html">
+     Streaming Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/streaming/streaming_tabulator.html">
+     Streaming Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/components/CanvasDraw.html">
+     CanvasDraw
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/components/LeafletHeatMap.html">
+     LeafletHeatMap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/components/MaterialUI.html">
+     MaterialUI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/links/bokeh_property_editor.html">
+     Bokeh Property Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/links/deck_gl_json_editor.html">
+     Deck Gl Json Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/links/holoviews_glyph_link.html">
+     Holoviews Glyph Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/links/plotly_link.html">
+     Plotly Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/links/vega_heatmap_link.html">
+     Vega Heatmap Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/styles/MatplotlibStyle.html">
+     MatplotlibStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/styles/PlotlyStyle.html">
+     PlotlyStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/styles/SeabornStyle.html">
+     SeabornStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/styles/VegaAltairStyle.html">
+     VegaAltairStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/external/DataTable.html">
+     DataTable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/external/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/external/deck.gl.html">
+     Deck.gl
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../reference/index.html">
+   Reference Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Alert.html">
+     Alert
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Audio.html">
+     Audio
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Bokeh.html">
+     Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/DeckGL.html">
+     DeckGL
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/ECharts.html">
+     ECharts
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/GIF.html">
+     GIF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/HTML.html">
+     HTML
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/HoloViews.html">
+     HoloViews
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/IDOM.html">
+     IDOM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/IPyWidget.html">
+     IPyWidget
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/JPG.html">
+     JPG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/JSON.html">
+     JSON
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/LaTeX.html">
+     LaTeX
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Markdown.html">
+     Markdown
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Matplotlib.html">
+     Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/PDF.html">
+     PDF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/PNG.html">
+     PNG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Param.html">
+     Param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Perspective.html">
+     Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Plotly.html">
+     Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/SVG.html">
+     SVG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Str.html">
+     Str
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Streamz.html">
+     Streamz
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/VTK.html">
+     VTK
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/VTKJS.html">
+     VTKJS
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/VTKVolume.html">
+     VTKVolume
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Vega.html">
+     Vega
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Video.html">
+     Video
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/Accordion.html">
+     Accordion
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/Card.html">
+     Card
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/Column.html">
+     Column
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/Divider.html">
+     Divider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/FlexBox.html">
+     FlexBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/GridBox.html">
+     GridBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/GridSpec.html">
+     GridSpec
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/GridStack.html">
+     GridStack
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/Row.html">
+     Row
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/Tabs.html">
+     Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/WidgetBox.html">
+     WidgetBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/Bootstrap.html">
+     Bootstrap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/FastGridTemplate.html">
+     FastGridTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/FastListTemplate.html">
+     FastListTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/GoldenLayout.html">
+     GoldenLayout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/Material.html">
+     Material
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/React.html">
+     React
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/Vanilla.html">
+     Vanilla
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/global/Notifications.html">
+     Notifications
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/BooleanStatus.html">
+     BooleanStatus
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/Dial.html">
+     Dial
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/Gauge.html">
+     Gauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/LinearGauge.html">
+     LinearGauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/LoadingSpinner.html">
+     LoadingSpinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/Number.html">
+     Number
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/Progress.html">
+     Progress
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/Tqdm.html">
+     Tqdm
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/Trend.html">
+     Trend
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Ace.html">
+     Ace
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/ArrayInput.html">
+     ArrayInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/AutocompleteInput.html">
+     AutocompleteInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Button.html">
+     Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/CheckBoxGroup.html">
+     CheckBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/CheckButtonGroup.html">
+     CheckButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Checkbox.html">
+     Checkbox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/ColorPicker.html">
+     ColorPicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/CrossSelector.html">
+     CrossSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DatePicker.html">
+     DatePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DateRangeSlider.html">
+     DateRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DateSlider.html">
+     DateSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DatetimeInput.html">
+     DatetimeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DatetimePicker.html">
+     DatetimePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DatetimeRangeInput.html">
+     DatetimeRangeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DatetimeRangePicker.html">
+     DatetimeRangePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DatetimeRangeSlider.html">
+     DatetimeRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Debugger.html">
+     Debugger
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DiscretePlayer.html">
+     DiscretePlayer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DiscreteSlider.html">
+     DiscreteSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/EditableFloatSlider.html">
+     EditableFloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/EditableIntSlider.html">
+     EditableIntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/EditableRangeSlider.html">
+     EditableRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/FileDownload.html">
+     FileDownload
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/FileInput.html">
+     FileInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/FileSelector.html">
+     FileSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/FloatInput.html">
+     FloatInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/FloatSlider.html">
+     FloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/IntInput.html">
+     IntInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/IntRangeSlider.html">
+     IntRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/IntSlider.html">
+     IntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/JSONEditor.html">
+     JSONEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/LiteralInput.html">
+     LiteralInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/MenuButton.html">
+     MenuButton
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/MultiChoice.html">
+     MultiChoice
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/MultiSelect.html">
+     MultiSelect
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/PasswordInput.html">
+     PasswordInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Player.html">
+     Player
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/RadioBoxGroup.html">
+     RadioBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/RadioButtonGroup.html">
+     RadioButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/RangeSlider.html">
+     RangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Select.html">
+     Select
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/SpeechToText.html">
+     SpeechToText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/StaticText.html">
+     StaticText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Tabulator.html">
+     Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Terminal.html">
+     Terminal
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/TextAreaInput.html">
+     TextAreaInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/TextEditor.html">
+     TextEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/TextInput.html">
+     TextInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/TextToSpeech.html">
+     TextToSpeech
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Toggle.html">
+     Toggle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/ToggleGroup.html">
+     ToggleGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/VideoStream.html">
+     VideoStream
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../developer_guide/index.html">
+   Developer Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../developer_guide/testing.html">
+     Testing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../developer_guide/Developing_Custom_Models.html">
+     Developing custom models
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../api/index.html">
+   API Reference
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.io.html">
+     io
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.layout.html">
+     layout
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../../api/panel.pane.html">
+     pane
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.pane.vtk.html">
+       panel.vtk Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.param.html">
+     param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.pipeline.html">
+     pipeline
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../../api/panel.template.html">
+     template
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.template.bootstrap.html">
+       panel.bootstrap Package
+      </a>
+</li>
+<li class="toctree-l3 has-children">
+<a class="reference internal" href="../../../api/panel.template.fast.html">
+       panel.fast Package
+      </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l4">
+<a class="reference internal" href="../../../api/panel.template.fast.grid.html">
+         panel.grid Package
+        </a>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="../../../api/panel.template.fast.list.html">
+         panel.list Package
+        </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.template.golden.html">
+       panel.golden Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.template.material.html">
+       panel.material Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.template.react.html">
+       panel.react Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.template.theme.html">
+       panel.theme Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.template.vanilla.html">
+       panel.vanilla Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.widgets.html">
+     widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.viewable.html">
+     viewable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.util.html">
+     util
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../../releases.html">
+   Releases
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../../FAQ.html">
+   FAQ
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../about/index.html">
+   About
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../about/comparisons.html">
+     Comparisons
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class="sidebar-end-items">
+</div>
+</div>
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+</div>
+<div class="bd-content col-12 col-md-10 col-xl-8" role="main">
+<article class="bd-article" role="main">
+<h1>Source code for panel.io.admin</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="kn">import</span> <span class="nn">bokeh</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">param</span>
+
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">HoverTool</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">figure</span>
+
+<span class="kn">from</span> <span class="nn">..config</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">..depends</span> <span class="kn">import</span> <span class="n">bind</span>
+<span class="kn">from</span> <span class="nn">..layout</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Accordion</span><span class="p">,</span> <span class="n">Column</span><span class="p">,</span> <span class="n">FlexBox</span><span class="p">,</span> <span class="n">Row</span><span class="p">,</span> <span class="n">Tabs</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..pane</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">Bokeh</span>
+<span class="kn">from</span> <span class="nn">..template</span> <span class="kn">import</span> <span class="n">FastListTemplate</span>
+<span class="kn">from</span> <span class="nn">..widgets</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Button</span><span class="p">,</span> <span class="n">MultiSelect</span><span class="p">,</span> <span class="n">Tabulator</span><span class="p">,</span> <span class="n">TextInput</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..widgets.indicators</span> <span class="kn">import</span> <span class="n">Trend</span>
+<span class="kn">from</span> <span class="nn">.logging</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">LOG_SESSION_CREATED</span><span class="p">,</span> <span class="n">LOG_SESSION_DESTROYED</span><span class="p">,</span> <span class="n">LOG_SESSION_LAUNCHING</span><span class="p">,</span>
+    <span class="n">panel_logger</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.notebook</span> <span class="kn">import</span> <span class="n">push_notebook</span>
+<span class="kn">from</span> <span class="nn">.profile</span> <span class="kn">import</span> <span class="n">profiling_tabs</span>
+<span class="kn">from</span> <span class="nn">.server</span> <span class="kn">import</span> <span class="n">set_curdoc</span>
+<span class="kn">from</span> <span class="nn">.state</span> <span class="kn">import</span> <span class="n">state</span>
+
+<span class="n">PROCESSES</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">log_sessions</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="LogFilter"><a class="viewcode-back" href="../../../api/panel.io.html#panel.io.admin.LogFilter">[docs]</a><span class="k">class</span> <span class="nc">LogFilter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Filter</span><span class="p">):</span>
+
+<div class="viewcode-block" id="LogFilter.filter"><a class="viewcode-back" href="../../../api/panel.io.html#panel.io.admin.LogFilter.filter">[docs]</a>    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">'Session '</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">msg</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="n">session_id</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">session_id</span> <span class="ow">in</span> <span class="n">log_sessions</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="n">session_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">session_filter</span><span class="o">.</span><span class="n">options</span><span class="p">:</span>
+            <span class="n">session_filter</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="n">session_id</span><span class="p">]</span> <span class="o">+</span> <span class="n">session_filter</span><span class="o">.</span><span class="n">options</span>
+        <span class="k">return</span> <span class="kc">True</span></div></div>
+
+
+<div class="viewcode-block" id="Data"><a class="viewcode-back" href="../../../api/panel.io.html#panel.io.admin.Data">[docs]</a><span class="k">class</span> <span class="nc">Data</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">List</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="LogDataHandler"><a class="viewcode-back" href="../../../api/panel.io.html#panel.io.admin.LogDataHandler">[docs]</a><span class="k">class</span> <span class="nc">LogDataHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
+
+<div class="viewcode-block" id="LogDataHandler.emit"><a class="viewcode-back" href="../../../api/panel.io.html#panel.io.admin.LogDataHandler.emit">[docs]</a>    <span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">'Session '</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">msg</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">trigger</span><span class="p">(</span><span class="s1">'data'</span><span class="p">)</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">_LogTabulator</span><span class="p">(</span><span class="n">Tabulator</span><span class="p">):</span>
+
+    <span class="n">_update_defaults</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"theme"</span><span class="p">:</span> <span class="s2">"midnight"</span><span class="p">,</span>
+        <span class="s2">"layout"</span><span class="p">:</span> <span class="s2">"fit_data_stretch"</span><span class="p">,</span>
+        <span class="s2">"show_index"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">"sorters"</span><span class="p">:</span> <span class="p">[{</span><span class="s1">'field'</span><span class="p">:</span> <span class="s1">'datetime'</span><span class="p">,</span> <span class="s1">'dir'</span><span class="p">:</span> <span class="s1">'dsc'</span><span class="p">}],</span>
+        <span class="s2">"disabled"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">"pagination"</span><span class="p">:</span> <span class="s2">"local"</span><span class="p">,</span>
+        <span class="s2">"page_size"</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="n">params</span><span class="p">[</span><span class="s2">"value"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_frame</span><span class="p">()</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_defaults</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">}</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_create_frame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"datetime"</span><span class="p">,</span> <span class="s2">"level"</span><span class="p">,</span> <span class="s2">"app"</span><span class="p">,</span> <span class="s2">"session"</span><span class="p">,</span> <span class="s2">"message"</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log</span><span class="p">):</span>
+        <span class="c1"># Example of a log message:</span>
+        <span class="c1"># '2022-07-13 14:38:04,803 INFO: panel.io.server - Session 140255299576448 launching\n'</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span>
+            <span class="n">datetime</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+            <span class="n">level</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">app</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">session</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">7</span><span class="p">:])</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_frame</span><span class="p">([</span><span class="n">datetime</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">message</span><span class="p">])</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">follow</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+
+<span class="c1"># Set up logging</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+<span class="n">log_data_handler</span> <span class="o">=</span> <span class="n">LogDataHandler</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">log_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+<span class="n">log_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s1">'DEBUG'</span><span class="p">)</span>
+<span class="n">panel_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">log_handler</span><span class="p">)</span>
+<span class="n">panel_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">log_data_handler</span><span class="p">)</span>
+
+<span class="n">log_filter</span> <span class="o">=</span> <span class="n">LogFilter</span><span class="p">()</span>
+<span class="n">log_handler</span><span class="o">.</span><span class="n">addFilter</span><span class="p">(</span><span class="n">log_filter</span><span class="p">)</span>
+<span class="n">log_data_handler</span><span class="o">.</span><span class="n">addFilter</span><span class="p">(</span><span class="n">log_filter</span><span class="p">)</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s1">'</span><span class="si">%(asctime)s</span><span class="s1"> </span><span class="si">%(levelname)s</span><span class="s1">: </span><span class="si">%(name)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">'</span><span class="p">)</span>
+<span class="n">log_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="n">log_terminal</span> <span class="o">=</span> <span class="n">_LogTabulator</span><span class="p">(</span><span class="n">sizing_mode</span><span class="o">=</span><span class="s1">'stretch_both'</span><span class="p">,</span> <span class="n">min_height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">log_handler</span><span class="o">.</span><span class="n">setStream</span><span class="p">(</span><span class="n">log_terminal</span><span class="p">)</span>
+
+<span class="n">session_filter</span> <span class="o">=</span> <span class="n">MultiSelect</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Filter by session'</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">message_filter</span> <span class="o">=</span> <span class="n">TextInput</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Filter by message'</span><span class="p">)</span>
+<span class="n">level_filter</span> <span class="o">=</span> <span class="n">MultiSelect</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Filter by level"</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">"DEBUG"</span><span class="p">,</span> <span class="s2">"INFO"</span><span class="p">,</span> <span class="s2">"WARNING"</span><span class="p">,</span> <span class="s2">"ERROR"</span><span class="p">])</span>
+<span class="n">app_filter</span> <span class="o">=</span> <span class="n">TextInput</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Filter by app'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_textinput_filter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">pattern</span> <span class="ow">or</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">df</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">pattern</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">log_terminal</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">level_filter</span><span class="p">,</span> <span class="s1">'level'</span><span class="p">)</span>
+<span class="n">log_terminal</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">bind</span><span class="p">(</span><span class="n">_textinput_filter</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="n">app_filter</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">'app'</span><span class="p">))</span>
+<span class="n">log_terminal</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">session_filter</span><span class="p">,</span> <span class="s1">'session'</span><span class="p">)</span>
+<span class="n">log_terminal</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">bind</span><span class="p">(</span><span class="n">_textinput_filter</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="n">message_filter</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">'message'</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_clear_log_filters</span><span class="p">(</span><span class="o">*</span><span class="n">events</span><span class="p">):</span>
+    <span class="n">level_filter</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">app_filter</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">""</span>
+    <span class="n">session_filter</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">message_filter</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">""</span>
+
+
+<span class="n">reset_filter</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Clear filters"</span><span class="p">)</span>
+<span class="n">reset_filter</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">_clear_log_filters</span><span class="p">)</span>
+
+
+<span class="n">download_filename</span><span class="p">,</span> <span class="n">download_button</span> <span class="o">=</span> <span class="n">log_terminal</span><span class="o">.</span><span class="n">download_menu</span><span class="p">(</span>
+    <span class="n">text_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">'name'</span><span class="p">:</span> <span class="s1">'Enter filename for logfile'</span><span class="p">,</span> <span class="s1">'value'</span><span class="p">:</span> <span class="s1">'log.csv'</span><span class="p">},</span>
+    <span class="n">button_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">'name'</span><span class="p">:</span> <span class="s1">'Download logfile'</span><span class="p">}</span>
+<span class="p">)</span>
+
+
+<span class="n">EVENT_TYPES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'initializing'</span><span class="p">:</span> <span class="s1">'MediumSeaGreen'</span><span class="p">,</span>
+    <span class="s1">'destroyed'</span><span class="p">:</span> <span class="s1">'red'</span><span class="p">,</span>
+    <span class="s1">'rendering'</span><span class="p">:</span> <span class="s1">'Orange'</span><span class="p">,</span>
+    <span class="s1">'processing'</span><span class="p">:</span> <span class="s1">'DodgerBlue'</span><span class="p">,</span>
+    <span class="s1">'periodic'</span><span class="p">:</span> <span class="s1">'Violet'</span><span class="p">,</span>
+    <span class="s1">'logging'</span><span class="p">:</span> <span class="s1">'white'</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">get_timeline</span><span class="p">(</span><span class="n">doc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">sessions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Configure plot</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span>
+        <span class="n">y_range</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">sessions</span><span class="p">),</span> <span class="n">x_axis_type</span><span class="o">=</span><span class="s1">'datetime'</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">'stretch_both'</span>
+    <span class="p">)</span>
+    <span class="n">cds</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">'x0'</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">'x1'</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">'y0'</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">'y1'</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">'msg'</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">'session'</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">'color'</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">'line_color'</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">'type'</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">})</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">'Sessions'</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span>
+        <span class="n">left</span><span class="o">=</span><span class="s1">'x0'</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">'x1'</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="s1">'y1'</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="s1">'y0'</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">cds</span><span class="p">,</span>
+        <span class="n">line_color</span><span class="o">=</span><span class="s1">'line_color'</span><span class="p">,</span> <span class="n">fill_color</span><span class="o">=</span><span class="s1">'color'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">legend_field</span><span class="o">=</span><span class="s1">'type'</span>
+    <span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s2">"top_left"</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_tools</span><span class="p">(</span><span class="n">HoverTool</span><span class="p">(</span>
+        <span class="n">tooltips</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">(</span><span class="s1">'Start'</span><span class="p">,</span> <span class="s1">'@x0{</span><span class="si">%F</span><span class="s1"> %T}'</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">'End'</span><span class="p">,</span> <span class="s1">'@x1{</span><span class="si">%F</span><span class="s1"> %T}'</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">'Session'</span><span class="p">,</span> <span class="s1">'@session'</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">'Message'</span><span class="p">,</span> <span class="s1">'@msg'</span><span class="p">),</span>
+        <span class="p">],</span>
+        <span class="n">formatters</span><span class="o">=</span><span class="p">{</span><span class="s1">'@x0'</span><span class="p">:</span> <span class="s1">'datetime'</span><span class="p">,</span> <span class="s1">'@x1'</span><span class="p">:</span> <span class="s1">'datetime'</span><span class="p">}</span>
+    <span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">update_cds</span><span class="p">(</span><span class="n">new</span><span class="p">,</span> <span class="n">nb</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">sid</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">new</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">sid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sessions</span><span class="p">:</span>
+            <span class="n">sessions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">'finished processing events'</span> <span class="ow">in</span> <span class="n">new</span><span class="o">.</span><span class="n">msg</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">getMessage</span><span class="p">()</span>
+            <span class="n">etype</span> <span class="o">=</span> <span class="s1">'processing'</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="n">cds</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'msg'</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'finished processing'</span><span class="p">,</span> <span class="s1">'received'</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="n">patch</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">'x1'</span><span class="p">:</span> <span class="p">[(</span><span class="n">index</span><span class="p">,</span> <span class="n">new</span><span class="o">.</span><span class="n">created</span><span class="o">*</span><span class="mi">1000</span><span class="p">)],</span>
+                <span class="s1">'color'</span><span class="p">:</span> <span class="p">[(</span><span class="n">index</span><span class="p">,</span> <span class="n">EVENT_TYPES</span><span class="p">[</span><span class="n">etype</span><span class="p">])],</span>
+                <span class="s1">'type'</span><span class="p">:</span> <span class="p">[(</span><span class="n">index</span><span class="p">,</span> <span class="n">etype</span><span class="p">)],</span>
+                <span class="s1">'msg'</span><span class="p">:</span> <span class="p">[(</span><span class="n">index</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'finished processing'</span><span class="p">,</span> <span class="s1">'processed'</span><span class="p">))]</span>
+            <span class="p">}</span>
+            <span class="n">cds</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">patch</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">new</span><span class="o">.</span><span class="n">msg</span> <span class="o">==</span> <span class="n">LOG_SESSION_CREATED</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">cds</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'msg'</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">LOG_SESSION_LAUNCHING</span> <span class="o">%</span> <span class="n">sid</span><span class="p">)</span>
+            <span class="n">etype</span> <span class="o">=</span> <span class="s1">'initializing'</span>
+            <span class="n">patch</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">'x1'</span><span class="p">:</span> <span class="p">[(</span><span class="n">index</span><span class="p">,</span> <span class="n">new</span><span class="o">.</span><span class="n">created</span><span class="o">*</span><span class="mi">1000</span><span class="p">)],</span>
+                <span class="s1">'color'</span><span class="p">:</span> <span class="p">[(</span><span class="n">index</span><span class="p">,</span> <span class="n">EVENT_TYPES</span><span class="p">[</span><span class="n">etype</span><span class="p">])],</span>
+                <span class="s1">'type'</span><span class="p">:</span> <span class="p">[(</span><span class="n">index</span><span class="p">,</span> <span class="n">etype</span><span class="p">)],</span>
+                <span class="s1">'msg'</span><span class="p">:</span> <span class="p">[(</span><span class="n">index</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'Session </span><span class="si">{</span><span class="n">sid</span><span class="si">}</span><span class="s1"> initializing'</span><span class="p">)]</span>
+            <span class="p">}</span>
+            <span class="n">cds</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">patch</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="s1">'finished executing periodic callback'</span> <span class="ow">in</span> <span class="n">new</span><span class="o">.</span><span class="n">msg</span><span class="p">:</span>
+            <span class="n">etype</span> <span class="o">=</span> <span class="s1">'periodic'</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">getMessage</span><span class="p">()</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">cds</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'msg'</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'finished executing'</span><span class="p">,</span> <span class="s1">'executing'</span><span class="p">))</span>
+            <span class="n">patch</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">'x1'</span><span class="p">:</span> <span class="p">[(</span><span class="n">index</span><span class="p">,</span> <span class="n">new</span><span class="o">.</span><span class="n">created</span><span class="o">*</span><span class="mi">1000</span><span class="p">)],</span>
+                <span class="s1">'color'</span><span class="p">:</span> <span class="p">[(</span><span class="n">index</span><span class="p">,</span> <span class="n">EVENT_TYPES</span><span class="p">[</span><span class="n">etype</span><span class="p">])],</span>
+                <span class="s1">'type'</span><span class="p">:</span> <span class="p">[(</span><span class="n">index</span><span class="p">,</span> <span class="n">etype</span><span class="p">)]</span>
+            <span class="p">}</span>
+            <span class="n">cds</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">patch</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">new</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'rendered'</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="n">cds</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'msg'</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Session </span><span class="si">{</span><span class="n">sid</span><span class="si">}</span><span class="s1"> initializing'</span><span class="p">)</span>
+                <span class="n">x0</span> <span class="o">=</span> <span class="n">cds</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'x1'</span><span class="p">][</span><span class="n">index</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">x0</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">created</span><span class="o">*</span><span class="mi">1000</span>
+            <span class="n">etype</span> <span class="o">=</span> <span class="s1">'rendering'</span>
+            <span class="n">event</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">'x0'</span><span class="p">:</span> <span class="p">[</span><span class="n">x0</span><span class="p">],</span>
+                <span class="s1">'x1'</span><span class="p">:</span> <span class="p">[</span><span class="n">new</span><span class="o">.</span><span class="n">created</span><span class="o">*</span><span class="mi">1000</span><span class="p">],</span>
+                <span class="s1">'y0'</span><span class="p">:</span> <span class="p">[(</span><span class="n">sid</span><span class="p">,</span> <span class="o">-</span><span class="mf">.25</span><span class="p">)],</span>
+                <span class="s1">'y1'</span><span class="p">:</span> <span class="p">[(</span><span class="n">sid</span><span class="p">,</span> <span class="mf">.25</span><span class="p">)],</span>
+                <span class="s1">'session'</span><span class="p">:</span> <span class="p">[</span><span class="n">sid</span><span class="p">],</span>
+                <span class="s1">'msg'</span><span class="p">:</span> <span class="p">[</span><span class="n">new</span><span class="o">.</span><span class="n">getMessage</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'rendered'</span><span class="p">,</span> <span class="s1">'rendering'</span><span class="p">)],</span>
+                <span class="s1">'color'</span><span class="p">:</span> <span class="p">[</span><span class="n">EVENT_TYPES</span><span class="p">[</span><span class="n">etype</span><span class="p">]],</span>
+                <span class="s1">'line_color'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'black'</span><span class="p">],</span>
+                <span class="s1">'type'</span><span class="p">:</span> <span class="p">[</span><span class="n">etype</span><span class="p">]</span>
+            <span class="p">}</span>
+            <span class="n">cds</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">getMessage</span><span class="p">()</span>
+            <span class="n">line_color</span> <span class="o">=</span> <span class="s1">'black'</span>
+            <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'Session </span><span class="si">%s</span><span class="s1"> logged'</span> <span class="o">%</span> <span class="n">sid</span><span class="p">):</span>
+                <span class="n">etype</span> <span class="o">=</span> <span class="s1">'logging'</span>
+                <span class="n">line_color</span> <span class="o">=</span> <span class="n">EVENT_TYPES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">etype</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">LOG_SESSION_DESTROYED</span> <span class="o">%</span> <span class="n">sid</span><span class="p">):</span>
+                <span class="n">etype</span> <span class="o">=</span> <span class="s1">'destroyed'</span>
+                <span class="n">line_color</span> <span class="o">=</span> <span class="n">EVENT_TYPES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">etype</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="s1">'executing periodic callback'</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+                <span class="n">etype</span> <span class="o">=</span> <span class="s1">'periodic'</span>
+                <span class="n">line_color</span> <span class="o">=</span> <span class="n">EVENT_TYPES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">etype</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">etype</span> <span class="o">=</span> <span class="s1">'processing'</span>
+            <span class="n">event</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">'x0'</span><span class="p">:</span> <span class="p">[</span><span class="n">new</span><span class="o">.</span><span class="n">created</span><span class="o">*</span><span class="mi">1000</span><span class="p">],</span>
+                <span class="s1">'x1'</span><span class="p">:</span> <span class="p">[</span><span class="n">new</span><span class="o">.</span><span class="n">created</span><span class="o">*</span><span class="mi">1000</span><span class="p">],</span>
+                <span class="s1">'y0'</span><span class="p">:</span> <span class="p">[(</span><span class="n">sid</span><span class="p">,</span> <span class="o">-</span><span class="mf">.25</span><span class="p">)],</span>
+                <span class="s1">'y1'</span><span class="p">:</span> <span class="p">[(</span><span class="n">sid</span><span class="p">,</span> <span class="mf">.25</span><span class="p">)],</span>
+                <span class="s1">'session'</span><span class="p">:</span> <span class="p">[</span><span class="n">sid</span><span class="p">],</span>
+                <span class="s1">'msg'</span><span class="p">:</span> <span class="p">[</span><span class="n">msg</span><span class="p">],</span>
+                <span class="s1">'color'</span><span class="p">:</span> <span class="p">[</span><span class="n">EVENT_TYPES</span><span class="p">[</span><span class="n">etype</span><span class="p">]],</span>
+                <span class="s1">'line_color'</span><span class="p">:</span> <span class="p">[</span><span class="n">line_color</span><span class="p">],</span>
+                <span class="s1">'type'</span><span class="p">:</span> <span class="p">[</span><span class="n">etype</span><span class="p">]</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">factors</span> <span class="o">!=</span> <span class="n">sessions</span><span class="p">:</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">factors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sessions</span><span class="p">)</span>
+            <span class="n">cds</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nb</span><span class="p">:</span>
+            <span class="n">push_notebook</span><span class="p">(</span><span class="n">bk_pane</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">log_data_handler</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">update_cds</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">schedule_cds_update</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">new</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">doc</span><span class="p">:</span>
+            <span class="n">doc</span><span class="o">.</span><span class="n">add_next_tick_callback</span><span class="p">(</span><span class="n">partial</span><span class="p">(</span><span class="n">update_cds</span><span class="p">,</span> <span class="n">new</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">update_cds</span><span class="p">(</span><span class="n">new</span><span class="p">,</span> <span class="n">nb</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">watcher</span> <span class="o">=</span> <span class="n">log_data_handler</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">schedule_cds_update</span><span class="p">,</span> <span class="s1">'data'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">_unwatch_data</span><span class="p">(</span><span class="n">session_context</span><span class="p">):</span>
+            <span class="n">log_data_handler</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">unwatch</span><span class="p">(</span><span class="n">watcher</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">on_session_destroyed</span><span class="p">(</span><span class="n">_unwatch_data</span><span class="p">)</span>
+
+    <span class="n">bk_pane</span> <span class="o">=</span> <span class="n">Bokeh</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bk_pane</span>
+
+<span class="k">def</span> <span class="nf">get_version_info</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">panel</span> <span class="kn">import</span> <span class="n">__version__</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
+<span class="s2">    &lt;h4&gt;</span>
+<span class="s2">    Panel Server running on following versions:</span>
+<span class="s2">    &lt;/h4&gt;</span>
+<span class="s2">    &lt;code&gt;</span>
+<span class="s2">    Python </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'|'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/br&gt;</span>
+<span class="s2">    Panel: </span><span class="si">{</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&lt;/br&gt;</span>
+<span class="s2">    Bokeh: </span><span class="si">{</span><span class="n">bokeh</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&lt;/br&gt;</span>
+<span class="s2">    Param: </span><span class="si">{</span><span class="n">param</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&lt;/br&gt;</span>
+<span class="s2">    &lt;/code&gt;"""</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">get_process</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">psutil</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span> <span class="ow">in</span> <span class="n">PROCESSES</span><span class="p">:</span>
+        <span class="n">process</span> <span class="o">=</span> <span class="n">PROCESSES</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">PROCESSES</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()]</span> <span class="o">=</span> <span class="n">process</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">process</span>
+
+<span class="k">def</span> <span class="nf">get_mem</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="n">get_process</span><span class="p">()</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">)],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'memory'</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">get_cpu</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="n">get_process</span><span class="p">()</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">())],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'cpu'</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">get_process_info</span><span class="p">():</span>
+    <span class="n">memory</span> <span class="o">=</span> <span class="n">Trend</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">get_mem</span><span class="p">(),</span> <span class="n">plot_x</span><span class="o">=</span><span class="s1">'time'</span><span class="p">,</span> <span class="n">plot_y</span><span class="o">=</span><span class="s1">'memory'</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s1">'step'</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">'Memory Usage (MB)'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span>
+    <span class="p">)</span>
+    <span class="n">cpu</span> <span class="o">=</span> <span class="n">Trend</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">get_cpu</span><span class="p">(),</span> <span class="n">plot_x</span><span class="o">=</span><span class="s1">'time'</span><span class="p">,</span> <span class="n">plot_y</span><span class="o">=</span><span class="s1">'cpu'</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s1">'step'</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">'CPU Usage (%)'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span>
+    <span class="p">)</span>
+    <span class="k">def</span> <span class="nf">update_stats</span><span class="p">():</span>
+        <span class="n">memory</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">get_mem</span><span class="p">())</span>
+        <span class="n">cpu</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">get_cpu</span><span class="p">())</span>
+    <span class="n">stats_cb</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">add_periodic_callback</span><span class="p">(</span><span class="n">update_stats</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">stats_cb</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">stats_cb</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">memory</span><span class="p">,</span> <span class="n">cpu</span>
+
+<span class="k">def</span> <span class="nf">get_session_data</span><span class="p">():</span>
+    <span class="n">durations</span><span class="p">,</span> <span class="n">renders</span><span class="p">,</span> <span class="n">sessions</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">session_info</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">session_info</span><span class="p">[</span><span class="s1">'sessions'</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">session</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">session_info</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+        <span class="n">is_live</span> <span class="o">=</span> <span class="n">session</span><span class="p">[</span><span class="s1">'ended'</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span>
+        <span class="n">live</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span>
+            <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">session_info</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="s1">'launched'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">session</span><span class="p">[</span><span class="s1">'launched'</span><span class="p">]</span> <span class="ow">and</span>
+            <span class="p">(</span><span class="ow">not</span> <span class="n">s</span><span class="p">[</span><span class="s1">'ended'</span><span class="p">]</span> <span class="ow">or</span> <span class="n">s</span><span class="p">[</span><span class="s1">'ended'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">session</span><span class="p">[</span><span class="s1">'launched'</span><span class="p">])</span>
+        <span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">session</span><span class="p">[</span><span class="s1">'rendered'</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">renders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">session</span><span class="p">[</span><span class="s1">'rendered'</span><span class="p">]</span><span class="o">-</span><span class="n">session</span><span class="p">[</span><span class="s1">'started'</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_live</span><span class="p">:</span>
+            <span class="n">durations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">session</span><span class="p">[</span><span class="s1">'ended'</span><span class="p">]</span><span class="o">-</span><span class="n">session</span><span class="p">[</span><span class="s1">'launched'</span><span class="p">])</span>
+        <span class="n">duration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">durations</span><span class="p">)</span> <span class="k">if</span> <span class="n">durations</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">render</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">renders</span><span class="p">)</span> <span class="k">if</span> <span class="n">renders</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">sessions</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">session</span><span class="p">[</span><span class="s1">'launched'</span><span class="p">],</span> <span class="n">live</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">render</span><span class="p">,</span> <span class="n">duration</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sessions</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">duration</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">render</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>
+    <span class="n">live</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span>
+        <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">session_info</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="s1">'launched'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">now</span> <span class="ow">and</span>
+        <span class="p">(</span><span class="ow">not</span> <span class="n">s</span><span class="p">[</span><span class="s1">'ended'</span><span class="p">]</span> <span class="ow">or</span> <span class="n">s</span><span class="p">[</span><span class="s1">'ended'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">now</span><span class="p">)</span>
+    <span class="p">])</span>
+    <span class="n">sessions</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">now</span><span class="p">,</span> <span class="n">live</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">render</span><span class="p">,</span> <span class="n">duration</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sessions</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'live'</span><span class="p">,</span> <span class="s1">'total'</span><span class="p">,</span> <span class="s1">'render'</span><span class="p">,</span> <span class="s1">'duration'</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">get_session_info</span><span class="p">(</span><span class="n">doc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">get_session_data</span><span class="p">()</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">Trend</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'total'</span><span class="p">]],</span> <span class="n">plot_x</span><span class="o">=</span><span class="s1">'time'</span><span class="p">,</span> <span class="n">plot_y</span><span class="o">=</span><span class="s1">'total'</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s1">'step'</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">'Total Sessions'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span>
+    <span class="p">)</span>
+    <span class="n">active</span> <span class="o">=</span> <span class="n">Trend</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'live'</span><span class="p">]],</span> <span class="n">plot_x</span><span class="o">=</span><span class="s1">'time'</span><span class="p">,</span> <span class="n">plot_y</span><span class="o">=</span><span class="s1">'live'</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s1">'step'</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">'Active Sessions'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span>
+    <span class="p">)</span>
+    <span class="n">render</span> <span class="o">=</span> <span class="n">Trend</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'render'</span><span class="p">]],</span> <span class="n">plot_x</span><span class="o">=</span><span class="s1">'time'</span><span class="p">,</span> <span class="n">plot_y</span><span class="o">=</span><span class="s1">'render'</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s1">'step'</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">'Avg. Time to Render (s)'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span>
+    <span class="p">)</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="n">Trend</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s1">'time'</span><span class="p">,</span> <span class="s1">'duration'</span><span class="p">]],</span> <span class="n">plot_x</span><span class="o">=</span><span class="s1">'time'</span><span class="p">,</span> <span class="n">plot_y</span><span class="o">=</span><span class="s1">'duration'</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s1">'step'</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">'Avg. Session Duration (s)'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span>
+    <span class="p">)</span>
+    <span class="c1"># Set up callbacks</span>
+    <span class="k">def</span> <span class="nf">update_session_info</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">get_session_data</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">trend</span> <span class="ow">in</span> <span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">active</span><span class="p">,</span> <span class="n">render</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
+            <span class="n">trend</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="n">trend</span><span class="o">.</span><span class="n">plot_x</span><span class="p">,</span> <span class="n">trend</span><span class="o">.</span><span class="n">plot_y</span><span class="p">]]</span>
+    <span class="n">watcher</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">update_session_info</span><span class="p">,</span> <span class="s1">'session_info'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">_unwatch_session_info</span><span class="p">(</span><span class="n">session_context</span><span class="p">):</span>
+            <span class="n">state</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">unwatch</span><span class="p">(</span><span class="n">watcher</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">on_session_destroyed</span><span class="p">(</span><span class="n">_unwatch_session_info</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total</span><span class="p">,</span> <span class="n">active</span><span class="p">,</span> <span class="n">render</span><span class="p">,</span> <span class="n">duration</span>
+
+<span class="k">def</span> <span class="nf">get_overview</span><span class="p">(</span><span class="n">doc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">FlexBox</span><span class="p">(</span><span class="o">*</span><span class="n">get_session_info</span><span class="p">(</span><span class="n">doc</span><span class="p">),</span> <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">'stretch_width'</span><span class="p">)</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="n">get_version_info</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">psutil</span>  <span class="c1"># noqa</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">layout</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="o">*</span><span class="n">get_process_info</span><span class="p">(),</span> <span class="n">info</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">layout</span>
+
+
+<span class="k">def</span> <span class="nf">log_component</span><span class="p">():</span>
+    <span class="c1"># Without this tabulator is empty after reload of website</span>
+    <span class="n">log_terminal</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">trigger</span><span class="p">(</span><span class="s2">"value"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Column</span><span class="p">(</span>
+        <span class="n">Accordion</span><span class="p">(</span>
+            <span class="p">(</span><span class="s1">'Filters &amp; Download'</span><span class="p">,</span> <span class="n">Row</span><span class="p">(</span>
+                <span class="n">level_filter</span><span class="p">,</span>
+                <span class="n">app_filter</span><span class="p">,</span>
+                <span class="n">session_filter</span><span class="p">,</span>
+                <span class="n">message_filter</span><span class="p">,</span>
+                <span class="n">Column</span><span class="p">(</span>
+                    <span class="n">download_filename</span><span class="p">,</span>
+                    <span class="n">download_button</span><span class="p">,</span>
+                    <span class="n">reset_filter</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">'stretch_width'</span>
+            <span class="p">)),</span>
+            <span class="n">active</span><span class="o">=</span><span class="p">[],</span>
+            <span class="n">active_header_background</span><span class="o">=</span><span class="s1">'#444444'</span><span class="p">,</span>
+            <span class="n">header_background</span><span class="o">=</span><span class="s1">'#333333'</span><span class="p">,</span>
+            <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">'stretch_width'</span>
+        <span class="p">),</span>
+        <span class="n">log_terminal</span><span class="p">,</span>
+        <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">'stretch_both'</span>
+    <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">admin_template</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+    <span class="n">log_sessions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">_remove_log_session</span><span class="p">(</span><span class="n">session_context</span><span class="p">):</span>
+        <span class="n">log_sessions</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">on_session_destroyed</span><span class="p">(</span><span class="n">_remove_log_session</span><span class="p">)</span>
+
+    <span class="c1"># Add and remove admin panel app from log sessions list</span>
+    <span class="c1"># Set up admin panel</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="n">FastListTemplate</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">'Admin Panel'</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="s1">'dark'</span><span class="p">)</span>
+    <span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span>
+        <span class="p">(</span><span class="s1">'Overview'</span><span class="p">,</span> <span class="n">get_overview</span><span class="p">(</span><span class="n">doc</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s1">'Timeline'</span><span class="p">,</span> <span class="n">get_timeline</span><span class="p">(</span><span class="n">doc</span><span class="p">)),</span>
+        <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">'stretch_both'</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">profiler</span><span class="p">:</span>
+        <span class="n">tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">(</span><span class="s1">'Launch Profiling'</span><span class="p">,</span> <span class="n">profiling_tabs</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="sa">r</span><span class="s1">'^\/.*'</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="p">)</span>
+    <span class="n">tabs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+        <span class="p">(</span><span class="s1">'User Profiling'</span><span class="p">,</span> <span class="n">profiling_tabs</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="sa">r</span><span class="s1">'^\/.*'</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s1">'Logs'</span><span class="p">,</span> <span class="n">log_component</span><span class="p">())</span>
+    <span class="p">])</span>
+    <span class="n">tabs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+        <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">plugin</span><span class="p">())</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">admin_plugins</span>
+    <span class="p">])</span>
+    <span class="n">template</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tabs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">template</span>
+
+<span class="k">def</span> <span class="nf">admin_panel</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">set_curdoc</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">admin_template</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        <span class="n">template</span><span class="o">.</span><span class="n">server_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">doc</span>
+</pre></div>
+</article>
+<footer class="bd-footer-article">
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+</footer>
+</div>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+<footer class="bd-footer"><div class="bd-footer__inner container">
+<div class="footer-item">
+<p class="copyright">
+    © Copyright 2019-2022 Holoviz contributors.<br/>
+</p>
+</div>
+<div class="footer-item">
+<p class="last-updated">
+Last updated on 2022-10-05.<br/>
+</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

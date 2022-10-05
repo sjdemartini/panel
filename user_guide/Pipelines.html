@@ -1,0 +1,1799 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
+<link href="../site.webmanifest" rel="manifest"/>
+<title>Pipelines — Panel v0.14.0</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/mystnb.css" rel="stylesheet" type="text/css">
+<link href="../_static/graphviz.css" rel="stylesheet" type="text/css">
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/runbutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/dataframe.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695" rel="preload"/>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/sphinx_highlight.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/run_cell.js"></script>
+<script src="../_static/WorkerHandler.js"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../_static/design-tabs.js"></script>
+<script src="../_static/ServiceHandler.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/panel.min.js"></script>
+<script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-154795830-2', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
+<link href="../_static/favicon.ico" rel="shortcut icon">
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="Templates.html" rel="next" title="Templates"/>
+<link href="Links.html" rel="prev" title="Linking objects in Panel"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></link></link></head>
+<body data-default-mode="light" data-offset="180" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="bd-header-announcement container-fluid" id="banner">
+</div>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+<div id="navbar-start">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../_static/logo_horizontal.png"/>
+<img alt="Logo image" class="logo__image only-dark" src="../_static/logo_horizontal.png"/>
+</a>
+</div>
+<button aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-collapsible" data-toggle="collapse" type="button">
+<span class="fas fa-bars"></span>
+</button>
+<div class="col-lg-9 collapse navbar-collapse" id="navbar-collapsible">
+<div class="mr-auto" id="navbar-center">
+<div class="navbar-center-item">
+<ul class="navbar-nav" id="navbar-main-elements">
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../index.html">
+  Overview
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+<li class="toctree-l1 current active nav-item">
+<a class="reference internal nav-link" href="index.html">
+  User Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../gallery/index.html">
+  Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../reference/index.html">
+  Reference Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../developer_guide/index.html">
+  Developer Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../api/index.html">
+  API Reference
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../releases.html">
+  Releases
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../FAQ.html">
+  FAQ
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../about/index.html">
+  About
+ </a>
+</li>
+</ul>
+</div>
+</div>
+<div id="navbar-end">
+<div class="navbar-end-item">
+<ul aria-label="Icon Links" class="navbar-nav" id="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/holoviz/panel" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://twitter.com/Panel_Org" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://discourse.holoviz.org/c/panel/5" rel="noopener" target="_blank" title="Discourse"><span><i class="fab fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bd-container container-xl">
+<div class="bd-container__inner row">
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-2 bd-sidebar">
+<div class="sidebar-start-items"><form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search the docs ..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../index.html">
+   Overview
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../getting_started/index.html">
+   Getting Started
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/installation.html">
+     Installation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/build_app.html">
+     Build an app
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/core_concepts.html">
+     Core Concepts
+    </a>
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="index.html">
+   User Guide
+  </a>
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="Overview.html">
+     Overview
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Components.html">
+     Components
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="APIs.html">
+     APIs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Customization.html">
+     Customization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Interact.html">
+     Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Widgets.html">
+     Widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Param.html">
+     Parameters
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Links.html">
+     Linking
+    </a>
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
+     Pipelines
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Templates.html">
+     Templates
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Performance_and_Debugging.html">
+     Performance and Debugging
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Session_State_and_Callbacks.html">
+     Session state &amp; Callbacks
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Async_and_Concurrency.html">
+     Asynchronous and Concurrent Process
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Display_and_Export.html">
+     Display &amp; Export
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Running_in_Webassembly.html">
+     Running Panel in the Browser with WASM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Server_Configuration.html">
+     Server Configuration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Server_Deployment.html">
+     Server Deployment
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Authentication.html">
+     Authentication
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Django.html">
+     Django Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="FastAPI.html">
+     FastAPI Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Custom_Components.html">
+     Building Custom Components
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../gallery/index.html">
+   Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKInteractive.html">
+     VTKInteractive
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKSlicer.html">
+     VTKSlicer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKWarp.html">
+     VTKWarp
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/attractors.html">
+     Attractors
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/gapminders.html">
+     Gapminders
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/glaciers.html">
+     Glaciers
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/nyc_taxi.html">
+     Nyc Taxi
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/portfolio-optimizer.html">
+     Portfolio-optimizer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_brushing.html">
+     Altair Brushing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_choropleth.html">
+     Altair Choropleth
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/clifford_interact.html">
+     Clifford Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/color_speech_recognition.html">
+     Color Speech Recognition
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/deckgl_game_of_life.html">
+     Deckgl Game Of Life
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/defer_data_load.html">
+     Defer Data Load
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/file_download_examples.html">
+     File Download Examples
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/hvplot_explorer.html">
+     Hvplot Explorer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/iris_kmeans.html">
+     Iris Kmeans
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/loading_spinner.html">
+     Loading Spinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/random_number_generator.html">
+     Random Number Generator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/save_filtered_df.html">
+     Save Filtered Df
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/sync_location.html">
+     Sync Location
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/temperature_distribution.html">
+     Temperature Distribution
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/xgboost_classifier.html">
+     Xgboost Classifier
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_altair.html">
+     Stocks Altair
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_hvplot.html">
+     Stocks Hvplot
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_matplotlib.html">
+     Stocks Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_plotly.html">
+     Stocks Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/distribution_tabs.html">
+     Distribution Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/dynamic_tabs.html">
+     Dynamic Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/plot_with_columns.html">
+     Plot With Columns
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_plot_layout.html">
+     Dynamic Plot Layout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_timeseries_image_analysis.html">
+     Dynamic Timeseries Image Analysis
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_ui.html">
+     Dynamic Ui
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_widget_values.html">
+     Dynamic Widget Values
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/action_button.html">
+     Action Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/deck_gl_global_power_plants.html">
+     Deck Gl Global Power Plants
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/download_upload_csv.html">
+     Download Upload Csv
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/loading_indicator.html">
+     Loading Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/param_subobjects.html">
+     Param Subobjects
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/precedence.html">
+     Precedence
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_plots.html">
+     Reactive Plots
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_tables.html">
+     Reactive Tables
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/hardware_automation.html">
+     Hardware Automation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_bokeh.html">
+     Streaming Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_indicator.html">
+     Streaming Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_perspective.html">
+     Streaming Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_tabulator.html">
+     Streaming Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/CanvasDraw.html">
+     CanvasDraw
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/LeafletHeatMap.html">
+     LeafletHeatMap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/MaterialUI.html">
+     MaterialUI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/bokeh_property_editor.html">
+     Bokeh Property Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/deck_gl_json_editor.html">
+     Deck Gl Json Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/holoviews_glyph_link.html">
+     Holoviews Glyph Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/plotly_link.html">
+     Plotly Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/vega_heatmap_link.html">
+     Vega Heatmap Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/MatplotlibStyle.html">
+     MatplotlibStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/PlotlyStyle.html">
+     PlotlyStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/SeabornStyle.html">
+     SeabornStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/VegaAltairStyle.html">
+     VegaAltairStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/DataTable.html">
+     DataTable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/deck.gl.html">
+     Deck.gl
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../reference/index.html">
+   Reference Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Alert.html">
+     Alert
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Audio.html">
+     Audio
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Bokeh.html">
+     Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DeckGL.html">
+     DeckGL
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/ECharts.html">
+     ECharts
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/GIF.html">
+     GIF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HTML.html">
+     HTML
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HoloViews.html">
+     HoloViews
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IDOM.html">
+     IDOM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IPyWidget.html">
+     IPyWidget
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JPG.html">
+     JPG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JSON.html">
+     JSON
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/LaTeX.html">
+     LaTeX
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Markdown.html">
+     Markdown
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Matplotlib.html">
+     Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PDF.html">
+     PDF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PNG.html">
+     PNG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Param.html">
+     Param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Perspective.html">
+     Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Plotly.html">
+     Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/SVG.html">
+     SVG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Str.html">
+     Str
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Streamz.html">
+     Streamz
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTK.html">
+     VTK
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKJS.html">
+     VTKJS
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKVolume.html">
+     VTKVolume
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Vega.html">
+     Vega
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Video.html">
+     Video
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Accordion.html">
+     Accordion
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Card.html">
+     Card
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Column.html">
+     Column
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Divider.html">
+     Divider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/FlexBox.html">
+     FlexBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridBox.html">
+     GridBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridSpec.html">
+     GridSpec
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridStack.html">
+     GridStack
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Row.html">
+     Row
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Tabs.html">
+     Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/WidgetBox.html">
+     WidgetBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Bootstrap.html">
+     Bootstrap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastGridTemplate.html">
+     FastGridTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastListTemplate.html">
+     FastListTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/GoldenLayout.html">
+     GoldenLayout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Material.html">
+     Material
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/React.html">
+     React
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Vanilla.html">
+     Vanilla
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/global/Notifications.html">
+     Notifications
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/BooleanStatus.html">
+     BooleanStatus
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Dial.html">
+     Dial
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Gauge.html">
+     Gauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LinearGauge.html">
+     LinearGauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LoadingSpinner.html">
+     LoadingSpinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Number.html">
+     Number
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Progress.html">
+     Progress
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Tqdm.html">
+     Tqdm
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Trend.html">
+     Trend
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Ace.html">
+     Ace
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ArrayInput.html">
+     ArrayInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/AutocompleteInput.html">
+     AutocompleteInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Button.html">
+     Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckBoxGroup.html">
+     CheckBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckButtonGroup.html">
+     CheckButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Checkbox.html">
+     Checkbox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ColorPicker.html">
+     ColorPicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CrossSelector.html">
+     CrossSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatePicker.html">
+     DatePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateRangeSlider.html">
+     DateRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateSlider.html">
+     DateSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeInput.html">
+     DatetimeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimePicker.html">
+     DatetimePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeInput.html">
+     DatetimeRangeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangePicker.html">
+     DatetimeRangePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeSlider.html">
+     DatetimeRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Debugger.html">
+     Debugger
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscretePlayer.html">
+     DiscretePlayer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscreteSlider.html">
+     DiscreteSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableFloatSlider.html">
+     EditableFloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableIntSlider.html">
+     EditableIntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableRangeSlider.html">
+     EditableRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileDownload.html">
+     FileDownload
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileInput.html">
+     FileInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileSelector.html">
+     FileSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatInput.html">
+     FloatInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatSlider.html">
+     FloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntInput.html">
+     IntInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntRangeSlider.html">
+     IntRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntSlider.html">
+     IntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/JSONEditor.html">
+     JSONEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/LiteralInput.html">
+     LiteralInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MenuButton.html">
+     MenuButton
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiChoice.html">
+     MultiChoice
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiSelect.html">
+     MultiSelect
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/PasswordInput.html">
+     PasswordInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Player.html">
+     Player
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioBoxGroup.html">
+     RadioBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioButtonGroup.html">
+     RadioButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RangeSlider.html">
+     RangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Select.html">
+     Select
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/SpeechToText.html">
+     SpeechToText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/StaticText.html">
+     StaticText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Tabulator.html">
+     Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Terminal.html">
+     Terminal
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextAreaInput.html">
+     TextAreaInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextEditor.html">
+     TextEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextInput.html">
+     TextInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextToSpeech.html">
+     TextToSpeech
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Toggle.html">
+     Toggle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ToggleGroup.html">
+     ToggleGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/VideoStream.html">
+     VideoStream
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../developer_guide/index.html">
+   Developer Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/testing.html">
+     Testing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/Developing_Custom_Models.html">
+     Developing custom models
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../api/index.html">
+   API Reference
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.io.html">
+     io
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.layout.html">
+     layout
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../api/panel.pane.html">
+     pane
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.pane.vtk.html">
+       panel.vtk Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.param.html">
+     param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.pipeline.html">
+     pipeline
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../api/panel.template.html">
+     template
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.bootstrap.html">
+       panel.bootstrap Package
+      </a>
+</li>
+<li class="toctree-l3 has-children">
+<a class="reference internal" href="../api/panel.template.fast.html">
+       panel.fast Package
+      </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l4">
+<a class="reference internal" href="../api/panel.template.fast.grid.html">
+         panel.grid Package
+        </a>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="../api/panel.template.fast.list.html">
+         panel.list Package
+        </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.golden.html">
+       panel.golden Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.material.html">
+       panel.material Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.react.html">
+       panel.react Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.theme.html">
+       panel.theme Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.vanilla.html">
+       panel.vanilla Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.widgets.html">
+     widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.viewable.html">
+     viewable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.util.html">
+     util
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../releases.html">
+   Releases
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../FAQ.html">
+   FAQ
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../about/index.html">
+   About
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../about/comparisons.html">
+     Comparisons
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class="sidebar-end-items">
+</div>
+</div>
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+<div class="toc-item">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+<i class="fas fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#non-linear-pipelines">
+   Non-linear pipelines
+  </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#custom-layout">
+   Custom layout
+  </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#programmatic-flow-control">
+   Programmatic flow control
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+<div class="toc-item">
+</div>
+</div>
+<div class="bd-content col-12 col-md-10 col-xl-8" role="main">
+<article class="bd-article" role="main">
+<section class="tex2jax_ignore mathjax_ignore" id="pipelines">
+<h1>Pipelines<a class="headerlink" href="#pipelines" title="Permalink to this heading">#</a></h1>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">param</span>
+<span class="kn">import</span> <span class="nn">panel</span> <span class="k">as</span> <span class="nn">pn</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="s1">'katex'</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell0-py"></pre><pre class="pyodide-stderr" id="stderr-codecell0-py"></pre><p>The <a class="reference internal" href="Param.html"><span class="doc std std-doc">Param user guide</span></a> described how to set up classes that declare parameters and link them to some computation or visualization. In this section we will discover how to connect multiple such panels into a <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> to express complex multi-page workflows where the output of one stage feeds into the next stage.</p>
+<p>To start using a <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code>, let us declare an empty one by instantiating the class:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">()</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell1-py"></pre><pre class="pyodide-stderr" id="stderr-codecell1-py"></pre><p>Having set up a Pipeline it is now possible to start populating it with one or more stages.  We have previously seen how a <code class="docutils literal notranslate"><span class="pre">Parameterized</span></code> class can have parameters controlling some visualization or computation on a method, with that linkage declared using the <code class="docutils literal notranslate"><span class="pre">param.depends</span></code> decorator. To use such classes as a pipeline stage, the <code class="docutils literal notranslate"><span class="pre">Parameterized</span></code> class will also need to designate at least one of the methods as an “output”, and it should also provide a visual representation for that pipeline stage.</p>
+<p>To declare the output for a stage, decorate one of its methods with <code class="docutils literal notranslate"><span class="pre">param.output</span></code>. A <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> will use this information to determine what outputs are available to be fed into the next stage of the workflow. In the example below, the <code class="docutils literal notranslate"><span class="pre">Stage1</span></code> class has two parameters (<code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>) and one output (<code class="docutils literal notranslate"><span class="pre">c</span></code>). The signature of the decorator allows a number of different ways of declaring the outputs:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">param.output()</span></code>: Declaring an output without arguments will declare that the method returns an output that will inherit the name of the method and does not make any specific type declarations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">param.output(param.Number)</span></code>: Declaring an output with a specific <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> or Python type also declares an output with the name of the method but declares that the output will be of a specific type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">param.output(c=param.Number)</span></code>: Declaring an output using a keyword argument allows overriding the method name as the name of the output and declares the type.</p></li>
+</ul>
+<p>It is also possible to declare multiple outputs, either as keywords or tuples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">param.output(c=param.Number,</span> <span class="pre">d=param.String)</span></code> or</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">param.output(('c',</span> <span class="pre">param.Number),</span> <span class="pre">('d',</span> <span class="pre">param.String))</span></code></p></li>
+</ul>
+<p>The example below takes two inputs (<code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>) and produces two outputs (<code class="docutils literal notranslate"><span class="pre">c</span></code>, computed by mutiplying the inputs, and <code class="docutils literal notranslate"><span class="pre">d</span></code>, computed by raising <code class="docutils literal notranslate"><span class="pre">a</span></code> to the power <code class="docutils literal notranslate"><span class="pre">b</span></code>). To use the class as a pipeline stage, we also have to implement a <code class="docutils literal notranslate"><span class="pre">panel</span></code> method, which returns a Panel object providing a visual representation of the stage.  Here we help implement the <code class="docutils literal notranslate"><span class="pre">panel</span></code> method using an additional <code class="docutils literal notranslate"><span class="pre">view</span></code> method that returns a <code class="docutils literal notranslate"><span class="pre">LaTeX</span></code> pane, which will render the equation to <code class="docutils literal notranslate"><span class="pre">LaTeX</span></code>.</p>
+<p>In addition to passing along the outputs, the Pipeline will also pass along the values of any input parameters whose names match input parameters on the next stage (unless <code class="docutils literal notranslate"><span class="pre">inherit_params</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+<p>Let’s start by displaying this stage on its own:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Stage1</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+
+    <span class="n">a</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+    <span class="n">b</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+    <span class="n">ready</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">precedence</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">output</span><span class="p">((</span><span class="s1">'c'</span><span class="p">,</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">),</span> <span class="p">(</span><span class="s1">'d'</span><span class="p">,</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">LaTeX</span><span class="p">(</span><span class="s1">'$</span><span class="si">{a}</span><span class="s1"> * </span><span class="si">{b}</span><span class="s1"> = </span><span class="si">{c}</span><span class="s1">$</span><span class="se">\n</span><span class="s1">$</span><span class="si">{a}</span><span class="s1">^{{</span><span class="si">{b}</span><span class="s1">}} = </span><span class="si">{d}</span><span class="s1">$'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">a</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">d</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">'font-size'</span><span class="p">:</span> <span class="s1">'2em'</span><span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">panel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
+
+<span class="n">stage1</span> <span class="o">=</span> <span class="n">Stage1</span><span class="p">()</span>
+<span class="n">stage1</span><span class="o">.</span><span class="n">panel</span><span class="p">()</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell2-py"></pre><pre class="pyodide-stderr" id="stderr-codecell2-py"></pre><div class="pyodide-output embedded" id="output-codecell2-py"></div>
+<script>
+              async function embed_bokeh_3 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell2-py", "root_id": "1002", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"end": 10, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "B", "value": 5}, "id": "1006", "type": "Slider"}, {"attributes": {"children": [{"id": "1003"}, {"id": "1007"}], "margin": [0, 0, 0, 0], "name": "Row05016"}, "id": "1002", "type": "Row"}, {"attributes": {"end": 10, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "A", "value": 5}, "id": "1005", "type": "Slider"}, {"attributes": {"name": "location", "reload": false}, "id": "1009", "type": "panel.models.location.Location"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>Stage</b>"}, "id": "1004", "type": "Div"}, {"attributes": {"margin": [5, 5, 5, 5], "name": "LaTeX05012", "style": {"font-size": "2em"}, "text": "$5 * 5 = 25$\n$5^{5} = 3125$"}, "id": "1008", "type": "panel.models.katex.KaTeX"}, {"attributes": {"children": [{"id": "1004"}, {"id": "1005"}, {"id": "1006"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "Stage", "width": 300}, "id": "1003", "type": "Column"}, {"attributes": {"children": [{"id": "1008"}], "margin": [0, 0, 0, 0], "name": "Row05011"}, "id": "1007", "type": "Row"}], "root_ids": ["1002", "1009"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_3, 200)
+                }
+              };
+              embed_bokeh_3()
+            </script>
+<p>To summarize, we have followed several conventions when setting up this stage of our <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code>:</p>
+<ol class="arabic simple">
+<li><p>Declare a Parameterized class with some input parameters.</p></li>
+<li><p>Declare one or more methods decorated with the <code class="docutils literal notranslate"><span class="pre">param.output</span></code> decorator.</p></li>
+<li><p>Declare a <code class="docutils literal notranslate"><span class="pre">panel</span></code> method that returns a view of the object that the <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> can render.</p></li>
+</ol>
+<p>Now that the object has been instantiated we can also query it for its outputs:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stage1</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">outputs</span><span class="p">()</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell3-py"></pre><pre class="pyodide-stderr" id="stderr-codecell3-py"></pre><div class="pyodide-output embedded" id="output-codecell3-py"><pre>{'c': (&lt;param.Number object at 0x7fea7fd38580&gt;, &lt;bound method Stage1.output of Stage1(a=5, b=5, name='Stage104996', ready=False)&gt;, 0), 'd': (&lt;param.Number object at 0x7fea7fd38640&gt;, &lt;bound method Stage1.output of Stage1(a=5, b=5, name='Stage104996', ready=False)&gt;, 1)}</pre></div>
+<p>We can see that <code class="docutils literal notranslate"><span class="pre">Stage1</span></code> declares outputs named <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code> of type <code class="docutils literal notranslate"><span class="pre">param.Number</span></code> that can be accessed by calling the <code class="docutils literal notranslate"><span class="pre">output</span></code> method on the object. Now let us add this stage to our <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> using the <code class="docutils literal notranslate"><span class="pre">add_stage</span></code> method:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">'Stage 1'</span><span class="p">,</span> <span class="n">stage1</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell4-py"></pre><pre class="pyodide-stderr" id="stderr-codecell4-py"></pre><p>The <code class="docutils literal notranslate"><span class="pre">add_stage</span></code> method takes the name of the stage as its first argument, the stage class or instance as the second parameter, and any additional keyword arguments if you want to override default behavior.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> with only a single stage is not much of a <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code>, of course! So let’s set up a second stage, consuming the output of the first. Recall that <code class="docutils literal notranslate"><span class="pre">Stage1</span></code> declares an  output named <code class="docutils literal notranslate"><span class="pre">c</span></code>. If output <code class="docutils literal notranslate"><span class="pre">c</span></code> from <code class="docutils literal notranslate"><span class="pre">Stage1</span></code> should flow to <code class="docutils literal notranslate"><span class="pre">Stage2</span></code>, the latter should declare a <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> named <code class="docutils literal notranslate"><span class="pre">c</span></code> to consume the output of the first stage. <code class="docutils literal notranslate"><span class="pre">Stage2</span></code> does not have to consume all parameters, and here we will ignore output <code class="docutils literal notranslate"><span class="pre">d</span></code>.</p>
+<p>In the second stage we will define parameters <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">exp</span></code>. To make sure that we don’t get a widget for <code class="docutils literal notranslate"><span class="pre">c</span></code> (as it will be set by the previous stage, not the user), we’ll set its precedence to be negative (which tells Panel to skip creating a widget for it). In other respects this class is very similar to the first one; it declares both a <code class="docutils literal notranslate"><span class="pre">view</span></code> method that depends on the parameters of the class, and a <code class="docutils literal notranslate"><span class="pre">panel</span></code> method that returns a view of the object.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Stage2</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+
+    <span class="n">exp</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="s1">'c'</span><span class="p">,</span> <span class="s1">'exp'</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">LaTeX</span><span class="p">(</span><span class="s1">'${</span><span class="si">%s</span><span class="s1">}^{</span><span class="si">%s</span><span class="s1">}={</span><span class="si">%.3f</span><span class="s1">}$'</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">exp</span><span class="p">),</span>
+                             <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">'font-size'</span><span class="p">:</span> <span class="s1">'2em'</span><span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">panel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
+
+<span class="n">stage2</span> <span class="o">=</span> <span class="n">Stage2</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="n">stage1</span><span class="o">.</span><span class="n">output</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">stage2</span><span class="o">.</span><span class="n">panel</span><span class="p">()</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell5-py"></pre><pre class="pyodide-stderr" id="stderr-codecell5-py"></pre><div class="pyodide-output embedded" id="output-codecell5-py"></div>
+<script>
+              async function embed_bokeh_6 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell5-py", "root_id": "1010", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"children": [{"id": "1012"}, {"id": "1013"}, {"id": "1014"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "Stage", "width": 300}, "id": "1011", "type": "Column"}, {"attributes": {"end": 3, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "Exp", "value": 0.1}, "id": "1014", "type": "Slider"}, {"attributes": {"margin": [5, 5, 5, 5], "name": "LaTeX05146", "style": {"font-size": "2em"}, "text": "${25}^{0.1}={1.380}$"}, "id": "1016", "type": "panel.models.katex.KaTeX"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>Stage</b>"}, "id": "1012", "type": "Div"}, {"attributes": {"low": 0, "margin": [5, 10, 5, 10], "placeholder": "0", "step": 0.1, "title": "C", "value": 25, "value_throttled": 25}, "id": "1013", "type": "Spinner"}, {"attributes": {"name": "location", "reload": false}, "id": "1017", "type": "panel.models.location.Location"}, {"attributes": {"children": [{"id": "1011"}, {"id": "1015"}], "margin": [0, 0, 0, 0], "name": "Row05150"}, "id": "1010", "type": "Row"}, {"attributes": {"children": [{"id": "1016"}], "margin": [0, 0, 0, 0], "name": "Row05145"}, "id": "1015", "type": "Row"}], "root_ids": ["1010", "1017"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_6, 200)
+                }
+              };
+              embed_bokeh_6()
+            </script>
+<p>Now that we have declared the second stage of the pipeline, let us add it to the <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> object:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">'Stage 2'</span><span class="p">,</span> <span class="n">stage2</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell6-py"></pre><pre class="pyodide-stderr" id="stderr-codecell6-py"></pre><p>And that’s it; we have now declared a two-stage pipeline, where the output <code class="docutils literal notranslate"><span class="pre">c</span></code> flows from the first stage into the second stage. To begin with we can <code class="docutils literal notranslate"><span class="pre">print</span></code> the pipeline to see the stages:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell7-py" style="display: block;">Pipeline:
+    [0] Stage 1: Stage1()
+    [1] Stage 2: Stage2(c=25)
+</pre><pre class="pyodide-stderr" id="stderr-codecell7-py"></pre><p>To display the <code class="docutils literal notranslate"><span class="pre">pipeline</span></code> we simply let it render itself:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">'Stage 1'</span><span class="p">,</span> <span class="n">Stage1</span><span class="p">())</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">'Stage 2'</span><span class="p">,</span> <span class="n">Stage2</span><span class="p">)</span>
+
+<span class="n">pipeline</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell8-py"></pre><pre class="pyodide-stderr" id="stderr-codecell8-py"></pre><div class="pyodide-output embedded" id="output-codecell8-py"></div>
+<script>
+              async function embed_bokeh_9 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell8-py", "root_id": "1018", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"children": [{"id": "1020"}, {"id": "1027"}, {"id": "1135"}], "margin": [0, 0, 0, 0], "name": "Row05362", "sizing_mode": "stretch_width"}, "id": "1019", "type": "Row"}, {"attributes": {"icon": null, "label": "Next", "margin": [5, 10, 5, 10], "min_width": 125, "subscribed_events": ["button_click"], "width": 125}, "id": "1137", "type": "Button"}, {"attributes": {}, "id": "1051", "type": "AllLabels"}, {"attributes": {"tools": [{"id": "1025"}, {"id": "1026"}, {"id": "1044"}]}, "id": "1045", "type": "Toolbar"}, {"attributes": {}, "id": "1114", "type": "UnionRenderers"}, {"attributes": {"children": [{"id": "1140"}, {"id": "1144"}], "margin": [0, 0, 0, 0], "name": "Row05479"}, "id": "1139", "type": "Row"}, {"attributes": {}, "id": "1053", "type": "BasicTickFormatter"}, {"attributes": {"children": [{"id": "1141"}, {"id": "1142"}, {"id": "1143"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "Stage", "width": 300}, "id": "1140", "type": "Column"}, {"attributes": {"margin": [5, 5, 5, 5], "name": "LaTeX05475", "style": {"font-size": "2em"}, "text": "$5 * 5 = 25$\n$5^{5} = 3125$"}, "id": "1145", "type": "panel.models.katex.KaTeX"}, {"attributes": {"children": [{"id": "1021"}, {"id": "1022"}], "margin": [0, 0, 0, 0], "name": "Column05361"}, "id": "1020", "type": "Column"}, {"attributes": {}, "id": "1054", "type": "AllLabels"}, {"attributes": {"callback": null, "renderers": [{"id": "1072"}], "tags": ["hv_created"], "tooltips": [["Stage", "@{index_hover}"], ["State", "@{State}"]]}, "id": "1025", "type": "HoverTool"}, {"attributes": {"children": [{"id": "1019"}, {"id": "1138"}], "margin": [0, 0, 0, 0], "name": "Column05458", "sizing_mode": "stretch_width"}, "id": "1018", "type": "Column"}, {"attributes": {"name": "location", "reload": false}, "id": "1191", "type": "panel.models.location.Location"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1099", "type": "Scatter"}, {"attributes": {"end": 1.25, "reset_end": 1.25, "reset_start": -0.25, "start": -0.25, "tags": [[["x", "x", null]]]}, "id": "1023", "type": "Range1d"}, {"attributes": {}, "id": "1117", "type": "Selection"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1098", "type": "Scatter"}, {"attributes": {"data": {"State": ["active", "next"], "index": {"__ndarray__": "AAAAAAEAAAA=", "dtype": "int32", "order": "little", "shape": [2]}, "index_hover": ["Stage 1", "Stage 2"], "node_color": ["active", "next"]}, "selected": {"id": "1117"}, "selection_policy": {"id": "1116"}}, "id": "1056", "type": "ColumnDataSource"}, {"attributes": {"coordinates": null, "edge_renderer": {"id": "1070"}, "group": null, "inspection_policy": {"id": "1083"}, "layout_provider": {"id": "1058"}, "node_renderer": {"id": "1064"}, "selection_policy": {"id": "1081"}}, "id": "1072", "type": "GraphRenderer"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "limegreen"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1100", "type": "Scatter"}, {"attributes": {"callback": null, "renderers": [{"id": "1103"}], "tags": ["hv_created"], "tooltips": [["Stage", "@{Stage}"], ["State", "@{State}"]]}, "id": "1026", "type": "HoverTool"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "indianred"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1101", "type": "Scatter"}, {"attributes": {"children": [{"id": "1139"}], "margin": [0, 0, 0, 0], "name": "Row05457"}, "id": "1138", "type": "Row"}, {"attributes": {"axis_label": "x", "coordinates": null, "formatter": {"id": "1050"}, "group": null, "major_label_policy": {"id": "1051"}, "ticker": {"id": "1037"}, "visible": false}, "id": "1036", "type": "LinearAxis"}, {"attributes": {"source": {"id": "1095"}}, "id": "1104", "type": "CDSView"}, {"attributes": {"end": 10, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "A", "value": 5}, "id": "1142", "type": "Slider"}, {"attributes": {"coordinates": null, "data_source": {"id": "1095"}, "glyph": {"id": "1098"}, "group": null, "hover_glyph": {"id": "1101"}, "muted_glyph": {"id": "1102"}, "nonselection_glyph": {"id": "1099"}, "selection_glyph": {"id": "1100"}, "view": {"id": "1104"}}, "id": "1103", "type": "GlyphRenderer"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"field": "node_color", "transform": {"id": "1055"}}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"field": "node_color", "transform": {"id": "1055"}}, "line_alpha": {"value": 0.2}, "size": {"value": 15}}, "id": "1060", "type": "Circle"}, {"attributes": {"disabled": true, "icon": null, "label": "Previous", "margin": [5, 10, 5, 10], "min_width": 125, "subscribed_events": ["button_click"], "width": 125}, "id": "1136", "type": "Button"}, {"attributes": {"graph_layout": {"0": [0, 0.5], "1": [1, 0.5]}}, "id": "1058", "type": "StaticLayoutProvider"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1102", "type": "Scatter"}, {"attributes": {}, "id": "1096", "type": "Selection"}, {"attributes": {"line_alpha": {"value": 0.2}, "line_width": {"value": 2}}, "id": "1069", "type": "MultiLine"}, {"attributes": {"children": [{"id": "1145"}], "margin": [0, 0, 0, 0], "name": "Row05474"}, "id": "1144", "type": "Row"}, {"attributes": {}, "id": "1032", "type": "LinearScale"}, {"attributes": {"factors": ["inactive", "active", "error", "next"], "palette": ["white", "#5cb85c", "red", "yellow"]}, "id": "1055", "type": "CategoricalColorMapper"}, {"attributes": {"data": {"end": {"__ndarray__": "AQAAAA==", "dtype": "int32", "order": "little", "shape": [1]}, "start": {"__ndarray__": "AAAAAA==", "dtype": "int32", "order": "little", "shape": [1]}}, "selected": {"id": "1119"}, "selection_policy": {"id": "1118"}}, "id": "1057", "type": "ColumnDataSource"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"field": "node_color", "transform": {"id": "1055"}}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"field": "node_color", "transform": {"id": "1055"}}, "line_alpha": {"value": 0.2}, "size": {"value": 15}}, "id": "1063", "type": "Circle"}, {"attributes": {"reset_end": 1, "reset_start": 0, "tags": [[["y", "y", null]]]}, "id": "1024", "type": "Range1d"}, {"attributes": {"fill_color": {"field": "node_color", "transform": {"id": "1055"}}, "hatch_color": {"field": "node_color", "transform": {"id": "1055"}}, "size": {"value": 15}}, "id": "1061", "type": "Circle"}, {"attributes": {"text": {"field": "Stage"}, "text_align": {"value": "center"}, "text_alpha": {"value": 0.2}, "text_baseline": {"value": "middle"}, "text_color": {"value": "black"}, "x": {"field": "x"}, "y": {"field": "y", "transform": {"id": "1085"}}}, "id": "1091", "type": "Text"}, {"attributes": {"coordinates": null, "data_source": {"id": "1056"}, "glyph": {"id": "1059"}, "group": null, "hover_glyph": {"id": "1062"}, "muted_glyph": {"id": "1063"}, "nonselection_glyph": {"id": "1060"}, "selection_glyph": {"id": "1061"}, "view": {"id": "1065"}}, "id": "1064", "type": "GlyphRenderer"}, {"attributes": {"coordinates": null, "group": null, "text_color": "black", "text_font_size": "12pt"}, "id": "1028", "type": "Title"}, {"attributes": {}, "id": "1083", "type": "NodesAndLinkedEdges"}, {"attributes": {"below": [{"id": "1036"}], "center": [{"id": "1039"}, {"id": "1043"}], "height": 80, "left": [{"id": "1040"}], "margin": [5, 5, 5, 5], "min_border_bottom": 10, "min_border_left": 10, "min_border_right": 10, "min_border_top": 10, "min_width": 400, "outline_line_alpha": 0, "renderers": [{"id": "1072"}, {"id": "1092"}, {"id": "1103"}], "sizing_mode": "stretch_width", "title": {"id": "1028"}, "toolbar": {"id": "1045"}, "toolbar_location": null, "width": null, "x_range": {"id": "1023"}, "x_scale": {"id": "1032"}, "y_range": {"id": "1024"}, "y_scale": {"id": "1034"}}, "id": "1027", "subtype": "Figure", "type": "Plot"}, {"attributes": {"text": {"field": "Stage"}, "text_align": {"value": "center"}, "text_baseline": {"value": "middle"}, "text_color": {"value": "black"}, "x": {"field": "x"}, "y": {"field": "y", "transform": {"id": "1085"}}}, "id": "1089", "type": "Text"}, {"attributes": {"data": {"Stage": ["Stage 1", "Stage 2"], "x": [0, 1], "y": {"__ndarray__": "AAAAAAAA4D8AAAAAAADgPw==", "dtype": "float64", "order": "little", "shape": [2]}}, "selected": {"id": "1087"}, "selection_policy": {"id": "1112"}}, "id": "1086", "type": "ColumnDataSource"}, {"attributes": {}, "id": "1037", "type": "BasicTicker"}, {"attributes": {}, "id": "1034", "type": "LinearScale"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>Stage</b>"}, "id": "1141", "type": "Div"}, {"attributes": {"coordinates": null, "data_source": {"id": "1086"}, "glyph": {"id": "1089"}, "group": null, "hover_glyph": null, "muted_glyph": {"id": "1091"}, "nonselection_glyph": {"id": "1090"}, "selection_glyph": {"id": "1094"}, "view": {"id": "1093"}}, "id": "1092", "type": "GlyphRenderer"}, {"attributes": {"axis": {"id": "1036"}, "coordinates": null, "grid_line_color": null, "group": null, "ticker": null}, "id": "1039", "type": "Grid"}, {"attributes": {"line_width": {"value": 2}}, "id": "1068", "type": "MultiLine"}, {"attributes": {"line_width": {"value": 2}}, "id": "1066", "type": "MultiLine"}, {"attributes": {"axis_label": "y", "coordinates": null, "formatter": {"id": "1053"}, "group": null, "major_label_policy": {"id": "1054"}, "ticker": {"id": "1041"}, "visible": false}, "id": "1040", "type": "LinearAxis"}, {"attributes": {"coordinates": null, "data_source": {"id": "1057"}, "glyph": {"id": "1066"}, "group": null, "hover_glyph": {"id": "1068"}, "muted_glyph": {"id": "1069"}, "nonselection_glyph": {"id": "1067"}, "view": {"id": "1071"}}, "id": "1070", "type": "GlyphRenderer"}, {"attributes": {"line_alpha": {"value": 0.2}, "line_width": {"value": 2}}, "id": "1067", "type": "MultiLine"}, {"attributes": {"children": [{"id": "1136"}, {"id": "1137"}], "margin": [0, 0, 0, 0], "name": "Row05360"}, "id": "1135", "type": "Row"}, {"attributes": {"axis": {"id": "1040"}, "coordinates": null, "dimension": 1, "grid_line_color": null, "group": null, "ticker": null}, "id": "1043", "type": "Grid"}, {"attributes": {"margin": [0, 0, 0, 0], "min_width": 100, "name": "Row05359", "width": 100}, "id": "1022", "type": "Row"}, {"attributes": {}, "id": "1041", "type": "BasicTicker"}, {"attributes": {"data": {"Stage": ["Stage 1", "Stage 2"], "State": ["active", "next"], "x": [0, 1], "y": {"__ndarray__": "AAAAAAAA4D8AAAAAAADgPw==", "dtype": "float64", "order": "little", "shape": [2]}}, "selected": {"id": "1096"}, "selection_policy": {"id": "1114"}}, "id": "1095", "type": "ColumnDataSource"}, {"attributes": {}, "id": "1116", "type": "UnionRenderers"}, {"attributes": {"css_classes": ["markdown"], "margin": [0, 0, 0, 5], "name": "Markdown05357", "text": "&lt;h2&gt;Stage: Stage 1&lt;/h2&gt;"}, "id": "1021", "type": "panel.models.markup.HTML"}, {"attributes": {}, "id": "1081", "type": "NodesOnly"}, {"attributes": {"callback": null, "renderers": [{"id": "1103"}]}, "id": "1044", "type": "TapTool"}, {"attributes": {"text": {"field": "Stage"}, "text_align": {"value": "center"}, "text_alpha": {"value": 0.1}, "text_baseline": {"value": "middle"}, "text_color": {"value": "black"}, "x": {"field": "x"}, "y": {"field": "y", "transform": {"id": "1085"}}}, "id": "1090", "type": "Text"}, {"attributes": {"hatch_color": {"field": "node_color", "transform": {"id": "1055"}}, "size": {"value": 15}}, "id": "1062", "type": "Circle"}, {"attributes": {"source": {"id": "1056"}}, "id": "1065", "type": "CDSView"}, {"attributes": {"angle": {"value": 0}, "text": {"field": "Stage"}, "text_align": {"value": "center"}, "text_alpha": {"value": 1.0}, "text_baseline": {"value": "middle"}, "text_color": {"value": "black"}, "text_font_style": {"value": "normal"}, "text_line_height": {"value": 1.2}, "x": {"field": "x"}, "x_offset": {"value": 0}, "y": {"field": "y", "transform": {"id": "1085"}}, "y_offset": {"value": 0}}, "id": "1094", "type": "Text"}, {"attributes": {"fill_color": {"field": "node_color", "transform": {"id": "1055"}}, "hatch_color": {"field": "node_color", "transform": {"id": "1055"}}, "size": {"value": 15}}, "id": "1059", "type": "Circle"}, {"attributes": {"source": {"id": "1057"}}, "id": "1071", "type": "CDSView"}, {"attributes": {}, "id": "1119", "type": "Selection"}, {"attributes": {"source": {"id": "1086"}}, "id": "1093", "type": "CDSView"}, {"attributes": {}, "id": "1112", "type": "UnionRenderers"}, {"attributes": {"range": null, "value": -0.3}, "id": "1085", "type": "Dodge"}, {"attributes": {"end": 10, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "B", "value": 5}, "id": "1143", "type": "Slider"}, {"attributes": {}, "id": "1118", "type": "UnionRenderers"}, {"attributes": {}, "id": "1050", "type": "BasicTickFormatter"}, {"attributes": {}, "id": "1087", "type": "Selection"}], "root_ids": ["1018", "1191"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_9, 200)
+                }
+              };
+              embed_bokeh_9()
+            </script>
+<p>As you can see the <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> renders a little diagram displaying the available stages in the workflow along with previous and next buttons to move between each stage. This allows setting up complex workflows with multiple stages, where each component is a self-contained unit, with minimal declarations about stage outputs (using the <code class="docutils literal notranslate"><span class="pre">param.output</span></code> decorator) and how to render the stage (by declaring a <code class="docutils literal notranslate"><span class="pre">panel</span></code> method).  Note also when progressing to Stage 2, the <code class="docutils literal notranslate"><span class="pre">c</span></code> parameter widget is not rendered because its value has been provided by the previous stage.</p>
+<p>Above we created the <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> as we went along, which makes some sense in a notebook to allow debugging and development of each stage.  When deploying the Pipeline as a server app or when there’s no reason to instantiate each stage separately; instead we can declare the stages as part of the constructor:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">([(</span><span class="s1">'Stage 1'</span><span class="p">,</span> <span class="n">Stage1</span><span class="p">),</span> <span class="p">(</span><span class="s1">'Stage 2'</span><span class="p">,</span> <span class="n">Stage2</span><span class="p">)])</span>
+<span class="n">pipeline</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell9-py"></pre><pre class="pyodide-stderr" id="stderr-codecell9-py"></pre><div class="pyodide-output embedded" id="output-codecell9-py"></div>
+<script>
+              async function embed_bokeh_10 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell9-py", "root_id": "1237", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"margin": [0, 0, 0, 0], "min_width": 100, "name": "Row05941", "width": 100}, "id": "1241", "type": "Row"}, {"attributes": {"tools": [{"id": "1244"}, {"id": "1245"}, {"id": "1263"}]}, "id": "1264", "type": "Toolbar"}, {"attributes": {"data": {"Stage": ["Stage 1", "Stage 2"], "x": [0, 1], "y": {"__ndarray__": "AAAAAAAA4D8AAAAAAADgPw==", "dtype": "float64", "order": "little", "shape": [2]}}, "selected": {"id": "1306"}, "selection_policy": {"id": "1331"}}, "id": "1305", "type": "ColumnDataSource"}, {"attributes": {"callback": null, "renderers": [{"id": "1291"}], "tags": ["hv_created"], "tooltips": [["Stage", "@{index_hover}"], ["State", "@{State}"]]}, "id": "1244", "type": "HoverTool"}, {"attributes": {"data": {"end": {"__ndarray__": "AQAAAA==", "dtype": "int32", "order": "little", "shape": [1]}, "start": {"__ndarray__": "AAAAAA==", "dtype": "int32", "order": "little", "shape": [1]}}, "selected": {"id": "1338"}, "selection_policy": {"id": "1337"}}, "id": "1276", "type": "ColumnDataSource"}, {"attributes": {"disabled": true, "icon": null, "label": "Previous", "margin": [5, 10, 5, 10], "min_width": 125, "subscribed_events": ["button_click"], "width": 125}, "id": "1355", "type": "Button"}, {"attributes": {"fill_color": {"field": "node_color", "transform": {"id": "1274"}}, "hatch_color": {"field": "node_color", "transform": {"id": "1274"}}, "size": {"value": 15}}, "id": "1278", "type": "Circle"}, {"attributes": {"children": [{"id": "1358"}], "margin": [0, 0, 0, 0], "name": "Row06039"}, "id": "1357", "type": "Row"}, {"attributes": {"reset_end": 1, "reset_start": 0, "tags": [[["y", "y", null]]]}, "id": "1243", "type": "Range1d"}, {"attributes": {"coordinates": null, "data_source": {"id": "1314"}, "glyph": {"id": "1317"}, "group": null, "hover_glyph": {"id": "1320"}, "muted_glyph": {"id": "1321"}, "nonselection_glyph": {"id": "1318"}, "selection_glyph": {"id": "1319"}, "view": {"id": "1323"}}, "id": "1322", "type": "GlyphRenderer"}, {"attributes": {"source": {"id": "1276"}}, "id": "1290", "type": "CDSView"}, {"attributes": {"callback": null, "renderers": [{"id": "1322"}], "tags": ["hv_created"], "tooltips": [["Stage", "@{Stage}"], ["State", "@{State}"]]}, "id": "1245", "type": "HoverTool"}, {"attributes": {"children": [{"id": "1240"}, {"id": "1241"}], "margin": [0, 0, 0, 0], "name": "Column05943"}, "id": "1239", "type": "Column"}, {"attributes": {"line_alpha": {"value": 0.2}, "line_width": {"value": 2}}, "id": "1288", "type": "MultiLine"}, {"attributes": {"text": {"field": "Stage"}, "text_align": {"value": "center"}, "text_baseline": {"value": "middle"}, "text_color": {"value": "black"}, "x": {"field": "x"}, "y": {"field": "y", "transform": {"id": "1304"}}}, "id": "1308", "type": "Text"}, {"attributes": {"fill_color": {"field": "node_color", "transform": {"id": "1274"}}, "hatch_color": {"field": "node_color", "transform": {"id": "1274"}}, "size": {"value": 15}}, "id": "1280", "type": "Circle"}, {"attributes": {"angle": {"value": 0}, "text": {"field": "Stage"}, "text_align": {"value": "center"}, "text_alpha": {"value": 1.0}, "text_baseline": {"value": "middle"}, "text_color": {"value": "black"}, "text_font_style": {"value": "normal"}, "text_line_height": {"value": 1.2}, "x": {"field": "x"}, "x_offset": {"value": 0}, "y": {"field": "y", "transform": {"id": "1304"}}, "y_offset": {"value": 0}}, "id": "1313", "type": "Text"}, {"attributes": {"children": [{"id": "1239"}, {"id": "1246"}, {"id": "1354"}], "margin": [0, 0, 0, 0], "name": "Row05944", "sizing_mode": "stretch_width"}, "id": "1238", "type": "Row"}, {"attributes": {}, "id": "1272", "type": "BasicTickFormatter"}, {"attributes": {"data": {"Stage": ["Stage 1", "Stage 2"], "State": ["active", "next"], "x": [0, 1], "y": {"__ndarray__": "AAAAAAAA4D8AAAAAAADgPw==", "dtype": "float64", "order": "little", "shape": [2]}}, "selected": {"id": "1315"}, "selection_policy": {"id": "1333"}}, "id": "1314", "type": "ColumnDataSource"}, {"attributes": {"source": {"id": "1305"}}, "id": "1312", "type": "CDSView"}, {"attributes": {"line_width": {"value": 2}}, "id": "1287", "type": "MultiLine"}, {"attributes": {"coordinates": null, "data_source": {"id": "1276"}, "glyph": {"id": "1285"}, "group": null, "hover_glyph": {"id": "1287"}, "muted_glyph": {"id": "1288"}, "nonselection_glyph": {"id": "1286"}, "view": {"id": "1290"}}, "id": "1289", "type": "GlyphRenderer"}, {"attributes": {}, "id": "1269", "type": "BasicTickFormatter"}, {"attributes": {}, "id": "1302", "type": "NodesAndLinkedEdges"}, {"attributes": {"source": {"id": "1275"}}, "id": "1284", "type": "CDSView"}, {"attributes": {"name": "location", "reload": false}, "id": "1410", "type": "panel.models.location.Location"}, {"attributes": {}, "id": "1335", "type": "UnionRenderers"}, {"attributes": {"source": {"id": "1314"}}, "id": "1323", "type": "CDSView"}, {"attributes": {"children": [{"id": "1360"}, {"id": "1361"}, {"id": "1362"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "Stage", "width": 300}, "id": "1359", "type": "Column"}, {"attributes": {"children": [{"id": "1359"}, {"id": "1363"}], "margin": [0, 0, 0, 0], "name": "Row06061"}, "id": "1358", "type": "Row"}, {"attributes": {}, "id": "1336", "type": "Selection"}, {"attributes": {}, "id": "1253", "type": "LinearScale"}, {"attributes": {"end": 1.25, "reset_end": 1.25, "reset_start": -0.25, "start": -0.25, "tags": [[["x", "x", null]]]}, "id": "1242", "type": "Range1d"}, {"attributes": {"text": {"field": "Stage"}, "text_align": {"value": "center"}, "text_alpha": {"value": 0.2}, "text_baseline": {"value": "middle"}, "text_color": {"value": "black"}, "x": {"field": "x"}, "y": {"field": "y", "transform": {"id": "1304"}}}, "id": "1310", "type": "Text"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>Stage</b>"}, "id": "1360", "type": "Div"}, {"attributes": {}, "id": "1273", "type": "AllLabels"}, {"attributes": {"children": [{"id": "1364"}], "margin": [0, 0, 0, 0], "name": "Row06056"}, "id": "1363", "type": "Row"}, {"attributes": {}, "id": "1270", "type": "AllLabels"}, {"attributes": {"end": 10, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "A", "value": 5}, "id": "1361", "type": "Slider"}, {"attributes": {"coordinates": null, "edge_renderer": {"id": "1289"}, "group": null, "inspection_policy": {"id": "1302"}, "layout_provider": {"id": "1277"}, "node_renderer": {"id": "1283"}, "selection_policy": {"id": "1300"}}, "id": "1291", "type": "GraphRenderer"}, {"attributes": {"coordinates": null, "data_source": {"id": "1275"}, "glyph": {"id": "1278"}, "group": null, "hover_glyph": {"id": "1281"}, "muted_glyph": {"id": "1282"}, "nonselection_glyph": {"id": "1279"}, "selection_glyph": {"id": "1280"}, "view": {"id": "1284"}}, "id": "1283", "type": "GlyphRenderer"}, {"attributes": {"end": 10, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "B", "value": 5}, "id": "1362", "type": "Slider"}, {"attributes": {"factors": ["inactive", "active", "error", "next"], "palette": ["white", "#5cb85c", "red", "yellow"]}, "id": "1274", "type": "CategoricalColorMapper"}, {"attributes": {"margin": [5, 5, 5, 5], "name": "LaTeX06057", "style": {"font-size": "2em"}, "text": "$5 * 5 = 25$\n$5^{5} = 3125$"}, "id": "1364", "type": "panel.models.katex.KaTeX"}, {"attributes": {"text": {"field": "Stage"}, "text_align": {"value": "center"}, "text_alpha": {"value": 0.1}, "text_baseline": {"value": "middle"}, "text_color": {"value": "black"}, "x": {"field": "x"}, "y": {"field": "y", "transform": {"id": "1304"}}}, "id": "1309", "type": "Text"}, {"attributes": {"line_alpha": {"value": 0.2}, "line_width": {"value": 2}}, "id": "1286", "type": "MultiLine"}, {"attributes": {"data": {"State": ["active", "next"], "index": {"__ndarray__": "AAAAAAEAAAA=", "dtype": "int32", "order": "little", "shape": [2]}, "index_hover": ["Stage 1", "Stage 2"], "node_color": ["active", "next"]}, "selected": {"id": "1336"}, "selection_policy": {"id": "1335"}}, "id": "1275", "type": "ColumnDataSource"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1318", "type": "Scatter"}, {"attributes": {}, "id": "1260", "type": "BasicTicker"}, {"attributes": {"coordinates": null, "group": null, "text_color": "black", "text_font_size": "12pt"}, "id": "1247", "type": "Title"}, {"attributes": {"axis": {"id": "1255"}, "coordinates": null, "grid_line_color": null, "group": null, "ticker": null}, "id": "1258", "type": "Grid"}, {"attributes": {"axis": {"id": "1259"}, "coordinates": null, "dimension": 1, "grid_line_color": null, "group": null, "ticker": null}, "id": "1262", "type": "Grid"}, {"attributes": {"hatch_color": {"field": "node_color", "transform": {"id": "1274"}}, "size": {"value": 15}}, "id": "1281", "type": "Circle"}, {"attributes": {}, "id": "1306", "type": "Selection"}, {"attributes": {}, "id": "1331", "type": "UnionRenderers"}, {"attributes": {"range": null, "value": -0.3}, "id": "1304", "type": "Dodge"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"field": "node_color", "transform": {"id": "1274"}}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"field": "node_color", "transform": {"id": "1274"}}, "line_alpha": {"value": 0.2}, "size": {"value": 15}}, "id": "1279", "type": "Circle"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1317", "type": "Scatter"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"field": "node_color", "transform": {"id": "1274"}}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"field": "node_color", "transform": {"id": "1274"}}, "line_alpha": {"value": 0.2}, "size": {"value": 15}}, "id": "1282", "type": "Circle"}, {"attributes": {"line_width": {"value": 2}}, "id": "1285", "type": "MultiLine"}, {"attributes": {"callback": null, "renderers": [{"id": "1322"}]}, "id": "1263", "type": "TapTool"}, {"attributes": {"children": [{"id": "1238"}, {"id": "1357"}], "margin": [0, 0, 0, 0], "name": "Column06040", "sizing_mode": "stretch_width"}, "id": "1237", "type": "Column"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "limegreen"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1319", "type": "Scatter"}, {"attributes": {}, "id": "1337", "type": "UnionRenderers"}, {"attributes": {}, "id": "1333", "type": "UnionRenderers"}, {"attributes": {}, "id": "1338", "type": "Selection"}, {"attributes": {}, "id": "1300", "type": "NodesOnly"}, {"attributes": {"icon": null, "label": "Next", "margin": [5, 10, 5, 10], "min_width": 125, "subscribed_events": ["button_click"], "width": 125}, "id": "1356", "type": "Button"}, {"attributes": {"axis_label": "x", "coordinates": null, "formatter": {"id": "1269"}, "group": null, "major_label_policy": {"id": "1270"}, "ticker": {"id": "1256"}, "visible": false}, "id": "1255", "type": "LinearAxis"}, {"attributes": {"coordinates": null, "data_source": {"id": "1305"}, "glyph": {"id": "1308"}, "group": null, "hover_glyph": null, "muted_glyph": {"id": "1310"}, "nonselection_glyph": {"id": "1309"}, "selection_glyph": {"id": "1313"}, "view": {"id": "1312"}}, "id": "1311", "type": "GlyphRenderer"}, {"attributes": {"axis_label": "y", "coordinates": null, "formatter": {"id": "1272"}, "group": null, "major_label_policy": {"id": "1273"}, "ticker": {"id": "1260"}, "visible": false}, "id": "1259", "type": "LinearAxis"}, {"attributes": {}, "id": "1315", "type": "Selection"}, {"attributes": {}, "id": "1256", "type": "BasicTicker"}, {"attributes": {"children": [{"id": "1355"}, {"id": "1356"}], "margin": [0, 0, 0, 0], "name": "Row05942"}, "id": "1354", "type": "Row"}, {"attributes": {}, "id": "1251", "type": "LinearScale"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "indianred"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1320", "type": "Scatter"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1321", "type": "Scatter"}, {"attributes": {"css_classes": ["markdown"], "margin": [0, 0, 0, 5], "name": "Markdown05939", "text": "&lt;h2&gt;Stage: Stage 1&lt;/h2&gt;"}, "id": "1240", "type": "panel.models.markup.HTML"}, {"attributes": {"below": [{"id": "1255"}], "center": [{"id": "1258"}, {"id": "1262"}], "height": 80, "left": [{"id": "1259"}], "margin": [5, 5, 5, 5], "min_border_bottom": 10, "min_border_left": 10, "min_border_right": 10, "min_border_top": 10, "min_width": 400, "outline_line_alpha": 0, "renderers": [{"id": "1291"}, {"id": "1311"}, {"id": "1322"}], "sizing_mode": "stretch_width", "title": {"id": "1247"}, "toolbar": {"id": "1264"}, "toolbar_location": null, "width": null, "x_range": {"id": "1242"}, "x_scale": {"id": "1251"}, "y_range": {"id": "1243"}, "y_scale": {"id": "1253"}}, "id": "1246", "subtype": "Figure", "type": "Plot"}, {"attributes": {"graph_layout": {"0": [0, 0.5], "1": [1, 0.5]}}, "id": "1277", "type": "StaticLayoutProvider"}], "root_ids": ["1237", "1410"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_10, 200)
+                }
+              };
+              embed_bokeh_10()
+            </script>
+<p>Pipeline stages may be either <code class="docutils literal notranslate"><span class="pre">Parameterized</span></code> instances or <code class="docutils literal notranslate"><span class="pre">Parameterized</span></code> classes. With classes, the class will not be instantiated until that stage is reached, which lets you postpone allocating memory, reading files, querying databases, and other expensive actions that might be in the constructor until the parameters for that stage have been collected from previous stages. You can also use an instantiated <code class="docutils literal notranslate"><span class="pre">Parameterized</span></code> object instance, e.g. if you want to set some parameters to non-default values before putting the stage into the pipeline, but in that case you will need to ensure that updating the parameters of the instantiated object is sufficient to update the full current state of that stage.</p>
+<section id="non-linear-pipelines">
+<h2>Non-linear pipelines<a class="headerlink" href="#non-linear-pipelines" title="Permalink to this heading">#</a></h2>
+<p>Pipelines are not limited to simple linear UI workflows like the ones listed above. They support any arbitrary branching structures, i.e., an acyclic graph. A simple example might be a workflow with two alternative stages that rejoin at a later point. In the very simple example below we declare four stages: an <code class="docutils literal notranslate"><span class="pre">Input</span></code>, <code class="docutils literal notranslate"><span class="pre">Multiply</span></code>, <code class="docutils literal notranslate"><span class="pre">Add</span></code>, and <code class="docutils literal notranslate"><span class="pre">Result</span></code>.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Input</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+
+    <span class="n">value1</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">value2</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">panel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">value1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">value2</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Multiply</span><span class="p">(</span><span class="n">Input</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">panel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">'</span><span class="si">%.3f</span><span class="s1"> * </span><span class="si">%.3f</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value2</span><span class="p">)</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s1">'result'</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">value2</span>
+
+<span class="k">class</span> <span class="nc">Add</span><span class="p">(</span><span class="n">Input</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">panel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">'</span><span class="si">%d</span><span class="s1"> + </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value2</span><span class="p">)</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s1">'result'</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">value2</span>
+
+<span class="k">class</span> <span class="nc">Result</span><span class="p">(</span><span class="n">Input</span><span class="p">):</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">panel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">result</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">()</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">'Input'</span><span class="p">,</span> <span class="n">Input</span><span class="p">)</span>
+<span class="n">dag</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">'Multiply'</span><span class="p">,</span> <span class="n">Multiply</span><span class="p">)</span>
+<span class="n">dag</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">'Add'</span><span class="p">,</span> <span class="n">Add</span><span class="p">)</span>
+<span class="n">dag</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">'Result'</span><span class="p">,</span> <span class="n">Result</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell10-py"></pre><pre class="pyodide-stderr" id="stderr-codecell10-py"></pre><p>After adding all the stages we have to express the relationship between these stages. To declare the graph we can use the <code class="docutils literal notranslate"><span class="pre">define_graph</span></code> method and provide a adjacency map, which declares which stage feeds into which other stages. In this case the <code class="docutils literal notranslate"><span class="pre">Input</span></code> feeds into both <code class="docutils literal notranslate"><span class="pre">Multiply</span></code> and <code class="docutils literal notranslate"><span class="pre">Add</span></code> and both those stages feed into the <code class="docutils literal notranslate"><span class="pre">Result</span></code>:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dag</span><span class="o">.</span><span class="n">define_graph</span><span class="p">({</span><span class="s1">'Input'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'Multiply'</span><span class="p">,</span> <span class="s1">'Add'</span><span class="p">),</span> <span class="s1">'Multiply'</span><span class="p">:</span> <span class="s1">'Result'</span><span class="p">,</span> <span class="s1">'Add'</span><span class="p">:</span> <span class="s1">'Result'</span><span class="p">})</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell11-py"></pre><pre class="pyodide-stderr" id="stderr-codecell11-py"></pre><p>This is of course a very simple example but it demonstrates the ability to express arbitrary workflows with branching and converging steps:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dag</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell12-py"></pre><pre class="pyodide-stderr" id="stderr-codecell12-py"></pre><div class="pyodide-output embedded" id="output-codecell12-py"></div>
+<script>
+              async function embed_bokeh_13 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell12-py", "root_id": "1456", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"source": {"id": "1494"}}, "id": "1503", "type": "CDSView"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "indianred"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1529", "type": "Scatter"}, {"attributes": {"children": [{"id": "1564"}, {"id": "1565"}], "margin": [0, 0, 0, 0], "name": "Column07200"}, "id": "1563", "type": "Column"}, {"attributes": {"callback": null, "renderers": [{"id": "1510"}], "tags": ["hv_created"], "tooltips": [["Stage", "@{index_hover}"], ["State", "@{State}"]]}, "id": "1463", "type": "HoverTool"}, {"attributes": {"source": {"id": "1523"}}, "id": "1532", "type": "CDSView"}, {"attributes": {"margin": [0, 0, 0, 0], "min_width": 100, "name": "Row06617", "width": 100}, "id": "1460", "type": "Row"}, {"attributes": {"coordinates": null, "data_source": {"id": "1523"}, "glyph": {"id": "1526"}, "group": null, "hover_glyph": {"id": "1529"}, "muted_glyph": {"id": "1530"}, "nonselection_glyph": {"id": "1527"}, "selection_glyph": {"id": "1528"}, "view": {"id": "1532"}}, "id": "1531", "type": "GlyphRenderer"}, {"attributes": {"disabled": true, "margin": [5, 10, 5, 10], "min_width": 125, "width": 125}, "id": "1561", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"source": {"id": "1495"}}, "id": "1509", "type": "CDSView"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1527", "type": "Scatter"}, {"attributes": {"margin": [5, 10, 5, 10], "min_width": 125, "options": ["Multiply", "Add"], "value": "Multiply", "width": 125}, "id": "1564", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"children": [{"id": "1561"}, {"id": "1562"}], "margin": [0, 0, 0, 0], "name": "Column07199"}, "id": "1560", "type": "Column"}, {"attributes": {"margin": [5, 10, 5, 10], "mode": "int", "placeholder": "0", "title": "Value1", "value": 2, "value_throttled": 2}, "id": "1568", "type": "Spinner"}, {"attributes": {"children": [{"id": "1568"}, {"id": "1569"}], "margin": [0, 0, 0, 0], "name": "Row06728"}, "id": "1567", "type": "Row"}, {"attributes": {"coordinates": null, "group": null, "text_color": "black", "text_font_size": "12pt"}, "id": "1466", "type": "Title"}, {"attributes": {}, "id": "1521", "type": "NodesAndLinkedEdges"}, {"attributes": {}, "id": "1542", "type": "UnionRenderers"}, {"attributes": {"icon": null, "label": "Next", "margin": [5, 10, 5, 10], "min_width": 125, "subscribed_events": ["button_click"], "width": 125}, "id": "1565", "type": "Button"}, {"attributes": {"line_width": {"value": 2}}, "id": "1506", "type": "MultiLine"}, {"attributes": {"data": {"State": ["active", "inactive", "next", "inactive"], "index": {"__ndarray__": "AAAAAAEAAAACAAAAAwAAAA==", "dtype": "int32", "order": "little", "shape": [4]}, "index_hover": ["Input", "Add", "Multiply", "Result"], "node_color": ["active", "inactive", "next", "inactive"]}, "selected": {"id": "1543"}, "selection_policy": {"id": "1542"}}, "id": "1494", "type": "ColumnDataSource"}, {"attributes": {}, "id": "1543", "type": "Selection"}, {"attributes": {"line_width": {"value": 2}}, "id": "1504", "type": "MultiLine"}, {"attributes": {"end": 2.25, "reset_end": 2.25, "reset_start": -0.25, "start": -0.25, "tags": [[["x", "x", null]]]}, "id": "1461", "type": "Range1d"}, {"attributes": {"margin": [5, 10, 5, 10], "mode": "int", "placeholder": "0", "title": "Value2", "value": 3, "value_throttled": 3}, "id": "1569", "type": "Spinner"}, {"attributes": {"disabled": true, "icon": null, "label": "Previous", "margin": [5, 10, 5, 10], "min_width": 125, "subscribed_events": ["button_click"], "width": 125}, "id": "1562", "type": "Button"}, {"attributes": {"axis": {"id": "1474"}, "coordinates": null, "grid_line_color": null, "group": null, "ticker": null}, "id": "1477", "type": "Grid"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "limegreen"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1528", "type": "Scatter"}, {"attributes": {}, "id": "1472", "type": "LinearScale"}, {"attributes": {"line_alpha": {"value": 0.2}, "line_width": {"value": 2}}, "id": "1507", "type": "MultiLine"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"field": "node_color", "transform": {"id": "1493"}}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"field": "node_color", "transform": {"id": "1493"}}, "line_alpha": {"value": 0.2}, "size": {"value": 15}}, "id": "1498", "type": "Circle"}, {"attributes": {"below": [{"id": "1474"}], "center": [{"id": "1477"}, {"id": "1481"}], "height": 100, "left": [{"id": "1478"}], "margin": [5, 5, 5, 5], "min_border_bottom": 10, "min_border_left": 10, "min_border_right": 10, "min_border_top": 10, "min_width": 400, "outline_line_alpha": 0, "renderers": [{"id": "1510"}, {"id": "1531"}], "sizing_mode": "stretch_width", "title": {"id": "1466"}, "toolbar": {"id": "1483"}, "toolbar_location": null, "width": null, "x_range": {"id": "1461"}, "x_scale": {"id": "1470"}, "y_range": {"id": "1462"}, "y_scale": {"id": "1472"}}, "id": "1465", "subtype": "Figure", "type": "Plot"}, {"attributes": {"axis_label": "y", "coordinates": null, "formatter": {"id": "1491"}, "group": null, "major_label_policy": {"id": "1492"}, "ticker": {"id": "1479"}, "visible": false}, "id": "1478", "type": "LinearAxis"}, {"attributes": {}, "id": "1470", "type": "LinearScale"}, {"attributes": {"data": {"Stage": ["Input", "Add", "Multiply", "Result"], "State": ["active", "inactive", "next", "inactive"], "x": [0, 1, 1, 2], "y": {"__ndarray__": "AAAAAAAA4D8AAAAAAADQPwAAAAAAAOg/AAAAAAAA4D8=", "dtype": "float64", "order": "little", "shape": [4]}}, "selected": {"id": "1524"}, "selection_policy": {"id": "1540"}}, "id": "1523", "type": "ColumnDataSource"}, {"attributes": {"axis_label": "x", "coordinates": null, "formatter": {"id": "1488"}, "group": null, "major_label_policy": {"id": "1489"}, "ticker": {"id": "1475"}, "visible": false}, "id": "1474", "type": "LinearAxis"}, {"attributes": {"fill_color": {"field": "node_color", "transform": {"id": "1493"}}, "hatch_color": {"field": "node_color", "transform": {"id": "1493"}}, "size": {"value": 15}}, "id": "1499", "type": "Circle"}, {"attributes": {"axis": {"id": "1478"}, "coordinates": null, "dimension": 1, "grid_line_color": null, "group": null, "ticker": null}, "id": "1481", "type": "Grid"}, {"attributes": {}, "id": "1524", "type": "Selection"}, {"attributes": {"children": [{"id": "1567"}], "margin": [0, 0, 0, 0], "name": "Row06715"}, "id": "1566", "type": "Row"}, {"attributes": {}, "id": "1479", "type": "BasicTicker"}, {"attributes": {}, "id": "1544", "type": "UnionRenderers"}, {"attributes": {"coordinates": null, "edge_renderer": {"id": "1508"}, "group": null, "inspection_policy": {"id": "1521"}, "layout_provider": {"id": "1496"}, "node_renderer": {"id": "1502"}, "selection_policy": {"id": "1519"}}, "id": "1510", "type": "GraphRenderer"}, {"attributes": {"callback": null, "renderers": [{"id": "1531"}], "tags": ["hv_created"], "tooltips": [["Stage", "@{Stage}"], ["State", "@{State}"]]}, "id": "1464", "type": "HoverTool"}, {"attributes": {}, "id": "1475", "type": "BasicTicker"}, {"attributes": {}, "id": "1545", "type": "Selection"}, {"attributes": {"tools": [{"id": "1463"}, {"id": "1464"}, {"id": "1482"}]}, "id": "1483", "type": "Toolbar"}, {"attributes": {"graph_layout": {"0": [0, 0.5], "1": [1, 0.25], "2": [1, 0.75], "3": [2, 0.5]}}, "id": "1496", "type": "StaticLayoutProvider"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"field": "node_color", "transform": {"id": "1493"}}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"field": "node_color", "transform": {"id": "1493"}}, "line_alpha": {"value": 0.2}, "size": {"value": 15}}, "id": "1501", "type": "Circle"}, {"attributes": {"children": [{"id": "1458"}, {"id": "1465"}, {"id": "1559"}], "margin": [0, 0, 0, 0], "name": "Row06620", "sizing_mode": "stretch_width"}, "id": "1457", "type": "Row"}, {"attributes": {"reset_end": 1, "reset_start": 0, "tags": [[["y", "y", null]]]}, "id": "1462", "type": "Range1d"}, {"attributes": {"coordinates": null, "data_source": {"id": "1495"}, "glyph": {"id": "1504"}, "group": null, "hover_glyph": {"id": "1506"}, "muted_glyph": {"id": "1507"}, "nonselection_glyph": {"id": "1505"}, "view": {"id": "1509"}}, "id": "1508", "type": "GlyphRenderer"}, {"attributes": {"hatch_color": {"field": "node_color", "transform": {"id": "1493"}}, "size": {"value": 15}}, "id": "1500", "type": "Circle"}, {"attributes": {"css_classes": ["markdown"], "margin": [0, 0, 0, 5], "name": "Markdown06615", "text": "&lt;h2&gt;Stage: Input&lt;/h2&gt;"}, "id": "1459", "type": "panel.models.markup.HTML"}, {"attributes": {"children": [{"id": "1457"}, {"id": "1566"}], "margin": [0, 0, 0, 0], "name": "Column06716", "sizing_mode": "stretch_width"}, "id": "1456", "type": "Column"}, {"attributes": {}, "id": "1540", "type": "UnionRenderers"}, {"attributes": {"data": {"end": {"__ndarray__": "AgAAAAEAAAADAAAAAwAAAA==", "dtype": "int32", "order": "little", "shape": [4]}, "start": {"__ndarray__": "AAAAAAAAAAACAAAAAQAAAA==", "dtype": "int32", "order": "little", "shape": [4]}}, "selected": {"id": "1545"}, "selection_policy": {"id": "1544"}}, "id": "1495", "type": "ColumnDataSource"}, {"attributes": {}, "id": "1489", "type": "AllLabels"}, {"attributes": {}, "id": "1492", "type": "AllLabels"}, {"attributes": {}, "id": "1491", "type": "BasicTickFormatter"}, {"attributes": {"children": [{"id": "1459"}, {"id": "1460"}], "margin": [0, 0, 0, 0], "name": "Column06619"}, "id": "1458", "type": "Column"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1526", "type": "Scatter"}, {"attributes": {}, "id": "1519", "type": "NodesOnly"}, {"attributes": {"name": "location", "reload": false}, "id": "1609", "type": "panel.models.location.Location"}, {"attributes": {"line_alpha": {"value": 0.2}, "line_width": {"value": 2}}, "id": "1505", "type": "MultiLine"}, {"attributes": {"factors": ["inactive", "active", "error", "next"], "palette": ["white", "#5cb85c", "red", "yellow"]}, "id": "1493", "type": "CategoricalColorMapper"}, {"attributes": {"coordinates": null, "data_source": {"id": "1494"}, "glyph": {"id": "1497"}, "group": null, "hover_glyph": {"id": "1500"}, "muted_glyph": {"id": "1501"}, "nonselection_glyph": {"id": "1498"}, "selection_glyph": {"id": "1499"}, "view": {"id": "1503"}}, "id": "1502", "type": "GlyphRenderer"}, {"attributes": {"callback": null, "renderers": [{"id": "1531"}]}, "id": "1482", "type": "TapTool"}, {"attributes": {}, "id": "1488", "type": "BasicTickFormatter"}, {"attributes": {"children": [{"id": "1560"}, {"id": "1563"}], "margin": [0, 0, 0, 0], "name": "Row06618"}, "id": "1559", "type": "Row"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1530", "type": "Scatter"}, {"attributes": {"fill_color": {"field": "node_color", "transform": {"id": "1493"}}, "hatch_color": {"field": "node_color", "transform": {"id": "1493"}}, "size": {"value": 15}}, "id": "1497", "type": "Circle"}], "root_ids": ["1456", "1609"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_13, 200)
+                }
+              };
+              embed_bokeh_13()
+            </script>
+</section>
+<section id="custom-layout">
+<h2>Custom layout<a class="headerlink" href="#custom-layout" title="Permalink to this heading">#</a></h2>
+<p>For a <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> object <code class="docutils literal notranslate"><span class="pre">p</span></code>, <code class="docutils literal notranslate"><span class="pre">p.layout</span></code> is a Panel layout with the following hierarchically arranged components:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">layout</span></code>: The overall layout of the header and stage.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">header</span></code>: The navigation components and network diagram.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code>: The name of the current stage.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">network</span></code>: A network diagram representing the pipeline.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buttons</span></code>: All navigation buttons and selectors.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">prev_button</span></code>: The button to go to the previous stage.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prev_selector</span></code>: The selector widget to select between previous branching stages.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">next_button</span></code>:   The button to go to the previous stage</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">next_selector</span></code>: The selector widget to select the next branching stages.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">stage</span></code>: The contents of the current pipeline stage.</p></li>
+</ul>
+</li>
+</ul>
+<p>You can pick and choose any combination of these components to display in any configuration, e.g. just <code class="docutils literal notranslate"><span class="pre">pn.Column(p.title,p.network,p.stage)</span></code> if you don’t want to show any buttons for a pipeline <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
+<p>For instance, let’s rearrange our <code class="docutils literal notranslate"><span class="pre">dag</span></code> pipeline to fit into a smaller horizontal space:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+    <span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">dag</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">pn</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">HSpacer</span><span class="p">(),</span> <span class="n">dag</span><span class="o">.</span><span class="n">buttons</span><span class="p">),</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">network</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">stage</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell13-py"></pre><pre class="pyodide-stderr" id="stderr-codecell13-py"></pre><div class="pyodide-output embedded" id="output-codecell13-py"></div>
+<script>
+              async function embed_bokeh_14 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell13-py", "root_id": "1649", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"disabled": true, "margin": [5, 10, 5, 10], "min_width": 125, "width": 125}, "id": "1655", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"children": [{"id": "1654"}, {"id": "1657"}], "margin": [0, 0, 0, 0], "name": "Row06618"}, "id": "1653", "type": "Row"}, {"attributes": {"axis_label": "y", "coordinates": null, "formatter": {"id": "1690"}, "group": null, "major_label_policy": {"id": "1691"}, "ticker": {"id": "1678"}, "visible": false}, "id": "1677", "type": "LinearAxis"}, {"attributes": {"children": [{"id": "1655"}, {"id": "1656"}], "margin": [0, 0, 0, 0], "name": "Column07199"}, "id": "1654", "type": "Column"}, {"attributes": {"children": [{"id": "1759"}], "margin": [0, 0, 0, 0], "name": "Row06715"}, "id": "1758", "type": "Row"}, {"attributes": {"line_alpha": {"value": 0.2}, "line_width": {"value": 2}}, "id": "1704", "type": "MultiLine"}, {"attributes": {"name": "location", "reload": false}, "id": "1801", "type": "panel.models.location.Location"}, {"attributes": {"disabled": true, "icon": null, "label": "Previous", "margin": [5, 10, 5, 10], "min_width": 125, "subscribed_events": ["button_click"], "width": 125}, "id": "1656", "type": "Button"}, {"attributes": {}, "id": "1691", "type": "AllLabels"}, {"attributes": {"margin": [5, 10, 5, 10], "min_width": 125, "options": ["Multiply", "Add"], "value": "Multiply", "width": 125}, "id": "1658", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"below": [{"id": "1673"}], "center": [{"id": "1676"}, {"id": "1680"}], "height": 100, "left": [{"id": "1677"}], "margin": [5, 5, 5, 5], "min_border_bottom": 10, "min_border_left": 10, "min_border_right": 10, "min_border_top": 10, "min_width": 400, "outline_line_alpha": 0, "renderers": [{"id": "1709"}, {"id": "1730"}], "sizing_mode": "stretch_width", "title": {"id": "1665"}, "toolbar": {"id": "1682"}, "toolbar_location": null, "width": null, "x_range": {"id": "1660"}, "x_scale": {"id": "1669"}, "y_range": {"id": "1661"}, "y_scale": {"id": "1671"}}, "id": "1664", "subtype": "Figure", "type": "Plot"}, {"attributes": {"reset_end": 1, "reset_start": 0, "tags": [[["y", "y", null]]]}, "id": "1661", "type": "Range1d"}, {"attributes": {"children": [{"id": "1658"}, {"id": "1659"}], "margin": [0, 0, 0, 0], "name": "Column07200"}, "id": "1657", "type": "Column"}, {"attributes": {"margin": [5, 5, 5, 5], "name": "HSpacer07417", "sizing_mode": "stretch_width"}, "id": "1652", "type": "Spacer"}, {"attributes": {"callback": null, "renderers": [{"id": "1730"}], "tags": ["hv_created"], "tooltips": [["Stage", "@{Stage}"], ["State", "@{State}"]]}, "id": "1663", "type": "HoverTool"}, {"attributes": {"graph_layout": {"0": [0, 0.5], "1": [1, 0.25], "2": [1, 0.75], "3": [2, 0.5]}}, "id": "1695", "type": "StaticLayoutProvider"}, {"attributes": {}, "id": "1742", "type": "Selection"}, {"attributes": {}, "id": "1688", "type": "AllLabels"}, {"attributes": {"axis_label": "x", "coordinates": null, "formatter": {"id": "1687"}, "group": null, "major_label_policy": {"id": "1688"}, "ticker": {"id": "1674"}, "visible": false}, "id": "1673", "type": "LinearAxis"}, {"attributes": {"data": {"State": ["active", "inactive", "next", "inactive"], "index": {"__ndarray__": "AAAAAAEAAAACAAAAAwAAAA==", "dtype": "int32", "order": "little", "shape": [4]}, "index_hover": ["Input", "Add", "Multiply", "Result"], "node_color": ["active", "inactive", "next", "inactive"]}, "selected": {"id": "1742"}, "selection_policy": {"id": "1741"}}, "id": "1693", "type": "ColumnDataSource"}, {"attributes": {}, "id": "1674", "type": "BasicTicker"}, {"attributes": {"children": [{"id": "1760"}, {"id": "1761"}], "margin": [0, 0, 0, 0], "name": "Row06728"}, "id": "1759", "type": "Row"}, {"attributes": {"icon": null, "label": "Next", "margin": [5, 10, 5, 10], "min_width": 125, "subscribed_events": ["button_click"], "width": 125}, "id": "1659", "type": "Button"}, {"attributes": {"hatch_color": {"field": "node_color", "transform": {"id": "1692"}}, "size": {"value": 15}}, "id": "1699", "type": "Circle"}, {"attributes": {"source": {"id": "1694"}}, "id": "1708", "type": "CDSView"}, {"attributes": {"callback": null, "renderers": [{"id": "1730"}]}, "id": "1681", "type": "TapTool"}, {"attributes": {"line_width": {"value": 2}}, "id": "1703", "type": "MultiLine"}, {"attributes": {"coordinates": null, "group": null, "text_color": "black", "text_font_size": "12pt"}, "id": "1665", "type": "Title"}, {"attributes": {}, "id": "1671", "type": "LinearScale"}, {"attributes": {"coordinates": null, "data_source": {"id": "1694"}, "glyph": {"id": "1703"}, "group": null, "hover_glyph": {"id": "1705"}, "muted_glyph": {"id": "1706"}, "nonselection_glyph": {"id": "1704"}, "view": {"id": "1708"}}, "id": "1707", "type": "GlyphRenderer"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1729", "type": "Scatter"}, {"attributes": {}, "id": "1678", "type": "BasicTicker"}, {"attributes": {}, "id": "1687", "type": "BasicTickFormatter"}, {"attributes": {"source": {"id": "1693"}}, "id": "1702", "type": "CDSView"}, {"attributes": {"axis": {"id": "1677"}, "coordinates": null, "dimension": 1, "grid_line_color": null, "group": null, "ticker": null}, "id": "1680", "type": "Grid"}, {"attributes": {}, "id": "1690", "type": "BasicTickFormatter"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1726", "type": "Scatter"}, {"attributes": {}, "id": "1739", "type": "UnionRenderers"}, {"attributes": {"coordinates": null, "edge_renderer": {"id": "1707"}, "group": null, "inspection_policy": {"id": "1720"}, "layout_provider": {"id": "1695"}, "node_renderer": {"id": "1701"}, "selection_policy": {"id": "1718"}}, "id": "1709", "type": "GraphRenderer"}, {"attributes": {}, "id": "1718", "type": "NodesOnly"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"field": "node_color", "transform": {"id": "1692"}}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"field": "node_color", "transform": {"id": "1692"}}, "line_alpha": {"value": 0.2}, "size": {"value": 15}}, "id": "1697", "type": "Circle"}, {"attributes": {"axis": {"id": "1673"}, "coordinates": null, "grid_line_color": null, "group": null, "ticker": null}, "id": "1676", "type": "Grid"}, {"attributes": {}, "id": "1720", "type": "NodesAndLinkedEdges"}, {"attributes": {"data": {"Stage": ["Input", "Add", "Multiply", "Result"], "State": ["active", "inactive", "next", "inactive"], "x": [0, 1, 1, 2], "y": {"__ndarray__": "AAAAAAAA4D8AAAAAAADQPwAAAAAAAOg/AAAAAAAA4D8=", "dtype": "float64", "order": "little", "shape": [4]}}, "selected": {"id": "1723"}, "selection_policy": {"id": "1739"}}, "id": "1722", "type": "ColumnDataSource"}, {"attributes": {"end": 2.25, "reset_end": 2.25, "reset_start": -0.25, "start": -0.25, "tags": [[["x", "x", null]]]}, "id": "1660", "type": "Range1d"}, {"attributes": {}, "id": "1669", "type": "LinearScale"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "indianred"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1728", "type": "Scatter"}, {"attributes": {}, "id": "1723", "type": "Selection"}, {"attributes": {"margin": [5, 10, 5, 10], "mode": "int", "placeholder": "0", "title": "Value1", "value": 2, "value_throttled": 2}, "id": "1760", "type": "Spinner"}, {"attributes": {}, "id": "1741", "type": "UnionRenderers"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"field": "node_color", "transform": {"id": "1692"}}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"field": "node_color", "transform": {"id": "1692"}}, "line_alpha": {"value": 0.2}, "size": {"value": 15}}, "id": "1700", "type": "Circle"}, {"attributes": {"coordinates": null, "data_source": {"id": "1722"}, "glyph": {"id": "1725"}, "group": null, "hover_glyph": {"id": "1728"}, "muted_glyph": {"id": "1729"}, "nonselection_glyph": {"id": "1726"}, "selection_glyph": {"id": "1727"}, "view": {"id": "1731"}}, "id": "1730", "type": "GlyphRenderer"}, {"attributes": {"line_width": {"value": 2}}, "id": "1705", "type": "MultiLine"}, {"attributes": {"data": {"end": {"__ndarray__": "AgAAAAEAAAADAAAAAwAAAA==", "dtype": "int32", "order": "little", "shape": [4]}, "start": {"__ndarray__": "AAAAAAAAAAACAAAAAQAAAA==", "dtype": "int32", "order": "little", "shape": [4]}}, "selected": {"id": "1744"}, "selection_policy": {"id": "1743"}}, "id": "1694", "type": "ColumnDataSource"}, {"attributes": {"coordinates": null, "data_source": {"id": "1693"}, "glyph": {"id": "1696"}, "group": null, "hover_glyph": {"id": "1699"}, "muted_glyph": {"id": "1700"}, "nonselection_glyph": {"id": "1697"}, "selection_glyph": {"id": "1698"}, "view": {"id": "1702"}}, "id": "1701", "type": "GlyphRenderer"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1725", "type": "Scatter"}, {"attributes": {}, "id": "1743", "type": "UnionRenderers"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "limegreen"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1727", "type": "Scatter"}, {"attributes": {"children": [{"id": "1651"}, {"id": "1652"}, {"id": "1653"}], "margin": [0, 0, 0, 0], "name": "Row07418"}, "id": "1650", "type": "Row"}, {"attributes": {"line_alpha": {"value": 0.2}, "line_width": {"value": 2}}, "id": "1706", "type": "MultiLine"}, {"attributes": {}, "id": "1744", "type": "Selection"}, {"attributes": {"children": [{"id": "1650"}, {"id": "1664"}, {"id": "1758"}], "margin": [0, 0, 0, 0], "name": "Column07419"}, "id": "1649", "type": "Column"}, {"attributes": {"tools": [{"id": "1662"}, {"id": "1663"}, {"id": "1681"}]}, "id": "1682", "type": "Toolbar"}, {"attributes": {"source": {"id": "1722"}}, "id": "1731", "type": "CDSView"}, {"attributes": {"factors": ["inactive", "active", "error", "next"], "palette": ["white", "#5cb85c", "red", "yellow"]}, "id": "1692", "type": "CategoricalColorMapper"}, {"attributes": {"fill_color": {"field": "node_color", "transform": {"id": "1692"}}, "hatch_color": {"field": "node_color", "transform": {"id": "1692"}}, "size": {"value": 15}}, "id": "1698", "type": "Circle"}, {"attributes": {"callback": null, "renderers": [{"id": "1709"}], "tags": ["hv_created"], "tooltips": [["Stage", "@{index_hover}"], ["State", "@{State}"]]}, "id": "1662", "type": "HoverTool"}, {"attributes": {"margin": [5, 10, 5, 10], "mode": "int", "placeholder": "0", "title": "Value2", "value": 3, "value_throttled": 3}, "id": "1761", "type": "Spinner"}, {"attributes": {"fill_color": {"field": "node_color", "transform": {"id": "1692"}}, "hatch_color": {"field": "node_color", "transform": {"id": "1692"}}, "size": {"value": 15}}, "id": "1696", "type": "Circle"}, {"attributes": {"css_classes": ["markdown"], "margin": [0, 0, 0, 5], "name": "Markdown06615", "text": "&lt;h2&gt;Stage: Input&lt;/h2&gt;"}, "id": "1651", "type": "panel.models.markup.HTML"}], "root_ids": ["1649", "1801"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_14, 200)
+                }
+              };
+              embed_bokeh_14()
+            </script>
+</section>
+<section id="programmatic-flow-control">
+<h2>Programmatic flow control<a class="headerlink" href="#programmatic-flow-control" title="Permalink to this heading">#</a></h2>
+<p>By default, controlling the flow between different stages is done using the “Previous” and “Next” buttons. However often we want to control the UI flow programmatically from within a stage. A <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> allows programmatic control by declaring a <code class="docutils literal notranslate"><span class="pre">ready_parameter</span></code> either per stage or globally on the Pipeline, which can block or unblock the buttons depending on the information obtained so far, as well as advancing automatically when combined with the <code class="docutils literal notranslate"><span class="pre">auto_advance</span></code> parameter. In this way we can control the workflow programmatically from inside the stages.</p>
+<p>In the example below we create a version of the previous workflow that can be used without the buttons by declaring <code class="docutils literal notranslate"><span class="pre">ready</span></code> parameters for each of the stages, which we can toggle with a custom button or simply set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default to automatically skip the stage.</p>
+<p>Lastly, we can also control which branching stage to switch to from within a stage. To do so we declare a parameter which will hold the name of the next stage to switch to, in this case selecting between ‘Add’ and ‘Multiply’. Later we will point the pipeline to this parameter using the <code class="docutils literal notranslate"><span class="pre">next_parameter</span></code> argument.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AutoInput</span><span class="p">(</span><span class="n">Input</span><span class="p">):</span>
+
+    <span class="n">operator</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Selector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">'Add'</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="p">[</span><span class="s1">'Multiply'</span><span class="p">,</span> <span class="s1">'Add'</span><span class="p">])</span>
+
+    <span class="n">ready</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">panel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">button</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Go'</span><span class="p">,</span> <span class="n">button_type</span><span class="o">=</span><span class="s1">'success'</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'ready'</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">value1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">operator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">value2</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">widgets</span><span class="p">:</span>
+            <span class="n">w</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">85</span>
+        <span class="k">return</span> <span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">widgets</span><span class="p">,</span> <span class="n">button</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">AutoMultiply</span><span class="p">(</span><span class="n">Multiply</span><span class="p">):</span>
+
+    <span class="n">ready</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">AutoAdd</span><span class="p">(</span><span class="n">Add</span><span class="p">):</span>
+
+    <span class="n">ready</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell14-py"></pre><pre class="pyodide-stderr" id="stderr-codecell14-py"></pre><p>Now that we have declared these stages let us set up the pipeline, ensuring that we declare the <code class="docutils literal notranslate"><span class="pre">ready_parameter</span></code>, <code class="docutils literal notranslate"><span class="pre">next_parameter</span></code>, and <code class="docutils literal notranslate"><span class="pre">auto_advance</span></code> settings appropriately:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dag</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">()</span> <span class="c1"># could instead set ready_parameter='ready' and auto_advance=True globally here</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">'Input'</span><span class="p">,</span>    <span class="n">AutoInput</span><span class="p">,</span>    <span class="n">ready_parameter</span><span class="o">=</span><span class="s1">'ready'</span><span class="p">,</span> <span class="n">auto_advance</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">next_parameter</span><span class="o">=</span><span class="s1">'operator'</span><span class="p">)</span>
+<span class="n">dag</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">'Multiply'</span><span class="p">,</span> <span class="n">AutoMultiply</span><span class="p">,</span> <span class="n">ready_parameter</span><span class="o">=</span><span class="s1">'ready'</span><span class="p">,</span> <span class="n">auto_advance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dag</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">'Add'</span><span class="p">,</span>      <span class="n">AutoAdd</span><span class="p">,</span>      <span class="n">ready_parameter</span><span class="o">=</span><span class="s1">'ready'</span><span class="p">,</span> <span class="n">auto_advance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dag</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">'Result'</span><span class="p">,</span>   <span class="n">Result</span><span class="p">)</span>
+
+<span class="n">dag</span><span class="o">.</span><span class="n">define_graph</span><span class="p">({</span><span class="s1">'Input'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'Multiply'</span><span class="p">,</span> <span class="s1">'Add'</span><span class="p">),</span> <span class="s1">'Multiply'</span><span class="p">:</span> <span class="s1">'Result'</span><span class="p">,</span> <span class="s1">'Add'</span><span class="p">:</span> <span class="s1">'Result'</span><span class="p">})</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell15-py"></pre><pre class="pyodide-stderr" id="stderr-codecell15-py"></pre><p>Finally we display the pipeline without the buttons, which is appropriate because all the flow control is now handled from within the stages:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">network</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">.</span><span class="n">stage</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell16-py"></pre><pre class="pyodide-stderr" id="stderr-codecell16-py"></pre><div class="pyodide-output embedded" id="output-codecell16-py"></div>
+<script>
+              async function embed_bokeh_17 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell16-py", "root_id": "1841", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"line_width": {"value": 2}}, "id": "1888", "type": "MultiLine"}, {"attributes": {"axis": {"id": "1856"}, "coordinates": null, "grid_line_color": null, "group": null, "ticker": null}, "id": "1859", "type": "Grid"}, {"attributes": {"graph_layout": {"0": [0, 0.5], "1": [1, 0.25], "2": [1, 0.75], "3": [2, 0.5]}}, "id": "1878", "type": "StaticLayoutProvider"}, {"attributes": {}, "id": "1925", "type": "Selection"}, {"attributes": {}, "id": "1926", "type": "UnionRenderers"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "indianred"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1911", "type": "Scatter"}, {"attributes": {"line_alpha": {"value": 0.2}, "line_width": {"value": 2}}, "id": "1887", "type": "MultiLine"}, {"attributes": {"children": [{"id": "1942"}], "margin": [0, 0, 0, 0], "name": "Row07655"}, "id": "1941", "type": "Row"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1912", "type": "Scatter"}, {"attributes": {"line_width": {"value": 2}}, "id": "1886", "type": "MultiLine"}, {"attributes": {"factors": ["inactive", "active", "error", "next"], "palette": ["white", "#5cb85c", "red", "yellow"]}, "id": "1875", "type": "CategoricalColorMapper"}, {"attributes": {"source": {"id": "1905"}}, "id": "1914", "type": "CDSView"}, {"attributes": {"coordinates": null, "data_source": {"id": "1876"}, "glyph": {"id": "1879"}, "group": null, "hover_glyph": {"id": "1882"}, "muted_glyph": {"id": "1883"}, "nonselection_glyph": {"id": "1880"}, "selection_glyph": {"id": "1881"}, "view": {"id": "1885"}}, "id": "1884", "type": "GlyphRenderer"}, {"attributes": {"fill_color": {"field": "node_color", "transform": {"id": "1875"}}, "hatch_color": {"field": "node_color", "transform": {"id": "1875"}}, "size": {"value": 15}}, "id": "1881", "type": "Circle"}, {"attributes": {"callback": null, "renderers": [{"id": "1892"}], "tags": ["hv_created"], "tooltips": [["Stage", "@{index_hover}"], ["State", "@{State}"]]}, "id": "1845", "type": "HoverTool"}, {"attributes": {"data": {"State": ["active", "next", "inactive", "inactive"], "index": {"__ndarray__": "AAAAAAEAAAACAAAAAwAAAA==", "dtype": "int32", "order": "little", "shape": [4]}, "index_hover": ["Input", "Add", "Multiply", "Result"], "node_color": ["active", "next", "inactive", "inactive"]}, "selected": {"id": "1925"}, "selection_policy": {"id": "1924"}}, "id": "1876", "type": "ColumnDataSource"}, {"attributes": {"coordinates": null, "edge_renderer": {"id": "1890"}, "group": null, "inspection_policy": {"id": "1903"}, "layout_provider": {"id": "1878"}, "node_renderer": {"id": "1884"}, "selection_policy": {"id": "1901"}}, "id": "1892", "type": "GraphRenderer"}, {"attributes": {"tools": [{"id": "1845"}, {"id": "1846"}, {"id": "1864"}]}, "id": "1865", "type": "Toolbar"}, {"attributes": {}, "id": "1854", "type": "LinearScale"}, {"attributes": {}, "id": "1903", "type": "NodesAndLinkedEdges"}, {"attributes": {"source": {"id": "1876"}}, "id": "1885", "type": "CDSView"}, {"attributes": {"margin": [5, 10, 5, 10], "min_width": 85, "options": [["Multiply", "Multiply"], ["Add", "Add"]], "title": "Operator", "value": "Add", "width": 85}, "id": "1945", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"hatch_color": {"field": "node_color", "transform": {"id": "1875"}}, "size": {"value": 15}}, "id": "1882", "type": "Circle"}, {"attributes": {}, "id": "1924", "type": "UnionRenderers"}, {"attributes": {"coordinates": null, "data_source": {"id": "1905"}, "glyph": {"id": "1908"}, "group": null, "hover_glyph": {"id": "1911"}, "muted_glyph": {"id": "1912"}, "nonselection_glyph": {"id": "1909"}, "selection_glyph": {"id": "1910"}, "view": {"id": "1914"}}, "id": "1913", "type": "GlyphRenderer"}, {"attributes": {}, "id": "1870", "type": "BasicTickFormatter"}, {"attributes": {"axis_label": "y", "coordinates": null, "formatter": {"id": "1873"}, "group": null, "major_label_policy": {"id": "1874"}, "ticker": {"id": "1861"}, "visible": false}, "id": "1860", "type": "LinearAxis"}, {"attributes": {"source": {"id": "1877"}}, "id": "1891", "type": "CDSView"}, {"attributes": {"axis": {"id": "1860"}, "coordinates": null, "dimension": 1, "grid_line_color": null, "group": null, "ticker": null}, "id": "1863", "type": "Grid"}, {"attributes": {"callback": null, "renderers": [{"id": "1913"}], "tags": ["hv_created"], "tooltips": [["Stage", "@{Stage}"], ["State", "@{State}"]]}, "id": "1846", "type": "HoverTool"}, {"attributes": {}, "id": "1852", "type": "LinearScale"}, {"attributes": {"children": [{"id": "1842"}, {"id": "1847"}, {"id": "1941"}], "margin": [0, 0, 0, 0], "name": "Column09060"}, "id": "1841", "type": "Column"}, {"attributes": {}, "id": "1874", "type": "AllLabels"}, {"attributes": {"below": [{"id": "1856"}], "center": [{"id": "1859"}, {"id": "1863"}], "height": 100, "left": [{"id": "1860"}], "margin": [5, 5, 5, 5], "min_border_bottom": 10, "min_border_left": 10, "min_border_right": 10, "min_border_top": 10, "min_width": 400, "outline_line_alpha": 0, "renderers": [{"id": "1892"}, {"id": "1913"}], "sizing_mode": "stretch_width", "title": {"id": "1848"}, "toolbar": {"id": "1865"}, "toolbar_location": null, "width": null, "x_range": {"id": "1843"}, "x_scale": {"id": "1852"}, "y_range": {"id": "1844"}, "y_scale": {"id": "1854"}}, "id": "1847", "subtype": "Figure", "type": "Plot"}, {"attributes": {"children": [{"id": "1943"}, {"id": "1947"}], "margin": [0, 0, 0, 0], "name": "Column07675"}, "id": "1942", "type": "Column"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"field": "node_color", "transform": {"id": "1875"}}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"field": "node_color", "transform": {"id": "1875"}}, "line_alpha": {"value": 0.2}, "size": {"value": 15}}, "id": "1880", "type": "Circle"}, {"attributes": {}, "id": "1871", "type": "AllLabels"}, {"attributes": {"line_alpha": {"value": 0.2}, "line_width": {"value": 2}}, "id": "1889", "type": "MultiLine"}, {"attributes": {}, "id": "1922", "type": "UnionRenderers"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1909", "type": "Scatter"}, {"attributes": {}, "id": "1861", "type": "BasicTicker"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"field": "node_color", "transform": {"id": "1875"}}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"field": "node_color", "transform": {"id": "1875"}}, "line_alpha": {"value": 0.2}, "size": {"value": 15}}, "id": "1883", "type": "Circle"}, {"attributes": {}, "id": "1906", "type": "Selection"}, {"attributes": {}, "id": "1873", "type": "BasicTickFormatter"}, {"attributes": {"coordinates": null, "group": null, "text_color": "black", "text_font_size": "12pt"}, "id": "1848", "type": "Title"}, {"attributes": {"margin": [5, 10, 5, 10], "min_width": 85, "mode": "int", "placeholder": "0", "title": "Value2", "value": 3, "value_throttled": 3, "width": 85}, "id": "1946", "type": "Spinner"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "limegreen"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1910", "type": "Scatter"}, {"attributes": {"callback": null, "renderers": [{"id": "1913"}]}, "id": "1864", "type": "TapTool"}, {"attributes": {"axis_label": "x", "coordinates": null, "formatter": {"id": "1870"}, "group": null, "major_label_policy": {"id": "1871"}, "ticker": {"id": "1857"}, "visible": false}, "id": "1856", "type": "LinearAxis"}, {"attributes": {"fill_color": {"field": "node_color", "transform": {"id": "1875"}}, "hatch_color": {"field": "node_color", "transform": {"id": "1875"}}, "size": {"value": 15}}, "id": "1879", "type": "Circle"}, {"attributes": {"margin": [5, 10, 5, 10], "min_width": 85, "mode": "int", "placeholder": "0", "title": "Value1", "value": 2, "value_throttled": 2, "width": 85}, "id": "1944", "type": "Spinner"}, {"attributes": {"end": 2.25, "reset_end": 2.25, "reset_start": -0.25, "start": -0.25, "tags": [[["x", "x", null]]]}, "id": "1843", "type": "Range1d"}, {"attributes": {}, "id": "1901", "type": "NodesOnly"}, {"attributes": {"css_classes": ["markdown"], "margin": [0, 0, 0, 5], "name": "Markdown07555", "text": "&lt;h2&gt;Stage: Input&lt;/h2&gt;"}, "id": "1842", "type": "panel.models.markup.HTML"}, {"attributes": {"fill_alpha": {"value": 0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0}, "size": {"value": 10}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1908", "type": "Scatter"}, {"attributes": {"button_type": "success", "icon": null, "label": "Go", "margin": [5, 10, 5, 10], "subscribed_events": ["button_click"]}, "id": "1947", "type": "Button"}, {"attributes": {"data": {"Stage": ["Input", "Add", "Multiply", "Result"], "State": ["active", "next", "inactive", "inactive"], "x": [0, 1, 1, 2], "y": {"__ndarray__": "AAAAAAAA4D8AAAAAAADQPwAAAAAAAOg/AAAAAAAA4D8=", "dtype": "float64", "order": "little", "shape": [4]}}, "selected": {"id": "1906"}, "selection_policy": {"id": "1922"}}, "id": "1905", "type": "ColumnDataSource"}, {"attributes": {"reset_end": 1, "reset_start": 0, "tags": [[["y", "y", null]]]}, "id": "1844", "type": "Range1d"}, {"attributes": {"children": [{"id": "1944"}, {"id": "1945"}, {"id": "1946"}], "margin": [0, 0, 0, 0], "name": "Row07674"}, "id": "1943", "type": "Row"}, {"attributes": {"data": {"end": {"__ndarray__": "AgAAAAEAAAADAAAAAwAAAA==", "dtype": "int32", "order": "little", "shape": [4]}, "start": {"__ndarray__": "AAAAAAAAAAACAAAAAQAAAA==", "dtype": "int32", "order": "little", "shape": [4]}}, "selected": {"id": "1927"}, "selection_policy": {"id": "1926"}}, "id": "1877", "type": "ColumnDataSource"}, {"attributes": {}, "id": "1927", "type": "Selection"}, {"attributes": {}, "id": "1857", "type": "BasicTicker"}, {"attributes": {"name": "location", "reload": false}, "id": "1987", "type": "panel.models.location.Location"}, {"attributes": {"coordinates": null, "data_source": {"id": "1877"}, "glyph": {"id": "1886"}, "group": null, "hover_glyph": {"id": "1888"}, "muted_glyph": {"id": "1889"}, "nonselection_glyph": {"id": "1887"}, "view": {"id": "1891"}}, "id": "1890", "type": "GlyphRenderer"}], "root_ids": ["1841", "1987"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_17, 200)
+                }
+              };
+              embed_bokeh_17()
+            </script>
+<p>As you can see, a panel Pipeline can be used to set up complex workflows when needed, with each stage controlled either manually or from within the stage, without having to define complex callbacks or other GUI logic.</p>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="Links.html" id="prev-link" title="previous page">
+<i class="fas fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Linking objects in Panel</p>
+</div>
+</a>
+<a class="right-next" href="Templates.html" id="next-link" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Templates</p>
+</div>
+<i class="fas fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+<footer class="bd-footer"><div class="bd-footer__inner container">
+<div class="footer-item">
+<p class="copyright">
+    © Copyright 2019-2022 Holoviz contributors.<br/>
+</p>
+</div>
+<div class="footer-item">
+<p class="last-updated">
+Last updated on 2022-10-05.<br/>
+</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<map id="inheritance1dcb01ffdd" name="inheritance1dcb01ffdd">
+<area shape="rect" id="node1" title="Base class for all internal events representing a change to a" alt="" coords="2,52,143,63"/>
+<area shape="rect" id="node2" title="A Base class for events that represent updating Bokeh Models and" alt="" coords="162,52,301,63"/>
+<area shape="rect" id="node11" href="#panel.io.ipywidget.MessageSentEventPatched" target="_top" title="Patches MessageSentEvent with fix that ensures MessageSent event" alt="" coords="469,52,601,63"/>
+<area shape="rect" id="node5" title="A configurable that only allows one instance." alt="" coords="624,32,766,43"/>
+<area shape="rect" id="node12" href="#panel.io.ipywidget.PanelKernel" target="_top" title="panel.io.ipywidget.PanelKernel" alt="" coords="1059,32,1150,43"/>
+<area shape="rect" id="node13" href="#panel.io.ipywidget.PanelSessionWebsocket" target="_top" title="panel.io.ipywidget.PanelSessionWebsocket" alt="" coords="786,12,909,22"/>
+<area shape="rect" id="node8" title="Object for handling serialization and sending of messages." alt="" coords="490,12,580,22"/>
+<area shape="rect" id="node15" title="A parent class for Configurables that log." alt="" coords="466,32,604,43"/>
+<area shape="rect" id="node10" href="#panel.io.ipywidget.MessageSentBuffers" target="_top" title="panel.io.ipywidget.MessageSentBuffers" alt="" coords="15,2,130,13"/>
+<area shape="rect" id="node16" title="The base class for all classes that have descriptors." alt="" coords="25,22,120,33"/>
+</map>

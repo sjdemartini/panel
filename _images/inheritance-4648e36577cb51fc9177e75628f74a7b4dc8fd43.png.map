@@ -1,0 +1,7 @@
+<map id="inheritanced78129b6d8" name="inheritanced78129b6d8">
+<area shape="rect" id="node1" title="Base class for Bokeh property instances, which can be added to Bokeh" alt="" coords="617,29,851,52"/>
+<area shape="rect" id="node4" href="#panel.io.datamodel.Parameterized" target="_top" title="Accept a Parameterized object." alt="" coords="906,5,1136,29"/>
+<area shape="rect" id="node5" href="#panel.io.datamodel.ParameterizedList" target="_top" title="Accept a list of Parameterized objects." alt="" coords="896,51,1147,75"/>
+<area shape="rect" id="node2" title="Base class for all Bokeh properties." alt="" coords="159,29,572,52"/>
+<area shape="rect" id="node3" title="Abstract base class for generic types." alt="" coords="5,29,114,52"/>
+</map>

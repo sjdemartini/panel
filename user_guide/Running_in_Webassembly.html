@@ -1,0 +1,1928 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
+<link href="../site.webmanifest" rel="manifest"/>
+<title>Running Panel in the Browser with WASM — Panel v0.14.0</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/mystnb.css" rel="stylesheet" type="text/css">
+<link href="../_static/graphviz.css" rel="stylesheet" type="text/css">
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/runbutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/dataframe.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695" rel="preload"/>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/sphinx_highlight.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/run_cell.js"></script>
+<script src="../_static/WorkerHandler.js"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../_static/design-tabs.js"></script>
+<script src="../_static/ServiceHandler.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/panel.min.js"></script>
+<script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-154795830-2', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
+<link href="../_static/favicon.ico" rel="shortcut icon">
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="Server_Configuration.html" rel="next" title="Server Configuration"/>
+<link href="Display_and_Export.html" rel="prev" title="Display and Export"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></link></link></head>
+<body data-default-mode="light" data-offset="180" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="bd-header-announcement container-fluid" id="banner">
+</div>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+<div id="navbar-start">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../_static/logo_horizontal.png"/>
+<img alt="Logo image" class="logo__image only-dark" src="../_static/logo_horizontal.png"/>
+</a>
+</div>
+<button aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-collapsible" data-toggle="collapse" type="button">
+<span class="fas fa-bars"></span>
+</button>
+<div class="col-lg-9 collapse navbar-collapse" id="navbar-collapsible">
+<div class="mr-auto" id="navbar-center">
+<div class="navbar-center-item">
+<ul class="navbar-nav" id="navbar-main-elements">
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../index.html">
+  Overview
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+<li class="toctree-l1 current active nav-item">
+<a class="reference internal nav-link" href="index.html">
+  User Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../gallery/index.html">
+  Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../reference/index.html">
+  Reference Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../developer_guide/index.html">
+  Developer Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../api/index.html">
+  API Reference
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../releases.html">
+  Releases
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../FAQ.html">
+  FAQ
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../about/index.html">
+  About
+ </a>
+</li>
+</ul>
+</div>
+</div>
+<div id="navbar-end">
+<div class="navbar-end-item">
+<ul aria-label="Icon Links" class="navbar-nav" id="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/holoviz/panel" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://twitter.com/Panel_Org" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://discourse.holoviz.org/c/panel/5" rel="noopener" target="_blank" title="Discourse"><span><i class="fab fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bd-container container-xl">
+<div class="bd-container__inner row">
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-2 bd-sidebar">
+<div class="sidebar-start-items"><form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search the docs ..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../index.html">
+   Overview
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../getting_started/index.html">
+   Getting Started
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/installation.html">
+     Installation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/build_app.html">
+     Build an app
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/core_concepts.html">
+     Core Concepts
+    </a>
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="index.html">
+   User Guide
+  </a>
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="Overview.html">
+     Overview
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Components.html">
+     Components
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="APIs.html">
+     APIs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Customization.html">
+     Customization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Interact.html">
+     Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Widgets.html">
+     Widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Param.html">
+     Parameters
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Links.html">
+     Linking
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Pipelines.html">
+     Pipelines
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Templates.html">
+     Templates
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Performance_and_Debugging.html">
+     Performance and Debugging
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Session_State_and_Callbacks.html">
+     Session state &amp; Callbacks
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Async_and_Concurrency.html">
+     Asynchronous and Concurrent Process
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Display_and_Export.html">
+     Display &amp; Export
+    </a>
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
+     Running Panel in the Browser with WASM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Server_Configuration.html">
+     Server Configuration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Server_Deployment.html">
+     Server Deployment
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Authentication.html">
+     Authentication
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Django.html">
+     Django Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="FastAPI.html">
+     FastAPI Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Custom_Components.html">
+     Building Custom Components
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../gallery/index.html">
+   Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKInteractive.html">
+     VTKInteractive
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKSlicer.html">
+     VTKSlicer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKWarp.html">
+     VTKWarp
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/attractors.html">
+     Attractors
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/gapminders.html">
+     Gapminders
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/glaciers.html">
+     Glaciers
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/nyc_taxi.html">
+     Nyc Taxi
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/portfolio-optimizer.html">
+     Portfolio-optimizer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_brushing.html">
+     Altair Brushing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_choropleth.html">
+     Altair Choropleth
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/clifford_interact.html">
+     Clifford Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/color_speech_recognition.html">
+     Color Speech Recognition
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/deckgl_game_of_life.html">
+     Deckgl Game Of Life
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/defer_data_load.html">
+     Defer Data Load
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/file_download_examples.html">
+     File Download Examples
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/hvplot_explorer.html">
+     Hvplot Explorer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/iris_kmeans.html">
+     Iris Kmeans
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/loading_spinner.html">
+     Loading Spinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/random_number_generator.html">
+     Random Number Generator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/save_filtered_df.html">
+     Save Filtered Df
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/sync_location.html">
+     Sync Location
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/temperature_distribution.html">
+     Temperature Distribution
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/xgboost_classifier.html">
+     Xgboost Classifier
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_altair.html">
+     Stocks Altair
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_hvplot.html">
+     Stocks Hvplot
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_matplotlib.html">
+     Stocks Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_plotly.html">
+     Stocks Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/distribution_tabs.html">
+     Distribution Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/dynamic_tabs.html">
+     Dynamic Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/plot_with_columns.html">
+     Plot With Columns
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_plot_layout.html">
+     Dynamic Plot Layout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_timeseries_image_analysis.html">
+     Dynamic Timeseries Image Analysis
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_ui.html">
+     Dynamic Ui
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_widget_values.html">
+     Dynamic Widget Values
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/action_button.html">
+     Action Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/deck_gl_global_power_plants.html">
+     Deck Gl Global Power Plants
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/download_upload_csv.html">
+     Download Upload Csv
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/loading_indicator.html">
+     Loading Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/param_subobjects.html">
+     Param Subobjects
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/precedence.html">
+     Precedence
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_plots.html">
+     Reactive Plots
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_tables.html">
+     Reactive Tables
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/hardware_automation.html">
+     Hardware Automation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_bokeh.html">
+     Streaming Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_indicator.html">
+     Streaming Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_perspective.html">
+     Streaming Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_tabulator.html">
+     Streaming Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/CanvasDraw.html">
+     CanvasDraw
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/LeafletHeatMap.html">
+     LeafletHeatMap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/MaterialUI.html">
+     MaterialUI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/bokeh_property_editor.html">
+     Bokeh Property Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/deck_gl_json_editor.html">
+     Deck Gl Json Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/holoviews_glyph_link.html">
+     Holoviews Glyph Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/plotly_link.html">
+     Plotly Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/vega_heatmap_link.html">
+     Vega Heatmap Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/MatplotlibStyle.html">
+     MatplotlibStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/PlotlyStyle.html">
+     PlotlyStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/SeabornStyle.html">
+     SeabornStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/VegaAltairStyle.html">
+     VegaAltairStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/DataTable.html">
+     DataTable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/deck.gl.html">
+     Deck.gl
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../reference/index.html">
+   Reference Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Alert.html">
+     Alert
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Audio.html">
+     Audio
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Bokeh.html">
+     Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DeckGL.html">
+     DeckGL
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/ECharts.html">
+     ECharts
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/GIF.html">
+     GIF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HTML.html">
+     HTML
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HoloViews.html">
+     HoloViews
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IDOM.html">
+     IDOM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IPyWidget.html">
+     IPyWidget
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JPG.html">
+     JPG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JSON.html">
+     JSON
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/LaTeX.html">
+     LaTeX
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Markdown.html">
+     Markdown
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Matplotlib.html">
+     Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PDF.html">
+     PDF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PNG.html">
+     PNG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Param.html">
+     Param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Perspective.html">
+     Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Plotly.html">
+     Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/SVG.html">
+     SVG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Str.html">
+     Str
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Streamz.html">
+     Streamz
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTK.html">
+     VTK
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKJS.html">
+     VTKJS
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKVolume.html">
+     VTKVolume
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Vega.html">
+     Vega
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Video.html">
+     Video
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Accordion.html">
+     Accordion
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Card.html">
+     Card
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Column.html">
+     Column
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Divider.html">
+     Divider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/FlexBox.html">
+     FlexBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridBox.html">
+     GridBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridSpec.html">
+     GridSpec
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridStack.html">
+     GridStack
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Row.html">
+     Row
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Tabs.html">
+     Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/WidgetBox.html">
+     WidgetBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Bootstrap.html">
+     Bootstrap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastGridTemplate.html">
+     FastGridTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastListTemplate.html">
+     FastListTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/GoldenLayout.html">
+     GoldenLayout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Material.html">
+     Material
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/React.html">
+     React
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Vanilla.html">
+     Vanilla
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/global/Notifications.html">
+     Notifications
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/BooleanStatus.html">
+     BooleanStatus
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Dial.html">
+     Dial
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Gauge.html">
+     Gauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LinearGauge.html">
+     LinearGauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LoadingSpinner.html">
+     LoadingSpinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Number.html">
+     Number
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Progress.html">
+     Progress
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Tqdm.html">
+     Tqdm
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Trend.html">
+     Trend
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Ace.html">
+     Ace
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ArrayInput.html">
+     ArrayInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/AutocompleteInput.html">
+     AutocompleteInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Button.html">
+     Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckBoxGroup.html">
+     CheckBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckButtonGroup.html">
+     CheckButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Checkbox.html">
+     Checkbox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ColorPicker.html">
+     ColorPicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CrossSelector.html">
+     CrossSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatePicker.html">
+     DatePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateRangeSlider.html">
+     DateRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateSlider.html">
+     DateSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeInput.html">
+     DatetimeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimePicker.html">
+     DatetimePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeInput.html">
+     DatetimeRangeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangePicker.html">
+     DatetimeRangePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeSlider.html">
+     DatetimeRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Debugger.html">
+     Debugger
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscretePlayer.html">
+     DiscretePlayer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscreteSlider.html">
+     DiscreteSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableFloatSlider.html">
+     EditableFloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableIntSlider.html">
+     EditableIntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableRangeSlider.html">
+     EditableRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileDownload.html">
+     FileDownload
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileInput.html">
+     FileInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileSelector.html">
+     FileSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatInput.html">
+     FloatInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatSlider.html">
+     FloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntInput.html">
+     IntInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntRangeSlider.html">
+     IntRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntSlider.html">
+     IntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/JSONEditor.html">
+     JSONEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/LiteralInput.html">
+     LiteralInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MenuButton.html">
+     MenuButton
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiChoice.html">
+     MultiChoice
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiSelect.html">
+     MultiSelect
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/PasswordInput.html">
+     PasswordInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Player.html">
+     Player
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioBoxGroup.html">
+     RadioBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioButtonGroup.html">
+     RadioButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RangeSlider.html">
+     RangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Select.html">
+     Select
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/SpeechToText.html">
+     SpeechToText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/StaticText.html">
+     StaticText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Tabulator.html">
+     Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Terminal.html">
+     Terminal
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextAreaInput.html">
+     TextAreaInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextEditor.html">
+     TextEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextInput.html">
+     TextInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextToSpeech.html">
+     TextToSpeech
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Toggle.html">
+     Toggle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ToggleGroup.html">
+     ToggleGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/VideoStream.html">
+     VideoStream
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../developer_guide/index.html">
+   Developer Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/testing.html">
+     Testing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/Developing_Custom_Models.html">
+     Developing custom models
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../api/index.html">
+   API Reference
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.io.html">
+     io
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.layout.html">
+     layout
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../api/panel.pane.html">
+     pane
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.pane.vtk.html">
+       panel.vtk Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.param.html">
+     param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.pipeline.html">
+     pipeline
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../api/panel.template.html">
+     template
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.bootstrap.html">
+       panel.bootstrap Package
+      </a>
+</li>
+<li class="toctree-l3 has-children">
+<a class="reference internal" href="../api/panel.template.fast.html">
+       panel.fast Package
+      </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l4">
+<a class="reference internal" href="../api/panel.template.fast.grid.html">
+         panel.grid Package
+        </a>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="../api/panel.template.fast.list.html">
+         panel.list Package
+        </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.golden.html">
+       panel.golden Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.material.html">
+       panel.material Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.react.html">
+       panel.react Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.theme.html">
+       panel.theme Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.vanilla.html">
+       panel.vanilla Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.widgets.html">
+     widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.viewable.html">
+     viewable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.util.html">
+     util
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../releases.html">
+   Releases
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../FAQ.html">
+   FAQ
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../about/index.html">
+   About
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../about/comparisons.html">
+     Comparisons
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class="sidebar-end-items">
+</div>
+</div>
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+<div class="toc-item">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+<i class="fas fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#converting-panel-applications">
+   Converting Panel applications
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#tips-tricks-for-development">
+       Tips &amp; Tricks for development
+      </a>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#formats">
+     Formats
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#requirements">
+     Requirements
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#index">
+     Index
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#prerendering">
+     Prerendering
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#progressive-web-apps">
+     Progressive Web Apps
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#installing-panel-in-the-browser">
+   Installing Panel in the browser
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#pyodide">
+     Pyodide
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#pyscript">
+     PyScript
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#rendering-panel-components-in-pyodide-or-pyscript">
+     Rendering Panel components in Pyodide or Pyscript
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#embedding-in-sphinx-documentation">
+   Embedding in Sphinx documentation
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#configuration">
+     Configuration
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#usage">
+     Usage
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div class="toc-item">
+</div>
+</div>
+<div class="bd-content col-12 col-md-10 col-xl-8" role="main">
+<article class="bd-article" role="main">
+<section class="tex2jax_ignore mathjax_ignore" id="running-panel-in-the-browser-with-wasm">
+<h1>Running Panel in the Browser with WASM<a class="headerlink" href="#running-panel-in-the-browser-with-wasm" title="Permalink to this heading">#</a></h1>
+<p>Panel lets you write dashboards and other applications in Python that are accessed using a web browser. Typically, the Python interpreter runs as a separate Jupyter or Bokeh server process, communicating with JavaScript code running in the client browser. However, <strong>it is now possible to run Python directly in the browser</strong>, with <strong>no separate server needed!</strong></p>
+<p>The underlying technology involved is called <a class="reference external" href="https://webassembly.org/">WebAssembly</a> (or WASM). More specifically, <a class="reference external" href="https://pyodide.org/">Pyodide</a> pioneered the ability to install Python libraries, manipulate the web page’s <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">DOM</a> from Python, and execute regular Python code entirely in the browser. A number of libraries have sprung up around Python in WASM, including <a class="reference external" href="https://pyscript.net/">PyScript</a>.</p>
+<p>Panel can be run directly in Pyodide and has special support for rendering in PyScript.</p>
+<p>This guide will take you through the process of either</p>
+<ul class="simple">
+<li><p>Automatically converting Panel applications into a Pyodide/PyScript based application</p></li>
+<li><p>Manually installing Panel in the browser and using it to render components.</p></li>
+<li><p>Embedding Panel in your Sphinx documentation.</p></li>
+</ul>
+<section id="converting-panel-applications">
+<h2>Converting Panel applications<a class="headerlink" href="#converting-panel-applications" title="Permalink to this heading">#</a></h2>
+<p>Writing an HTML file from scratch with all the Javascript and Python dependencies and other boilerplate can be quite cumbersome, and requires learning a good bit of HTML. To avoid writing all the boilerplate, Panel provides support for converting an entire application (including Panel templates) to an HTML file, using the <code class="docutils literal notranslate"><span class="pre">panel</span> <span class="pre">convert</span></code> command-line interface (CLI). As a starting point create one or more Python scripts or notebook files containing your application. The only requirement is that they import only global modules and packages (relative imports of other scripts or modules is not supported) and that the libraries have been <a class="reference external" href="https://github.com/pyodide/pyodide/tree/main/packages">compiled for Pyodide</a> or are available as pure-Python wheels from PyPI.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">panel</span> <span class="pre">convert</span></code> command has the following options:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  SCRIPTs               The scripts or notebooks to convert
+
+optional arguments:
+  -h, --help            Show this help message and exit
+  --to                  The format to convert to, one of 'pyodide', 'pyodide-worker' or 'pyscript'
+  --out                 Directory to export files to
+  --title               Custom title for the application(s)
+  --skip-embed          Whether to skip the prerendering while pyodide loads.
+  --index               Whether to create an index if multiple files are served.
+  --pwa                 Whether to add files to allow serving the application as a Progressive Web App.
+  --requirements        List of Python requirements to add to the converted file. By default it will automatically try to infer dependencies based on your imports and Panel will automatically be included.
+  -- watch              Watches files for changes and rebuilds them when they are updated.
+</pre></div>
+</div>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
+<p>This example will demonstrate how to <em>convert</em> and <em>serve</em> a basic data app locally.</p>
+<ul class="simple">
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">script.py</span></code> file with the following content</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">panel</span> <span class="k">as</span> <span class="nn">pn</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="n">sizing_mode</span><span class="o">=</span><span class="s2">"stretch_width"</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="s2">"fast"</span><span class="p">)</span>
+<span class="n">pn</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">site</span><span class="o">=</span><span class="s2">"Panel in the Browser"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"XGBoost Example"</span><span class="p">)</span>
+
+<span class="n">iris_df</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">trees</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Number of trees"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">pipeline</span><span class="p">(</span><span class="n">trees</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">trees</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_df</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris_df</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">iris_df</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">iris_df</span><span class="o">.</span><span class="n">data</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pn</span><span class="o">.</span><span class="n">indicators</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"Test score"</span><span class="p">,</span>
+        <span class="n">value</span><span class="o">=</span><span class="n">accuracy</span><span class="p">,</span>
+        <span class="nb">format</span><span class="o">=</span><span class="s2">"</span><span class="si">{value}</span><span class="s2">%"</span><span class="p">,</span>
+        <span class="n">colors</span><span class="o">=</span><span class="p">[(</span><span class="mf">97.5</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">),</span> <span class="p">(</span><span class="mf">99.0</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">)],</span>
+    <span class="p">)</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>
+    <span class="s2">"Simple example of training an XGBoost classification model on the small Iris dataset."</span><span class="p">,</span>
+    <span class="n">iris_df</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span>
+    <span class="s2">"Move the slider below to change the number of training rounds for the XGBoost classifier. The training accuracy score will adjust accordingly."</span><span class="p">,</span>
+    <span class="n">trees</span><span class="p">,</span>
+    <span class="n">pn</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">trees</span><span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">servable</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">panel</span> <span class="pre">convert</span> <span class="pre">script.py</span> <span class="pre">--to</span> <span class="pre">pyodide-worker</span> <span class="pre">--out</span> <span class="pre">pyodide</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">http.server</span></code> to start a web server locally</p></li>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/pyodide/script.html</span></code> to try out the app.</p></li>
+</ul>
+<p>The app should look like this</p>
+<p><img alt="Panel in the browser" src="../_images/pyodide_xgboost_app.png"/></p>
+<p>You can now add the <code class="docutils literal notranslate"><span class="pre">script.html</span></code> (and <code class="docutils literal notranslate"><span class="pre">script.js</span></code> file if you used the <code class="docutils literal notranslate"><span class="pre">pyodide-worker</span></code> target) to your Github pages or similar. <strong>no separate server needed!</strong></p>
+<section id="tips-tricks-for-development">
+<h4>Tips &amp; Tricks for development<a class="headerlink" href="#tips-tricks-for-development" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>While developing you should run the script locally with <em>auto reload</em>: <code class="docutils literal notranslate"><span class="pre">panel</span> <span class="pre">serve</span> <span class="pre">script.py</span> <span class="pre">--autoreload</span></code>.</p></li>
+<li><p>You can also watch your script for changes and rebuild it if you make an edit with <code class="docutils literal notranslate"><span class="pre">panel</span> <span class="pre">convert</span> <span class="pre">...</span> <span class="pre">--watch</span></code></p></li>
+<li><p>If the converted app does not work as expected, you can most often find the errors in the browser
+console. <a class="reference external" href="https://balsamiq.com/support/faqs/browserconsole/">This guide</a> describes how to open the
+console.</p></li>
+<li><p>You can find answers to the most frequently asked questions about <em>Python in the browser</em> in the <a class="reference external" href="https://pyodide.org/en/stable/usage/faq.html">Pyodide - FAQ</a> or the <a class="reference external" href="https://docs.pyscript.net/latest/reference/faq.html">PyScript FAQ</a>. For example the answer to “How can I load external data?”.</p></li>
+</ul>
+</section>
+</section>
+<section id="formats">
+<h3>Formats<a class="headerlink" href="#formats" title="Permalink to this heading">#</a></h3>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">--to</span></code> argument on the CLI you can control the format of the file that is generated by <code class="docutils literal notranslate"><span class="pre">panel</span> <span class="pre">convert</span></code>. You have three options, each with distinct advantages and disadvantages:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pyodide</span></code></strong> (default): Run application using Pyodide running in the main thread. This option is less performant than pyodide-worker but produces completely standalone HTML files that do not have to be hosted on a static file server (e.g. Github Pages).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pyodide-worker</span></code></strong>: Generates an HTML file and a JS file containing a Web Worker that runs in a separate thread. This is the most performant option, but files have to be hosted on a static file server.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pyscript</span></code></strong>: Generates an HTML leveraging PyScript. This produces standalone HTML files containing <code class="docutils literal notranslate"><span class="pre">&lt;py-env&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;py-script&gt;</span></code> tags containing the dependencies and the application code. This output is the most readable, and should have equivalent performance to the <code class="docutils literal notranslate"><span class="pre">pyodide</span></code> option.</p></li>
+</ul>
+</section>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">panel</span> <span class="pre">convert</span></code> command will try its best to figure out the requirements of your script based on the imports, which means that in most cases you won’t have to provide the explicit <code class="docutils literal notranslate"><span class="pre">--requirements</span></code> argument. However, if some library uses an optional import that cannot be inferred from the list of imports in your app you will have to provide an explicit list of dependencies. Note that <code class="docutils literal notranslate"><span class="pre">panel</span></code> and its dependencies including NumPy and Bokeh will be added loaded automatically, e.g. the explicit requirements for the app above would look like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>panel convert script.py --to pyodide-worker --out pyodide --requirements xgboost scikit-learn pandas
+</pre></div>
+</div>
+<p>Alternatively you may also provide a <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>panel convert script.py --to pyodide-worker --out pyodide --requirements requirements.txt
+</pre></div>
+</div>
+</section>
+<section id="index">
+<h3>Index<a class="headerlink" href="#index" title="Permalink to this heading">#</a></h3>
+<p>If you convert multiple applications at once you may want to add an index to be able to navigate between the applications easily. To enable the index simply pass <code class="docutils literal notranslate"><span class="pre">--index</span></code> to the convert command.</p>
+</section>
+<section id="prerendering">
+<h3>Prerendering<a class="headerlink" href="#prerendering" title="Permalink to this heading">#</a></h3>
+<p>In order to improve the loading experience Panel will pre-render and embed the initial render of the page and replace it with live components once the page is loaded. This is important because Pyodide has to fetch the entire Python runtime and all required packages from a CDN. This can be <strong>very</strong> slow depending on your internet connection. If you want to disable this behavior and render an initially blank page use the <code class="docutils literal notranslate"><span class="pre">--skip-embed</span></code> option. Otherwise Panel will render application using the current Python process (presumably outside the browser) into the HTML file as a “cached” copy of the application for the user to see while the Python runtime is initialized and the actual browser-generated application is ready for interaction.</p>
+</section>
+<section id="progressive-web-apps">
+<h3>Progressive Web Apps<a class="headerlink" href="#progressive-web-apps" title="Permalink to this heading">#</a></h3>
+<p>Progressive web applications (PWAs) provide a way for your web apps to behave almost like a native application, both on mobile devices and on the desktop. The <code class="docutils literal notranslate"><span class="pre">panel</span> <span class="pre">convert</span></code> CLI has a <code class="docutils literal notranslate"><span class="pre">--pwa</span></code> option that will generate the necessary files to turn your Panel + Pyodide application into a PWA. The web manifest, service worker script and assets such as thumbnails are exported alongside the other HTML and JS files and can then be hosted on your static file host. Note that Progressive web apps must be served via HTTPS to ensure user privacy, security, and content authenticity, including the application itself and all resources it references. Depending on your hosting service, you will have to enable HTTPS yourself. GitHub pages generally make this very simple and provide a great starting point.</p>
+<p>Once generated, you can inspect the <code class="docutils literal notranslate"><span class="pre">site.webmanifest</span></code> file and modify it to your liking, including updating the favicons in the assets directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you decide to enable the <code class="docutils literal notranslate"><span class="pre">--pwa</span></code> ensure that you also provide a unique <code class="docutils literal notranslate"><span class="pre">--title</span></code>. Otherwise the browser caches storing your apps dependencies will end up overwriting each other.</p>
+</div>
+</section>
+</section>
+<section id="installing-panel-in-the-browser">
+<h2>Installing Panel in the browser<a class="headerlink" href="#installing-panel-in-the-browser" title="Permalink to this heading">#</a></h2>
+<p>To install Panel in the browser you merely have to use the installation mechanism provided by each supported runtime:</p>
+<section id="pyodide">
+<h3>Pyodide<a class="headerlink" href="#pyodide" title="Permalink to this heading">#</a></h3>
+<p>Currently the best supported mechanism for installing packages in Pyodide is <code class="docutils literal notranslate"><span class="pre">micropip</span></code>.</p>
+<p>To get started with Pyodide simply follow their <a class="reference external" href="https://pyodide.org/en/stable/usage/quickstart.html">Getting started guide</a>. Note that if you want to render Panel output you will also have to load <a class="reference external" href="https://docs.bokeh.org/en/2.4.1/docs/first_steps/installation.html#install-bokehjs:~:text=Installing%20standalone%20BokehJS%C2%B6">Bokeh.js</a> and Panel.js from CDN. The most basic pyodide application therefore looks like this:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.jsdelivr.net/pyodide/v0.21.2/full/pyodide.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.jsdelivr.net/npm/@holoviz/panel@0.14.0/dist/panel.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"simple_app"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span><span class="p">&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">(){</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">pyodide</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">loadPyodide</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">pyodide</span><span class="p">.</span><span class="nx">loadPackage</span><span class="p">(</span><span class="s2">"micropip"</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">micropip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pyodide</span><span class="p">.</span><span class="nx">pyimport</span><span class="p">(</span><span class="s2">"micropip"</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">micropip</span><span class="p">.</span><span class="nx">install</span><span class="p">(</span><span class="s1">'panel'</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="nx">pyodide</span><span class="p">.</span><span class="nx">runPython</span><span class="p">(</span><span class="sb">`</span>
+<span class="sb">          import panel as pn</span>
+
+<span class="sb">          pn.extension(sizing_mode="stretch_width")</span>
+
+<span class="sb">          slider = pn.widgets.FloatSlider(start=0, end=10, name='Amplitude')</span>
+
+<span class="sb">          def callback(new):</span>
+<span class="sb">              return f'Amplitude is: {new}'</span>
+
+<span class="sb">          pn.Row(slider, pn.bind(callback, slider)).servable(target='simple_app');</span>
+<span class="sb">	    `</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="nx">main</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>The app should look like this</p>
+<p><img alt="Panel Pyodide App" src="../_images/pyodide_app_simple.png"/></p>
+</section>
+<section id="pyscript">
+<h3>PyScript<a class="headerlink" href="#pyscript" title="Permalink to this heading">#</a></h3>
+<p>PyScript makes it even easier to manage your dependencies, with a <code class="docutils literal notranslate"><span class="pre">&lt;py-config&gt;</span></code> HTML tag. Simply include <code class="docutils literal notranslate"><span class="pre">panel</span></code> in the list of dependencies and PyScript will install it automatically:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">py-config</span><span class="p">&gt;</span>
+packages = [
+  "panel",
+  ...
+]
+<span class="p">&lt;/</span><span class="nt">py-config</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Once installed you will be able to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">panel</span></code> in your <code class="docutils literal notranslate"><span class="pre">&lt;py-script&gt;</span></code> tag. Again, make sure you also load Bokeh.js and Panel.js:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/javascript"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.jsdelivr.net/npm/@holoviz/panel@0.14.0/dist/panel.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://pyscript.net/releases/2022.09.1/pyscript.css"</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">defer</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://pyscript.net/releases/2022.09.1/pyscript.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">py-config</span><span class="p">&gt;</span>
+       packages = [
+         "panel",
+         ...
+       ]
+    <span class="p">&lt;/</span><span class="nt">py-config</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"simple_app"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">py-script</span><span class="p">&gt;</span>
+      import panel as pn
+
+      pn.extension(sizing_mode="stretch_width")
+
+      slider = pn.widgets.FloatSlider(start=0, end=10, name='Amplitude')
+
+      def callback(new):
+         return f'Amplitude is: {new}'
+
+      pn.Row(slider, pn.bind(callback, slider)).servable(target='simple_app');
+    <span class="p">&lt;/</span><span class="nt">py-script</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>The app should look identical to the one above but show a loading spinner while Pyodide is initializing.</p>
+</section>
+<section id="rendering-panel-components-in-pyodide-or-pyscript">
+<h3>Rendering Panel components in Pyodide or Pyscript<a class="headerlink" href="#rendering-panel-components-in-pyodide-or-pyscript" title="Permalink to this heading">#</a></h3>
+<p>Rendering Panel components into the DOM is quite straightforward. You can simply use the <code class="docutils literal notranslate"><span class="pre">.servable()</span></code> method on any component and provide a target that should match the <code class="docutils literal notranslate"><span class="pre">id</span></code> of a DOM node:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">panel</span> <span class="k">as</span> <span class="nn">pn</span>
+
+<span class="n">slider</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Amplitude'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">new</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">'Amplitude is: </span><span class="si">{</span><span class="n">new</span><span class="si">}</span><span class="s1">'</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">slider</span><span class="p">,</span> <span class="n">pn</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">slider</span><span class="p">))</span><span class="o">.</span><span class="n">servable</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="s1">'simple_app'</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This code will render this simple application into the <code class="docutils literal notranslate"><span class="pre">simple_app</span></code> DOM node:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"simple_app"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Alternatively you can also use the <code class="docutils literal notranslate"><span class="pre">panel.io.pyodide.write</span></code> function to write into a particular DOM node:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">pn</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">pyodide</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'simple_app'</span><span class="p">,</span> <span class="n">component</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="embedding-in-sphinx-documentation">
+<h2>Embedding in Sphinx documentation<a class="headerlink" href="#embedding-in-sphinx-documentation" title="Permalink to this heading">#</a></h2>
+<p>One more option is to include live Panel examples in your Sphinx documentation using the <code class="docutils literal notranslate"><span class="pre">nbsite.pyodide</span></code> directive.</p>
+<section id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h3>
+<p>In the near future we hope to make this a separate Sphinx extension, until then simply install latest nbsite with <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio"/>
+<label class="sd-tab-label" data-sync-id="conda" for="sd-tab-item-0">
+Conda</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c pyviz nbsite
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio"/>
+<label class="sd-tab-label" data-sync-id="pip" for="sd-tab-item-1">
+Pip</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install nbsite
+</pre></div>
+</div>
+</div>
+</div>
+<p>add the extension to the Sphinx <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="o">...</span><span class="p">,</span>
+    <span class="s1">'nbsite.pyodide'</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> of your project you can configure the extension in a number of ways by defining an <code class="docutils literal notranslate"><span class="pre">nbsite_pyodide_conf</span></code> dictionary with the following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PYODIDE_URL</span></code>: The URl to fetch Pyodide from</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">autodetect_deps</span></code> (default=<code class="docutils literal notranslate"><span class="pre">True</span></code>): Whether to automatically detect dependencies in the executed code and install them.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enable_pwa</span></code> (default=<code class="docutils literal notranslate"><span class="pre">True</span></code>): Whether to add a web manifest and service worker to configure the documentation as a progressive web app.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requirements</span></code> (default=<code class="docutils literal notranslate"><span class="pre">['panel']</span></code>): Default requirements to include (by default this includes just panel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts</span></code>: Scripts to add to the website when a Pyodide cell is first executed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setup_code</span></code> (default=<code class="docutils literal notranslate"><span class="pre">''</span></code>): Python code to run when initializing the Pyodide runtime.</p></li>
+</ul>
+<p>and then you can use the <code class="docutils literal notranslate"><span class="pre">pyodide</span></code> as an RST directive:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">pyodide</span><span class="p">::</span>
+
+   import panel as pn
+
+   slider = pn.widgets.FloatSlider(start=0, end=10, name='Amplitude')
+
+   def callback(new):
+       return f'Amplitude is: {new}'
+
+   pn.Row(slider, pn.bind(callback, slider))
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
+<p>The resulting output looks like this:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">panel</span> <span class="k">as</span> <span class="nn">pn</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell0-py"></pre><pre class="pyodide-stderr" id="stderr-codecell0-py"></pre><div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">slider</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Amplitude'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">new</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">'Amplitude is: </span><span class="si">{</span><span class="n">new</span><span class="si">}</span><span class="s1">'</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">slider</span><span class="p">,</span> <span class="n">pn</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">slider</span><span class="p">))</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell1-py"></pre><pre class="pyodide-stderr" id="stderr-codecell1-py"></pre><div class="pyodide-output embedded" id="output-codecell1-py"></div>
+<script>
+              async function embed_bokeh_2 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell1-py", "root_id": "1002", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"name": "location", "reload": false}, "id": "1006", "type": "panel.models.location.Location"}, {"attributes": {"children": [{"id": "1005"}], "margin": [0, 0, 0, 0], "name": "Row04301"}, "id": "1004", "type": "Row"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "ParamFunction04297", "text": "&lt;p&gt;Amplitude is: 0&lt;/p&gt;"}, "id": "1005", "type": "panel.models.markup.HTML"}, {"attributes": {"end": 10, "margin": [5, 10, 5, 10], "start": 0, "step": 0.1, "title": "Amplitude", "value": 0}, "id": "1003", "type": "Slider"}, {"attributes": {"children": [{"id": "1003"}, {"id": "1004"}], "margin": [0, 0, 0, 0], "name": "Row04304"}, "id": "1002", "type": "Row"}], "root_ids": ["1002", "1006"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_2, 200)
+                }
+              };
+              embed_bokeh_2()
+            </script>
+<p>In addition to rendering Panel components it also renders regular Pytho
+types:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell2-py"></pre><pre class="pyodide-stderr" id="stderr-codecell2-py"></pre><div class="pyodide-output embedded" id="output-codecell2-py"><pre>2</pre></div>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">"A string"</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell3-py"></pre><pre class="pyodide-stderr" id="stderr-codecell3-py"></pre><div class="pyodide-output embedded" id="output-codecell3-py"><pre>A string</pre></div>
+<p>and also handles stdout and stderr streams:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Repeat </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell4-py" style="display: block;">Repeat 0
+Repeat 1
+Repeat 2
+Repeat 3
+Repeat 4
+Repeat 5
+Repeat 6
+Repeat 7
+Repeat 8
+Repeat 9
+</pre><pre class="pyodide-stderr" id="stderr-codecell4-py"></pre><div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Encountered an error'</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell5-py"></pre><pre class="pyodide-stderr" id="stderr-codecell5-py" style="display: block;">Traceback (most recent call last):
+  File "/home/runner/work/panel/panel/panel/io/mime_render.py", line 172, in exec_with_return
+    exec(compile(last_ast, "&lt;ast&gt;", "exec"), global_context)
+  File "&lt;ast&gt;", line 1, in &lt;module&gt;
+ValueError: Encountered an error
+</pre><p>and supports <code class="docutils literal notranslate"><span class="pre">_repr_&lt;mime&gt;_</span></code> methods that are commonly used by the IPython and Jupyter ecosystem:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HTML</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">html</span><span class="p">):</span>
+	    <span class="bp">self</span><span class="o">.</span><span class="n">html</span> <span class="o">=</span> <span class="n">html</span>
+
+    <span class="k">def</span> <span class="nf">_repr_html_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">html</span>
+
+<span class="n">HTML</span><span class="p">(</span><span class="s1">'&lt;b&gt;HTML!&lt;/b&gt;'</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell6-py"></pre><pre class="pyodide-stderr" id="stderr-codecell6-py"></pre><div class="pyodide-output embedded" id="output-codecell6-py"><div class="pyodide-output-wrapper"><b>HTML!</b></div></div>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h3>
+<p>The code cell will display a button to execute the cell, which will warn about downloading the Python runtime on first-click and ask you to confirm whether you want to proceed. It will then download Pyodide, all required packages and finally display the output.</p>
+</section>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="Display_and_Export.html" id="prev-link" title="previous page">
+<i class="fas fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Display and Export</p>
+</div>
+</a>
+<a class="right-next" href="Server_Configuration.html" id="next-link" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Server Configuration</p>
+</div>
+<i class="fas fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+<footer class="bd-footer"><div class="bd-footer__inner container">
+<div class="footer-item">
+<p class="copyright">
+    © Copyright 2019-2022 Holoviz contributors.<br/>
+</p>
+</div>
+<div class="footer-item">
+<p class="last-updated">
+Last updated on 2022-10-05.<br/>
+</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

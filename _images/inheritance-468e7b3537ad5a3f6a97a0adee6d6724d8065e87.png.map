@@ -1,0 +1,13 @@
+<map id="inheritancebb002f87c6" name="inheritancebb002f87c6">
+<area shape="rect" id="node1" href="panel.reactive.html#panel.reactive.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="613,41,746,60"/>
+<area shape="rect" id="node8" href="#panel.widgets.base.Widget" target="_top" title="Widgets allow syncing changes in bokeh widget models with the" alt="" coords="782,41,931,60"/>
+<area shape="rect" id="node2" title="Syncable is an extension of the Renderable object which can not" alt="" coords="440,22,574,41"/>
+<area shape="rect" id="node3" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all visual components in the panel" alt="" coords="438,59,577,78"/>
+<area shape="rect" id="node4" title="Baseclass for objects which can be rendered to a Bokeh model." alt="" coords="244,22,394,41"/>
+<area shape="rect" id="node5" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="Layoutable defines shared style and layout related parameters" alt="" coords="245,59,393,78"/>
+<area shape="rect" id="node6" title="params(name=String)" alt="" coords="4,41,201,60"/>
+<area shape="rect" id="node7" title="Mixin to define methods shared by objects which can served." alt="" coords="237,96,401,115"/>
+<area shape="rect" id="node9" href="#panel.widgets.misc.FileDownload" target="_top" title="The `FileDownload` widget allows a user to download a file." alt="" coords="967,4,1148,23"/>
+<area shape="rect" id="node10" href="#panel.widgets.misc.JSONEditor" target="_top" title="The `JSONEditor` provides a visual editor for JSON&#45;serializable" alt="" coords="974,41,1141,60"/>
+<area shape="rect" id="node11" href="#panel.widgets.misc.VideoStream" target="_top" title="The `VideoStream` displays a video from a local stream (for example from a webcam) and allows" alt="" coords="969,78,1146,97"/>
+</map>

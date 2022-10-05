@@ -1,0 +1,6 @@
+<map id="inheritance2dd52d540c" name="inheritance2dd52d540c">
+<area shape="rect" id="node1" href="#panel.widgets.widget.fixed" target="_top" title="A pseudo&#45;widget whose value is fixed and never synced to the client." alt="" coords="375,5,571,31"/>
+<area shape="rect" id="node2" title="params(name=String)" alt="" coords="5,31,267,56"/>
+<area shape="rect" id="node4" title="params(name=String)" alt="" coords="315,55,631,80"/>
+<area shape="rect" id="node3" href="#panel.widgets.widget.widget" target="_top" title="Attempts to find a widget appropriate for a given value." alt="" coords="679,55,888,80"/>
+</map>

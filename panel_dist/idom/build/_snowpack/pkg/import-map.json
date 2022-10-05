@@ -1,0 +1,11 @@
+{
+  "imports": {
+    "fast-json-patch": "./fast-json-patch.js",
+    "htm": "./htm.js",
+    "idom-client-react": "./idom-client-react.js",
+    "preact": "./preact.js",
+    "react": "./react.js",
+    "react-dom": "./react-dom.js",
+    "victory": "./victory.js"
+  }
+}

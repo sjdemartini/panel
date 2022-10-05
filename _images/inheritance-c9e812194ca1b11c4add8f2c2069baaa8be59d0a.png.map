@@ -1,0 +1,11 @@
+<map id="inheritancefdc482f0a4" name="inheritancefdc482f0a4">
+<area shape="rect" id="node1" title="This mixin adds the expected Tornado authorization hooks:" alt="" coords="241,4,481,25"/>
+<area shape="rect" id="node2" title="Implements a custom Tornado WebSocketHandler for the Bokeh Server." alt="" coords="572,25,773,46"/>
+<area shape="rect" id="node7" href="#panel.io.jupyter_server_extension.PanelExecutor" target="_top" title="The PanelExecutor is intended to be run inside a kernel where it" alt="" coords="855,4,1131,25"/>
+<area shape="rect" id="node9" href="#panel.io.jupyter_server_extension.PanelWSProxy" target="_top" title="The PanelWSProxy serves as a proxy between the frontend and the" alt="" coords="854,45,1132,65"/>
+<area shape="rect" id="node3" title="Subclass this class to create a basic WebSocket handler." alt="" coords="250,45,471,65"/>
+<area shape="rect" id="node4" title="A RequestHandler with an authenticated user." alt="" coords="216,85,506,106"/>
+<area shape="rect" id="node6" title="Jupyter&#45;specific extensions to authenticated handling" alt="" coords="546,85,799,106"/>
+<area shape="rect" id="node5" title="Base class for HTTP request handlers." alt="" coords="4,65,176,86"/>
+<area shape="rect" id="node8" href="#panel.io.jupyter_server_extension.PanelJupyterHandler" target="_top" title="The PanelJupyterHandler expects to be given a path to a notebook," alt="" coords="838,85,1148,106"/>
+</map>

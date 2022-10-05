@@ -1,0 +1,1795 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
+<link href="../site.webmanifest" rel="manifest"/>
+<title>APIs — Panel v0.14.0</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/mystnb.css" rel="stylesheet" type="text/css">
+<link href="../_static/graphviz.css" rel="stylesheet" type="text/css">
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/runbutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/dataframe.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695" rel="preload"/>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/sphinx_highlight.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/run_cell.js"></script>
+<script src="../_static/WorkerHandler.js"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../_static/design-tabs.js"></script>
+<script src="../_static/ServiceHandler.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/panel.min.js"></script>
+<script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-154795830-2', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
+<link href="../_static/favicon.ico" rel="shortcut icon">
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="Customization.html" rel="next" title="Controlling style &amp; layout"/>
+<link href="Components.html" rel="prev" title="Component overview"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></link></link></head>
+<body data-default-mode="light" data-offset="180" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="bd-header-announcement container-fluid" id="banner">
+</div>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+<div id="navbar-start">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../_static/logo_horizontal.png"/>
+<img alt="Logo image" class="logo__image only-dark" src="../_static/logo_horizontal.png"/>
+</a>
+</div>
+<button aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-collapsible" data-toggle="collapse" type="button">
+<span class="fas fa-bars"></span>
+</button>
+<div class="col-lg-9 collapse navbar-collapse" id="navbar-collapsible">
+<div class="mr-auto" id="navbar-center">
+<div class="navbar-center-item">
+<ul class="navbar-nav" id="navbar-main-elements">
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../index.html">
+  Overview
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+<li class="toctree-l1 current active nav-item">
+<a class="reference internal nav-link" href="index.html">
+  User Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../gallery/index.html">
+  Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../reference/index.html">
+  Reference Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../developer_guide/index.html">
+  Developer Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../api/index.html">
+  API Reference
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../releases.html">
+  Releases
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../FAQ.html">
+  FAQ
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../about/index.html">
+  About
+ </a>
+</li>
+</ul>
+</div>
+</div>
+<div id="navbar-end">
+<div class="navbar-end-item">
+<ul aria-label="Icon Links" class="navbar-nav" id="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/holoviz/panel" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://twitter.com/Panel_Org" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://discourse.holoviz.org/c/panel/5" rel="noopener" target="_blank" title="Discourse"><span><i class="fab fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bd-container container-xl">
+<div class="bd-container__inner row">
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-2 bd-sidebar">
+<div class="sidebar-start-items"><form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search the docs ..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../index.html">
+   Overview
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../getting_started/index.html">
+   Getting Started
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/installation.html">
+     Installation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/build_app.html">
+     Build an app
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/core_concepts.html">
+     Core Concepts
+    </a>
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="index.html">
+   User Guide
+  </a>
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="Overview.html">
+     Overview
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Components.html">
+     Components
+    </a>
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
+     APIs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Customization.html">
+     Customization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Interact.html">
+     Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Widgets.html">
+     Widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Param.html">
+     Parameters
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Links.html">
+     Linking
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Pipelines.html">
+     Pipelines
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Templates.html">
+     Templates
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Performance_and_Debugging.html">
+     Performance and Debugging
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Session_State_and_Callbacks.html">
+     Session state &amp; Callbacks
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Async_and_Concurrency.html">
+     Asynchronous and Concurrent Process
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Display_and_Export.html">
+     Display &amp; Export
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Running_in_Webassembly.html">
+     Running Panel in the Browser with WASM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Server_Configuration.html">
+     Server Configuration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Server_Deployment.html">
+     Server Deployment
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Authentication.html">
+     Authentication
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Django.html">
+     Django Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="FastAPI.html">
+     FastAPI Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Custom_Components.html">
+     Building Custom Components
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../gallery/index.html">
+   Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKInteractive.html">
+     VTKInteractive
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKSlicer.html">
+     VTKSlicer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKWarp.html">
+     VTKWarp
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/attractors.html">
+     Attractors
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/gapminders.html">
+     Gapminders
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/glaciers.html">
+     Glaciers
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/nyc_taxi.html">
+     Nyc Taxi
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/portfolio-optimizer.html">
+     Portfolio-optimizer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_brushing.html">
+     Altair Brushing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_choropleth.html">
+     Altair Choropleth
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/clifford_interact.html">
+     Clifford Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/color_speech_recognition.html">
+     Color Speech Recognition
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/deckgl_game_of_life.html">
+     Deckgl Game Of Life
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/defer_data_load.html">
+     Defer Data Load
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/file_download_examples.html">
+     File Download Examples
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/hvplot_explorer.html">
+     Hvplot Explorer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/iris_kmeans.html">
+     Iris Kmeans
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/loading_spinner.html">
+     Loading Spinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/random_number_generator.html">
+     Random Number Generator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/save_filtered_df.html">
+     Save Filtered Df
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/sync_location.html">
+     Sync Location
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/temperature_distribution.html">
+     Temperature Distribution
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/xgboost_classifier.html">
+     Xgboost Classifier
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_altair.html">
+     Stocks Altair
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_hvplot.html">
+     Stocks Hvplot
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_matplotlib.html">
+     Stocks Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_plotly.html">
+     Stocks Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/distribution_tabs.html">
+     Distribution Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/dynamic_tabs.html">
+     Dynamic Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/plot_with_columns.html">
+     Plot With Columns
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_plot_layout.html">
+     Dynamic Plot Layout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_timeseries_image_analysis.html">
+     Dynamic Timeseries Image Analysis
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_ui.html">
+     Dynamic Ui
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_widget_values.html">
+     Dynamic Widget Values
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/action_button.html">
+     Action Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/deck_gl_global_power_plants.html">
+     Deck Gl Global Power Plants
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/download_upload_csv.html">
+     Download Upload Csv
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/loading_indicator.html">
+     Loading Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/param_subobjects.html">
+     Param Subobjects
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/precedence.html">
+     Precedence
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_plots.html">
+     Reactive Plots
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_tables.html">
+     Reactive Tables
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/hardware_automation.html">
+     Hardware Automation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_bokeh.html">
+     Streaming Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_indicator.html">
+     Streaming Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_perspective.html">
+     Streaming Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_tabulator.html">
+     Streaming Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/CanvasDraw.html">
+     CanvasDraw
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/LeafletHeatMap.html">
+     LeafletHeatMap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/MaterialUI.html">
+     MaterialUI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/bokeh_property_editor.html">
+     Bokeh Property Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/deck_gl_json_editor.html">
+     Deck Gl Json Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/holoviews_glyph_link.html">
+     Holoviews Glyph Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/plotly_link.html">
+     Plotly Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/vega_heatmap_link.html">
+     Vega Heatmap Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/MatplotlibStyle.html">
+     MatplotlibStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/PlotlyStyle.html">
+     PlotlyStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/SeabornStyle.html">
+     SeabornStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/VegaAltairStyle.html">
+     VegaAltairStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/DataTable.html">
+     DataTable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/deck.gl.html">
+     Deck.gl
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../reference/index.html">
+   Reference Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Alert.html">
+     Alert
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Audio.html">
+     Audio
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Bokeh.html">
+     Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DeckGL.html">
+     DeckGL
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/ECharts.html">
+     ECharts
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/GIF.html">
+     GIF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HTML.html">
+     HTML
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HoloViews.html">
+     HoloViews
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IDOM.html">
+     IDOM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IPyWidget.html">
+     IPyWidget
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JPG.html">
+     JPG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JSON.html">
+     JSON
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/LaTeX.html">
+     LaTeX
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Markdown.html">
+     Markdown
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Matplotlib.html">
+     Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PDF.html">
+     PDF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PNG.html">
+     PNG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Param.html">
+     Param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Perspective.html">
+     Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Plotly.html">
+     Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/SVG.html">
+     SVG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Str.html">
+     Str
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Streamz.html">
+     Streamz
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTK.html">
+     VTK
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKJS.html">
+     VTKJS
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKVolume.html">
+     VTKVolume
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Vega.html">
+     Vega
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Video.html">
+     Video
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Accordion.html">
+     Accordion
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Card.html">
+     Card
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Column.html">
+     Column
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Divider.html">
+     Divider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/FlexBox.html">
+     FlexBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridBox.html">
+     GridBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridSpec.html">
+     GridSpec
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridStack.html">
+     GridStack
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Row.html">
+     Row
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Tabs.html">
+     Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/WidgetBox.html">
+     WidgetBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Bootstrap.html">
+     Bootstrap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastGridTemplate.html">
+     FastGridTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastListTemplate.html">
+     FastListTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/GoldenLayout.html">
+     GoldenLayout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Material.html">
+     Material
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/React.html">
+     React
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Vanilla.html">
+     Vanilla
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/global/Notifications.html">
+     Notifications
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/BooleanStatus.html">
+     BooleanStatus
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Dial.html">
+     Dial
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Gauge.html">
+     Gauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LinearGauge.html">
+     LinearGauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LoadingSpinner.html">
+     LoadingSpinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Number.html">
+     Number
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Progress.html">
+     Progress
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Tqdm.html">
+     Tqdm
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Trend.html">
+     Trend
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Ace.html">
+     Ace
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ArrayInput.html">
+     ArrayInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/AutocompleteInput.html">
+     AutocompleteInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Button.html">
+     Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckBoxGroup.html">
+     CheckBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckButtonGroup.html">
+     CheckButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Checkbox.html">
+     Checkbox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ColorPicker.html">
+     ColorPicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CrossSelector.html">
+     CrossSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatePicker.html">
+     DatePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateRangeSlider.html">
+     DateRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateSlider.html">
+     DateSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeInput.html">
+     DatetimeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimePicker.html">
+     DatetimePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeInput.html">
+     DatetimeRangeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangePicker.html">
+     DatetimeRangePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeSlider.html">
+     DatetimeRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Debugger.html">
+     Debugger
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscretePlayer.html">
+     DiscretePlayer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscreteSlider.html">
+     DiscreteSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableFloatSlider.html">
+     EditableFloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableIntSlider.html">
+     EditableIntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableRangeSlider.html">
+     EditableRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileDownload.html">
+     FileDownload
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileInput.html">
+     FileInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileSelector.html">
+     FileSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatInput.html">
+     FloatInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatSlider.html">
+     FloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntInput.html">
+     IntInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntRangeSlider.html">
+     IntRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntSlider.html">
+     IntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/JSONEditor.html">
+     JSONEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/LiteralInput.html">
+     LiteralInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MenuButton.html">
+     MenuButton
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiChoice.html">
+     MultiChoice
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiSelect.html">
+     MultiSelect
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/PasswordInput.html">
+     PasswordInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Player.html">
+     Player
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioBoxGroup.html">
+     RadioBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioButtonGroup.html">
+     RadioButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RangeSlider.html">
+     RangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Select.html">
+     Select
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/SpeechToText.html">
+     SpeechToText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/StaticText.html">
+     StaticText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Tabulator.html">
+     Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Terminal.html">
+     Terminal
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextAreaInput.html">
+     TextAreaInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextEditor.html">
+     TextEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextInput.html">
+     TextInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextToSpeech.html">
+     TextToSpeech
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Toggle.html">
+     Toggle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ToggleGroup.html">
+     ToggleGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/VideoStream.html">
+     VideoStream
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../developer_guide/index.html">
+   Developer Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/testing.html">
+     Testing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/Developing_Custom_Models.html">
+     Developing custom models
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../api/index.html">
+   API Reference
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.io.html">
+     io
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.layout.html">
+     layout
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../api/panel.pane.html">
+     pane
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.pane.vtk.html">
+       panel.vtk Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.param.html">
+     param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.pipeline.html">
+     pipeline
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../api/panel.template.html">
+     template
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.bootstrap.html">
+       panel.bootstrap Package
+      </a>
+</li>
+<li class="toctree-l3 has-children">
+<a class="reference internal" href="../api/panel.template.fast.html">
+       panel.fast Package
+      </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l4">
+<a class="reference internal" href="../api/panel.template.fast.grid.html">
+         panel.grid Package
+        </a>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="../api/panel.template.fast.list.html">
+         panel.list Package
+        </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.golden.html">
+       panel.golden Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.material.html">
+       panel.material Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.react.html">
+       panel.react Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.theme.html">
+       panel.theme Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.vanilla.html">
+       panel.vanilla Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.widgets.html">
+     widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.viewable.html">
+     viewable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.util.html">
+     util
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../releases.html">
+   Releases
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../FAQ.html">
+   FAQ
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../about/index.html">
+   About
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../about/comparisons.html">
+     Comparisons
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class="sidebar-end-items">
+</div>
+</div>
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+<div class="toc-item">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+<i class="fas fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#reactive-functions">
+   Reactive Functions
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#pros">
+     Pros:
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#cons">
+     Cons:
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#interact-functions">
+   Interact Functions
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id1">
+     Pros:
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id2">
+     Cons:
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#parameterized-classes">
+   Parameterized Classes
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id3">
+     Pros:
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id4">
+     Cons:
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#callbacks">
+   Callbacks
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id5">
+     Pros:
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id6">
+     Cons:
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+<div class="toc-item">
+</div>
+</div>
+<div class="bd-content col-12 col-md-10 col-xl-8" role="main">
+<article class="bd-article" role="main">
+<section class="tex2jax_ignore mathjax_ignore" id="apis">
+<h1>APIs<a class="headerlink" href="#apis" title="Permalink to this heading">#</a></h1>
+<p>Panel can be used to make a first pass at an app or dashboard in minutes, while also allowing you to fully customize the app’s behavior and appearance or flexibly integrate GUI support into long-term, large-scale software projects. To accommodate these different ways of using Panel, four different APIs are available:</p>
+<ul class="simple">
+<li><p><strong>Interact functions</strong>: Auto-generates a full UI (including widgets) given a function</p></li>
+<li><p><strong>Reactive functions</strong>: Linking functions or methods to widgets using <code class="docutils literal notranslate"><span class="pre">pn.bind</span></code> or the equivalent <code class="docutils literal notranslate"><span class="pre">pn.depends</span></code> decorator, declaring that the function should be re-run when those widget values change</p></li>
+<li><p><strong>Parameterized class</strong>: Declare parameters and their ranges in Parameterized classes, then get GUIs (and value checking!) for free</p></li>
+<li><p><strong>Callbacks</strong>: Generate a UI by manually declaring callbacks that update panels or panes</p></li>
+</ul>
+<p>Each of these APIs has its own benefits and drawbacks, so this section will go through each one in turn, while working through an example app and pointing out the benefits and drawback along the way. For a quick overview you can also review the API gallery examples, e.g. the <a class="reference internal" href="../gallery/apis/stocks_hvplot.html"><span class="doc std std-doc">stocks_hvplot</span></a> app.</p>
+<p>To start with let us define some imports, load the <code class="docutils literal notranslate"><span class="pre">autompg</span></code> dataset, and define a plotting function we will be reusing throughout this user guide.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hvplot.pandas</span>
+<span class="kn">from</span> <span class="nn">bokeh.sampledata.autompg</span> <span class="kn">import</span> <span class="n">autompg</span>
+
+<span class="k">def</span> <span class="nf">autompg_plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'mpg'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'hp'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'#058805'</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">autompg</span><span class="o">.</span><span class="n">hvplot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">autompg</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell0-py"></pre><pre class="pyodide-stderr" id="stderr-codecell0-py"></pre><p>Given values for the x and y axes and a color, this function can be used to generate an interactive plot without needing any Panel components:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">autompg_plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell1-py"></pre><pre class="pyodide-stderr" id="stderr-codecell1-py"></pre><div class="pyodide-output embedded" id="output-codecell1-py"></div>
+<script>
+              async function embed_bokeh_2 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell1-py", "root_id": "1002", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"axis": {"id": "1015"}, "coordinates": null, "grid_line_color": null, "group": null, "ticker": null}, "id": "1018", "type": "Grid"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"value": "#058805"}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"value": "#058805"}, "line_alpha": {"value": 0.2}, "line_color": {"value": "#058805"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1041", "type": "Scatter"}, {"attributes": {"axis_label": "hp", "coordinates": null, "formatter": {"id": "1049"}, "group": null, "major_label_policy": {"id": "1050"}, "ticker": {"id": "1020"}}, "id": "1019", "type": "LinearAxis"}, {"attributes": {"fill_alpha": {"value": 0.1}, "fill_color": {"value": "#058805"}, "hatch_alpha": {"value": 0.1}, "hatch_color": {"value": "#058805"}, "line_alpha": {"value": 0.1}, "line_color": {"value": "#058805"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1040", "type": "Scatter"}, {"attributes": {"axis": {"id": "1019"}, "coordinates": null, "dimension": 1, "grid_line_color": null, "group": null, "ticker": null}, "id": "1022", "type": "Grid"}, {"attributes": {}, "id": "1020", "type": "BasicTicker"}, {"attributes": {"angle": {"value": 0.0}, "fill_alpha": {"value": 1.0}, "fill_color": {"value": "#058805"}, "hatch_alpha": {"value": 1.0}, "hatch_color": {"value": "#058805"}, "hatch_scale": {"value": 12.0}, "hatch_weight": {"value": 1.0}, "line_alpha": {"value": 1.0}, "line_cap": {"value": "butt"}, "line_color": {"value": "#058805"}, "line_dash": {"value": []}, "line_dash_offset": {"value": 0}, "line_join": {"value": "bevel"}, "line_width": {"value": 1}, "marker": {"value": "circle"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1044", "type": "Scatter"}, {"attributes": {"data": {"hp": [130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 170, 160, 150, 225, 95, 95, 97, 85, 88, 46, 87, 90, 95, 113, 90, 215, 200, 210, 193, 88, 90, 95, 100, 105, 100, 88, 100, 165, 175, 153, 150, 180, 170, 175, 110, 72, 100, 88, 86, 90, 70, 76, 65, 69, 60, 70, 95, 80, 54, 90, 86, 165, 175, 150, 153, 150, 208, 155, 160, 190, 97, 150, 130, 140, 150, 112, 76, 87, 69, 86, 92, 97, 80, 88, 175, 150, 145, 137, 150, 198, 150, 158, 150, 215, 225, 175, 105, 100, 100, 88, 95, 46, 150, 167, 170, 180, 100, 88, 72, 94, 90, 85, 107, 90, 145, 230, 49, 75, 91, 112, 150, 110, 122, 180, 95, 100, 100, 67, 80, 65, 75, 100, 110, 105, 140, 150, 150, 140, 150, 83, 67, 78, 52, 61, 75, 75, 75, 97, 93, 67, 95, 105, 72, 72, 170, 145, 150, 148, 110, 105, 110, 95, 110, 110, 129, 75, 83, 100, 78, 96, 71, 97, 97, 70, 90, 95, 88, 98, 115, 53, 86, 81, 92, 79, 83, 140, 150, 120, 152, 100, 105, 81, 90, 52, 60, 70, 53, 100, 78, 110, 95, 71, 70, 75, 72, 102, 150, 88, 108, 120, 180, 145, 130, 150, 68, 80, 58, 96, 70, 145, 110, 145, 130, 110, 105, 100, 98, 180, 170, 190, 149, 78, 88, 75, 89, 63, 83, 67, 78, 97, 110, 110, 48, 66, 52, 70, 60, 110, 140, 139, 105, 95, 85, 88, 100, 90, 105, 85, 110, 120, 145, 165, 139, 140, 68, 95, 97, 75, 95, 105, 85, 97, 103, 125, 115, 133, 71, 68, 115, 85, 88, 90, 110, 130, 129, 138, 135, 155, 142, 125, 150, 71, 65, 80, 80, 77, 125, 71, 90, 70, 70, 65, 69, 90, 115, 115, 90, 76, 60, 70, 65, 90, 88, 90, 90, 78, 90, 75, 92, 75, 65, 105, 65, 48, 48, 67, 67, 67, 67, 62, 132, 100, 88, 72, 84, 84, 92, 110, 84, 58, 64, 60, 67, 65, 62, 68, 63, 65, 65, 74, 75, 75, 100, 74, 80, 76, 116, 120, 110, 105, 88, 85, 88, 88, 88, 85, 84, 90, 92, 74, 68, 68, 63, 70, 88, 75, 70, 67, 67, 67, 110, 85, 92, 112, 96, 84, 90, 86, 52, 84, 79, 82], "mpg": {"__ndarray__": "AAAAAAAAMkAAAAAAAAAuQAAAAAAAADJAAAAAAAAAMEAAAAAAAAAxQAAAAAAAAC5AAAAAAAAALEAAAAAAAAAsQAAAAAAAACxAAAAAAAAALkAAAAAAAAAuQAAAAAAAACxAAAAAAAAALkAAAAAAAAAsQAAAAAAAADhAAAAAAAAANkAAAAAAAAAyQAAAAAAAADVAAAAAAAAAO0AAAAAAAAA6QAAAAAAAADlAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAANUAAAAAAAAAkQAAAAAAAACRAAAAAAAAAJkAAAAAAAAAiQAAAAAAAADtAAAAAAAAAPEAAAAAAAAA5QAAAAAAAADNAAAAAAAAAMEAAAAAAAAAxQAAAAAAAADNAAAAAAAAAMkAAAAAAAAAsQAAAAAAAACxAAAAAAAAALEAAAAAAAAAsQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAqQAAAAAAAADJAAAAAAAAANkAAAAAAAAAzQAAAAAAAADJAAAAAAAAAN0AAAAAAAAA8QAAAAAAAAD5AAAAAAAAAPkAAAAAAAAA/QAAAAAAAgEFAAAAAAAAAO0AAAAAAAAA6QAAAAAAAADhAAAAAAAAAOUAAAAAAAAA3QAAAAAAAADRAAAAAAAAANUAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAsQAAAAAAAADFAAAAAAAAAJkAAAAAAAAAqQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAzQAAAAAAAAC5AAAAAAAAAKkAAAAAAAAAqQAAAAAAAACxAAAAAAAAAMkAAAAAAAAA2QAAAAAAAADVAAAAAAAAAOkAAAAAAAAA2QAAAAAAAADxAAAAAAAAAN0AAAAAAAAA8QAAAAAAAADtAAAAAAAAAKkAAAAAAAAAsQAAAAAAAACpAAAAAAAAALEAAAAAAAAAuQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAqQAAAAAAAACxAAAAAAAAAKkAAAAAAAAAoQAAAAAAAACpAAAAAAAAAMkAAAAAAAAAwQAAAAAAAADJAAAAAAAAAMkAAAAAAAAA3QAAAAAAAADpAAAAAAAAAJkAAAAAAAAAoQAAAAAAAACpAAAAAAAAAKEAAAAAAAAAyQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADJAAAAAAAAAM0AAAAAAAAA1QAAAAAAAADpAAAAAAAAALkAAAAAAAAAwQAAAAAAAAD1AAAAAAAAAOEAAAAAAAAA0QAAAAAAAADNAAAAAAAAALkAAAAAAAAA4QAAAAAAAADRAAAAAAAAAJkAAAAAAAAA0QAAAAAAAADNAAAAAAAAALkAAAAAAAAA/QAAAAAAAADpAAAAAAAAAQEAAAAAAAAA5QAAAAAAAADBAAAAAAAAAMEAAAAAAAAAyQAAAAAAAADBAAAAAAAAAKkAAAAAAAAAsQAAAAAAAACxAAAAAAAAALEAAAAAAAAA9QAAAAAAAADpAAAAAAAAAOkAAAAAAAAA/QAAAAAAAAEBAAAAAAAAAPEAAAAAAAAA4QAAAAAAAADpAAAAAAAAAOEAAAAAAAAA6QAAAAAAAAD9AAAAAAAAAM0AAAAAAAAAyQAAAAAAAAC5AAAAAAAAALkAAAAAAAAAwQAAAAAAAAC5AAAAAAAAAMEAAAAAAAAAsQAAAAAAAADFAAAAAAAAAMEAAAAAAAAAuQAAAAAAAADJAAAAAAAAANUAAAAAAAAA0QAAAAAAAACpAAAAAAAAAPUAAAAAAAAA3QAAAAAAAADRAAAAAAAAAN0AAAAAAAAA4QAAAAAAAADlAAAAAAAAAOEAAAAAAAAAyQAAAAAAAAD1AAAAAAAAAM0AAAAAAAAA3QAAAAAAAADdAAAAAAAAANkAAAAAAAAA5QAAAAAAAgEBAAAAAAAAAPEAAAAAAAAA5QAAAAAAAADlAAAAAAAAAOkAAAAAAAAA7QAAAAAAAgDFAAAAAAAAAMEAAAAAAAAAvQAAAAAAAAC1AAAAAAAAANkAAAAAAAAA2QAAAAAAAADhAAAAAAACANkAAAAAAAAA9QAAAAAAAgDhAAAAAAAAAPUAAAAAAAIBAQAAAAAAAADRAAAAAAAAAMkAAAAAAAIAyQAAAAAAAgDFAAAAAAACAPUAAAAAAAABAQAAAAAAAADxAAAAAAACAOkAAAAAAAAA0QAAAAAAAACpAAAAAAAAAM0AAAAAAAAAzQAAAAAAAgDBAAAAAAACAMEAAAAAAAAAqQAAAAAAAACpAAAAAAAAAKkAAAAAAAIA/QAAAAAAAAD5AAAAAAAAAQkAAAAAAAIA5QAAAAAAAwEBAAAAAAACAMUAAAAAAAAAxQAAAAAAAAC9AAAAAAAAALkAAAAAAAIAxQAAAAAAAgDRAAAAAAAAAM0AAAAAAAIAyQAAAAAAAADBAAAAAAAAAL0AAAAAAAAAvQAAAAAAAADBAAAAAAAAAPUAAAAAAAIA4QAAAAAAAADpAAAAAAACAOUAAAAAAAIA+QAAAAAAAwEBAAAAAAAAAPkAAAAAAAIA+QAAAAAAAADZAAAAAAACANUAAAAAAAIA1QM3MzMzMjEVAzczMzMwMQkBmZmZmZmZAQDMzMzMzs0NAzczMzMwMQkBmZmZmZuYzQGZmZmZmZjNAMzMzMzMzNEAzMzMzMzMzQAAAAAAAgDRAMzMzMzMzNECamZmZmRk5QAAAAAAAgDRAZmZmZmZmM0CamZmZmZk0QM3MzMzMzDRAmpmZmZmZMkCamZmZmRkyQDMzMzMzMzNAMzMzMzOzMUCamZmZmRkyQAAAAAAAgDFAAAAAAAAAPkAAAAAAAIA7QDMzMzMzMztAZmZmZmbmPkCamZmZmRk1QDMzMzMzMzdAzczMzMzMN0BmZmZmZuY3QM3MzMzMTDRAAAAAAAAAMUCamZmZmZk1QDMzMzMzMzBAAAAAAACAP0AAAAAAAIA9QAAAAAAAgDVAzczMzMzMM0DNzMzMzEw2QDMzMzMzMzRAmpmZmZmZNEAAAAAAAAAxQJqZmZmZmTFAAAAAAACAMEAzMzMzMzMyQGZmZmZm5jBAAAAAAAAAL0AzMzMzMzMzQAAAAAAAgDJAZmZmZmbmP0DNzMzMzAxBQJqZmZmZ2UFAZmZmZmZmO0BmZmZmZmY5QAAAAAAAADdAMzMzMzMzO0BmZmZmZuY3QJqZmZmZGUFAAAAAAABAQUDNzMzMzMw/QGZmZmZmpkJAZmZmZmZmPEDNzMzMzMw8QM3MzMzMzDpAAAAAAADAQEAAAAAAAMBEQM3MzMzMDENAzczMzMwMQECamZmZmZlCQAAAAAAAADxAZmZmZmZmOkDNzMzMzEw4QJqZmZmZGTNAZmZmZmYmQUDNzMzMzMw9QM3MzMzMTD9AAAAAAACAQkCamZmZmRlAQM3MzMzMTEdAZmZmZmbmO0BmZmZmZmZEQGZmZmZmJkZAMzMzMzOzRUAzMzMzMzNCQAAAAAAAAD5AzczMzMxMRkBmZmZmZuZAQM3MzMzMzD1AmpmZmZlZQEAzMzMzM7M3QAAAAAAAgEFAMzMzMzMzQEAzMzMzMzM7QJqZmZmZmTpAzczMzMzMOUAAAAAAAIA3QAAAAAAAAD5AzczMzMyMQ0AAAAAAAIBDQM3MzMzMjEFAZmZmZmYmQEAAAAAAAIBCQJqZmZmZ2UJAzczMzMwMQUCamZmZmVlBQDMzMzMzM0FAZmZmZmbmPUAAAAAAAIBAQJqZmZmZ2UBAMzMzMzMzQEAzMzMzM3NAQJqZmZmZmT9AmpmZmZkZPEAzMzMzM7M+QGZmZmZmZjlAMzMzMzMzOEBmZmZmZmY2QJqZmZmZmTpAMzMzMzMzNECamZmZmZkxQAAAAAAAADxAAAAAAAAAO0AAAAAAAABBQAAAAAAAAD9AAAAAAAAAPUAAAAAAAAA7QAAAAAAAADhAAAAAAAAAQkAAAAAAAIBCQAAAAAAAAD9AAAAAAAAAQ0AAAAAAAABCQAAAAAAAAEJAAAAAAAAAQkAAAAAAAABBQAAAAAAAAENAAAAAAAAAQEAAAAAAAABDQAAAAAAAADlAAAAAAAAAQ0AAAAAAAAA6QAAAAAAAADZAAAAAAAAAQEAAAAAAAABCQAAAAAAAADtAAAAAAAAAO0AAAAAAAABGQAAAAAAAAEBAAAAAAAAAPEAAAAAAAAA/QA==", "dtype": "float64", "order": "little", "shape": [392]}}, "selected": {"id": "1037"}, "selection_policy": {"id": "1058"}}, "id": "1036", "type": "ColumnDataSource"}, {"attributes": {"coordinates": null, "data_source": {"id": "1036"}, "glyph": {"id": "1039"}, "group": null, "hover_glyph": null, "muted_glyph": {"id": "1041"}, "nonselection_glyph": {"id": "1040"}, "selection_glyph": {"id": "1044"}, "view": {"id": "1043"}}, "id": "1042", "type": "GlyphRenderer"}, {"attributes": {}, "id": "1023", "type": "SaveTool"}, {"attributes": {"source": {"id": "1036"}}, "id": "1043", "type": "CDSView"}, {"attributes": {}, "id": "1049", "type": "BasicTickFormatter"}, {"attributes": {"bottom_units": "screen", "coordinates": null, "fill_alpha": 0.5, "fill_color": "lightgrey", "group": null, "left_units": "screen", "level": "overlay", "line_alpha": 1.0, "line_color": "black", "line_dash": [4, 4], "line_width": 2, "right_units": "screen", "syncable": false, "top_units": "screen"}, "id": "1028", "type": "BoxAnnotation"}, {"attributes": {"children": [{"id": "1006"}], "margin": [0, 0, 0, 0], "name": "Row04965"}, "id": "1002", "type": "Row"}, {"attributes": {}, "id": "1024", "type": "PanTool"}, {"attributes": {}, "id": "1025", "type": "WheelZoomTool"}, {"attributes": {"overlay": {"id": "1028"}}, "id": "1026", "type": "BoxZoomTool"}, {"attributes": {}, "id": "1027", "type": "ResetTool"}, {"attributes": {"tools": [{"id": "1005"}, {"id": "1023"}, {"id": "1024"}, {"id": "1025"}, {"id": "1026"}, {"id": "1027"}]}, "id": "1029", "type": "Toolbar"}, {"attributes": {"callback": null, "renderers": [{"id": "1042"}], "tags": ["hv_created"], "tooltips": [["mpg", "@{mpg}"], ["hp", "@{hp}"]]}, "id": "1005", "type": "HoverTool"}, {"attributes": {}, "id": "1047", "type": "AllLabels"}, {"attributes": {"end": 248.4, "reset_end": 248.4, "reset_start": 27.599999999999998, "start": 27.599999999999998, "tags": [[["hp", "hp", null]]]}, "id": "1004", "type": "Range1d"}, {"attributes": {"fill_color": {"value": "#058805"}, "hatch_color": {"value": "#058805"}, "line_color": {"value": "#058805"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1039", "type": "Scatter"}, {"attributes": {"coordinates": null, "group": null, "text_color": "black", "text_font_size": "12pt"}, "id": "1007", "type": "Title"}, {"attributes": {}, "id": "1050", "type": "AllLabels"}, {"attributes": {}, "id": "1037", "type": "Selection"}, {"attributes": {}, "id": "1013", "type": "LinearScale"}, {"attributes": {"name": "location", "reload": false}, "id": "1091", "type": "panel.models.location.Location"}, {"attributes": {"end": 48.21142857142857, "reset_end": 48.21142857142857, "reset_start": 7.388571428571429, "start": 7.388571428571429, "tags": [[["mpg", "mpg", null]]]}, "id": "1003", "type": "Range1d"}, {"attributes": {}, "id": "1011", "type": "LinearScale"}, {"attributes": {}, "id": "1046", "type": "BasicTickFormatter"}, {"attributes": {"below": [{"id": "1015"}], "center": [{"id": "1018"}, {"id": "1022"}], "height": 300, "left": [{"id": "1019"}], "margin": [5, 5, 5, 5], "min_border_bottom": 10, "min_border_left": 10, "min_border_right": 10, "min_border_top": 10, "renderers": [{"id": "1042"}], "sizing_mode": "fixed", "title": {"id": "1007"}, "toolbar": {"id": "1029"}, "width": 700, "x_range": {"id": "1003"}, "x_scale": {"id": "1011"}, "y_range": {"id": "1004"}, "y_scale": {"id": "1013"}}, "id": "1006", "subtype": "Figure", "type": "Plot"}, {"attributes": {}, "id": "1058", "type": "UnionRenderers"}, {"attributes": {}, "id": "1016", "type": "BasicTicker"}, {"attributes": {"axis_label": "mpg", "coordinates": null, "formatter": {"id": "1046"}, "group": null, "major_label_policy": {"id": "1047"}, "ticker": {"id": "1016"}}, "id": "1015", "type": "LinearAxis"}], "root_ids": ["1002", "1091"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_2, 200)
+                }
+              };
+              embed_bokeh_2()
+            </script>
+<p>But if we want to let a user control the axes and the color with widgets rather than writing Python code, we can use one of the Panel APIs as shown in the rest of the notebook.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">panel</span> <span class="k">as</span> <span class="nn">pn</span>
+<span class="n">pn</span><span class="o">.</span><span class="n">extension</span><span class="p">()</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell2-py"></pre><pre class="pyodide-stderr" id="stderr-codecell2-py"></pre><section id="reactive-functions">
+<h2>Reactive Functions<a class="headerlink" href="#reactive-functions" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">pn.bind</span></code> reactive programming API is very similar to the <code class="docutils literal notranslate"><span class="pre">interact</span></code> function but is more explicit about widget selection and layout. <code class="docutils literal notranslate"><span class="pre">pn.bind</span></code> requires the programmer to select and configure widgets explicity and to lay out components explicitly, without relying on inference of widget types and ranges and without any default layouts. Specifying those aspects explicitly provides more power and control, but does typically take a bit more code and more knowledge of widget and layout components than using <code class="docutils literal notranslate"><span class="pre">interact</span></code> does. Once widgets have been bound to a reactive function, you can lay out the bound function and the widgets in any order or combination you like, including across Jupyter notebook cells if desired.</p>
+<section id="pros">
+<h3>Pros:<a class="headerlink" href="#pros" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Very clear mapping from widgets to the arguments of the function.</p></li>
+<li><p>Very explicit layout of each of the different components.</p></li>
+<li><p>Like <code class="docutils literal notranslate"><span class="pre">interact</span></code>, doesn’t typically require modifying existing visualization code.</p></li>
+</ul>
+</section>
+<section id="cons">
+<h3>Cons:<a class="headerlink" href="#cons" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Typically requires a bit more code than <code class="docutils literal notranslate"><span class="pre">interact</span></code></p></li>
+</ul>
+<p>In this model, we can use an existing plotting function just as for <code class="docutils literal notranslate"><span class="pre">interact</span></code>, but then need to declare each widget explicitly and then bind a widget to each of the arguments that we want to be interactive. The <code class="docutils literal notranslate"><span class="pre">pn.bind</span></code> function works much like <a class="reference external" href="https://docs.python.org/3/library/functools.html#functools.partial"><code class="docutils literal notranslate"><span class="pre">functools.partial</span></code></a> in that it binds regular arguments and keyword arguments to a function. <code class="docutils literal notranslate"><span class="pre">partial</span></code> can only bind specific, static arguments like <code class="docutils literal notranslate"><span class="pre">5</span></code>, but <code class="docutils literal notranslate"><span class="pre">pn.bind</span></code> can also bind parameters, widgets, and other dynamic functions with dependencies to the arguments, ensuring when the function is called the current values of the parameters are passed to the function. A bound function is then reactive, updating whenever the widget values change.</p>
+<p>To make the concept of binding clear, let’s look at a trivial example first:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s1">'Arguments: </span><span class="si">{</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="si">}</span><span class="s1">'</span>
+<span class="n">slider</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">bound_fn</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">slider</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">bound_fn</span><span class="p">()</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell3-py"></pre><pre class="pyodide-stderr" id="stderr-codecell3-py"></pre><div class="pyodide-output embedded" id="output-codecell3-py"><pre>Arguments: (0.5, 2)</pre></div>
+<p>Here we can see that although <code class="docutils literal notranslate"><span class="pre">fn</span></code> required two arguments, <code class="docutils literal notranslate"><span class="pre">bound_fn</span></code> takes no arguments because <code class="docutils literal notranslate"><span class="pre">a</span></code> has been bound to the slider value and <code class="docutils literal notranslate"><span class="pre">b</span></code> to a static value.</p>
+<p>If we display the slider and bound function in Panel, we can see that everything will update reactively as you use the widget, reevaluating the function whenever the bound argument changes:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">slider</span><span class="p">,</span> <span class="n">bound_fn</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell4-py"></pre><pre class="pyodide-stderr" id="stderr-codecell4-py"></pre><div class="pyodide-output embedded" id="output-codecell4-py"></div>
+<script>
+              async function embed_bokeh_5 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell4-py", "root_id": "1122", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "ParamFunction04990", "text": "&lt;p&gt;Arguments: (0.5, 2)&lt;/p&gt;"}, "id": "1125", "type": "panel.models.markup.HTML"}, {"attributes": {"children": [{"id": "1125"}], "margin": [0, 0, 0, 0], "name": "Row04994"}, "id": "1124", "type": "Row"}, {"attributes": {"end": 1.0, "margin": [5, 10, 5, 10], "start": 0.0, "step": 0.1, "value": 0.5}, "id": "1123", "type": "Slider"}, {"attributes": {"name": "location", "reload": false}, "id": "1126", "type": "panel.models.location.Location"}, {"attributes": {"children": [{"id": "1123"}, {"id": "1124"}], "margin": [0, 0, 0, 0], "name": "Row04997"}, "id": "1122", "type": "Row"}], "root_ids": ["1122", "1126"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_5, 200)
+                }
+              };
+              embed_bokeh_5()
+            </script>
+<p>Using <code class="docutils literal notranslate"><span class="pre">pn.bind</span></code>, we can easily build something like the <code class="docutils literal notranslate"><span class="pre">interact</span></code> app above if we explicitly make widgets for each argument, bind them to the plotting function, and lay out the result with the widgets:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">'mpg'</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'x'</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">'hp'</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ColorPicker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Color'</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'#AA0505'</span><span class="p">)</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s1">'## MPG Explorer'</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">),</span>
+       <span class="n">pn</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">autompg</span><span class="o">.</span><span class="n">hvplot</span><span class="o">.</span><span class="n">scatter</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">))</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell5-py"></pre><pre class="pyodide-stderr" id="stderr-codecell5-py"></pre><div class="pyodide-output embedded" id="output-codecell5-py"></div>
+<script>
+              async function embed_bokeh_6 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell5-py", "root_id": "1127", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {}, "id": "1181", "type": "AllLabels"}, {"attributes": {}, "id": "1151", "type": "BasicTicker"}, {"attributes": {"source": {"id": "1167"}}, "id": "1174", "type": "CDSView"}, {"attributes": {}, "id": "1154", "type": "SaveTool"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"value": "#AA0505"}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"value": "#AA0505"}, "line_alpha": {"value": 0.2}, "line_color": {"value": "#AA0505"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1172", "type": "Scatter"}, {"attributes": {"coordinates": null, "data_source": {"id": "1167"}, "glyph": {"id": "1170"}, "group": null, "hover_glyph": null, "muted_glyph": {"id": "1172"}, "nonselection_glyph": {"id": "1171"}, "selection_glyph": {"id": "1175"}, "view": {"id": "1174"}}, "id": "1173", "type": "GlyphRenderer"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "Markdown05002", "text": "&lt;h2&gt;MPG Explorer&lt;/h2&gt;"}, "id": "1129", "type": "panel.models.markup.HTML"}, {"attributes": {}, "id": "1147", "type": "BasicTicker"}, {"attributes": {"callback": null, "renderers": [{"id": "1173"}], "tags": ["hv_created"], "tooltips": [["mpg", "@{mpg}"], ["hp", "@{hp}"]]}, "id": "1136", "type": "HoverTool"}, {"attributes": {}, "id": "1156", "type": "WheelZoomTool"}, {"attributes": {}, "id": "1177", "type": "BasicTickFormatter"}, {"attributes": {"below": [{"id": "1146"}], "center": [{"id": "1149"}, {"id": "1153"}], "height": 300, "left": [{"id": "1150"}], "margin": [5, 5, 5, 5], "min_border_bottom": 10, "min_border_left": 10, "min_border_right": 10, "min_border_top": 10, "renderers": [{"id": "1173"}], "sizing_mode": "fixed", "title": {"id": "1138"}, "toolbar": {"id": "1160"}, "width": 700, "x_range": {"id": "1134"}, "x_scale": {"id": "1142"}, "y_range": {"id": "1135"}, "y_scale": {"id": "1144"}}, "id": "1137", "subtype": "Figure", "type": "Plot"}, {"attributes": {}, "id": "1178", "type": "AllLabels"}, {"attributes": {"children": [{"id": "1137"}], "margin": [0, 0, 0, 0], "name": "Row05009"}, "id": "1133", "type": "Row"}, {"attributes": {"name": "location", "reload": false}, "id": "1222", "type": "panel.models.location.Location"}, {"attributes": {"margin": [5, 10, 5, 10], "options": ["mpg", "cyl", "displ", "hp", "weight", "accel", "yr"], "title": "y", "value": "hp"}, "id": "1131", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {}, "id": "1180", "type": "BasicTickFormatter"}, {"attributes": {"bottom_units": "screen", "coordinates": null, "fill_alpha": 0.5, "fill_color": "lightgrey", "group": null, "left_units": "screen", "level": "overlay", "line_alpha": 1.0, "line_color": "black", "line_dash": [4, 4], "line_width": 2, "right_units": "screen", "syncable": false, "top_units": "screen"}, "id": "1159", "type": "BoxAnnotation"}, {"attributes": {}, "id": "1158", "type": "ResetTool"}, {"attributes": {"end": 248.4, "reset_end": 248.4, "reset_start": 27.599999999999998, "start": 27.599999999999998, "tags": [[["hp", "hp", null]]]}, "id": "1135", "type": "Range1d"}, {"attributes": {"fill_color": {"value": "#AA0505"}, "hatch_color": {"value": "#AA0505"}, "line_color": {"value": "#AA0505"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1170", "type": "Scatter"}, {"attributes": {}, "id": "1142", "type": "LinearScale"}, {"attributes": {"axis_label": "mpg", "coordinates": null, "formatter": {"id": "1177"}, "group": null, "major_label_policy": {"id": "1178"}, "ticker": {"id": "1147"}}, "id": "1146", "type": "LinearAxis"}, {"attributes": {"axis": {"id": "1150"}, "coordinates": null, "dimension": 1, "grid_line_color": null, "group": null, "ticker": null}, "id": "1153", "type": "Grid"}, {"attributes": {"children": [{"id": "1128"}, {"id": "1133"}], "margin": [0, 0, 0, 0], "name": "Row05102"}, "id": "1127", "type": "Row"}, {"attributes": {"angle": {"value": 0.0}, "fill_alpha": {"value": 1.0}, "fill_color": {"value": "#AA0505"}, "hatch_alpha": {"value": 1.0}, "hatch_color": {"value": "#AA0505"}, "hatch_scale": {"value": 12.0}, "hatch_weight": {"value": 1.0}, "line_alpha": {"value": 1.0}, "line_cap": {"value": "butt"}, "line_color": {"value": "#AA0505"}, "line_dash": {"value": []}, "line_dash_offset": {"value": 0}, "line_join": {"value": "bevel"}, "line_width": {"value": 1}, "marker": {"value": "circle"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1175", "type": "Scatter"}, {"attributes": {}, "id": "1155", "type": "PanTool"}, {"attributes": {}, "id": "1168", "type": "Selection"}, {"attributes": {"coordinates": null, "group": null, "text_color": "black", "text_font_size": "12pt"}, "id": "1138", "type": "Title"}, {"attributes": {"data": {"hp": [130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 170, 160, 150, 225, 95, 95, 97, 85, 88, 46, 87, 90, 95, 113, 90, 215, 200, 210, 193, 88, 90, 95, 100, 105, 100, 88, 100, 165, 175, 153, 150, 180, 170, 175, 110, 72, 100, 88, 86, 90, 70, 76, 65, 69, 60, 70, 95, 80, 54, 90, 86, 165, 175, 150, 153, 150, 208, 155, 160, 190, 97, 150, 130, 140, 150, 112, 76, 87, 69, 86, 92, 97, 80, 88, 175, 150, 145, 137, 150, 198, 150, 158, 150, 215, 225, 175, 105, 100, 100, 88, 95, 46, 150, 167, 170, 180, 100, 88, 72, 94, 90, 85, 107, 90, 145, 230, 49, 75, 91, 112, 150, 110, 122, 180, 95, 100, 100, 67, 80, 65, 75, 100, 110, 105, 140, 150, 150, 140, 150, 83, 67, 78, 52, 61, 75, 75, 75, 97, 93, 67, 95, 105, 72, 72, 170, 145, 150, 148, 110, 105, 110, 95, 110, 110, 129, 75, 83, 100, 78, 96, 71, 97, 97, 70, 90, 95, 88, 98, 115, 53, 86, 81, 92, 79, 83, 140, 150, 120, 152, 100, 105, 81, 90, 52, 60, 70, 53, 100, 78, 110, 95, 71, 70, 75, 72, 102, 150, 88, 108, 120, 180, 145, 130, 150, 68, 80, 58, 96, 70, 145, 110, 145, 130, 110, 105, 100, 98, 180, 170, 190, 149, 78, 88, 75, 89, 63, 83, 67, 78, 97, 110, 110, 48, 66, 52, 70, 60, 110, 140, 139, 105, 95, 85, 88, 100, 90, 105, 85, 110, 120, 145, 165, 139, 140, 68, 95, 97, 75, 95, 105, 85, 97, 103, 125, 115, 133, 71, 68, 115, 85, 88, 90, 110, 130, 129, 138, 135, 155, 142, 125, 150, 71, 65, 80, 80, 77, 125, 71, 90, 70, 70, 65, 69, 90, 115, 115, 90, 76, 60, 70, 65, 90, 88, 90, 90, 78, 90, 75, 92, 75, 65, 105, 65, 48, 48, 67, 67, 67, 67, 62, 132, 100, 88, 72, 84, 84, 92, 110, 84, 58, 64, 60, 67, 65, 62, 68, 63, 65, 65, 74, 75, 75, 100, 74, 80, 76, 116, 120, 110, 105, 88, 85, 88, 88, 88, 85, 84, 90, 92, 74, 68, 68, 63, 70, 88, 75, 70, 67, 67, 67, 110, 85, 92, 112, 96, 84, 90, 86, 52, 84, 79, 82], "mpg": {"__ndarray__": "AAAAAAAAMkAAAAAAAAAuQAAAAAAAADJAAAAAAAAAMEAAAAAAAAAxQAAAAAAAAC5AAAAAAAAALEAAAAAAAAAsQAAAAAAAACxAAAAAAAAALkAAAAAAAAAuQAAAAAAAACxAAAAAAAAALkAAAAAAAAAsQAAAAAAAADhAAAAAAAAANkAAAAAAAAAyQAAAAAAAADVAAAAAAAAAO0AAAAAAAAA6QAAAAAAAADlAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAANUAAAAAAAAAkQAAAAAAAACRAAAAAAAAAJkAAAAAAAAAiQAAAAAAAADtAAAAAAAAAPEAAAAAAAAA5QAAAAAAAADNAAAAAAAAAMEAAAAAAAAAxQAAAAAAAADNAAAAAAAAAMkAAAAAAAAAsQAAAAAAAACxAAAAAAAAALEAAAAAAAAAsQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAqQAAAAAAAADJAAAAAAAAANkAAAAAAAAAzQAAAAAAAADJAAAAAAAAAN0AAAAAAAAA8QAAAAAAAAD5AAAAAAAAAPkAAAAAAAAA/QAAAAAAAgEFAAAAAAAAAO0AAAAAAAAA6QAAAAAAAADhAAAAAAAAAOUAAAAAAAAA3QAAAAAAAADRAAAAAAAAANUAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAsQAAAAAAAADFAAAAAAAAAJkAAAAAAAAAqQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAzQAAAAAAAAC5AAAAAAAAAKkAAAAAAAAAqQAAAAAAAACxAAAAAAAAAMkAAAAAAAAA2QAAAAAAAADVAAAAAAAAAOkAAAAAAAAA2QAAAAAAAADxAAAAAAAAAN0AAAAAAAAA8QAAAAAAAADtAAAAAAAAAKkAAAAAAAAAsQAAAAAAAACpAAAAAAAAALEAAAAAAAAAuQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAqQAAAAAAAACxAAAAAAAAAKkAAAAAAAAAoQAAAAAAAACpAAAAAAAAAMkAAAAAAAAAwQAAAAAAAADJAAAAAAAAAMkAAAAAAAAA3QAAAAAAAADpAAAAAAAAAJkAAAAAAAAAoQAAAAAAAACpAAAAAAAAAKEAAAAAAAAAyQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADJAAAAAAAAAM0AAAAAA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", "dtype": "float64", "order": "little", "shape": [392]}}, "selected": {"id": "1168"}, "selection_policy": {"id": "1189"}}, "id": "1167", "type": "ColumnDataSource"}, {"attributes": {"margin": [5, 10, 5, 10], "options": ["mpg", "cyl", "displ", "hp", "weight", "accel", "yr"], "title": "x", "value": "mpg"}, "id": "1130", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"children": [{"id": "1129"}, {"id": "1130"}, {"id": "1131"}, {"id": "1132"}], "margin": [0, 0, 0, 0], "name": "Column05004"}, "id": "1128", "type": "Column"}, {"attributes": {"fill_alpha": {"value": 0.1}, "fill_color": {"value": "#AA0505"}, "hatch_alpha": {"value": 0.1}, "hatch_color": {"value": "#AA0505"}, "line_alpha": {"value": 0.1}, "line_color": {"value": "#AA0505"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1171", "type": "Scatter"}, {"attributes": {"end": 48.21142857142857, "reset_end": 48.21142857142857, "reset_start": 7.388571428571429, "start": 7.388571428571429, "tags": [[["mpg", "mpg", null]]]}, "id": "1134", "type": "Range1d"}, {"attributes": {"axis_label": "hp", "coordinates": null, "formatter": {"id": "1180"}, "group": null, "major_label_policy": {"id": "1181"}, "ticker": {"id": "1151"}}, "id": "1150", "type": "LinearAxis"}, {"attributes": {}, "id": "1189", "type": "UnionRenderers"}, {"attributes": {"tools": [{"id": "1136"}, {"id": "1154"}, {"id": "1155"}, {"id": "1156"}, {"id": "1157"}, {"id": "1158"}]}, "id": "1160", "type": "Toolbar"}, {"attributes": {}, "id": "1144", "type": "LinearScale"}, {"attributes": {"color": "#aa0505", "margin": [5, 10, 5, 10], "title": "Color"}, "id": "1132", "type": "ColorPicker"}, {"attributes": {"axis": {"id": "1146"}, "coordinates": null, "grid_line_color": null, "group": null, "ticker": null}, "id": "1149", "type": "Grid"}, {"attributes": {"overlay": {"id": "1159"}}, "id": "1157", "type": "BoxZoomTool"}], "root_ids": ["1127", "1222"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_6, 200)
+                }
+              };
+              embed_bokeh_6()
+            </script>
+<p>Notice how here we didn’t even need the <code class="docutils literal notranslate"><span class="pre">autompg_plot</span></code> function here, because <code class="docutils literal notranslate"><span class="pre">bind</span></code> works with both methods and functions, so for this particular case the reactive API works out to the same amount of code as <code class="docutils literal notranslate"><span class="pre">interact</span></code>. In practice <code class="docutils literal notranslate"><span class="pre">interact</span></code> is shorter and simpler in the case of accepting the default behavior, making it simple to get started, while <code class="docutils literal notranslate"><span class="pre">pn.bind</span></code> requires a bit more code to get started but then allows easier customization and specification.</p>
+<p>If you are writing code specifically for building an app, and do not wish to keep domain and GUI code separate, the functionality of <code class="docutils literal notranslate"><span class="pre">pn.bind</span></code> is also available as a decorator <code class="docutils literal notranslate"><span class="pre">@pn.depends</span></code>:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">'mpg'</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'x'</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">'hp'</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ColorPicker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Color'</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'#AA0505'</span><span class="p">)</span>
+
+<span class="nd">@pn</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="n">colorval</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">autompg</span><span class="o">.</span><span class="n">hvplot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colorval</span><span class="p">)</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+    <span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s1">'## MPG Explorer'</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">),</span>
+    <span class="n">plot</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell6-py"></pre><pre class="pyodide-stderr" id="stderr-codecell6-py"></pre><div class="pyodide-output embedded" id="output-codecell6-py"></div>
+<script>
+              async function embed_bokeh_7 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell6-py", "root_id": "1253", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"below": [{"id": "1272"}], "center": [{"id": "1275"}, {"id": "1279"}], "height": 300, "left": [{"id": "1276"}], "margin": [5, 5, 5, 5], "min_border_bottom": 10, "min_border_left": 10, "min_border_right": 10, "min_border_top": 10, "renderers": [{"id": "1299"}], "sizing_mode": "fixed", "title": {"id": "1264"}, "toolbar": {"id": "1286"}, "width": 700, "x_range": {"id": "1260"}, "x_scale": {"id": "1268"}, "y_range": {"id": "1261"}, "y_scale": {"id": "1270"}}, "id": "1263", "subtype": "Figure", "type": "Plot"}, {"attributes": {}, "id": "1294", "type": "Selection"}, {"attributes": {}, "id": "1270", "type": "LinearScale"}, {"attributes": {"angle": {"value": 0.0}, "fill_alpha": {"value": 1.0}, "fill_color": {"value": "#AA0505"}, "hatch_alpha": {"value": 1.0}, "hatch_color": {"value": "#AA0505"}, "hatch_scale": {"value": 12.0}, "hatch_weight": {"value": 1.0}, "line_alpha": {"value": 1.0}, "line_cap": {"value": "butt"}, "line_color": {"value": "#AA0505"}, "line_dash": {"value": []}, "line_dash_offset": {"value": 0}, "line_join": {"value": "bevel"}, "line_width": {"value": 1}, "marker": {"value": "circle"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1301", "type": "Scatter"}, {"attributes": {"children": [{"id": "1255"}, {"id": "1256"}, {"id": "1257"}, {"id": "1258"}], "margin": [0, 0, 0, 0], "name": "Column05127"}, "id": "1254", "type": "Column"}, {"attributes": {"children": [{"id": "1263"}], "margin": [0, 0, 0, 0], "name": "Row05132"}, "id": "1259", "type": "Row"}, {"attributes": {"data": {"hp": [130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 170, 160, 150, 225, 95, 95, 97, 85, 88, 46, 87, 90, 95, 113, 90, 215, 200, 210, 193, 88, 90, 95, 100, 105, 100, 88, 100, 165, 175, 153, 150, 180, 170, 175, 110, 72, 100, 88, 86, 90, 70, 76, 65, 69, 60, 70, 95, 80, 54, 90, 86, 165, 175, 150, 153, 150, 208, 155, 160, 190, 97, 150, 130, 140, 150, 112, 76, 87, 69, 86, 92, 97, 80, 88, 175, 150, 145, 137, 150, 198, 150, 158, 150, 215, 225, 175, 105, 100, 100, 88, 95, 46, 150, 167, 170, 180, 100, 88, 72, 94, 90, 85, 107, 90, 145, 230, 49, 75, 91, 112, 150, 110, 122, 180, 95, 100, 100, 67, 80, 65, 75, 100, 110, 105, 140, 150, 150, 140, 150, 83, 67, 78, 52, 61, 75, 75, 75, 97, 93, 67, 95, 105, 72, 72, 170, 145, 150, 148, 110, 105, 110, 95, 110, 110, 129, 75, 83, 100, 78, 96, 71, 97, 97, 70, 90, 95, 88, 98, 115, 53, 86, 81, 92, 79, 83, 140, 150, 120, 152, 100, 105, 81, 90, 52, 60, 70, 53, 100, 78, 110, 95, 71, 70, 75, 72, 102, 150, 88, 108, 120, 180, 145, 130, 150, 68, 80, 58, 96, 70, 145, 110, 145, 130, 110, 105, 100, 98, 180, 170, 190, 149, 78, 88, 75, 89, 63, 83, 67, 78, 97, 110, 110, 48, 66, 52, 70, 60, 110, 140, 139, 105, 95, 85, 88, 100, 90, 105, 85, 110, 120, 145, 165, 139, 140, 68, 95, 97, 75, 95, 105, 85, 97, 103, 125, 115, 133, 71, 68, 115, 85, 88, 90, 110, 130, 129, 138, 135, 155, 142, 125, 150, 71, 65, 80, 80, 77, 125, 71, 90, 70, 70, 65, 69, 90, 115, 115, 90, 76, 60, 70, 65, 90, 88, 90, 90, 78, 90, 75, 92, 75, 65, 105, 65, 48, 48, 67, 67, 67, 67, 62, 132, 100, 88, 72, 84, 84, 92, 110, 84, 58, 64, 60, 67, 65, 62, 68, 63, 65, 65, 74, 75, 75, 100, 74, 80, 76, 116, 120, 110, 105, 88, 85, 88, 88, 88, 85, 84, 90, 92, 74, 68, 68, 63, 70, 88, 75, 70, 67, 67, 67, 110, 85, 92, 112, 96, 84, 90, 86, 52, 84, 79, 82], "mpg": {"__ndarray__": "AAAAAAAAMkAAAAAAAAAuQAAAAAAAADJAAAAAAAAAMEAAAAAAAAAxQAAAAAAAAC5AAAAAAAAALEAAAAAAAAAsQAAAAAAAACxAAAAAAAAALkAAAAAAAAAuQAAAAAAAACxAAAAAAAAALkAAAAAAAAAsQAAAAAAAADhAAAAAAAAANkAAAAAAAAAyQAAAAAAAADVAAAAAAAAAO0AAAAAAAAA6QAAAAAAAADlAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAANUAAAAAAAAAkQAAAAAAAACRAAAAAAAAAJkAAAAAAAAAiQAAAAAAAADtAAAAAAAAAPEAAAAAAAAA5QAAAAAAAADNAAAAAAAAAMEAAAAAAAAAxQAAAAAAAADNAAAAAAAAAMkAAAAAAAAAsQAAAAAAAACxAAAAAAAAALEAAAAAAAAAsQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAqQAAAAAAAADJAAAAAAAAANkAAAAAAAAAzQAAAAAAAADJAAAAAAAAAN0AAAAAAAAA8QAAAAAAAAD5AAAAAAAAAPkAAAAAAAAA/QAAAAAAAgEFAAAAAAAAAO0AAAAAAAAA6QAAAAAAAADhAAAAAAAAAOUAAAAAAAAA3QAAAAAAAADRAAAAAAAAANUAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAsQAAAAAAAADFAAAAAAAAAJkAAAAAAAAAqQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAzQAAAAAAAAC5AAAAAAAAAKkAAAAAAAAAqQAAAAAAAACxAAAAAAAAAMkAAAAAAAAA2QAAAAAAAADVAAAAAAAAAOkAAAAAAAAA2QAAAAAAAADxAAAAAAAAAN0AAAAAAAAA8QAAAAAAAADtAAAAAAAAAKkAAAAAAAAAsQAAAAAAAACpAAAAAAAAALEAAAAAAAAAuQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAqQAAAAAAAACxAAAAAAAAAKkAAAAAAAAAoQAAAAAAAACpAAAAAAAAAMkAAAAAAAAAwQAAAAAAAADJAAAAAAAAAMkAAAAAAAAA3QAAAAAAAADpAAAAAAAAAJkAAAAAAAAAoQAAAAAAAACpAAAAAAAAAKEAAAAAAAAAyQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADJAAAAAAAAAM0AAAAAA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", "dtype": "float64", "order": "little", "shape": [392]}}, "selected": {"id": "1294"}, "selection_policy": {"id": "1315"}}, "id": "1293", "type": "ColumnDataSource"}, {"attributes": {"children": [{"id": "1254"}, {"id": "1259"}], "margin": [0, 0, 0, 0], "name": "Row05225"}, "id": "1253", "type": "Row"}, {"attributes": {"axis_label": "hp", "coordinates": null, "formatter": {"id": "1306"}, "group": null, "major_label_policy": {"id": "1307"}, "ticker": {"id": "1277"}}, "id": "1276", "type": "LinearAxis"}, {"attributes": {}, "id": "1282", "type": "WheelZoomTool"}, {"attributes": {}, "id": "1277", "type": "BasicTicker"}, {"attributes": {"source": {"id": "1293"}}, "id": "1300", "type": "CDSView"}, {"attributes": {}, "id": "1280", "type": "SaveTool"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"value": "#AA0505"}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"value": "#AA0505"}, "line_alpha": {"value": 0.2}, "line_color": {"value": "#AA0505"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1298", "type": "Scatter"}, {"attributes": {"overlay": {"id": "1285"}}, "id": "1283", "type": "BoxZoomTool"}, {"attributes": {}, "id": "1281", "type": "PanTool"}, {"attributes": {"coordinates": null, "data_source": {"id": "1293"}, "glyph": {"id": "1296"}, "group": null, "hover_glyph": null, "muted_glyph": {"id": "1298"}, "nonselection_glyph": {"id": "1297"}, "selection_glyph": {"id": "1301"}, "view": {"id": "1300"}}, "id": "1299", "type": "GlyphRenderer"}, {"attributes": {"axis": {"id": "1276"}, "coordinates": null, "dimension": 1, "grid_line_color": null, "group": null, "ticker": null}, "id": "1279", "type": "Grid"}, {"attributes": {"name": "location", "reload": false}, "id": "1348", "type": "panel.models.location.Location"}, {"attributes": {"bottom_units": "screen", "coordinates": null, "fill_alpha": 0.5, "fill_color": "lightgrey", "group": null, "left_units": "screen", "level": "overlay", "line_alpha": 1.0, "line_color": "black", "line_dash": [4, 4], "line_width": 2, "right_units": "screen", "syncable": false, "top_units": "screen"}, "id": "1285", "type": "BoxAnnotation"}, {"attributes": {"axis_label": "mpg", "coordinates": null, "formatter": {"id": "1303"}, "group": null, "major_label_policy": {"id": "1304"}, "ticker": {"id": "1273"}}, "id": "1272", "type": "LinearAxis"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "Markdown05125", "text": "&lt;h2&gt;MPG Explorer&lt;/h2&gt;"}, "id": "1255", "type": "panel.models.markup.HTML"}, {"attributes": {"axis": {"id": "1272"}, "coordinates": null, "grid_line_color": null, "group": null, "ticker": null}, "id": "1275", "type": "Grid"}, {"attributes": {"coordinates": null, "group": null, "text_color": "black", "text_font_size": "12pt"}, "id": "1264", "type": "Title"}, {"attributes": {}, "id": "1303", "type": "BasicTickFormatter"}, {"attributes": {}, "id": "1284", "type": "ResetTool"}, {"attributes": {}, "id": "1307", "type": "AllLabels"}, {"attributes": {}, "id": "1273", "type": "BasicTicker"}, {"attributes": {"color": "#aa0505", "margin": [5, 10, 5, 10], "title": "Color"}, "id": "1258", "type": "ColorPicker"}, {"attributes": {}, "id": "1306", "type": "BasicTickFormatter"}, {"attributes": {"margin": [5, 10, 5, 10], "options": ["mpg", "cyl", "displ", "hp", "weight", "accel", "yr"], "title": "y", "value": "hp"}, "id": "1257", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {}, "id": "1304", "type": "AllLabels"}, {"attributes": {"fill_color": {"value": "#AA0505"}, "hatch_color": {"value": "#AA0505"}, "line_color": {"value": "#AA0505"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1296", "type": "Scatter"}, {"attributes": {"end": 48.21142857142857, "reset_end": 48.21142857142857, "reset_start": 7.388571428571429, "start": 7.388571428571429, "tags": [[["mpg", "mpg", null]]]}, "id": "1260", "type": "Range1d"}, {"attributes": {"callback": null, "renderers": [{"id": "1299"}], "tags": ["hv_created"], "tooltips": [["mpg", "@{mpg}"], ["hp", "@{hp}"]]}, "id": "1262", "type": "HoverTool"}, {"attributes": {"fill_alpha": {"value": 0.1}, "fill_color": {"value": "#AA0505"}, "hatch_alpha": {"value": 0.1}, "hatch_color": {"value": "#AA0505"}, "line_alpha": {"value": 0.1}, "line_color": {"value": "#AA0505"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1297", "type": "Scatter"}, {"attributes": {"margin": [5, 10, 5, 10], "options": ["mpg", "cyl", "displ", "hp", "weight", "accel", "yr"], "title": "x", "value": "mpg"}, "id": "1256", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {}, "id": "1315", "type": "UnionRenderers"}, {"attributes": {}, "id": "1268", "type": "LinearScale"}, {"attributes": {"end": 248.4, "reset_end": 248.4, "reset_start": 27.599999999999998, "start": 27.599999999999998, "tags": [[["hp", "hp", null]]]}, "id": "1261", "type": "Range1d"}, {"attributes": {"tools": [{"id": "1262"}, {"id": "1280"}, {"id": "1281"}, {"id": "1282"}, {"id": "1283"}, {"id": "1284"}]}, "id": "1286", "type": "Toolbar"}], "root_ids": ["1253", "1348"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_7, 200)
+                }
+              };
+              embed_bokeh_7()
+            </script>
+<p>This alternative way of specifying the same app lets you declare the dependency between a function argument and a widget (or parameter) from the start, which can be clearer if you know the function will always and only be used in a GUI. Otherwise, the <code class="docutils literal notranslate"><span class="pre">pn.bind</span></code> version is preferred, because it allows you to keep the Panel-specific code separate (even in a different Python module or file) from the underlying analysis and plotting code.</p>
+</section>
+</section>
+<section id="interact-functions">
+<h2>Interact Functions<a class="headerlink" href="#interact-functions" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">interact</span></code> function will automatically generate a UI (including widgets) by inspecting the arguments of the function given to it, or by using additional hints you provide in the <code class="docutils literal notranslate"><span class="pre">interact</span></code> function call. If you have worked with the <a class="reference external" href="https://github.com/jupyter-widgets/ipywidgets"><code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code></a> package you may already be familiar with this approach. (In fact, the Panel interact function is modeled on the one from ipywidgets, making it simpler to port code between the two platforms.) The basic idea is that given a function that returns some object, Panel will inspect the arguments to that function, try to infer appropriate widgets for those arguments, and then re-run that function to update the output whenever one of the widgets generates an event. For more detail on how interact creates widgets and other ways of using it, see the Panel <a class="reference internal" href="Interact.html"><span class="doc std std-doc">interact user guide</span></a>.  This section instead focuses on when and why to use this API, laying out its benefits and drawbacks.</p>
+<p>The main benefit of this approach is convenience and ease of use.  You start by writing some function that returns an object, be that a plot, a dataframe, or anything else that Panel can render. Then with a single call to <code class="docutils literal notranslate"><span class="pre">pn.interact()</span></code>, you can immediately get an interactive UI, without ever instantiating any widgets or wiring up any callbacks explicitly. Unlike ipywidgets, the <code class="docutils literal notranslate"><span class="pre">pn.interact</span></code> call will return a Panel. This Panel can then be further modified by laying out the widgets and output separately, or combining these components with other panes. Even though <code class="docutils literal notranslate"><span class="pre">pn.interact</span></code> itself is limited in flexibility compared to the rest of Panel, you can still unpack and reconfigure the results from it to generate fairly complex GUIs in very little code.</p>
+<section id="id1">
+<h3>Pros:<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Easy to use (or at least easy to get started!).</p></li>
+<li><p>Doesn’t typically require modifying existing visualization code.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Cons:<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Most of the behavior is implicit, with magic happening by introspection, making it difficult to see how to modify the appearance or functionality of the resulting object.</p></li>
+<li><p>Customizing the layout requires indexing into the panel returned by <code class="docutils literal notranslate"><span class="pre">interact</span></code>.</p></li>
+</ul>
+<p>The simplest <code class="docutils literal notranslate"><span class="pre">interact</span></code> call can be a one-liner, but here we’ll show an example of intermediate complexity so that you get a good idea of what <code class="docutils literal notranslate"><span class="pre">interact</span></code> can do in practice. In this code, <code class="docutils literal notranslate"><span class="pre">pn.interact</span></code> infers the initial value for <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> from the <code class="docutils literal notranslate"><span class="pre">autompg_plot</span></code> function default arguments and their widget type and range from the <code class="docutils literal notranslate"><span class="pre">columns</span></code> list provided to <code class="docutils literal notranslate"><span class="pre">interact</span></code>. <code class="docutils literal notranslate"><span class="pre">interact</span></code> wouldn’t normally put up a color widget because it would have no way of knowing that this string-type argument represents an RGB color, and so here we explicitly create a color-picker widget and pass that as the value for the color so that we can control the color as well. Finally, we unpack the result from <code class="docutils literal notranslate"><span class="pre">interact</span></code> and rearrange it in a different layout with a title, to create the final app. See the Panel <a class="reference internal" href="Interact.html"><span class="doc std std-doc">interact user guide</span></a> for even simpler examples along with details about how to control the widgets and how to rearrange the layout.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ColorPicker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Color'</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'#4f4fdf'</span><span class="p">)</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">autompg_plot</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s1">'## MPG Explorer'</span><span class="p">,</span> <span class="n">layout</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">layout</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell7-py"></pre><pre class="pyodide-stderr" id="stderr-codecell7-py"></pre><div class="pyodide-output embedded" id="output-codecell7-py"></div>
+<script>
+              async function embed_bokeh_8 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell7-py", "root_id": "1379", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"children": [{"id": "1380"}, {"id": "1386"}], "margin": [0, 0, 0, 0], "name": "Row05350"}, "id": "1379", "type": "Row"}, {"attributes": {}, "id": "1411", "type": "ResetTool"}, {"attributes": {"children": [{"id": "1381"}, {"id": "1382"}], "margin": [0, 0, 0, 0], "name": "Column05349"}, "id": "1380", "type": "Column"}, {"attributes": {}, "id": "1408", "type": "PanTool"}, {"attributes": {}, "id": "1442", "type": "UnionRenderers"}, {"attributes": {"tools": [{"id": "1389"}, {"id": "1407"}, {"id": "1408"}, {"id": "1409"}, {"id": "1410"}, {"id": "1411"}]}, "id": "1413", "type": "Toolbar"}, {"attributes": {"coordinates": null, "group": null, "text_color": "black", "text_font_size": "12pt"}, "id": "1391", "type": "Title"}, {"attributes": {}, "id": "1397", "type": "LinearScale"}, {"attributes": {"callback": null, "renderers": [{"id": "1426"}], "tags": ["hv_created"], "tooltips": [["mpg", "@{mpg}"], ["hp", "@{hp}"]]}, "id": "1389", "type": "HoverTool"}, {"attributes": {}, "id": "1434", "type": "AllLabels"}, {"attributes": {"axis_label": "mpg", "coordinates": null, "formatter": {"id": "1430"}, "group": null, "major_label_policy": {"id": "1431"}, "ticker": {"id": "1400"}}, "id": "1399", "type": "LinearAxis"}, {"attributes": {"below": [{"id": "1399"}], "center": [{"id": "1402"}, {"id": "1406"}], "height": 300, "left": [{"id": "1403"}], "margin": [5, 5, 5, 5], "min_border_bottom": 10, "min_border_left": 10, "min_border_right": 10, "min_border_top": 10, "renderers": [{"id": "1426"}], "sizing_mode": "fixed", "title": {"id": "1391"}, "toolbar": {"id": "1413"}, "width": 700, "x_range": {"id": "1387"}, "x_scale": {"id": "1395"}, "y_range": {"id": "1388"}, "y_scale": {"id": "1397"}}, "id": "1390", "subtype": "Figure", "type": "Plot"}, {"attributes": {}, "id": "1395", "type": "LinearScale"}, {"attributes": {"data": {"hp": [130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 170, 160, 150, 225, 95, 95, 97, 85, 88, 46, 87, 90, 95, 113, 90, 215, 200, 210, 193, 88, 90, 95, 100, 105, 100, 88, 100, 165, 175, 153, 150, 180, 170, 175, 110, 72, 100, 88, 86, 90, 70, 76, 65, 69, 60, 70, 95, 80, 54, 90, 86, 165, 175, 150, 153, 150, 208, 155, 160, 190, 97, 150, 130, 140, 150, 112, 76, 87, 69, 86, 92, 97, 80, 88, 175, 150, 145, 137, 150, 198, 150, 158, 150, 215, 225, 175, 105, 100, 100, 88, 95, 46, 150, 167, 170, 180, 100, 88, 72, 94, 90, 85, 107, 90, 145, 230, 49, 75, 91, 112, 150, 110, 122, 180, 95, 100, 100, 67, 80, 65, 75, 100, 110, 105, 140, 150, 150, 140, 150, 83, 67, 78, 52, 61, 75, 75, 75, 97, 93, 67, 95, 105, 72, 72, 170, 145, 150, 148, 110, 105, 110, 95, 110, 110, 129, 75, 83, 100, 78, 96, 71, 97, 97, 70, 90, 95, 88, 98, 115, 53, 86, 81, 92, 79, 83, 140, 150, 120, 152, 100, 105, 81, 90, 52, 60, 70, 53, 100, 78, 110, 95, 71, 70, 75, 72, 102, 150, 88, 108, 120, 180, 145, 130, 150, 68, 80, 58, 96, 70, 145, 110, 145, 130, 110, 105, 100, 98, 180, 170, 190, 149, 78, 88, 75, 89, 63, 83, 67, 78, 97, 110, 110, 48, 66, 52, 70, 60, 110, 140, 139, 105, 95, 85, 88, 100, 90, 105, 85, 110, 120, 145, 165, 139, 140, 68, 95, 97, 75, 95, 105, 85, 97, 103, 125, 115, 133, 71, 68, 115, 85, 88, 90, 110, 130, 129, 138, 135, 155, 142, 125, 150, 71, 65, 80, 80, 77, 125, 71, 90, 70, 70, 65, 69, 90, 115, 115, 90, 76, 60, 70, 65, 90, 88, 90, 90, 78, 90, 75, 92, 75, 65, 105, 65, 48, 48, 67, 67, 67, 67, 62, 132, 100, 88, 72, 84, 84, 92, 110, 84, 58, 64, 60, 67, 65, 62, 68, 63, 65, 65, 74, 75, 75, 100, 74, 80, 76, 116, 120, 110, 105, 88, 85, 88, 88, 88, 85, 84, 90, 92, 74, 68, 68, 63, 70, 88, 75, 70, 67, 67, 67, 110, 85, 92, 112, 96, 84, 90, 86, 52, 84, 79, 82], "mpg": {"__ndarray__": "AAAAAAAAMkAAAAAAAAAuQAAAAAAAADJAAAAAAAAAMEAAAAAAAAAxQAAAAAAAAC5AAAAAAAAALEAAAAAAAAAsQAAAAAAAACxAAAAAAAAALkAAAAAAAAAuQAAAAAAAACxAAAAAAAAALkAAAAAAAAAsQAAAAAAAADhAAAAAAAAANkAAAAAAAAAyQAAAAAAAADVAAAAAAAAAO0AAAAAAAAA6QAAAAAAAADlAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAANUAAAAAAAAAkQAAAAAAAACRAAAAAAAAAJkAAAAAAAAAiQAAAAAAAADtAAAAAAAAAPEAAAAAAAAA5QAAAAAAAADNAAAAAAAAAMEAAAAAAAAAxQAAAAAAAADNAAAAAAAAAMkAAAAAAAAAsQAAAAAAAACxAAAAAAAAALEAAAAAAAAAsQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAqQAAAAAAAADJAAAAAAAAANkAAAAAAAAAzQAAAAAAAADJAAAAAAAAAN0AAAAAAAAA8QAAAAAAAAD5AAAAAAAAAPkAAAAAAAAA/QAAAAAAAgEFAAAAAAAAAO0AAAAAAAAA6QAAAAAAAADhAAAAAAAAAOUAAAAAAAAA3QAAAAAAAADRAAAAAAAAANUAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAsQAAAAAAAADFAAAAAAAAAJkAAAAAAAAAqQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAzQAAAAAAAAC5AAAAAAAAAKkAAAAAAAAAqQAAAAAAAACxAAAAAAAAAMkAAAAAAAAA2QAAAAAAAADVAAAAAAAAAOkAAAAAAAAA2QAAAAAAAADxAAAAAAAAAN0AAAAAAAAA8QAAAAAAAADtAAAAAAAAAKkAAAAAAAAAsQAAAAAAAACpAAAAAAAAALEAAAAAAAAAuQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAqQAAAAAAAACxAAAAAAAAAKkAAAAAAAAAoQAAAAAAAACpAAAAAAAAAMkAAAAAAAAAwQAAAAAAAADJAAAAAAAAAMkAAAAAAAAA3QAAAAAAAADpAAAAAAAAAJkAAAAAAAAAoQAAAAAAAACpAAAAAAAAAKEAAAAAAAAAyQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADJAAAAAAAAAM0AAAAAA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", "dtype": "float64", "order": "little", "shape": [392]}}, "selected": {"id": "1421"}, "selection_policy": {"id": "1442"}}, "id": "1420", "type": "ColumnDataSource"}, {"attributes": {"source": {"id": "1420"}}, "id": "1427", "type": "CDSView"}, {"attributes": {}, "id": "1400", "type": "BasicTicker"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "Markdown05347", "text": "&lt;h2&gt;MPG Explorer&lt;/h2&gt;"}, "id": "1381", "type": "panel.models.markup.HTML"}, {"attributes": {"bottom_units": "screen", "coordinates": null, "fill_alpha": 0.5, "fill_color": "lightgrey", "group": null, "left_units": "screen", "level": "overlay", "line_alpha": 1.0, "line_color": "black", "line_dash": [4, 4], "line_width": 2, "right_units": "screen", "syncable": false, "top_units": "screen"}, "id": "1412", "type": "BoxAnnotation"}, {"attributes": {}, "id": "1409", "type": "WheelZoomTool"}, {"attributes": {"angle": {"value": 0.0}, "fill_alpha": {"value": 1.0}, "fill_color": {"value": "#4f4fdf"}, "hatch_alpha": {"value": 1.0}, "hatch_color": {"value": "#4f4fdf"}, "hatch_scale": {"value": 12.0}, "hatch_weight": {"value": 1.0}, "line_alpha": {"value": 1.0}, "line_cap": {"value": "butt"}, "line_color": {"value": "#4f4fdf"}, "line_dash": {"value": []}, "line_dash_offset": {"value": 0}, "line_join": {"value": "bevel"}, "line_width": {"value": 1}, "marker": {"value": "circle"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1428", "type": "Scatter"}, {"attributes": {"axis": {"id": "1399"}, "coordinates": null, "grid_line_color": null, "group": null, "ticker": null}, "id": "1402", "type": "Grid"}, {"attributes": {"children": [{"id": "1383"}, {"id": "1384"}, {"id": "1385"}], "margin": [0, 0, 0, 0], "name": "Column05346"}, "id": "1382", "type": "Column"}, {"attributes": {"end": 248.4, "reset_end": 248.4, "reset_start": 27.599999999999998, "start": 27.599999999999998, "tags": [[["hp", "hp", null]]]}, "id": "1388", "type": "Range1d"}, {"attributes": {"axis_label": "hp", "coordinates": null, "formatter": {"id": "1433"}, "group": null, "major_label_policy": {"id": "1434"}, "ticker": {"id": "1404"}}, "id": "1403", "type": "LinearAxis"}, {"attributes": {"margin": [5, 10, 5, 10], "options": ["mpg", "cyl", "displ", "hp", "weight", "accel", "yr"], "title": "x", "value": "mpg"}, "id": "1383", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"axis": {"id": "1403"}, "coordinates": null, "dimension": 1, "grid_line_color": null, "group": null, "ticker": null}, "id": "1406", "type": "Grid"}, {"attributes": {}, "id": "1404", "type": "BasicTicker"}, {"attributes": {}, "id": "1421", "type": "Selection"}, {"attributes": {"children": [{"id": "1390"}], "margin": [0, 0, 0, 0], "name": "Row05345"}, "id": "1386", "type": "Row"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"value": "#4f4fdf"}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"value": "#4f4fdf"}, "line_alpha": {"value": 0.2}, "line_color": {"value": "#4f4fdf"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1425", "type": "Scatter"}, {"attributes": {"fill_color": {"value": "#4f4fdf"}, "hatch_color": {"value": "#4f4fdf"}, "line_color": {"value": "#4f4fdf"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1423", "type": "Scatter"}, {"attributes": {}, "id": "1430", "type": "BasicTickFormatter"}, {"attributes": {}, "id": "1407", "type": "SaveTool"}, {"attributes": {"name": "location", "reload": false}, "id": "1475", "type": "panel.models.location.Location"}, {"attributes": {"fill_alpha": {"value": 0.1}, "fill_color": {"value": "#4f4fdf"}, "hatch_alpha": {"value": 0.1}, "hatch_color": {"value": "#4f4fdf"}, "line_alpha": {"value": 0.1}, "line_color": {"value": "#4f4fdf"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1424", "type": "Scatter"}, {"attributes": {}, "id": "1431", "type": "AllLabels"}, {"attributes": {"coordinates": null, "data_source": {"id": "1420"}, "glyph": {"id": "1423"}, "group": null, "hover_glyph": null, "muted_glyph": {"id": "1425"}, "nonselection_glyph": {"id": "1424"}, "selection_glyph": {"id": "1428"}, "view": {"id": "1427"}}, "id": "1426", "type": "GlyphRenderer"}, {"attributes": {"overlay": {"id": "1412"}}, "id": "1410", "type": "BoxZoomTool"}, {"attributes": {"margin": [5, 10, 5, 10], "options": ["mpg", "cyl", "displ", "hp", "weight", "accel", "yr"], "title": "y", "value": "hp"}, "id": "1384", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"end": 48.21142857142857, "reset_end": 48.21142857142857, "reset_start": 7.388571428571429, "start": 7.388571428571429, "tags": [[["mpg", "mpg", null]]]}, "id": "1387", "type": "Range1d"}, {"attributes": {}, "id": "1433", "type": "BasicTickFormatter"}, {"attributes": {"color": "#4f4fdf", "margin": [5, 10, 5, 10], "title": "Color"}, "id": "1385", "type": "ColorPicker"}], "root_ids": ["1379", "1475"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_8, 200)
+                }
+              };
+              embed_bokeh_8()
+            </script>
+</section>
+</section>
+<section id="parameterized-classes">
+<h2>Parameterized Classes<a class="headerlink" href="#parameterized-classes" title="Permalink to this heading">#</a></h2>
+<p>The <a class="reference external" href="http://param.pyviz.org">Param</a> library allows expressing the parameters of a class (or a hierarchy of classes) completely independently of a GUI implementation. Panel and other libraries can then take those parameter declarations and turn them into a GUI to control the parameters. This approach allows the parameters controlling some computation to be captured specifically and explicitly (but as abstract parameters, not as widgets). Then thanks to the <code class="docutils literal notranslate"><span class="pre">@param.depends</span></code> decorator (similar to <code class="docutils literal notranslate"><span class="pre">@panel.depends</span></code> but for use in Parameterized classes without any dependency on Panel), it is then possible to directly express the dependencies between the parameters and the computation defined in some method on the class, all without ever importing Panel or any other GUI library. The resulting objects can then be used in both GUI and non-GUI contexts (batch computations, scripts, servers).</p>
+<p>The parameterized approach is a powerful way to encapsulate computation in self-contained classes, taking advantage of object-oriented programming patterns. It also makes it possible to express a problem completely independently from Panel or any other GUI code, while still getting a GUI for free as a last step. For more detail on using this approach see the <a class="reference internal" href="Param.html"><span class="doc std std-doc">Param user guide</span></a>.</p>
+<section id="id3">
+<h3>Pros:<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Declarative way of expressing parameters and dependencies between parameters and computation</p></li>
+<li><p>The resulting code is not tied to any particular GUI framework and can be used in other contexts as well</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Cons:<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Requires writing classes</p></li>
+<li><p>Less explicit about widgets to use for each parameter; can be harder to customize behavior than if widgets are instantiated explicitly</p></li>
+</ul>
+<p>In this model we declare a subclass of <code class="docutils literal notranslate"><span class="pre">param.Parameterized</span></code>, declare the parameters we want at the class level, make an instance of the class, and finally lay out the parameters and plot method of the class.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">param</span>
+
+<span class="k">class</span> <span class="nc">MPGExplorer</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Parameterized</span><span class="p">):</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Selector</span><span class="p">(</span><span class="n">objects</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Selector</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">'hp'</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">'#0f0f0f'</span><span class="p">)</span>
+
+    <span class="nd">@param</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">,</span> <span class="s1">'color'</span><span class="p">)</span> <span class="c1"># optional in this case</span>
+    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">autompg_plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+
+<span class="n">explorer</span> <span class="o">=</span> <span class="n">MPGExplorer</span><span class="p">()</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">explorer</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">explorer</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell8-py"></pre><pre class="pyodide-stderr" id="stderr-codecell8-py"></pre><div class="pyodide-output embedded" id="output-codecell8-py"></div>
+<script>
+              async function embed_bokeh_9 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell8-py", "root_id": "1506", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"children": [{"id": "1507"}, {"id": "1512"}], "margin": [0, 0, 0, 0], "name": "Row05478"}, "id": "1506", "type": "Row"}, {"attributes": {"children": [{"id": "1508"}, {"id": "1509"}, {"id": "1510"}, {"id": "1511"}], "margin": [5, 5, 5, 5], "min_width": 300, "name": "MPGExplorer", "width": 300}, "id": "1507", "type": "Column"}, {"attributes": {}, "id": "1530", "type": "BasicTicker"}, {"attributes": {}, "id": "1560", "type": "AllLabels"}, {"attributes": {"axis": {"id": "1529"}, "coordinates": null, "dimension": 1, "grid_line_color": null, "group": null, "ticker": null}, "id": "1532", "type": "Grid"}, {"attributes": {}, "id": "1547", "type": "Selection"}, {"attributes": {"below": [{"id": "1525"}], "center": [{"id": "1528"}, {"id": "1532"}], "height": 300, "left": [{"id": "1529"}], "margin": [5, 5, 5, 5], "min_border_bottom": 10, "min_border_left": 10, "min_border_right": 10, "min_border_top": 10, "renderers": [{"id": "1552"}], "sizing_mode": "fixed", "title": {"id": "1517"}, "toolbar": {"id": "1539"}, "width": 700, "x_range": {"id": "1513"}, "x_scale": {"id": "1521"}, "y_range": {"id": "1514"}, "y_scale": {"id": "1523"}}, "id": "1516", "subtype": "Figure", "type": "Plot"}, {"attributes": {"axis": {"id": "1525"}, "coordinates": null, "grid_line_color": null, "group": null, "ticker": null}, "id": "1528", "type": "Grid"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["mpg", "mpg"], ["cyl", "cyl"], ["displ", "displ"], ["hp", "hp"], ["weight", "weight"], ["accel", "accel"], ["yr", "yr"]], "title": "Y", "value": "hp"}, "id": "1510", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"bottom_units": "screen", "coordinates": null, "fill_alpha": 0.5, "fill_color": "lightgrey", "group": null, "left_units": "screen", "level": "overlay", "line_alpha": 1.0, "line_color": "black", "line_dash": [4, 4], "line_width": 2, "right_units": "screen", "syncable": false, "top_units": "screen"}, "id": "1538", "type": "BoxAnnotation"}, {"attributes": {}, "id": "1533", "type": "SaveTool"}, {"attributes": {}, "id": "1568", "type": "UnionRenderers"}, {"attributes": {"overlay": {"id": "1538"}}, "id": "1536", "type": "BoxZoomTool"}, {"attributes": {"color": "#0f0f0f", "margin": [5, 10, 5, 10], "title": "Color"}, "id": "1511", "type": "ColorPicker"}, {"attributes": {"end": 248.4, "reset_end": 248.4, "reset_start": 27.599999999999998, "start": 27.599999999999998, "tags": [[["hp", "hp", null]]]}, "id": "1514", "type": "Range1d"}, {"attributes": {}, "id": "1526", "type": "BasicTicker"}, {"attributes": {"coordinates": null, "group": null, "text_color": "black", "text_font_size": "12pt"}, "id": "1517", "type": "Title"}, {"attributes": {"axis_label": "mpg", "coordinates": null, "formatter": {"id": "1556"}, "group": null, "major_label_policy": {"id": "1557"}, "ticker": {"id": "1526"}}, "id": "1525", "type": "LinearAxis"}, {"attributes": {}, "id": "1534", "type": "PanTool"}, {"attributes": {"tools": [{"id": "1515"}, {"id": "1533"}, {"id": "1534"}, {"id": "1535"}, {"id": "1536"}, {"id": "1537"}]}, "id": "1539", "type": "Toolbar"}, {"attributes": {"margin": [5, 10, 5, 10], "name": "", "text": "<b>MPGExplorer</b>"}, "id": "1508", "type": "Div"}, {"attributes": {"fill_alpha": {"value": 0.1}, "fill_color": {"value": "#0f0f0f"}, "hatch_alpha": {"value": 0.1}, "hatch_color": {"value": "#0f0f0f"}, "line_alpha": {"value": 0.1}, "line_color": {"value": "#0f0f0f"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1550", "type": "Scatter"}, {"attributes": {"name": "location", "reload": false}, "id": "1601", "type": "panel.models.location.Location"}, {"attributes": {}, "id": "1523", "type": "LinearScale"}, {"attributes": {}, "id": "1557", "type": "AllLabels"}, {"attributes": {"angle": {"value": 0.0}, "fill_alpha": {"value": 1.0}, "fill_color": {"value": "#0f0f0f"}, "hatch_alpha": {"value": 1.0}, "hatch_color": {"value": "#0f0f0f"}, "hatch_scale": {"value": 12.0}, "hatch_weight": {"value": 1.0}, "line_alpha": {"value": 1.0}, "line_cap": {"value": "butt"}, "line_color": {"value": "#0f0f0f"}, "line_dash": {"value": []}, "line_dash_offset": {"value": 0}, "line_join": {"value": "bevel"}, "line_width": {"value": 1}, "marker": {"value": "circle"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1554", "type": "Scatter"}, {"attributes": {"fill_color": {"value": "#0f0f0f"}, "hatch_color": {"value": "#0f0f0f"}, "line_color": {"value": "#0f0f0f"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1549", "type": "Scatter"}, {"attributes": {"callback": null, "renderers": [{"id": "1552"}], "tags": ["hv_created"], "tooltips": [["mpg", "@{mpg}"], ["hp", "@{hp}"]]}, "id": "1515", "type": "HoverTool"}, {"attributes": {"coordinates": null, "data_source": {"id": "1546"}, "glyph": {"id": "1549"}, "group": null, "hover_glyph": null, "muted_glyph": {"id": "1551"}, "nonselection_glyph": {"id": "1550"}, "selection_glyph": {"id": "1554"}, "view": {"id": "1553"}}, "id": "1552", "type": "GlyphRenderer"}, {"attributes": {"data": {"hp": [130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 170, 160, 150, 225, 95, 95, 97, 85, 88, 46, 87, 90, 95, 113, 90, 215, 200, 210, 193, 88, 90, 95, 100, 105, 100, 88, 100, 165, 175, 153, 150, 180, 170, 175, 110, 72, 100, 88, 86, 90, 70, 76, 65, 69, 60, 70, 95, 80, 54, 90, 86, 165, 175, 150, 153, 150, 208, 155, 160, 190, 97, 150, 130, 140, 150, 112, 76, 87, 69, 86, 92, 97, 80, 88, 175, 150, 145, 137, 150, 198, 150, 158, 150, 215, 225, 175, 105, 100, 100, 88, 95, 46, 150, 167, 170, 180, 100, 88, 72, 94, 90, 85, 107, 90, 145, 230, 49, 75, 91, 112, 150, 110, 122, 180, 95, 100, 100, 67, 80, 65, 75, 100, 110, 105, 140, 150, 150, 140, 150, 83, 67, 78, 52, 61, 75, 75, 75, 97, 93, 67, 95, 105, 72, 72, 170, 145, 150, 148, 110, 105, 110, 95, 110, 110, 129, 75, 83, 100, 78, 96, 71, 97, 97, 70, 90, 95, 88, 98, 115, 53, 86, 81, 92, 79, 83, 140, 150, 120, 152, 100, 105, 81, 90, 52, 60, 70, 53, 100, 78, 110, 95, 71, 70, 75, 72, 102, 150, 88, 108, 120, 180, 145, 130, 150, 68, 80, 58, 96, 70, 145, 110, 145, 130, 110, 105, 100, 98, 180, 170, 190, 149, 78, 88, 75, 89, 63, 83, 67, 78, 97, 110, 110, 48, 66, 52, 70, 60, 110, 140, 139, 105, 95, 85, 88, 100, 90, 105, 85, 110, 120, 145, 165, 139, 140, 68, 95, 97, 75, 95, 105, 85, 97, 103, 125, 115, 133, 71, 68, 115, 85, 88, 90, 110, 130, 129, 138, 135, 155, 142, 125, 150, 71, 65, 80, 80, 77, 125, 71, 90, 70, 70, 65, 69, 90, 115, 115, 90, 76, 60, 70, 65, 90, 88, 90, 90, 78, 90, 75, 92, 75, 65, 105, 65, 48, 48, 67, 67, 67, 67, 62, 132, 100, 88, 72, 84, 84, 92, 110, 84, 58, 64, 60, 67, 65, 62, 68, 63, 65, 65, 74, 75, 75, 100, 74, 80, 76, 116, 120, 110, 105, 88, 85, 88, 88, 88, 85, 84, 90, 92, 74, 68, 68, 63, 70, 88, 75, 70, 67, 67, 67, 110, 85, 92, 112, 96, 84, 90, 86, 52, 84, 79, 82], "mpg": {"__ndarray__": "AAAAAAAAMkAAAAAAAAAuQAAAAAAAADJAAAAAAAAAMEAAAAAAAAAxQAAAAAAAAC5AAAAAAAAALEAAAAAAAAAsQAAAAAAAACxAAAAAAAAALkAAAAAAAAAuQAAAAAAAACxAAAAAAAAALkAAAAAAAAAsQAAAAAAAADhAAAAAAAAANkAAAAAAAAAyQAAAAAAAADVAAAAAAAAAO0AAAAAAAAA6QAAAAAAAADlAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAANUAAAAAAAAAkQAAAAAAAACRAAAAAAAAAJkAAAAAAAAAiQAAAAAAAADtAAAAAAAAAPEAAAAAAAAA5QAAAAAAAADNAAAAAAAAAMEAAAAAAAAAxQAAAAAAAADNAAAAAAAAAMkAAAAAAAAAsQAAAAAAAACxAAAAAAAAALEAAAAAAAAAsQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAqQAAAAAAAADJAAAAAAAAANkAAAAAAAAAzQAAAAAAAADJAAAAAAAAAN0AAAAAAAAA8QAAAAAAAAD5AAAAAAAAAPkAAAAAAAAA/QAAAAAAAgEFAAAAAAAAAO0AAAAAAAAA6QAAAAAAAADhAAAAAAAAAOUAAAAAAAAA3QAAAAAAAADRAAAAAAAAANUAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAsQAAAAAAAADFAAAAAAAAAJkAAAAAAAAAqQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAzQAAAAAAAAC5AAAAAAAAAKkAAAAAAAAAqQAAAAAAAACxAAAAAAAAAMkAAAAAAAAA2QAAAAAAAADVAAAAAAAAAOkAAAAAAAAA2QAAAAAAAADxAAAAAAAAAN0AAAAAAAAA8QAAAAAAAADtAAAAAAAAAKkAAAAAAAAAsQAAAAAAAACpAAAAAAAAALEAAAAAAAAAuQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAqQAAAAAAAACxAAAAAAAAAKkAAAAAAAAAoQAAAAAAAACpAAAAAAAAAMkAAAAAAAAAwQAAAAAAAADJAAAAAAAAAMkAAAAAAAAA3QAAAAAAAADpAAAAAAAAAJkAAAAAAAAAoQAAAAAAAACpAAAAAAAAAKEAAAAAAAAAyQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADJAAAAAAAAAM0AAAAAA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", "dtype": "float64", "order": "little", "shape": [392]}}, "selected": {"id": "1547"}, "selection_policy": {"id": "1568"}}, "id": "1546", "type": "ColumnDataSource"}, {"attributes": {"source": {"id": "1546"}}, "id": "1553", "type": "CDSView"}, {"attributes": {}, "id": "1559", "type": "BasicTickFormatter"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"value": "#0f0f0f"}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"value": "#0f0f0f"}, "line_alpha": {"value": 0.2}, "line_color": {"value": "#0f0f0f"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1551", "type": "Scatter"}, {"attributes": {"children": [{"id": "1516"}], "margin": [0, 0, 0, 0], "name": "Row05385"}, "id": "1512", "type": "Row"}, {"attributes": {}, "id": "1521", "type": "LinearScale"}, {"attributes": {"end": 48.21142857142857, "reset_end": 48.21142857142857, "reset_start": 7.388571428571429, "start": 7.388571428571429, "tags": [[["mpg", "mpg", null]]]}, "id": "1513", "type": "Range1d"}, {"attributes": {}, "id": "1535", "type": "WheelZoomTool"}, {"attributes": {"axis_label": "hp", "coordinates": null, "formatter": {"id": "1559"}, "group": null, "major_label_policy": {"id": "1560"}, "ticker": {"id": "1530"}}, "id": "1529", "type": "LinearAxis"}, {"attributes": {}, "id": "1537", "type": "ResetTool"}, {"attributes": {"margin": [5, 10, 5, 10], "options": [["mpg", "mpg"], ["cyl", "cyl"], ["displ", "displ"], ["hp", "hp"], ["weight", "weight"], ["accel", "accel"], ["yr", "yr"]], "title": "X", "value": "mpg"}, "id": "1509", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {}, "id": "1556", "type": "BasicTickFormatter"}], "root_ids": ["1506", "1601"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_9, 200)
+                }
+              };
+              embed_bokeh_9()
+            </script>
+</section>
+</section>
+<section id="callbacks">
+<h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this heading">#</a></h2>
+<p>The callback API in panel is the lowest-level approach, affording the greatest amount of flexibility but also quickly growing in complexity because each new interactive behavior requires additional callbacks that can interact in complex ways. Nonetheless, callbacks are important to know about, and can often be used to complement the other approaches. For instance, one specific callback could be used in addition to the more reactive approaches the other APIs provide.</p>
+<p>For more details on defining callbacks see the <a class="reference internal" href="Links.html"><span class="doc std std-doc">Links user guide</span></a>.</p>
+<section id="id5">
+<h3>Pros:<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Complete and modular control over specific events</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>Cons:<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Complexity grows very quickly with the number of callbacks</p></li>
+<li><p>Have to handle initializing the plots separately</p></li>
+</ul>
+<p>In this approach we once again define the widgets. Unlike in other approaches we then have to define the actual layout, to ensure that the callback we define has something that it can update or replace. In this case we use a single callback to update the plot, but in many cases multiple callbacks might be required.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">'mpg'</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'x'</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">'hp'</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ColorPicker</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Color'</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'#880588'</span><span class="p">)</span>
+
+<span class="n">layout</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+    <span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s1">'## MPG Explorer'</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">),</span>
+    <span class="n">autompg_plot</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="n">layout</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="n">autompg_plot</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="s1">'value'</span><span class="p">)</span>
+<span class="n">y</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="s1">'value'</span><span class="p">)</span>
+<span class="n">color</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="s1">'value'</span><span class="p">)</span>
+
+<span class="n">layout</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell9-py"></pre><pre class="pyodide-stderr" id="stderr-codecell9-py"></pre><div class="pyodide-output embedded" id="output-codecell9-py"></div>
+<script>
+              async function embed_bokeh_10 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell9-py", "root_id": "1632", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {}, "id": "1682", "type": "AllLabels"}, {"attributes": {}, "id": "1648", "type": "LinearScale"}, {"attributes": {"end": 248.4, "reset_end": 248.4, "reset_start": 27.599999999999998, "start": 27.599999999999998, "tags": [[["hp", "hp", null]]]}, "id": "1639", "type": "Range1d"}, {"attributes": {"angle": {"value": 0.0}, "fill_alpha": {"value": 1.0}, "fill_color": {"value": "#880588"}, "hatch_alpha": {"value": 1.0}, "hatch_color": {"value": "#880588"}, "hatch_scale": {"value": 12.0}, "hatch_weight": {"value": 1.0}, "line_alpha": {"value": 1.0}, "line_cap": {"value": "butt"}, "line_color": {"value": "#880588"}, "line_dash": {"value": []}, "line_dash_offset": {"value": 0}, "line_join": {"value": "bevel"}, "line_width": {"value": 1}, "marker": {"value": "circle"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1679", "type": "Scatter"}, {"attributes": {}, "id": "1685", "type": "AllLabels"}, {"attributes": {}, "id": "1681", "type": "BasicTickFormatter"}, {"attributes": {"source": {"id": "1671"}}, "id": "1678", "type": "CDSView"}, {"attributes": {"bottom_units": "screen", "coordinates": null, "fill_alpha": 0.5, "fill_color": "lightgrey", "group": null, "left_units": "screen", "level": "overlay", "line_alpha": 1.0, "line_color": "black", "line_dash": [4, 4], "line_width": 2, "right_units": "screen", "syncable": false, "top_units": "screen"}, "id": "1663", "type": "BoxAnnotation"}, {"attributes": {"tools": [{"id": "1640"}, {"id": "1658"}, {"id": "1659"}, {"id": "1660"}, {"id": "1661"}, {"id": "1662"}]}, "id": "1664", "type": "Toolbar"}, {"attributes": {"coordinates": null, "group": null, "text_color": "black", "text_font_size": "12pt"}, "id": "1642", "type": "Title"}, {"attributes": {"end": 48.21142857142857, "reset_end": 48.21142857142857, "reset_start": 7.388571428571429, "start": 7.388571428571429, "tags": [[["mpg", "mpg", null]]]}, "id": "1638", "type": "Range1d"}, {"attributes": {"coordinates": null, "data_source": {"id": "1671"}, "glyph": {"id": "1674"}, "group": null, "hover_glyph": null, "muted_glyph": {"id": "1676"}, "nonselection_glyph": {"id": "1675"}, "selection_glyph": {"id": "1679"}, "view": {"id": "1678"}}, "id": "1677", "type": "GlyphRenderer"}, {"attributes": {"margin": [5, 10, 5, 10], "options": ["mpg", "cyl", "displ", "hp", "weight", "accel", "yr"], "title": "x", "value": "mpg"}, "id": "1635", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {}, "id": "1651", "type": "BasicTicker"}, {"attributes": {"data": {"hp": [130, 165, 150, 150, 140, 198, 220, 215, 225, 190, 170, 160, 150, 225, 95, 95, 97, 85, 88, 46, 87, 90, 95, 113, 90, 215, 200, 210, 193, 88, 90, 95, 100, 105, 100, 88, 100, 165, 175, 153, 150, 180, 170, 175, 110, 72, 100, 88, 86, 90, 70, 76, 65, 69, 60, 70, 95, 80, 54, 90, 86, 165, 175, 150, 153, 150, 208, 155, 160, 190, 97, 150, 130, 140, 150, 112, 76, 87, 69, 86, 92, 97, 80, 88, 175, 150, 145, 137, 150, 198, 150, 158, 150, 215, 225, 175, 105, 100, 100, 88, 95, 46, 150, 167, 170, 180, 100, 88, 72, 94, 90, 85, 107, 90, 145, 230, 49, 75, 91, 112, 150, 110, 122, 180, 95, 100, 100, 67, 80, 65, 75, 100, 110, 105, 140, 150, 150, 140, 150, 83, 67, 78, 52, 61, 75, 75, 75, 97, 93, 67, 95, 105, 72, 72, 170, 145, 150, 148, 110, 105, 110, 95, 110, 110, 129, 75, 83, 100, 78, 96, 71, 97, 97, 70, 90, 95, 88, 98, 115, 53, 86, 81, 92, 79, 83, 140, 150, 120, 152, 100, 105, 81, 90, 52, 60, 70, 53, 100, 78, 110, 95, 71, 70, 75, 72, 102, 150, 88, 108, 120, 180, 145, 130, 150, 68, 80, 58, 96, 70, 145, 110, 145, 130, 110, 105, 100, 98, 180, 170, 190, 149, 78, 88, 75, 89, 63, 83, 67, 78, 97, 110, 110, 48, 66, 52, 70, 60, 110, 140, 139, 105, 95, 85, 88, 100, 90, 105, 85, 110, 120, 145, 165, 139, 140, 68, 95, 97, 75, 95, 105, 85, 97, 103, 125, 115, 133, 71, 68, 115, 85, 88, 90, 110, 130, 129, 138, 135, 155, 142, 125, 150, 71, 65, 80, 80, 77, 125, 71, 90, 70, 70, 65, 69, 90, 115, 115, 90, 76, 60, 70, 65, 90, 88, 90, 90, 78, 90, 75, 92, 75, 65, 105, 65, 48, 48, 67, 67, 67, 67, 62, 132, 100, 88, 72, 84, 84, 92, 110, 84, 58, 64, 60, 67, 65, 62, 68, 63, 65, 65, 74, 75, 75, 100, 74, 80, 76, 116, 120, 110, 105, 88, 85, 88, 88, 88, 85, 84, 90, 92, 74, 68, 68, 63, 70, 88, 75, 70, 67, 67, 67, 110, 85, 92, 112, 96, 84, 90, 86, 52, 84, 79, 82], "mpg": {"__ndarray__": "AAAAAAAAMkAAAAAAAAAuQAAAAAAAADJAAAAAAAAAMEAAAAAAAAAxQAAAAAAAAC5AAAAAAAAALEAAAAAAAAAsQAAAAAAAACxAAAAAAAAALkAAAAAAAAAuQAAAAAAAACxAAAAAAAAALkAAAAAAAAAsQAAAAAAAADhAAAAAAAAANkAAAAAAAAAyQAAAAAAAADVAAAAAAAAAO0AAAAAAAAA6QAAAAAAAADlAAAAAAAAAOEAAAAAAAAA5QAAAAAAAADpAAAAAAAAANUAAAAAAAAAkQAAAAAAAACRAAAAAAAAAJkAAAAAAAAAiQAAAAAAAADtAAAAAAAAAPEAAAAAAAAA5QAAAAAAAADNAAAAAAAAAMEAAAAAAAAAxQAAAAAAAADNAAAAAAAAAMkAAAAAAAAAsQAAAAAAAACxAAAAAAAAALEAAAAAAAAAsQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAqQAAAAAAAADJAAAAAAAAANkAAAAAAAAAzQAAAAAAAADJAAAAAAAAAN0AAAAAAAAA8QAAAAAAAAD5AAAAAAAAAPkAAAAAAAAA/QAAAAAAAgEFAAAAAAAAAO0AAAAAAAAA6QAAAAAAAADhAAAAAAAAAOUAAAAAAAAA3QAAAAAAAADRAAAAAAAAANUAAAAAAAAAqQAAAAAAAACxAAAAAAAAALkAAAAAAAAAsQAAAAAAAADFAAAAAAAAAJkAAAAAAAAAqQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAzQAAAAAAAAC5AAAAAAAAAKkAAAAAAAAAqQAAAAAAAACxAAAAAAAAAMkAAAAAAAAA2QAAAAAAAADVAAAAAAAAAOkAAAAAAAAA2QAAAAAAAADxAAAAAAAAAN0AAAAAAAAA8QAAAAAAAADtAAAAAAAAAKkAAAAAAAAAsQAAAAAAAACpAAAAAAAAALEAAAAAAAAAuQAAAAAAAAChAAAAAAAAAKkAAAAAAAAAqQAAAAAAAACxAAAAAAAAAKkAAAAAAAAAoQAAAAAAAACpAAAAAAAAAMkAAAAAAAAAwQAAAAAAAADJAAAAAAAAAMkAAAAAAAAA3QAAAAAAAADpAAAAAAAAAJkAAAAAAAAAoQAAAAAAAACpAAAAAAAAAKEAAAAAAAAAyQAAAAAAAADRAAAAAAAAANUAAAAAAAAA2QAAAAAAAADJAAAAAAAAAM0AAAAAA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", "dtype": "float64", "order": "little", "shape": [392]}}, "selected": {"id": "1672"}, "selection_policy": {"id": "1693"}}, "id": "1671", "type": "ColumnDataSource"}, {"attributes": {}, "id": "1658", "type": "SaveTool"}, {"attributes": {"axis": {"id": "1650"}, "coordinates": null, "grid_line_color": null, "group": null, "ticker": null}, "id": "1653", "type": "Grid"}, {"attributes": {}, "id": "1684", "type": "BasicTickFormatter"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "Markdown05501", "text": "&lt;h2&gt;MPG Explorer&lt;/h2&gt;"}, "id": "1634", "type": "panel.models.markup.HTML"}, {"attributes": {"axis_label": "mpg", "coordinates": null, "formatter": {"id": "1681"}, "group": null, "major_label_policy": {"id": "1682"}, "ticker": {"id": "1651"}}, "id": "1650", "type": "LinearAxis"}, {"attributes": {"fill_alpha": {"value": 0.1}, "fill_color": {"value": "#880588"}, "hatch_alpha": {"value": 0.1}, "hatch_color": {"value": "#880588"}, "line_alpha": {"value": 0.1}, "line_color": {"value": "#880588"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1675", "type": "Scatter"}, {"attributes": {}, "id": "1672", "type": "Selection"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"value": "#880588"}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"value": "#880588"}, "line_alpha": {"value": 0.2}, "line_color": {"value": "#880588"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1676", "type": "Scatter"}, {"attributes": {}, "id": "1662", "type": "ResetTool"}, {"attributes": {"children": [{"id": "1633"}, {"id": "1641"}], "margin": [0, 0, 0, 0], "name": "Row05596"}, "id": "1632", "type": "Row"}, {"attributes": {}, "id": "1660", "type": "WheelZoomTool"}, {"attributes": {"callback": null, "renderers": [{"id": "1677"}], "tags": ["hv_created"], "tooltips": [["mpg", "@{mpg}"], ["hp", "@{hp}"]]}, "id": "1640", "type": "HoverTool"}, {"attributes": {}, "id": "1655", "type": "BasicTicker"}, {"attributes": {"overlay": {"id": "1663"}}, "id": "1661", "type": "BoxZoomTool"}, {"attributes": {}, "id": "1693", "type": "UnionRenderers"}, {"attributes": {"below": [{"id": "1650"}], "center": [{"id": "1653"}, {"id": "1657"}], "height": 300, "left": [{"id": "1654"}], "margin": [5, 5, 5, 5], "min_border_bottom": 10, "min_border_left": 10, "min_border_right": 10, "min_border_top": 10, "renderers": [{"id": "1677"}], "sizing_mode": "fixed", "title": {"id": "1642"}, "toolbar": {"id": "1664"}, "width": 700, "x_range": {"id": "1638"}, "x_scale": {"id": "1646"}, "y_range": {"id": "1639"}, "y_scale": {"id": "1648"}}, "id": "1641", "subtype": "Figure", "type": "Plot"}, {"attributes": {}, "id": "1659", "type": "PanTool"}, {"attributes": {"name": "location", "reload": false}, "id": "1726", "type": "panel.models.location.Location"}, {"attributes": {}, "id": "1646", "type": "LinearScale"}, {"attributes": {"fill_color": {"value": "#880588"}, "hatch_color": {"value": "#880588"}, "line_color": {"value": "#880588"}, "size": {"value": 5.477225575051661}, "x": {"field": "mpg"}, "y": {"field": "hp"}}, "id": "1674", "type": "Scatter"}, {"attributes": {"children": [{"id": "1634"}, {"id": "1635"}, {"id": "1636"}, {"id": "1637"}], "margin": [0, 0, 0, 0], "name": "Column05503"}, "id": "1633", "type": "Column"}, {"attributes": {"margin": [5, 10, 5, 10], "options": ["mpg", "cyl", "displ", "hp", "weight", "accel", "yr"], "title": "y", "value": "hp"}, "id": "1636", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"color": "#880588", "margin": [5, 10, 5, 10], "title": "Color"}, "id": "1637", "type": "ColorPicker"}, {"attributes": {"axis_label": "hp", "coordinates": null, "formatter": {"id": "1684"}, "group": null, "major_label_policy": {"id": "1685"}, "ticker": {"id": "1655"}}, "id": "1654", "type": "LinearAxis"}, {"attributes": {"axis": {"id": "1654"}, "coordinates": null, "dimension": 1, "grid_line_color": null, "group": null, "ticker": null}, "id": "1657", "type": "Grid"}], "root_ids": ["1632", "1726"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_10, 200)
+                }
+              };
+              embed_bokeh_10()
+            </script>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>As we have seen, each of these four APIs allows building the same basic application. The choice of the appropriate API depends very much on the use case. To build a quick throwaway GUI the <code class="docutils literal notranslate"><span class="pre">interact</span></code> approach can be completely sufficient. A much more explicit, flexible, and maintainable version of that approach is to define a reactive function that is bound directly to a set of widgets using <code class="docutils literal notranslate"><span class="pre">pn.bind</span></code>. When writing libraries or other code that might be used independently of the actual GUI, a Parameterized class can be a great way to organize the code. Finally, if you need low-level control or want to complement any of the other approaches, defining explicit callbacks can be the best approach. Nearly all of the functionality of Panel can be accessed using any of the APIs, but each makes certain things much easier than others. Choosing the API is therefore a matter of considering the tradeoffs and of course also a matter of preference. If you still aren’t sure after reading the above, then just go with the <code class="docutils literal notranslate"><span class="pre">pn.bind</span></code> reactive API!</p>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="Components.html" id="prev-link" title="previous page">
+<i class="fas fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Component overview</p>
+</div>
+</a>
+<a class="right-next" href="Customization.html" id="next-link" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Controlling style &amp; layout</p>
+</div>
+<i class="fas fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+<footer class="bd-footer"><div class="bd-footer__inner container">
+<div class="footer-item">
+<p class="copyright">
+    © Copyright 2019-2022 Holoviz contributors.<br/>
+</p>
+</div>
+<div class="footer-item">
+<p class="last-updated">
+Last updated on 2022-10-05.<br/>
+</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

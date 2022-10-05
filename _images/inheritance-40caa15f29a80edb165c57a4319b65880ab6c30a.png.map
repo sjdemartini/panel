@@ -1,0 +1,13 @@
+<map id="inheritance89db985b53" name="inheritance89db985b53">
+<area shape="rect" id="node1" href="#panel.io.notifications.Notification" target="_top" title="panel.io.notifications.Notification" alt="" coords="187,3,328,18"/>
+<area shape="rect" id="node2" title="params(name=String)" alt="" coords="3,33,159,48"/>
+<area shape="rect" id="node9" title="Baseclass for objects which can be rendered to a Bokeh model." alt="" coords="199,33,317,48"/>
+<area shape="rect" id="node10" href="panel.viewable.html#panel.viewable.Layoutable" target="_top" title="Layoutable defines shared style and layout related parameters" alt="" coords="199,62,316,77"/>
+<area shape="rect" id="node3" href="#panel.io.notifications.NotificationArea" target="_top" title="panel.io.notifications.NotificationArea" alt="" coords="990,48,1149,63"/>
+<area shape="rect" id="node4" href="#panel.io.notifications.NotificationAreaBase" target="_top" title="panel.io.notifications.NotificationAreaBase" alt="" coords="784,48,962,63"/>
+<area shape="rect" id="node5" href="panel.reactive.html#panel.reactive.ReactiveHTML" target="_top" title="ReactiveHTML provides bi&#45;directional syncing of arbitrary HTML" alt="" coords="629,48,756,63"/>
+<area shape="rect" id="node6" href="panel.reactive.html#panel.reactive.Reactive" target="_top" title="Reactive is a Viewable object that also supports syncing between" alt="" coords="496,48,600,63"/>
+<area shape="rect" id="node7" title="Syncable is an extension of the Renderable object which can not" alt="" coords="359,33,465,48"/>
+<area shape="rect" id="node8" href="panel.viewable.html#panel.viewable.Viewable" target="_top" title="Viewable is the baseclass all visual components in the panel" alt="" coords="357,62,467,77"/>
+<area shape="rect" id="node11" title="Mixin to define methods shared by objects which can served." alt="" coords="193,91,323,106"/>
+</map>

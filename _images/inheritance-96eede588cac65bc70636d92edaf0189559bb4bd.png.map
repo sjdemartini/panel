@@ -1,0 +1,4 @@
+<map id="inheritanceb34f5afe70" name="inheritanceb34f5afe70">
+<area shape="rect" id="node1" href="#panel.pane.media.Audio" target="_top" title="The `Audio` pane displays an audio player given a local or remote audio" alt="" coords="5,55,185,80"/>
+<area shape="rect" id="node2" href="#panel.pane.media.Video" target="_top" title="The `Video` Pane displays a video player given a local or remote video" alt="" coords="5,5,185,31"/>
+</map>

@@ -1,0 +1,2221 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
+<link href="../site.webmanifest" rel="manifest"/>
+<title>panel.material Package — Panel v0.14.0</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/mystnb.css" rel="stylesheet" type="text/css">
+<link href="../_static/graphviz.css" rel="stylesheet" type="text/css">
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/dataframe.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695" rel="preload"/>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/sphinx_highlight.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../_static/design-tabs.js"></script>
+<script src="../_static/ServiceHandler.js"></script>
+<script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-154795830-2', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
+<link href="../_static/favicon.ico" rel="shortcut icon">
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="panel.template.react.html" rel="next" title="panel.react Package"/>
+<link href="panel.template.golden.html" rel="prev" title="panel.golden Package"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></link></link></head>
+<body data-default-mode="light" data-offset="180" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="bd-header-announcement container-fluid" id="banner">
+</div>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+<div id="navbar-start">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../_static/logo_horizontal.png"/>
+<img alt="Logo image" class="logo__image only-dark" src="../_static/logo_horizontal.png"/>
+</a>
+</div>
+<button aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-collapsible" data-toggle="collapse" type="button">
+<span class="fas fa-bars"></span>
+</button>
+<div class="col-lg-9 collapse navbar-collapse" id="navbar-collapsible">
+<div class="mr-auto" id="navbar-center">
+<div class="navbar-center-item">
+<ul class="navbar-nav" id="navbar-main-elements">
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../index.html">
+  Overview
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../gallery/index.html">
+  Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../reference/index.html">
+  Reference Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../developer_guide/index.html">
+  Developer Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="index.html">
+  API Reference
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../releases.html">
+  Releases
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../FAQ.html">
+  FAQ
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../about/index.html">
+  About
+ </a>
+</li>
+</ul>
+</div>
+</div>
+<div id="navbar-end">
+<div class="navbar-end-item">
+<ul aria-label="Icon Links" class="navbar-nav" id="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/holoviz/panel" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://twitter.com/Panel_Org" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://discourse.holoviz.org/c/panel/5" rel="noopener" target="_blank" title="Discourse"><span><i class="fab fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bd-container container-xl">
+<div class="bd-container__inner row">
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-2 bd-sidebar">
+<div class="sidebar-start-items"><form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search the docs ..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../index.html">
+   Overview
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../getting_started/index.html">
+   Getting Started
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/installation.html">
+     Installation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/build_app.html">
+     Build an app
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/core_concepts.html">
+     Core Concepts
+    </a>
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../user_guide/index.html">
+   User Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Overview.html">
+     Overview
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Components.html">
+     Components
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/APIs.html">
+     APIs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Customization.html">
+     Customization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Interact.html">
+     Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Widgets.html">
+     Widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Param.html">
+     Parameters
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Links.html">
+     Linking
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Pipelines.html">
+     Pipelines
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Templates.html">
+     Templates
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Performance_and_Debugging.html">
+     Performance and Debugging
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Session_State_and_Callbacks.html">
+     Session state &amp; Callbacks
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Async_and_Concurrency.html">
+     Asynchronous and Concurrent Process
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Display_and_Export.html">
+     Display &amp; Export
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Running_in_Webassembly.html">
+     Running Panel in the Browser with WASM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Server_Configuration.html">
+     Server Configuration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Server_Deployment.html">
+     Server Deployment
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Authentication.html">
+     Authentication
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Django.html">
+     Django Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/FastAPI.html">
+     FastAPI Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../user_guide/Custom_Components.html">
+     Building Custom Components
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../gallery/index.html">
+   Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKInteractive.html">
+     VTKInteractive
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKSlicer.html">
+     VTKSlicer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKWarp.html">
+     VTKWarp
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/attractors.html">
+     Attractors
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/gapminders.html">
+     Gapminders
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/glaciers.html">
+     Glaciers
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/nyc_taxi.html">
+     Nyc Taxi
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/portfolio-optimizer.html">
+     Portfolio-optimizer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_brushing.html">
+     Altair Brushing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_choropleth.html">
+     Altair Choropleth
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/clifford_interact.html">
+     Clifford Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/color_speech_recognition.html">
+     Color Speech Recognition
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/deckgl_game_of_life.html">
+     Deckgl Game Of Life
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/defer_data_load.html">
+     Defer Data Load
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/file_download_examples.html">
+     File Download Examples
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/hvplot_explorer.html">
+     Hvplot Explorer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/iris_kmeans.html">
+     Iris Kmeans
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/loading_spinner.html">
+     Loading Spinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/random_number_generator.html">
+     Random Number Generator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/save_filtered_df.html">
+     Save Filtered Df
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/sync_location.html">
+     Sync Location
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/temperature_distribution.html">
+     Temperature Distribution
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/xgboost_classifier.html">
+     Xgboost Classifier
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_altair.html">
+     Stocks Altair
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_hvplot.html">
+     Stocks Hvplot
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_matplotlib.html">
+     Stocks Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_plotly.html">
+     Stocks Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/distribution_tabs.html">
+     Distribution Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/dynamic_tabs.html">
+     Dynamic Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/plot_with_columns.html">
+     Plot With Columns
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_plot_layout.html">
+     Dynamic Plot Layout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_timeseries_image_analysis.html">
+     Dynamic Timeseries Image Analysis
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_ui.html">
+     Dynamic Ui
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_widget_values.html">
+     Dynamic Widget Values
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/action_button.html">
+     Action Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/deck_gl_global_power_plants.html">
+     Deck Gl Global Power Plants
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/download_upload_csv.html">
+     Download Upload Csv
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/loading_indicator.html">
+     Loading Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/param_subobjects.html">
+     Param Subobjects
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/precedence.html">
+     Precedence
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_plots.html">
+     Reactive Plots
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_tables.html">
+     Reactive Tables
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/hardware_automation.html">
+     Hardware Automation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_bokeh.html">
+     Streaming Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_indicator.html">
+     Streaming Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_perspective.html">
+     Streaming Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_tabulator.html">
+     Streaming Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/CanvasDraw.html">
+     CanvasDraw
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/LeafletHeatMap.html">
+     LeafletHeatMap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/MaterialUI.html">
+     MaterialUI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/bokeh_property_editor.html">
+     Bokeh Property Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/deck_gl_json_editor.html">
+     Deck Gl Json Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/holoviews_glyph_link.html">
+     Holoviews Glyph Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/plotly_link.html">
+     Plotly Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/vega_heatmap_link.html">
+     Vega Heatmap Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/MatplotlibStyle.html">
+     MatplotlibStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/PlotlyStyle.html">
+     PlotlyStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/SeabornStyle.html">
+     SeabornStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/VegaAltairStyle.html">
+     VegaAltairStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/DataTable.html">
+     DataTable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/deck.gl.html">
+     Deck.gl
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../reference/index.html">
+   Reference Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Alert.html">
+     Alert
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Audio.html">
+     Audio
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Bokeh.html">
+     Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DeckGL.html">
+     DeckGL
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/ECharts.html">
+     ECharts
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/GIF.html">
+     GIF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HTML.html">
+     HTML
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HoloViews.html">
+     HoloViews
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IDOM.html">
+     IDOM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IPyWidget.html">
+     IPyWidget
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JPG.html">
+     JPG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JSON.html">
+     JSON
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/LaTeX.html">
+     LaTeX
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Markdown.html">
+     Markdown
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Matplotlib.html">
+     Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PDF.html">
+     PDF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PNG.html">
+     PNG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Param.html">
+     Param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Perspective.html">
+     Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Plotly.html">
+     Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/SVG.html">
+     SVG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Str.html">
+     Str
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Streamz.html">
+     Streamz
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTK.html">
+     VTK
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKJS.html">
+     VTKJS
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKVolume.html">
+     VTKVolume
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Vega.html">
+     Vega
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Video.html">
+     Video
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Accordion.html">
+     Accordion
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Card.html">
+     Card
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Column.html">
+     Column
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Divider.html">
+     Divider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/FlexBox.html">
+     FlexBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridBox.html">
+     GridBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridSpec.html">
+     GridSpec
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridStack.html">
+     GridStack
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Row.html">
+     Row
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Tabs.html">
+     Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/WidgetBox.html">
+     WidgetBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Bootstrap.html">
+     Bootstrap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastGridTemplate.html">
+     FastGridTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastListTemplate.html">
+     FastListTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/GoldenLayout.html">
+     GoldenLayout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Material.html">
+     Material
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/React.html">
+     React
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Vanilla.html">
+     Vanilla
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/global/Notifications.html">
+     Notifications
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/BooleanStatus.html">
+     BooleanStatus
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Dial.html">
+     Dial
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Gauge.html">
+     Gauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LinearGauge.html">
+     LinearGauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LoadingSpinner.html">
+     LoadingSpinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Number.html">
+     Number
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Progress.html">
+     Progress
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Tqdm.html">
+     Tqdm
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Trend.html">
+     Trend
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Ace.html">
+     Ace
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ArrayInput.html">
+     ArrayInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/AutocompleteInput.html">
+     AutocompleteInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Button.html">
+     Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckBoxGroup.html">
+     CheckBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckButtonGroup.html">
+     CheckButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Checkbox.html">
+     Checkbox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ColorPicker.html">
+     ColorPicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CrossSelector.html">
+     CrossSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatePicker.html">
+     DatePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateRangeSlider.html">
+     DateRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateSlider.html">
+     DateSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeInput.html">
+     DatetimeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimePicker.html">
+     DatetimePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeInput.html">
+     DatetimeRangeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangePicker.html">
+     DatetimeRangePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeSlider.html">
+     DatetimeRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Debugger.html">
+     Debugger
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscretePlayer.html">
+     DiscretePlayer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscreteSlider.html">
+     DiscreteSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableFloatSlider.html">
+     EditableFloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableIntSlider.html">
+     EditableIntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableRangeSlider.html">
+     EditableRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileDownload.html">
+     FileDownload
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileInput.html">
+     FileInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileSelector.html">
+     FileSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatInput.html">
+     FloatInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatSlider.html">
+     FloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntInput.html">
+     IntInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntRangeSlider.html">
+     IntRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntSlider.html">
+     IntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/JSONEditor.html">
+     JSONEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/LiteralInput.html">
+     LiteralInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MenuButton.html">
+     MenuButton
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiChoice.html">
+     MultiChoice
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiSelect.html">
+     MultiSelect
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/PasswordInput.html">
+     PasswordInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Player.html">
+     Player
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioBoxGroup.html">
+     RadioBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioButtonGroup.html">
+     RadioButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RangeSlider.html">
+     RangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Select.html">
+     Select
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/SpeechToText.html">
+     SpeechToText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/StaticText.html">
+     StaticText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Tabulator.html">
+     Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Terminal.html">
+     Terminal
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextAreaInput.html">
+     TextAreaInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextEditor.html">
+     TextEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextInput.html">
+     TextInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextToSpeech.html">
+     TextToSpeech
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Toggle.html">
+     Toggle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ToggleGroup.html">
+     ToggleGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/VideoStream.html">
+     VideoStream
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../developer_guide/index.html">
+   Developer Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/testing.html">
+     Testing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/Developing_Custom_Models.html">
+     Developing custom models
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="index.html">
+   API Reference
+  </a>
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="panel.io.html">
+     io
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="panel.layout.html">
+     layout
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="panel.pane.html">
+     pane
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="panel.pane.vtk.html">
+       panel.vtk Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="panel.param.html">
+     param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="panel.pipeline.html">
+     pipeline
+    </a>
+</li>
+<li class="toctree-l2 current active has-children">
+<a class="reference internal" href="panel.template.html">
+     template
+    </a>
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l3">
+<a class="reference internal" href="panel.template.bootstrap.html">
+       panel.bootstrap Package
+      </a>
+</li>
+<li class="toctree-l3 has-children">
+<a class="reference internal" href="panel.template.fast.html">
+       panel.fast Package
+      </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l4">
+<a class="reference internal" href="panel.template.fast.grid.html">
+         panel.grid Package
+        </a>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="panel.template.fast.list.html">
+         panel.list Package
+        </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="panel.template.golden.html">
+       panel.golden Package
+      </a>
+</li>
+<li class="toctree-l3 current active">
+<a class="current reference internal" href="#">
+       panel.material Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="panel.template.react.html">
+       panel.react Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="panel.template.theme.html">
+       panel.theme Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="panel.template.vanilla.html">
+       panel.vanilla Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="panel.widgets.html">
+     widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="panel.viewable.html">
+     viewable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="panel.util.html">
+     util
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../releases.html">
+   Releases
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../FAQ.html">
+   FAQ
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../about/index.html">
+   About
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../about/comparisons.html">
+     Comparisons
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class="sidebar-end-items">
+</div>
+</div>
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+<div class="toc-item">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+<i class="fas fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#material-package">
+<code class="xref py py-mod docutils literal notranslate">
+<span class="pre">
+     material
+    </span>
+</code>
+   Package
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialDarkTheme">
+<code class="docutils literal notranslate">
+<span class="pre">
+       MaterialDarkTheme
+      </span>
+</code>
+</a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialDefaultTheme">
+<code class="docutils literal notranslate">
+<span class="pre">
+       MaterialDefaultTheme
+      </span>
+</code>
+</a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplate">
+<code class="docutils literal notranslate">
+<span class="pre">
+       MaterialTemplate
+      </span>
+</code>
+</a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplate.close_modal">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplate.close_modal()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplate.open_modal">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplate.open_modal()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplate.save">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplate.save()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplate.select">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplate.select()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplate.servable">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplate.servable()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplate.server_doc">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplate.server_doc()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplate.show">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplate.show()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplate.theme">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplate.theme
+        </span>
+</code>
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions">
+<code class="docutils literal notranslate">
+<span class="pre">
+       MaterialTemplateActions
+      </span>
+</code>
+</a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.app">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.app()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.clone">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.clone()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.controls">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.controls()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.embed">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.embed()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.get_root">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.get_root()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.jscallback">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.jscallback()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.jslink">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.jslink()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.link">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.link()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.on_event">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.on_event()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.pprint">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.pprint()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.save">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.save()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.select">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.select()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.servable">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.servable()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.server_doc">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.server_doc()
+        </span>
+</code>
+</a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#panel.template.material.MaterialTemplateActions.show">
+<code class="docutils literal notranslate">
+<span class="pre">
+         MaterialTemplateActions.show()
+        </span>
+</code>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div class="toc-item">
+</div>
+</div>
+<div class="bd-content col-12 col-md-10 col-xl-8" role="main">
+<article class="bd-article" role="main">
+<section id="panel-material-package">
+<h1>panel.material Package<a class="headerlink" href="#panel-material-package" title="Permalink to this heading">#</a></h1>
+<hr class="docutils"/>
+<section id="material-package">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">material</span></code> Package<a class="headerlink" href="#material-package" title="Permalink to this heading">#</a></h2>
+<div class="graphviz"><img alt="Inheritance diagram of panel.template.material" class="inheritance graphviz" src="../_images/inheritance-8f46146b89d890ef29c09c8bf975eba7cc17f59e.png" usemap="#inheritanceb6e9ef2a98"/></div>
+<map id="inheritanceb6e9ef2a98" name="inheritanceb6e9ef2a98">
+<area alt="" coords="518,63,608,76" href="panel.reactive.html#panel.reactive.Reactive" id="node1" shape="rect" target="_top" title="Reactive is a Viewable object that also supports syncing between"/>
+<area alt="" coords="673,63,783,76" href="panel.reactive.html#panel.reactive.ReactiveHTML" id="node4" shape="rect" target="_top" title="ReactiveHTML provides bi-directional syncing of arbitrary HTML"/>
+<area alt="" coords="337,50,433,63" href="panel.viewable.html#panel.viewable.Viewable" id="node3" shape="rect" target="_top" title="Viewable is the baseclass all visual components in the panel"/>
+<area alt="" coords="808,63,946,76" href="panel.template.html#panel.template.base.TemplateActions" id="node10" shape="rect" target="_top" title="A component added to templates that allows triggering events such"/>
+<area alt="" coords="162,25,292,38" href="panel.template.html#panel.template.base.BaseTemplate" id="node6" shape="rect" target="_top" title="panel.template.base.BaseTemplate"/>
+<area alt="" coords="319,25,451,38" href="panel.template.html#panel.template.base.BasicTemplate" id="node9" shape="rect" target="_top" title="BasicTemplate provides a baseclass for templates with a basic"/>
+<area alt="" coords="171,101,283,114" href="panel.template.theme.html#panel.template.theme.Theme" id="node17" shape="rect" target="_top" title="A Theme customizes the look and feel of a Template by providing"/>
+<area alt="" coords="176,50,278,63" href="panel.viewable.html#panel.viewable.Layoutable" id="node18" shape="rect" target="_top" title="Layoutable defines shared style and layout related parameters"/>
+<area alt="" coords="486,25,640,38" href="#panel.template.material.MaterialTemplate" id="node15" shape="rect" target="_top" title="MaterialTemplate is built on top of Material web components."/>
+<area alt="" coords="971,63,1149,76" href="#panel.template.material.MaterialTemplateActions" id="node16" shape="rect" target="_top" title="panel.template.material.MaterialTemplateActions"/>
+<area alt="" coords="482,127,644,140" href="#panel.template.material.MaterialDarkTheme" id="node11" shape="rect" target="_top" title="The MaterialDarkTheme is a Dark Theme in the style of Material Design"/>
+<area alt="" coords="321,127,448,140" href="panel.template.theme.html#panel.template.theme.DarkTheme" id="node12" shape="rect" target="_top" title="The DefaultTheme uses the standard Panel color palette."/>
+<area alt="" coords="478,101,648,114" href="#panel.template.material.MaterialDefaultTheme" id="node13" shape="rect" target="_top" title="panel.template.material.MaterialDefaultTheme"/>
+<area alt="" coords="317,101,453,114" href="panel.template.theme.html#panel.template.theme.DefaultTheme" id="node14" shape="rect" target="_top" title="The DefaultTheme uses the standard Panel color palette."/>
+</map><span class="target" id="module-panel.template.material"></span><p>Material template based on the material web components library.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="panel.template.material.MaterialDarkTheme">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">panel.template.material.</span></span><span class="sig-name descname"><span class="pre">MaterialDarkTheme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">holomap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widgets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_frames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">css</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_location</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/template/material.html#MaterialDarkTheme"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#panel.template.material.MaterialDarkTheme" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="panel.template.theme.html#panel.template.theme.DarkTheme" title="panel.template.theme.DarkTheme"><code class="xref py py-class docutils literal notranslate"><span class="pre">DarkTheme</span></code></a></p>
+<p>The MaterialDarkTheme is a Dark Theme in the style of Material Design</p>
+<p>Parameters inherited from:</p>
+<blockquote>
+<div><p><a class="reference internal" href="panel.template.theme.html#panel.template.theme.DarkTheme" title="panel.template.theme.DarkTheme"><code class="xref py py-class docutils literal notranslate"><span class="pre">panel.template.theme.DarkTheme</span></code></a>: base_css</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">css</span></code> = param.Filename(default=PosixPath(‘/home/runner/work/panel/panel/panel/template/material/dark.css’), label=’Css’, search_paths=[])</p>
+<p><code class="docutils literal notranslate"><span class="pre">bokeh_theme</span></code> = param.ClassSelector(class_=(&lt;class ‘bokeh.themes.theme.Theme’&gt;, &lt;class ‘str’&gt;), default=&lt;bokeh.themes.theme.Theme object at 0x7feac87ac850&gt;, label=’Bokeh theme’)</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="panel.template.material.MaterialDefaultTheme">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">panel.template.material.</span></span><span class="sig-name descname"><span class="pre">MaterialDefaultTheme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">holomap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widgets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_frames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">css</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widget_location</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/template/material.html#MaterialDefaultTheme"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#panel.template.material.MaterialDefaultTheme" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="panel.template.theme.html#panel.template.theme.DefaultTheme" title="panel.template.theme.DefaultTheme"><code class="xref py py-class docutils literal notranslate"><span class="pre">DefaultTheme</span></code></a></p>
+<p>Parameters inherited from:</p>
+<blockquote>
+<div><p><a class="reference internal" href="panel.template.theme.html#panel.template.theme.DefaultTheme" title="panel.template.theme.DefaultTheme"><code class="xref py py-class docutils literal notranslate"><span class="pre">panel.template.theme.DefaultTheme</span></code></a>: base_css</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">css</span></code> = param.Filename(default=PosixPath(‘/home/runner/work/panel/panel/panel/template/material/default.css’), label=’Css’, search_paths=[])</p>
+<p><code class="docutils literal notranslate"><span class="pre">bokeh_theme</span></code> = param.ClassSelector(class_=(&lt;class ‘bokeh.themes.theme.Theme’&gt;, &lt;class ‘str’&gt;), default=&lt;bokeh.themes.theme.Theme object at 0x7feac87ac670&gt;, label=’Bokeh theme’)</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">panel.template.material.</span></span><span class="sig-name descname"><span class="pre">MaterialTemplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/template/material.html#MaterialTemplate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#panel.template.material.MaterialTemplate" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="panel.template.html#panel.template.base.BasicTemplate" title="panel.template.base.BasicTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicTemplate</span></code></a></p>
+<p>MaterialTemplate is built on top of Material web components.</p>
+<p>Parameters inherited from:</p>
+<blockquote>
+<div><p><a class="reference internal" href="panel.template.html#panel.template.base.BasicTemplate" title="panel.template.base.BasicTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">panel.template.base.BasicTemplate</span></code></a>: location, config, busy_indicator, header, main, main_max_width, sidebar, modal, notifications, logo, favicon, title, site, site_url, manifest, meta_description, meta_keywords, meta_author, meta_refresh, meta_viewport, base_url, base_target, header_background, header_color, theme</p>
+</div></blockquote>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sidebar_width</span></code> = param.Integer(default=370, inclusive_bounds=(True, True), label=’Sidebar width’)</dt><dd><p>The width of the sidebar in pixels. Default is 370.</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">_actions</span></code> = param.ClassSelector(class_=&lt;class ‘panel.template.base.TemplateActions’&gt;, default=MaterialTemplateActions(), label=’ actions’)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplate.close_modal">
+<span class="sig-name descname"><span class="pre">close_modal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplate.close_modal" title="Permalink to this definition">#</a></dt>
+<dd><p>Closes the modal area</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplate.open_modal">
+<span class="sig-name descname"><span class="pre">open_modal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplate.open_modal" title="Permalink to this definition">#</a></dt>
+<dd><p>Opens the modal area</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplate.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">os.PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">IO</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_states</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_opts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplate.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Saves Panel objects to file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em><em> or </em><em>file-like object</em>) – Filename to save the plot to</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – Optional title for the plot</p></li>
+<li><p><strong>resources</strong> (<em>bokeh resources</em>) – One of the valid bokeh.resources (e.g. CDN or INLINE)</p></li>
+<li><p><strong>embed</strong> (<em>bool</em>) – Whether the state space should be embedded in the saved file.</p></li>
+<li><p><strong>max_states</strong> (<em>int</em>) – The maximum number of states to embed</p></li>
+<li><p><strong>max_opts</strong> (<em>int</em>) – The maximum number of states for a single widget</p></li>
+<li><p><strong>embed_json</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to export the data to json files</p></li>
+<li><p><strong>json_prefix</strong> (<em>str</em><em> (</em><em>default=''</em><em>)</em>) – Prefix for the auto-generated json directory</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em> (</em><em>default='./'</em><em>)</em>) – The path to save json files to</p></li>
+<li><p><strong>load_path</strong> (<em>str</em><em> (</em><em>default=None</em><em>)</em>) – The path or URL the json files will be loaded from.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplate.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#panel.template.material.MaterialTemplate.select" title="Permalink to this definition">#</a></dt>
+<dd><p>Iterates over the Template and any potential children in the
+applying the Selector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>selector</strong> (<em>type</em><em> or </em><em>callable</em><em> or </em><em>None</em>) – The selector allows selecting a subset of Viewables by
+declaring a type or callable function to filter by.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>viewables</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(<a class="reference internal" href="panel.viewable.html#panel.viewable.Viewable" title="panel.viewable.Viewable">Viewable</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplate.servable">
+<span class="sig-name descname"><span class="pre">servable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="s"><span class="pre">'Location'</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'main'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">ServableMixin</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplate.servable" title="Permalink to this definition">#</a></dt>
+<dd><p>Serves the object or adds it to the configured
+pn.state.template if in a <cite>panel serve</cite> context, writes to the
+DOM if in a pyodide context and returns the Panel object to
+allow it to display itself in a notebook context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em>) – A string title to give the Document (if served as an app)</p></li>
+<li><p><strong>location</strong> (<em>boolean</em><em> or </em><a class="reference internal" href="panel.io.html#panel.io.location.Location" title="panel.io.location.Location"><em>panel.io.location.Location</em></a>) – Whether to create a Location component to observe and
+set the URL location.</p></li>
+<li><p><strong>area</strong> (<em>str</em><em> (</em><em>deprecated</em><em>)</em>) – The area of a template to add the component too. Only has an
+effect if pn.config.template has been set.</p></li>
+<li><p><strong>target</strong> (<em>str</em>) – Target area to write to. If a template has been configured
+on pn.config.template this refers to the target area in the
+template while in pyodide this refers to the ID of the DOM
+node to write to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>The Panel object itself</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplate.server_doc">
+<span class="sig-name descname"><span class="pre">server_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Document</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="panel.io.html#panel.io.location.Location" title="panel.io.location.Location"><span class="pre">Location</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Document</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplate.server_doc" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a servable bokeh Document with the panel attached</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>bokeh.Document</em><em> (</em><em>optional</em><em>)</em>) – The Bokeh Document to attach the panel to as a root,
+defaults to bokeh.io.curdoc()</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – A string title to give the Document</p></li>
+<li><p><strong>location</strong> (<em>boolean</em><em> or </em><a class="reference internal" href="panel.io.html#panel.io.location.Location" title="panel.io.location.Location"><em>panel.io.location.Location</em></a>) – Whether to create a Location component to observe and
+set the URL location.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>doc</strong> – The Bokeh document the panel was attached to</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bokeh.Document</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplate.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">websocket_origin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threaded</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">open</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="s"><span class="pre">'Location'</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">threading.Thread</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="s"><span class="pre">'Server'</span></span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplate.show" title="Permalink to this definition">#</a></dt>
+<dd><p>Starts a Bokeh server and displays the Viewable in a new tab.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em><em> | </em><em>None</em>) – A string title to give the Document (if served as an app)</p></li>
+<li><p><strong>port</strong> (<em>int</em><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Allows specifying a specific port</p></li>
+<li><p><strong>address</strong> (<em>str</em>) – The address the server should listen on for HTTP requests.</p></li>
+<li><p><strong>websocket_origin</strong> (<em>str</em><em> or </em><em>list</em><em>(</em><em>str</em><em>) </em><em>(</em><em>optional</em><em>)</em>) – A list of hosts that can connect to the websocket.
+This is typically required when embedding a server app in
+an external web site.
+If None, “localhost” is used.</p></li>
+<li><p><strong>threaded</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=False</em><em>)</em>) – Whether to launch the Server on a separate thread, allowing
+interactive use.</p></li>
+<li><p><strong>verbose</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=True</em><em>)</em>) – Whether to print the address and port</p></li>
+<li><p><strong>open</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=True</em><em>)</em>) – Whether to open the server in a new browser tab</p></li>
+<li><p><strong>location</strong> (<em>boolean</em><em> or </em><a class="reference internal" href="panel.io.html#panel.io.location.Location" title="panel.io.location.Location"><em>panel.io.location.Location</em></a>) – Whether to create a Location component to observe and
+set the URL location.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>server</strong> – Returns the Bokeh server instance or the thread the server
+was launched on (if threaded=True)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bokeh.server.Server or threading.Thread</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplate.theme">
+<span class="sig-name descname"><span class="pre">theme</span></span><a class="headerlink" href="#panel.template.material.MaterialTemplate.theme" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <a class="reference internal" href="panel.template.theme.html#panel.template.theme.DefaultTheme" title="panel.template.theme.DefaultTheme"><code class="xref py py-class docutils literal notranslate"><span class="pre">DefaultTheme</span></code></a></p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">panel.template.material.</span></span><span class="sig-name descname"><span class="pre">MaterialTemplateActions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/panel/template/material.html#MaterialTemplateActions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#panel.template.material.MaterialTemplateActions" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="panel.template.html#panel.template.base.TemplateActions" title="panel.template.base.TemplateActions"><code class="xref py py-class docutils literal notranslate"><span class="pre">TemplateActions</span></code></a></p>
+<p>Parameters inherited from:</p>
+<blockquote>
+<div><p><a class="reference internal" href="panel.viewable.html#panel.viewable.Layoutable" title="panel.viewable.Layoutable"><code class="xref py py-class docutils literal notranslate"><span class="pre">panel.viewable.Layoutable</span></code></a>: align, aspect_ratio, background, css_classes, width, height, min_width, min_height, max_width, max_height, width_policy, height_policy, sizing_mode, visible</p>
+<p><a class="reference internal" href="panel.viewable.html#panel.viewable.Viewable" title="panel.viewable.Viewable"><code class="xref py py-class docutils literal notranslate"><span class="pre">panel.viewable.Viewable</span></code></a>: loading</p>
+<p><a class="reference internal" href="panel.template.html#panel.template.base.TemplateActions" title="panel.template.base.TemplateActions"><code class="xref py py-class docutils literal notranslate"><span class="pre">panel.template.base.TemplateActions</span></code></a>: margin, open_modal, close_modal</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.app">
+<span class="sig-name descname"><span class="pre">app</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notebook_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'localhost:8888'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="panel.io.html#panel.io.server.Server" title="panel.io.server.Server"><span class="pre">Server</span></a></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.app" title="Permalink to this definition">#</a></dt>
+<dd><p>Displays a bokeh server app inline in the notebook.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>notebook_url</strong> (<em>str</em>) – URL to the notebook server</p></li>
+<li><p><strong>port</strong> (<em>int</em><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Allows specifying a specific port</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.clone">
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="panel.viewable.html#panel.viewable.Viewable" title="panel.viewable.Viewable"><span class="pre">Viewable</span></a></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.clone" title="Permalink to this definition">#</a></dt>
+<dd><p>Makes a copy of the object sharing the same parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>Keyword arguments override the parameters on the clone.</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Cloned Viewable object</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.controls">
+<span class="sig-name descname"><span class="pre">controls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jslink</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="panel.layout.html#panel.layout.Panel" title="panel.layout.Panel"><span class="pre">Panel</span></a></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.controls" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a set of widgets which allow manipulating the parameters
+on this instance. By default all parameters which support
+linking are exposed, but an explicit list of parameters can
+be provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – An explicit list of parameters to return controls for.</p></li>
+<li><p><strong>jslink</strong> (<em>bool</em>) – Whether to use jslinks instead of Python based links.
+This does not allow using all types of parameters.</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Additional kwargs to pass to the Param pane(s) used to
+generate the controls widgets.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>A layout of the controls</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.embed">
+<span class="sig-name descname"><span class="pre">embed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_states</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_opts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.embed" title="Permalink to this definition">#</a></dt>
+<dd><p>Renders a static version of a panel in a notebook by evaluating
+the set of states defined by the widgets in the model. Note
+this will only work well for simple apps with a relatively
+small state space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_states</strong> (<em>int</em>) – The maximum number of states to embed</p></li>
+<li><p><strong>max_opts</strong> (<em>int</em>) – The maximum number of states for a single widget</p></li>
+<li><p><strong>json</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to export the data to json files</p></li>
+<li><p><strong>json_prefix</strong> (<em>str</em><em> (</em><em>default=''</em><em>)</em>) – Prefix for JSON filename</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em> (</em><em>default='./'</em><em>)</em>) – The path to save json files to</p></li>
+<li><p><strong>load_path</strong> (<em>str</em><em> (</em><em>default=None</em><em>)</em>) – The path or URL the json files will be loaded from.</p></li>
+<li><p><strong>progress</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether to report progress</p></li>
+<li><p><strong>states</strong> (<em>dict</em><em> (</em><em>default={}</em><em>)</em>) – A dictionary specifying the widget values to embed for each widget</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.get_root">
+<span class="sig-name descname"><span class="pre">get_root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Document</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Comm</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocess</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Model</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.get_root" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the root model and applies pre-processing hooks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>bokeh.Document</em>) – Bokeh document the bokeh model will be attached to.</p></li>
+<li><p><strong>comm</strong> (<em>pyviz_comms.Comm</em>) – Optional pyviz_comms when working in notebook</p></li>
+<li><p><strong>preprocess</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to run preprocessing hooks</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Returns the bokeh model corresponding to this panel object</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.jscallback">
+<span class="sig-name descname"><span class="pre">jscallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">callbacks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="panel.links.html#panel.links.Callback" title="panel.links.Callback"><span class="pre">Callback</span></a></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.jscallback" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows defining a JS callback to be triggered when a property
+changes on the source object. The keyword arguments define the
+properties that trigger a callback and the JS code that gets
+executed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>dict</em>) – A mapping of objects to make available to the JS callback</p></li>
+<li><p><strong>**callbacks</strong> (<em>dict</em>) – A mapping between properties on the source model and the code
+to execute when that property changes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>callback</strong> – The Callback which can be used to disable the callback.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="panel.links.html#panel.links.Callback" title="panel.links.Callback">Callback</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.jslink">
+<span class="sig-name descname"><span class="pre">jslink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">JSLinkTarget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bidirectional</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">links</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="panel.links.html#panel.links.Link" title="panel.links.Link"><span class="pre">Link</span></a></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.jslink" title="Permalink to this definition">#</a></dt>
+<dd><p>Links properties on the this Reactive object to those on the
+target Reactive object in JS code.</p>
+<p>Supports two modes, either specify a
+mapping between the source and target model properties as
+keywords or provide a dictionary of JS code snippets which
+maps from the source parameter to a JS code snippet which is
+executed when the property changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<a class="reference internal" href="panel.viewable.html#panel.viewable.Viewable" title="panel.viewable.Viewable"><em>panel.viewable.Viewable</em></a><em> | </em><em>bokeh.model.Model</em><em> | </em><em>holoviews.core.dimension.Dimensioned</em>) – The target to link the value to.</p></li>
+<li><p><strong>code</strong> (<em>dict</em>) – Custom code which will be executed when the widget value
+changes.</p></li>
+<li><p><strong>args</strong> (<em>dict</em>) – A mapping of objects to make available to the JS callback</p></li>
+<li><p><strong>bidirectional</strong> (<em>boolean</em>) – Whether to link source and target bi-directionally</p></li>
+<li><p><strong>**links</strong> (<em>dict</em>) – A mapping between properties on the source model and the
+target model property to link it to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>link</strong> – The GenericLink which can be used unlink the widget and
+the target model.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>GenericLink</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.link">
+<span class="sig-name descname"><span class="pre">link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">param.Parameterized</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbacks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bidirectional</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">links</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Watcher</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.link" title="Permalink to this definition">#</a></dt>
+<dd><p>Links the parameters on this <cite>Reactive</cite> object to attributes on the
+target <cite>Parameterized</cite> object.</p>
+<p>Supports two modes, either specify a
+mapping between the source and target object parameters as keywords or
+provide a dictionary of callbacks which maps from the source
+parameter to a callback which is triggered when the parameter
+changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<em>param.Parameterized</em>) – The target object of the link.</p></li>
+<li><p><strong>callbacks</strong> (<em>dict</em><em> | </em><em>None</em>) – Maps from a parameter in the source object to a callback.</p></li>
+<li><p><strong>bidirectional</strong> (<em>bool</em>) – Whether to link source and target bi-directionally</p></li>
+<li><p><strong>**links</strong> (<em>dict</em>) – Maps between parameters on this object to the parameters
+on the supplied object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.on_event">
+<span class="sig-name descname"><span class="pre">on_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.on_event" title="Permalink to this definition">#</a></dt>
+<dd><p>Registers a callback to be executed when the specified DOM
+event is triggered on the named node. Note that the named node
+must be declared in the HTML. To create a named node you must
+give it an id of the form <cite>id=”name”</cite>, where <cite>name</cite> will
+be the node identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>str</em>) – Named node in the HTML identifiable via id of the form <cite>id=”name”</cite>.</p></li>
+<li><p><strong>event</strong> (<em>str</em>) – Name of the DOM event to add an event listener to.</p></li>
+<li><p><strong>callback</strong> (<em>callable</em>) – A callable which will be given the DOMEvent object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.pprint">
+<span class="sig-name descname"><span class="pre">pprint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.pprint" title="Permalink to this definition">#</a></dt>
+<dd><p>Prints a compositional repr of the class.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">os.PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">IO</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="panel.io.html#panel.io.Resources" title="panel.io.Resources"><span class="pre">Resources</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="panel.__init__.html#panel.__init__.Template" title="panel.__init__.Template"><span class="pre">Template</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">template_variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_states</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_opts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed_states</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_png</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Saves Panel objects to file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em><em> or </em><em>file-like object</em>) – Filename to save the plot to</p></li>
+<li><p><strong>title</strong> (<em>string</em>) – Optional title for the plot</p></li>
+<li><p><strong>resources</strong> (<em>bokeh resources</em>) – One of the valid bokeh.resources (e.g. CDN or INLINE)</p></li>
+<li><p><strong>template</strong> – passed to underlying io.save</p></li>
+<li><p><strong>template_variables</strong> – passed to underlying io.save</p></li>
+<li><p><strong>embed</strong> (<em>bool</em>) – Whether the state space should be embedded in the saved file.</p></li>
+<li><p><strong>max_states</strong> (<em>int</em>) – The maximum number of states to embed</p></li>
+<li><p><strong>max_opts</strong> (<em>int</em>) – The maximum number of states for a single widget</p></li>
+<li><p><strong>embed_json</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to export the data to json files</p></li>
+<li><p><strong>json_prefix</strong> (<em>str</em><em> (</em><em>default=''</em><em>)</em>) – Prefix for the auto-generated json directory</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em> (</em><em>default='./'</em><em>)</em>) – The path to save json files to</p></li>
+<li><p><strong>load_path</strong> (<em>str</em><em> (</em><em>default=None</em><em>)</em>) – The path or URL the json files will be loaded from.</p></li>
+<li><p><strong>progress</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to report progress</p></li>
+<li><p><strong>embed_states</strong> (<em>dict</em><em> (</em><em>default={}</em><em>)</em>) – A dictionary specifying the widget values to embed for each widget</p></li>
+<li><p><strong>as_png</strong> (<em>boolean</em><em> (</em><em>default=None</em><em>)</em>) – To save as a .png. If None save_png will be true if filename is
+string and ends with png.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">type</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'Viewable'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'Viewable'</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.select" title="Permalink to this definition">#</a></dt>
+<dd><p>Iterates over the Viewable and any potential children in the
+applying the Selector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>selector</strong> (<em>type</em><em> or </em><em>callable</em><em> or </em><em>None</em>) – The selector allows selecting a subset of Viewables by
+declaring a type or callable function to filter by.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>viewables</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(<a class="reference internal" href="panel.viewable.html#panel.viewable.Viewable" title="panel.viewable.Viewable">Viewable</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.servable">
+<span class="sig-name descname"><span class="pre">servable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="s"><span class="pre">'Location'</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'main'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">ServableMixin</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.servable" title="Permalink to this definition">#</a></dt>
+<dd><p>Serves the object or adds it to the configured
+pn.state.template if in a <cite>panel serve</cite> context, writes to the
+DOM if in a pyodide context and returns the Panel object to
+allow it to display itself in a notebook context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em>) – A string title to give the Document (if served as an app)</p></li>
+<li><p><strong>location</strong> (<em>boolean</em><em> or </em><a class="reference internal" href="panel.io.html#panel.io.location.Location" title="panel.io.location.Location"><em>panel.io.location.Location</em></a>) – Whether to create a Location component to observe and
+set the URL location.</p></li>
+<li><p><strong>area</strong> (<em>str</em><em> (</em><em>deprecated</em><em>)</em>) – The area of a template to add the component too. Only has an
+effect if pn.config.template has been set.</p></li>
+<li><p><strong>target</strong> (<em>str</em>) – Target area to write to. If a template has been configured
+on pn.config.template this refers to the target area in the
+template while in pyodide this refers to the ID of the DOM
+node to write to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>The Panel object itself</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.server_doc">
+<span class="sig-name descname"><span class="pre">server_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Document</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="s"><span class="pre">'Location'</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Document</span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.server_doc" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a serveable bokeh Document with the panel attached</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>doc</strong> (<em>bokeh.Document</em><em> (</em><em>optional</em><em>)</em>) – The bokeh Document to attach the panel to as a root,
+defaults to bokeh.io.curdoc()</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – A string title to give the Document</p></li>
+<li><p><strong>location</strong> (<em>boolean</em><em> or </em><a class="reference internal" href="panel.io.html#panel.io.location.Location" title="panel.io.location.Location"><em>panel.io.location.Location</em></a>) – Whether to create a Location component to observe and
+set the URL location.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>doc</strong> – The bokeh document the panel was attached to</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bokeh.Document</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="panel.template.material.MaterialTemplateActions.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">websocket_origin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threaded</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">open</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="s"><span class="pre">'Location'</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">threading.Thread</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="s"><span class="pre">'Server'</span></span></span></span><a class="headerlink" href="#panel.template.material.MaterialTemplateActions.show" title="Permalink to this definition">#</a></dt>
+<dd><p>Starts a Bokeh server and displays the Viewable in a new tab.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em><em> | </em><em>None</em>) – A string title to give the Document (if served as an app)</p></li>
+<li><p><strong>port</strong> (<em>int</em><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Allows specifying a specific port</p></li>
+<li><p><strong>address</strong> (<em>str</em>) – The address the server should listen on for HTTP requests.</p></li>
+<li><p><strong>websocket_origin</strong> (<em>str</em><em> or </em><em>list</em><em>(</em><em>str</em><em>) </em><em>(</em><em>optional</em><em>)</em>) – A list of hosts that can connect to the websocket.
+This is typically required when embedding a server app in
+an external web site.
+If None, “localhost” is used.</p></li>
+<li><p><strong>threaded</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=False</em><em>)</em>) – Whether to launch the Server on a separate thread, allowing
+interactive use.</p></li>
+<li><p><strong>verbose</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=True</em><em>)</em>) – Whether to print the address and port</p></li>
+<li><p><strong>open</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=True</em><em>)</em>) – Whether to open the server in a new browser tab</p></li>
+<li><p><strong>location</strong> (<em>boolean</em><em> or </em><a class="reference internal" href="panel.io.html#panel.io.location.Location" title="panel.io.location.Location"><em>panel.io.location.Location</em></a>) – Whether to create a Location component to observe and
+set the URL location.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>server</strong> – Returns the Bokeh server instance or the thread the server
+was launched on (if threaded=True)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bokeh.server.Server or threading.Thread</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<hr class="docutils"/>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="panel.template.golden.html" id="prev-link" title="previous page">
+<i class="fas fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">panel.golden Package</p>
+</div>
+</a>
+<a class="right-next" href="panel.template.react.html" id="next-link" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">panel.react Package</p>
+</div>
+<i class="fas fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+<footer class="bd-footer"><div class="bd-footer__inner container">
+<div class="footer-item">
+<p class="copyright">
+    © Copyright 2019-2022 Holoviz contributors.<br/>
+</p>
+</div>
+<div class="footer-item">
+<p class="last-updated">
+Last updated on 2022-10-05.<br/>
+</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

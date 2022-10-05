@@ -1,0 +1,1926 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
+<link href="../site.webmanifest" rel="manifest"/>
+<title>Linking objects in Panel — Panel v0.14.0</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/mystnb.css" rel="stylesheet" type="text/css">
+<link href="../_static/graphviz.css" rel="stylesheet" type="text/css">
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css">
+<link href="../_static/runbutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/dataframe.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695" rel="preload"/>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/sphinx_highlight.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/run_cell.js"></script>
+<script src="../_static/WorkerHandler.js"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../_static/design-tabs.js"></script>
+<script src="../_static/ServiceHandler.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/panel.min.js"></script>
+<script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-154795830-2', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
+<link href="../_static/favicon.ico" rel="shortcut icon">
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="Pipelines.html" rel="next" title="Pipelines"/>
+<link href="Param.html" rel="prev" title="Using Param with Panel"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></link></link></head>
+<body data-default-mode="light" data-offset="180" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="bd-header-announcement container-fluid" id="banner">
+</div>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+<div id="navbar-start">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../_static/logo_horizontal.png"/>
+<img alt="Logo image" class="logo__image only-dark" src="../_static/logo_horizontal.png"/>
+</a>
+</div>
+<button aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-collapsible" data-toggle="collapse" type="button">
+<span class="fas fa-bars"></span>
+</button>
+<div class="col-lg-9 collapse navbar-collapse" id="navbar-collapsible">
+<div class="mr-auto" id="navbar-center">
+<div class="navbar-center-item">
+<ul class="navbar-nav" id="navbar-main-elements">
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../index.html">
+  Overview
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+<li class="toctree-l1 current active nav-item">
+<a class="reference internal nav-link" href="index.html">
+  User Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../gallery/index.html">
+  Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../reference/index.html">
+  Reference Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../developer_guide/index.html">
+  Developer Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../api/index.html">
+  API Reference
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../releases.html">
+  Releases
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../FAQ.html">
+  FAQ
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../about/index.html">
+  About
+ </a>
+</li>
+</ul>
+</div>
+</div>
+<div id="navbar-end">
+<div class="navbar-end-item">
+<ul aria-label="Icon Links" class="navbar-nav" id="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/holoviz/panel" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://twitter.com/Panel_Org" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://discourse.holoviz.org/c/panel/5" rel="noopener" target="_blank" title="Discourse"><span><i class="fab fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bd-container container-xl">
+<div class="bd-container__inner row">
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-2 bd-sidebar">
+<div class="sidebar-start-items"><form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search the docs ..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../index.html">
+   Overview
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../getting_started/index.html">
+   Getting Started
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/installation.html">
+     Installation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/build_app.html">
+     Build an app
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../getting_started/core_concepts.html">
+     Core Concepts
+    </a>
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="index.html">
+   User Guide
+  </a>
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="Overview.html">
+     Overview
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Components.html">
+     Components
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="APIs.html">
+     APIs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Customization.html">
+     Customization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Interact.html">
+     Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Widgets.html">
+     Widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Param.html">
+     Parameters
+    </a>
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
+     Linking
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Pipelines.html">
+     Pipelines
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Templates.html">
+     Templates
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Performance_and_Debugging.html">
+     Performance and Debugging
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Session_State_and_Callbacks.html">
+     Session state &amp; Callbacks
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Async_and_Concurrency.html">
+     Asynchronous and Concurrent Process
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Display_and_Export.html">
+     Display &amp; Export
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Running_in_Webassembly.html">
+     Running Panel in the Browser with WASM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Server_Configuration.html">
+     Server Configuration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Server_Deployment.html">
+     Server Deployment
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Authentication.html">
+     Authentication
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Django.html">
+     Django Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="FastAPI.html">
+     FastAPI Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Custom_Components.html">
+     Building Custom Components
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../gallery/index.html">
+   Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKInteractive.html">
+     VTKInteractive
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKSlicer.html">
+     VTKSlicer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/VTKWarp.html">
+     VTKWarp
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/attractors.html">
+     Attractors
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/gapminders.html">
+     Gapminders
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/glaciers.html">
+     Glaciers
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/nyc_taxi.html">
+     Nyc Taxi
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/demos/portfolio-optimizer.html">
+     Portfolio-optimizer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_brushing.html">
+     Altair Brushing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/altair_choropleth.html">
+     Altair Choropleth
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/clifford_interact.html">
+     Clifford Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/color_speech_recognition.html">
+     Color Speech Recognition
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/deckgl_game_of_life.html">
+     Deckgl Game Of Life
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/defer_data_load.html">
+     Defer Data Load
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/file_download_examples.html">
+     File Download Examples
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/hvplot_explorer.html">
+     Hvplot Explorer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/iris_kmeans.html">
+     Iris Kmeans
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/loading_spinner.html">
+     Loading Spinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/random_number_generator.html">
+     Random Number Generator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/save_filtered_df.html">
+     Save Filtered Df
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/sync_location.html">
+     Sync Location
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/temperature_distribution.html">
+     Temperature Distribution
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/simple/xgboost_classifier.html">
+     Xgboost Classifier
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_altair.html">
+     Stocks Altair
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_hvplot.html">
+     Stocks Hvplot
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_matplotlib.html">
+     Stocks Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/apis/stocks_plotly.html">
+     Stocks Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/distribution_tabs.html">
+     Distribution Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/dynamic_tabs.html">
+     Dynamic Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/layout/plot_with_columns.html">
+     Plot With Columns
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_plot_layout.html">
+     Dynamic Plot Layout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_timeseries_image_analysis.html">
+     Dynamic Timeseries Image Analysis
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_ui.html">
+     Dynamic Ui
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/dynamic/dynamic_widget_values.html">
+     Dynamic Widget Values
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/action_button.html">
+     Action Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/deck_gl_global_power_plants.html">
+     Deck Gl Global Power Plants
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/download_upload_csv.html">
+     Download Upload Csv
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/loading_indicator.html">
+     Loading Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/param_subobjects.html">
+     Param Subobjects
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/precedence.html">
+     Precedence
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_plots.html">
+     Reactive Plots
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/param/reactive_tables.html">
+     Reactive Tables
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/hardware_automation.html">
+     Hardware Automation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_bokeh.html">
+     Streaming Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_indicator.html">
+     Streaming Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_perspective.html">
+     Streaming Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/streaming/streaming_tabulator.html">
+     Streaming Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/CanvasDraw.html">
+     CanvasDraw
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/LeafletHeatMap.html">
+     LeafletHeatMap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/components/MaterialUI.html">
+     MaterialUI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/bokeh_property_editor.html">
+     Bokeh Property Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/deck_gl_json_editor.html">
+     Deck Gl Json Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/holoviews_glyph_link.html">
+     Holoviews Glyph Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/plotly_link.html">
+     Plotly Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/links/vega_heatmap_link.html">
+     Vega Heatmap Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/MatplotlibStyle.html">
+     MatplotlibStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/PlotlyStyle.html">
+     PlotlyStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/SeabornStyle.html">
+     SeabornStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/styles/VegaAltairStyle.html">
+     VegaAltairStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/DataTable.html">
+     DataTable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../gallery/external/deck.gl.html">
+     Deck.gl
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../reference/index.html">
+   Reference Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Alert.html">
+     Alert
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Audio.html">
+     Audio
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Bokeh.html">
+     Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/DeckGL.html">
+     DeckGL
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/ECharts.html">
+     ECharts
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/GIF.html">
+     GIF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HTML.html">
+     HTML
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/HoloViews.html">
+     HoloViews
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IDOM.html">
+     IDOM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/IPyWidget.html">
+     IPyWidget
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JPG.html">
+     JPG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/JSON.html">
+     JSON
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/LaTeX.html">
+     LaTeX
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Markdown.html">
+     Markdown
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Matplotlib.html">
+     Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PDF.html">
+     PDF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/PNG.html">
+     PNG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Param.html">
+     Param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Perspective.html">
+     Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Plotly.html">
+     Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/SVG.html">
+     SVG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Str.html">
+     Str
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Streamz.html">
+     Streamz
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTK.html">
+     VTK
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKJS.html">
+     VTKJS
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/VTKVolume.html">
+     VTKVolume
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Vega.html">
+     Vega
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/panes/Video.html">
+     Video
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Accordion.html">
+     Accordion
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Card.html">
+     Card
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Column.html">
+     Column
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Divider.html">
+     Divider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/FlexBox.html">
+     FlexBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridBox.html">
+     GridBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridSpec.html">
+     GridSpec
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/GridStack.html">
+     GridStack
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Row.html">
+     Row
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/Tabs.html">
+     Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/layouts/WidgetBox.html">
+     WidgetBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Bootstrap.html">
+     Bootstrap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastGridTemplate.html">
+     FastGridTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/FastListTemplate.html">
+     FastListTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/GoldenLayout.html">
+     GoldenLayout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Material.html">
+     Material
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/React.html">
+     React
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/templates/Vanilla.html">
+     Vanilla
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/global/Notifications.html">
+     Notifications
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/BooleanStatus.html">
+     BooleanStatus
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Dial.html">
+     Dial
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Gauge.html">
+     Gauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LinearGauge.html">
+     LinearGauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/LoadingSpinner.html">
+     LoadingSpinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Number.html">
+     Number
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Progress.html">
+     Progress
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Tqdm.html">
+     Tqdm
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/indicators/Trend.html">
+     Trend
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Ace.html">
+     Ace
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ArrayInput.html">
+     ArrayInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/AutocompleteInput.html">
+     AutocompleteInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Button.html">
+     Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckBoxGroup.html">
+     CheckBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CheckButtonGroup.html">
+     CheckButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Checkbox.html">
+     Checkbox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ColorPicker.html">
+     ColorPicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/CrossSelector.html">
+     CrossSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatePicker.html">
+     DatePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateRangeSlider.html">
+     DateRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DateSlider.html">
+     DateSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeInput.html">
+     DatetimeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimePicker.html">
+     DatetimePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeInput.html">
+     DatetimeRangeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangePicker.html">
+     DatetimeRangePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DatetimeRangeSlider.html">
+     DatetimeRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Debugger.html">
+     Debugger
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscretePlayer.html">
+     DiscretePlayer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/DiscreteSlider.html">
+     DiscreteSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableFloatSlider.html">
+     EditableFloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableIntSlider.html">
+     EditableIntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/EditableRangeSlider.html">
+     EditableRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileDownload.html">
+     FileDownload
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileInput.html">
+     FileInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FileSelector.html">
+     FileSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatInput.html">
+     FloatInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/FloatSlider.html">
+     FloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntInput.html">
+     IntInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntRangeSlider.html">
+     IntRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/IntSlider.html">
+     IntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/JSONEditor.html">
+     JSONEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/LiteralInput.html">
+     LiteralInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MenuButton.html">
+     MenuButton
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiChoice.html">
+     MultiChoice
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/MultiSelect.html">
+     MultiSelect
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/PasswordInput.html">
+     PasswordInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Player.html">
+     Player
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioBoxGroup.html">
+     RadioBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RadioButtonGroup.html">
+     RadioButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/RangeSlider.html">
+     RangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Select.html">
+     Select
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/SpeechToText.html">
+     SpeechToText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/StaticText.html">
+     StaticText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Tabulator.html">
+     Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Terminal.html">
+     Terminal
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextAreaInput.html">
+     TextAreaInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextEditor.html">
+     TextEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextInput.html">
+     TextInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/TextToSpeech.html">
+     TextToSpeech
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/Toggle.html">
+     Toggle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/ToggleGroup.html">
+     ToggleGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../reference/widgets/VideoStream.html">
+     VideoStream
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../developer_guide/index.html">
+   Developer Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/testing.html">
+     Testing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../developer_guide/Developing_Custom_Models.html">
+     Developing custom models
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../api/index.html">
+   API Reference
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.io.html">
+     io
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.layout.html">
+     layout
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../api/panel.pane.html">
+     pane
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.pane.vtk.html">
+       panel.vtk Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.param.html">
+     param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.pipeline.html">
+     pipeline
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../api/panel.template.html">
+     template
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.bootstrap.html">
+       panel.bootstrap Package
+      </a>
+</li>
+<li class="toctree-l3 has-children">
+<a class="reference internal" href="../api/panel.template.fast.html">
+       panel.fast Package
+      </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l4">
+<a class="reference internal" href="../api/panel.template.fast.grid.html">
+         panel.grid Package
+        </a>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="../api/panel.template.fast.list.html">
+         panel.list Package
+        </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.golden.html">
+       panel.golden Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.material.html">
+       panel.material Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.react.html">
+       panel.react Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.theme.html">
+       panel.theme Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../api/panel.template.vanilla.html">
+       panel.vanilla Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.widgets.html">
+     widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.viewable.html">
+     viewable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../api/panel.util.html">
+     util
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../releases.html">
+   Releases
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../FAQ.html">
+   FAQ
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../about/index.html">
+   About
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../about/comparisons.html">
+     Comparisons
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class="sidebar-end-items">
+</div>
+</div>
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+<div class="toc-item">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+<i class="fas fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#python-links-using-the-link-method">
+   Python links using the
+   <code class="docutils literal notranslate">
+<span class="pre">
+     link
+    </span>
+</code>
+   method
+  </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#python-links-using-the-watch-method">
+   Python links using the
+   <code class="docutils literal notranslate">
+<span class="pre">
+     watch
+    </span>
+</code>
+   method
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#defining-a-callback">
+     Defining a callback
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#event-objects">
+     Event objects
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#registering-a-watcher">
+     Registering a watcher
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#unlinking">
+     Unlinking
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#linking-objects-in-js">
+   Linking objects in JS
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#linking-panel-components">
+     Linking Panel components
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#linking-model-properties">
+       Linking model properties
+      </a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#linking-bi-directionally">
+       Linking bi-directionally
+      </a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#linking-using-custom-js-code">
+       Linking using custom JS code
+      </a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#open-url">
+       Open URL
+      </a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#defining-javascript-callbacks">
+   Defining Javascript callbacks
+  </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#linking-plots">
+   Linking Plots
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bokeh">
+     Bokeh
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#holoviews">
+     HoloViews
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div class="toc-item">
+</div>
+</div>
+<div class="bd-content col-12 col-md-10 col-xl-8" role="main">
+<article class="bd-article" role="main">
+<section class="tex2jax_ignore mathjax_ignore" id="linking-objects-in-panel">
+<h1>Linking objects in Panel<a class="headerlink" href="#linking-objects-in-panel" title="Permalink to this heading">#</a></h1>
+<p>In the <a class="reference internal" href="Param.html"><span class="doc std std-doc">Param user guide</span></a>, we have seen how Parameterized classes can be used to automatically generate a graphical user interface for Python code without any additional effort. If you need full control over how your GUI is set up, you can instead manually define widgets linking directly to other objects using either Python or JavaScript (JS) callbacks. Python callbacks are simple for Python users to write and can directly access Python data structures, while JS callbacks can directly manipulate the displayed HTML document and allow setting up dynamic behavior even for exported HTML files (with no Python process running).</p>
+<p>Here we will show how to link parameters of Panel objects, typically from widgets to other objects. To do this, we will introduce three API calls:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">obj.link</span></code>: convenient high-level API to link objects via Python calls</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obj.param.watch</span></code>: powerful but lower-level Python API provided by <a class="reference external" href="https://param.pyviz.org">param</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obj.jslink</span></code>: high-level API to link objects via JS code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obj.jscallback</span></code>: a lower-level API to define arbitrary Javascript callbacks</p></li>
+</ul>
+<p>At the end of this notebook, we will then show how to use these APIs to set up links between widgets and plots that work even in exported HTML files where the Python process is no longer available.</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">panel</span> <span class="k">as</span> <span class="nn">pn</span>
+<span class="n">pn</span><span class="o">.</span><span class="n">extension</span><span class="p">()</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell0-py"></pre><pre class="pyodide-stderr" id="stderr-codecell0-py"></pre><section id="python-links-using-the-link-method">
+<h2>Python links using the <code class="docutils literal notranslate"><span class="pre">link</span></code> method<a class="headerlink" href="#python-links-using-the-link-method" title="Permalink to this heading">#</a></h2>
+<p>To start, let’s see how a <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> widget and a <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> pane normally behave:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">"Editable text"</span><span class="p">),</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">'Some markdown'</span><span class="p">))</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell1-py"></pre><pre class="pyodide-stderr" id="stderr-codecell1-py"></pre><div class="pyodide-output embedded" id="output-codecell1-py"></div>
+<script>
+              async function embed_bokeh_2 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell1-py", "root_id": "1002", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"name": "location", "reload": false}, "id": "1005", "type": "panel.models.location.Location"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "Markdown04878", "text": "&lt;p&gt;Some markdown&lt;/p&gt;"}, "id": "1004", "type": "panel.models.markup.HTML"}, {"attributes": {"margin": [5, 10, 5, 10], "max_length": 5000, "value": "Editable text"}, "id": "1003", "type": "TextInput"}, {"attributes": {"children": [{"id": "1003"}, {"id": "1004"}], "margin": [0, 0, 0, 0], "name": "Row04880"}, "id": "1002", "type": "Row"}], "root_ids": ["1002", "1005"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_2, 200)
+                }
+              };
+              embed_bokeh_2()
+            </script>
+<p>These two Panel objects are entirely independent; text can be entered into the input area and separately the Markdown pane will display its argument.</p>
+<p>What if we wanted connected input and output displays?  One option when you expect to have a live Python process available is to use the <code class="docutils literal notranslate"><span class="pre">link</span></code> method on Widgets to link its parameters to some other Panel object. In the simplest case we simply provide the <code class="docutils literal notranslate"><span class="pre">target</span></code> object and define the mapping between the source and target parameters as the keywords. In this case, we map the <code class="docutils literal notranslate"><span class="pre">value</span></code> parameter on the <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> widget to the <code class="docutils literal notranslate"><span class="pre">object</span></code> parameter on the <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> pane:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">markdown</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">"Some text"</span><span class="p">)</span>
+<span class="n">text_input</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">markdown</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+
+<span class="n">text_input</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">markdown</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'object'</span><span class="p">)</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">text_input</span><span class="p">,</span> <span class="n">markdown</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell2-py"></pre><pre class="pyodide-stderr" id="stderr-codecell2-py"></pre><div class="pyodide-output embedded" id="output-codecell2-py"></div>
+<script>
+              async function embed_bokeh_3 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell2-py", "root_id": "1006", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"children": [{"id": "1007"}, {"id": "1008"}], "margin": [0, 0, 0, 0], "name": "Row04885"}, "id": "1006", "type": "Row"}, {"attributes": {"name": "location", "reload": false}, "id": "1009", "type": "panel.models.location.Location"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "Markdown04882", "text": "&lt;p&gt;Some text&lt;/p&gt;"}, "id": "1008", "type": "panel.models.markup.HTML"}, {"attributes": {"margin": [5, 10, 5, 10], "max_length": 5000, "value": "Some text"}, "id": "1007", "type": "TextInput"}], "root_ids": ["1006", "1009"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_3, 200)
+                }
+              };
+              embed_bokeh_3()
+            </script>
+<p>Now, if Python is running and you type something in the box above and press Return, the corresponding Markdown pane should update to match.  And if you use Python to directly manipulate the value of the text input (e.g. by editing the following cell to have new text in it and then executing it), then the Markdown should also update to match:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text_input</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">'Some text'</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell3-py"></pre><pre class="pyodide-stderr" id="stderr-codecell3-py"></pre><p>For more complex mappings between the widget value and the target parameter, we can define an arbitrary transformation as a Python callback:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">TextInput</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="n">target</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'!!!'</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">{</span><span class="s1">'value'</span><span class="p">:</span> <span class="n">callback</span><span class="p">})</span>
+<span class="n">t</span><span class="o">.</span><span class="n">value</span><span class="o">=</span><span class="s2">"Some text"</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell4-py"></pre><pre class="pyodide-stderr" id="stderr-codecell4-py"></pre><div class="pyodide-output embedded" id="output-codecell4-py"></div>
+<script>
+              async function embed_bokeh_5 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell4-py", "root_id": "1010", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"name": "location", "reload": false}, "id": "1013", "type": "panel.models.location.Location"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "Markdown04887", "text": "&lt;p&gt;SOME TEXT!!!&lt;/p&gt;"}, "id": "1012", "type": "panel.models.markup.HTML"}, {"attributes": {"margin": [5, 10, 5, 10], "max_length": 5000, "value": "Some text"}, "id": "1011", "type": "TextInput"}, {"attributes": {"children": [{"id": "1011"}, {"id": "1012"}], "margin": [0, 0, 0, 0], "name": "Row04890"}, "id": "1010", "type": "Row"}], "root_ids": ["1010", "1013"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_5, 200)
+                }
+              };
+              embed_bokeh_5()
+            </script>
+<p>Note that here we explicitly set <code class="docutils literal notranslate"><span class="pre">t.value</span></code> before displaying the panel to trigger the linked Markdown pane to update to match the text widget; callbacks are not otherwise triggered when the links are first set up.</p>
+</section>
+<section id="python-links-using-the-watch-method">
+<h2>Python links using the <code class="docutils literal notranslate"><span class="pre">watch</span></code> method<a class="headerlink" href="#python-links-using-the-watch-method" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">link</span></code> method used above provides a high-level API to link to parameters, which is adequate in most cases. If we need more control, we can fall back to the underlying <code class="docutils literal notranslate"><span class="pre">param.watch</span></code> method, which is what Panel uses internally to make all reactive features work. The main differences are that <code class="docutils literal notranslate"><span class="pre">watch</span></code> 1) does not assume you are linking two objects, providing more control over what you are watching, 2) allows batched callbacks when multiple parameters change at once, and 3) allows you to specify that an event should be triggered every time the parameter is set (instead of the default of only when the parameter value actually changes). If you do not need this level of control, just skip to the <a class="reference external" href="#Linking-objects-in-JS">Linking objects in JS</a> section below.</p>
+<p>To demonstrate <code class="docutils literal notranslate"><span class="pre">param.watch</span></code>, let us set up three different models: 1) a <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> pane to display the possible options, 2) a <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> pane to display the <em>selected</em> options, and 3) a <code class="docutils literal notranslate"><span class="pre">ToggleGroup</span></code> widget that allows us to toggle between a number of options:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">selections</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="nb">object</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+<span class="n">selected</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="nb">object</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+<span class="n">toggle</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ToggleGroup</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">])</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell5-py"></pre><pre class="pyodide-stderr" id="stderr-codecell5-py"></pre><section id="defining-a-callback">
+<h3>Defining a callback<a class="headerlink" href="#defining-a-callback" title="Permalink to this heading">#</a></h3>
+<p>Next we define a callback that can handle multiple parameter changes at once and uses the <code class="docutils literal notranslate"><span class="pre">Event</span></code>’s <code class="docutils literal notranslate"><span class="pre">name</span></code> to figure out how to process the event. In this case it updates either the <code class="docutils literal notranslate"><span class="pre">selections</span></code> or the <code class="docutils literal notranslate"><span class="pre">selected</span></code> pane depending on whether ToggleGroup <code class="docutils literal notranslate"><span class="pre">options</span></code> or <code class="docutils literal notranslate"><span class="pre">value</span></code> changed:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="o">*</span><span class="n">events</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">events</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">'options'</span><span class="p">:</span>
+            <span class="n">selections</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="s1">'Possible options: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">'value'</span><span class="p">:</span>
+            <span class="n">selected</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="s1">'Selected: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell6-py"></pre><pre class="pyodide-stderr" id="stderr-codecell6-py"></pre></section>
+<section id="event-objects">
+<h3>Event objects<a class="headerlink" href="#event-objects" title="Permalink to this heading">#</a></h3>
+<p>Before going any further let us discover what these <code class="docutils literal notranslate"><span class="pre">Event</span></code> objects are. An <code class="docutils literal notranslate"><span class="pre">Event</span></code> is used to signal the change in a parameter value. Event objects provide a number of useful attributes that provides additional information about the event:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">name</span></code></strong>: The name of the parameter that has changed</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">new</span></code></strong>: The new value of the parameter</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">old</span></code></strong>: The old value of the parameter before the event was triggered</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">type</span></code></strong>: The type of event (‘triggered’, ‘changed’, or ‘set’)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">what</span></code></strong>: Describes what about the parameter changed (usually the value but other parameter attributes can also change)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">obj</span></code></strong>: The Parameterized instance that holds the parameter</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">cls</span></code></strong>: The Parameterized class that holds the parameter</p></li>
+</ul>
+</section>
+<section id="registering-a-watcher">
+<h3>Registering a watcher<a class="headerlink" href="#registering-a-watcher" title="Permalink to this heading">#</a></h3>
+<p>Now that we know how to define a callback and make use of <code class="docutils literal notranslate"><span class="pre">Event</span></code> attributes, it is time to register the callback. The <code class="docutils literal notranslate"><span class="pre">obj.param.watch</span></code> method lets us supply the callback along with the parameters we want to watch. Additionally we can declare whether the events should only be triggered when the parameter value changes, or every time the parameter is set:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">watcher</span> <span class="o">=</span> <span class="n">toggle</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="p">[</span><span class="s1">'options'</span><span class="p">,</span> <span class="s1">'value'</span><span class="p">],</span> <span class="n">onlychanged</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell7-py"></pre><pre class="pyodide-stderr" id="stderr-codecell7-py"></pre><p>Now let us display the widget alongside the <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> panes that reflect the current state of the widget:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">toggle</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">),</span> <span class="n">selections</span><span class="p">,</span> <span class="n">pn</span><span class="o">.</span><span class="n">Spacer</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">),</span> <span class="n">selected</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell8-py"></pre><pre class="pyodide-stderr" id="stderr-codecell8-py"></pre><div class="pyodide-output embedded" id="output-codecell8-py"></div>
+<script>
+              async function embed_bokeh_9 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell8-py", "root_id": "1014", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "Markdown04894"}, "id": "1019", "type": "panel.models.markup.HTML"}, {"attributes": {"height": 50, "margin": [5, 5, 5, 5], "name": "Spacer04898", "sizing_mode": "fixed", "width": 50}, "id": "1018", "type": "Spacer"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "Markdown04892"}, "id": "1017", "type": "panel.models.markup.HTML"}, {"attributes": {"children": [{"id": "1016"}], "height": 50, "margin": [0, 0, 0, 0], "name": "Column04897", "sizing_mode": "fixed", "width": 200}, "id": "1015", "type": "Column"}, {"attributes": {"children": [{"id": "1015"}, {"id": "1017"}, {"id": "1018"}, {"id": "1019"}], "margin": [0, 0, 0, 0], "name": "Row04899"}, "id": "1014", "type": "Row"}, {"attributes": {"name": "location", "reload": false}, "id": "1020", "type": "panel.models.location.Location"}, {"attributes": {"labels": ["A", "B"], "margin": [5, 10, 5, 10]}, "id": "1016", "type": "CheckboxButtonGroup"}], "root_ids": ["1014", "1020"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_9, 200)
+                }
+              };
+              embed_bokeh_9()
+            </script>
+<p>To initialize the <code class="docutils literal notranslate"><span class="pre">selections</span></code> and <code class="docutils literal notranslate"><span class="pre">selected</span></code> we can explicitly <code class="docutils literal notranslate"><span class="pre">trigger</span></code> options and value events:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">toggle</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">trigger</span><span class="p">(</span><span class="s1">'options'</span><span class="p">,</span> <span class="s1">'value'</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell9-py" style="display: block;">(Event(what='value', name='options', obj=CheckButtonGroup(options=['A', 'B']), cls=CheckButtonGroup(options=['A', 'B']), old=['A', 'B'], new=['A', 'B'], type='triggered'), Event(what='value', name='value', obj=CheckButtonGroup(options=['A', 'B']), cls=CheckButtonGroup(options=['A', 'B']), old=[], new=[], type='triggered'))
+</pre><pre class="pyodide-stderr" id="stderr-codecell9-py"></pre><p>We can also override the initial parameters using the <code class="docutils literal notranslate"><span class="pre">set_param</span></code> method:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'A'</span><span class="p">,</span><span class="s1">'B'</span><span class="p">,</span><span class="s1">'C'</span><span class="p">,</span><span class="s1">'D'</span><span class="p">]</span>
+<span class="n">toggle</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="n">options</span><span class="p">)),</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="s1">'D'</span><span class="p">])</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell10-py" style="display: block;">(Event(what='value', name='options', obj=CheckButtonGroup(options={'A': 'A', 'B': 'B', ...}, value=['D']), cls=CheckButtonGroup(options={'A': 'A', 'B': 'B', ...}, value=['D']), old=['A', 'B'], new={'A': 'A', 'B': 'B', 'C': 'C', 'D': 'D'}, type='set'), Event(what='value', name='value', obj=CheckButtonGroup(options={'A': 'A', 'B': 'B', ...}, value=['D']), cls=CheckButtonGroup(options={'A': 'A', 'B': 'B', ...}, value=['D']), old=[], new=['D'], type='set'))
+</pre><pre class="pyodide-stderr" id="stderr-codecell10-py"></pre><p>Using <code class="docutils literal notranslate"><span class="pre">set_param</span></code> allows us to batch two separate changes (the options and the value) together, which you can see from the <code class="docutils literal notranslate"><span class="pre">print</span></code> output resulted into a single invocation of the callback.  You could instead have set them separately using the usual parameter-setting syntax <code class="docutils literal notranslate"><span class="pre">toggle.value=['D'];</span> <span class="pre">toggle.options=dict(zip(options,options))</span></code>, but batching them can be much more efficient for a non-trivial callback like a database query or a complex plot that needs updating.</p>
+<p>Now that the widgets are visible, you can toggle the option values and see the selected pane update in response via the callback (if Python is running).</p>
+</section>
+<section id="unlinking">
+<h3>Unlinking<a class="headerlink" href="#unlinking" title="Permalink to this heading">#</a></h3>
+<p>If for whatever reason we want to stop watching parameter changes we can unsubscribe by passing our <code class="docutils literal notranslate"><span class="pre">watcher</span></code> (returned in the <code class="docutils literal notranslate"><span class="pre">watch</span></code> call above) to the <code class="docutils literal notranslate"><span class="pre">unwatch</span></code> method:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#toggle.param.unwatch(watcher)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell11-py"></pre><pre class="pyodide-stderr" id="stderr-codecell11-py"></pre></section>
+</section>
+<section id="linking-objects-in-js">
+<h2>Linking objects in JS<a class="headerlink" href="#linking-objects-in-js" title="Permalink to this heading">#</a></h2>
+<p>Linking objects in Python is often very convenient, because it allows writing code entirely in Python. However, it also requires a live Python kernel. If instead we want a static example (e.g. on a simple website or in an email) to have custom interactivity, or we simply want to avoid the overhead of having to call back into Python, we can define links in JavaScript.</p>
+<section id="linking-panel-components">
+<h3>Linking Panel components<a class="headerlink" href="#linking-panel-components" title="Permalink to this heading">#</a></h3>
+<p>To begin with let us see how we can express simple links between standard Panel components before digging into some more specific and complex examples.</p>
+<section id="linking-model-properties">
+<h4>Linking model properties<a class="headerlink" href="#linking-model-properties" title="Permalink to this heading">#</a></h4>
+<p>Let us start by rehashing the example from above, linking the <code class="docutils literal notranslate"><span class="pre">value</span></code> of the <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> widget to the <code class="docutils literal notranslate"><span class="pre">object</span></code> property of the <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> pane:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">markdown</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">'Markdown display'</span><span class="p">)</span>
+<span class="n">text_input</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">markdown</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+
+<span class="n">link</span> <span class="o">=</span> <span class="n">text_input</span><span class="o">.</span><span class="n">jslink</span><span class="p">(</span><span class="n">markdown</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'object'</span><span class="p">)</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">text_input</span><span class="p">,</span> <span class="n">markdown</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell12-py"></pre><pre class="pyodide-stderr" id="stderr-codecell12-py"></pre><div class="pyodide-output embedded" id="output-codecell12-py"></div>
+<script>
+              async function embed_bokeh_13 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell12-py", "root_id": "1021", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"js_property_callbacks": {"change:value": [{"id": "1024"}]}, "margin": [5, 10, 5, 10], "max_length": 5000, "value": "Markdown display"}, "id": "1022", "type": "TextInput"}, {"attributes": {"children": [{"id": "1022"}, {"id": "1023"}], "margin": [0, 0, 0, 0], "name": "Row04905"}, "id": "1021", "type": "Row"}, {"attributes": {"args": {"bidirectional": false, "properties": {"value": "object"}, "source": {"id": "1022"}, "target": {"id": "1023"}}, "code": "\n    var value = source['value'];\n    value = value;\n    value = None;\n    try {\n      var property = target.properties['text'];\n      if (property !== undefined) { property.validate(value); }\n    } catch(err) {\n      console.log('WARNING: Could not set text on target, raised error: ' + err);\n      return;\n    }\n    try {\n      target['text'] = value;\n    } catch(err) {\n      console.log(err)\n    }\n    ", "tags": [[140645145820368, [null, "value"], [null, "text"]]]}, "id": "1024", "type": "CustomJS"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "Markdown04901", "text": "Markdown display"}, "id": "1023", "type": "panel.models.markup.HTML"}, {"attributes": {"name": "location", "reload": false}, "id": "1025", "type": "panel.models.location.Location"}], "root_ids": ["1021", "1025"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_13, 200)
+                }
+              };
+              embed_bokeh_13()
+            </script>
+<p>As you can see the signature is identical to the <code class="docutils literal notranslate"><span class="pre">link</span></code> example above, but here Panel translates the specification into a JS code snippet which syncs the properties on the underlying Bokeh properties. But now if you edit the widget and press Return, the Markdown display will automatically update even in a static HTML web page.</p>
+</section>
+<section id="linking-bi-directionally">
+<h4>Linking bi-directionally<a class="headerlink" href="#linking-bi-directionally" title="Permalink to this heading">#</a></h4>
+<p>When you want the source and target to be linked bi-directionally, i.e. a change in one will automatically trigger a change in the other you can simply set the <code class="docutils literal notranslate"><span class="pre">bidirectional</span></code> argument:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">TextInput</span><span class="p">()</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">TextInput</span><span class="p">()</span>
+
+<span class="n">t1</span><span class="o">.</span><span class="n">jslink</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'value'</span><span class="p">,</span> <span class="n">bidirectional</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell13-py"></pre><pre class="pyodide-stderr" id="stderr-codecell13-py"></pre><div class="pyodide-output embedded" id="output-codecell13-py"></div>
+<script>
+              async function embed_bokeh_14 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell13-py", "root_id": "1026", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"children": [{"id": "1027"}, {"id": "1028"}], "margin": [0, 0, 0, 0], "name": "Row04910"}, "id": "1026", "type": "Row"}, {"attributes": {"name": "location", "reload": false}, "id": "1031", "type": "panel.models.location.Location"}, {"attributes": {"args": {"bidirectional": true, "properties": {"value": "value"}, "source": {"id": "1028"}, "target": {"id": "1027"}}, "code": "\n    var value = source['value'];\n    value = value;\n    value = value;\n    try {\n      var property = target.properties['value'];\n      if (property !== undefined) { property.validate(value); }\n    } catch(err) {\n      console.log('WARNING: Could not set value on target, raised error: ' + err);\n      return;\n    }\n    try {\n      target['value'] = value;\n    } catch(err) {\n      console.log(err)\n    }\n    ", "tags": [[140645145827648, [null, "value"], [null, "value"]]]}, "id": "1030", "type": "CustomJS"}, {"attributes": {"js_property_callbacks": {"change:value": [{"id": "1029"}]}, "margin": [5, 10, 5, 10], "max_length": 5000}, "id": "1027", "type": "TextInput"}, {"attributes": {"args": {"bidirectional": true, "properties": {"value": "value"}, "source": {"id": "1027"}, "target": {"id": "1028"}}, "code": "\n    var value = source['value'];\n    value = value;\n    value = value;\n    try {\n      var property = target.properties['value'];\n      if (property !== undefined) { property.validate(value); }\n    } catch(err) {\n      console.log('WARNING: Could not set value on target, raised error: ' + err);\n      return;\n    }\n    try {\n      target['value'] = value;\n    } catch(err) {\n      console.log(err)\n    }\n    ", "tags": [[140645145827648, [null, "value"], [null, "value"]]]}, "id": "1029", "type": "CustomJS"}, {"attributes": {"js_property_callbacks": {"change:value": [{"id": "1030"}]}, "margin": [5, 10, 5, 10], "max_length": 5000}, "id": "1028", "type": "TextInput"}], "root_ids": ["1026", "1031"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_14, 200)
+                }
+              };
+              embed_bokeh_14()
+            </script>
+</section>
+<section id="linking-using-custom-js-code">
+<h4>Linking using custom JS code<a class="headerlink" href="#linking-using-custom-js-code" title="Permalink to this heading">#</a></h4>
+<p>Since everything happens in JS for a <code class="docutils literal notranslate"><span class="pre">jslink</span></code>, we can’t provide a Python callback. Instead, we can define a JS code snippet, which is executed when a property changes. E.g. we can define a little code snippet which adds HTML bold tags (<code class="docutils literal notranslate"><span class="pre">&lt;b&gt;</span></code>) around the text before setting it on the target. The code argument should map from the parameter/property on the source object to the JS code snippet to execute:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">markdown</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">"&lt;b&gt;Markdown display&lt;/b&gt;"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">text_input</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">"Markdown display"</span><span class="p">)</span>
+
+<span class="n">code</span> <span class="o">=</span> <span class="s1">'''</span>
+<span class="s1">    target.text = '&lt;b&gt;' + source.value + '&lt;/b&gt;'</span>
+<span class="s1">'''</span>
+<span class="n">link</span> <span class="o">=</span> <span class="n">text_input</span><span class="o">.</span><span class="n">jslink</span><span class="p">(</span><span class="n">markdown</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="p">{</span><span class="s1">'value'</span><span class="p">:</span> <span class="n">code</span><span class="p">})</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">text_input</span><span class="p">,</span> <span class="n">markdown</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell14-py"></pre><pre class="pyodide-stderr" id="stderr-codecell14-py"></pre><div class="pyodide-output embedded" id="output-codecell14-py"></div>
+<script>
+              async function embed_bokeh_15 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell14-py", "root_id": "1032", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"args": {"bidirectional": false, "properties": {}, "source": {"id": "1033"}, "target": {"id": "1034"}}, "code": "try { \n    target.text = '<b>' + source.value + '</b>'\n } catch(err) { console.log(err) }", "tags": [[140645145827696, [null, "value"], [null, null]]]}, "id": "1035", "type": "CustomJS"}, {"attributes": {"js_property_callbacks": {"change:value": [{"id": "1035"}]}, "margin": [5, 10, 5, 10], "max_length": 5000, "value": "Markdown display"}, "id": "1033", "type": "TextInput"}, {"attributes": {"name": "location", "reload": false}, "id": "1036", "type": "panel.models.location.Location"}, {"attributes": {"children": [{"id": "1033"}, {"id": "1034"}], "margin": [0, 0, 0, 0], "name": "Row04916"}, "id": "1032", "type": "Row"}, {"attributes": {"css_classes": ["markdown"], "margin": [5, 5, 5, 5], "name": "Markdown04912", "text": "&lt;p&gt;&lt;b&gt;Markdown display&lt;/b&gt;&lt;/p&gt;", "width": 400}, "id": "1034", "type": "panel.models.markup.HTML"}], "root_ids": ["1032", "1036"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_15, 200)
+                }
+              };
+              embed_bokeh_15()
+            </script>
+<p>Here <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> are made available in the JavaScript namespace, allowing us to arbitrarily modify the models in response to property change events. Note however that the underlying Bokeh model property names may differ slightly from the naming of the parameters on Panel objects, e.g. the ‘object’ parameter on the Markdown pane translates to the ‘text’ property on the Bokeh model used to render the <code class="docutils literal notranslate"><span class="pre">Markdown</span></code>.</p>
+<p>Of course, you can still update the value from Python, and it will automatically update the linked markdown:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text_input</span><span class="o">.</span><span class="n">value</span><span class="o">=</span><span class="s2">"Markdown display"</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell15-py"></pre><pre class="pyodide-stderr" id="stderr-codecell15-py"></pre></section>
+<section id="open-url">
+<h4>Open URL<a class="headerlink" href="#open-url" title="Permalink to this heading">#</a></h4>
+<p>As an example of using <code class="docutils literal notranslate"><span class="pre">jslink</span></code>, here we open a URL from the <code class="docutils literal notranslate"><span class="pre">TextInput</span></code> widget value. A new browser tab will open with the provided URL:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">button</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Open URL'</span><span class="p">,</span> <span class="n">button_type</span> <span class="o">=</span> <span class="s1">'primary'</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'URL'</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">'https://pyviz.org/'</span><span class="p">)</span>
+<span class="n">button</span><span class="o">.</span><span class="n">js_on_click</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">{</span><span class="s1">'target'</span><span class="p">:</span> <span class="n">url</span><span class="p">},</span> <span class="n">code</span><span class="o">=</span><span class="s1">'window.open(target.value)'</span><span class="p">)</span>
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">button</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell16-py"></pre><pre class="pyodide-stderr" id="stderr-codecell16-py"></pre><div class="pyodide-output embedded" id="output-codecell16-py"></div>
+<script>
+              async function embed_bokeh_17 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell16-py", "root_id": "1037", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"children": [{"id": "1038"}, {"id": "1039"}], "margin": [0, 0, 0, 0], "name": "Row04921"}, "id": "1037", "type": "Row"}, {"attributes": {"name": "location", "reload": false}, "id": "1041", "type": "panel.models.location.Location"}, {"attributes": {"args": {"source": {"id": "1039"}, "target": {"id": "1038"}}, "code": "try { window.open(target.value) } catch(err) { console.log(err) }", "tags": [[140645145981760, [null, "event:button_click"], [null, null]]]}, "id": "1040", "type": "CustomJS"}, {"attributes": {"margin": [5, 10, 5, 10], "max_length": 5000, "title": "URL", "value": "https://pyviz.org/"}, "id": "1038", "type": "TextInput"}, {"attributes": {"button_type": "primary", "icon": null, "js_event_callbacks": {"button_click": [{"id": "1040"}]}, "label": "Open URL", "margin": [5, 10, 5, 10], "subscribed_events": ["button_click"]}, "id": "1039", "type": "Button"}], "root_ids": ["1037", "1041"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_17, 200)
+                }
+              };
+              embed_bokeh_17()
+            </script>
+</section>
+</section>
+</section>
+<section id="defining-javascript-callbacks">
+<h2>Defining Javascript callbacks<a class="headerlink" href="#defining-javascript-callbacks" title="Permalink to this heading">#</a></h2>
+<p>Sometimes defining a simple link between to objects is not sufficient, e.g. when there are a number of objects involved. In these cases it is helpful to be able to define arbitrary Javascript callbacks. A very simple example is a very basic calculator which allows multiplying or adding two values, in this case we have two widgets to input numbers, a selector to pick the operation, a display for the result and a button.</p>
+<p>To implement this we define a <code class="docutils literal notranslate"><span class="pre">jscallback</span></code>, which is triggered when the <code class="docutils literal notranslate"><span class="pre">Button.clicks</span></code> property changes and provide a number of <code class="docutils literal notranslate"><span class="pre">args</span></code> allowing us to access the values of the various widgets:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">value1</span> <span class="o">=</span>   <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Spinner</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
+<span class="n">operator</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">'*'</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">'*'</span><span class="p">,</span> <span class="s1">'+'</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">'center'</span><span class="p">)</span>
+<span class="n">value2</span> <span class="o">=</span>   <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Spinner</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
+<span class="n">button</span> <span class="o">=</span>   <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'='</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span>   <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">'0'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">'center'</span><span class="p">)</span>
+
+<span class="n">button</span><span class="o">.</span><span class="n">jscallback</span><span class="p">(</span><span class="n">clicks</span><span class="o">=</span><span class="s2">"""</span>
+<span class="s2">if (op.value == '*')</span>
+<span class="s2">  result.text = (v1.value * v2.value).toString()</span>
+<span class="s2">else</span>
+<span class="s2">  result.text = (v1.value + v2.value).toString()</span>
+<span class="s2">"""</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">{</span><span class="s1">'op'</span><span class="p">:</span> <span class="n">operator</span><span class="p">,</span> <span class="s1">'result'</span><span class="p">:</span> <span class="n">result</span><span class="p">,</span> <span class="s1">'v1'</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span> <span class="s1">'v2'</span><span class="p">:</span> <span class="n">value2</span><span class="p">})</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">operator</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">button</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell17-py"></pre><pre class="pyodide-stderr" id="stderr-codecell17-py"></pre><div class="pyodide-output embedded" id="output-codecell17-py"></div>
+<script>
+              async function embed_bokeh_18 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell17-py", "root_id": "1042", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"args": {"op": {"id": "1044"}, "result": {"id": "1047"}, "source": {"id": "1046"}, "v1": {"id": "1043"}, "v2": {"id": "1045"}}, "code": "try { \nif (op.value == '*')\n  result.text = (v1.value * v2.value).toString()\nelse\n  result.text = (v1.value + v2.value).toString()\n } catch(err) { console.log(err) }", "tags": [[140645146039296, [null, "event:button_click"], [null, null]]]}, "id": "1048", "type": "CustomJS"}, {"attributes": {"name": "location", "reload": false}, "id": "1049", "type": "panel.models.location.Location"}, {"attributes": {"children": [{"id": "1043"}, {"id": "1044"}, {"id": "1045"}, {"id": "1046"}, {"id": "1047"}], "margin": [0, 0, 0, 0], "name": "Row04929"}, "id": "1042", "type": "Row"}, {"attributes": {"align": "center", "margin": [5, 10, 5, 10], "name": "", "text": "0", "width": 50}, "id": "1047", "type": "Div"}, {"attributes": {"icon": null, "js_event_callbacks": {"button_click": [{"id": "1048"}]}, "label": "=", "margin": [5, 10, 5, 10], "min_width": 50, "subscribed_events": ["button_click"], "width": 50}, "id": "1046", "type": "Button"}, {"attributes": {"align": "center", "margin": [5, 10, 5, 10], "min_width": 50, "options": ["*", "+"], "value": "*", "width": 50}, "id": "1044", "type": "panel.models.widgets.CustomSelect"}, {"attributes": {"margin": [5, 10, 5, 10], "min_width": 75, "mode": "int", "placeholder": "0", "value": 0, "value_throttled": 0, "width": 75}, "id": "1045", "type": "Spinner"}, {"attributes": {"margin": [5, 10, 5, 10], "min_width": 75, "mode": "int", "placeholder": "0", "value": 0, "value_throttled": 0, "width": 75}, "id": "1043", "type": "Spinner"}], "root_ids": ["1042", "1049"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_18, 200)
+                }
+              };
+              embed_bokeh_18()
+            </script>
+</section>
+<section id="linking-plots">
+<h2>Linking Plots<a class="headerlink" href="#linking-plots" title="Permalink to this heading">#</a></h2>
+<p>The above examples link widgets to simple static panes, but links are probably most useful when combined with dynamic objects like plots.</p>
+<section id="bokeh">
+<h3>Bokeh<a class="headerlink" href="#bokeh" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">jslink</span></code> API trivially allows us to link a parameter on a Panel widget to a Bokeh plot property. Here we create a Bokeh Figure with a simple sine curve. The <code class="docutils literal notranslate"><span class="pre">jslink</span></code> method allows us to pass any Bokeh model held by the Figure as the <code class="docutils literal notranslate"><span class="pre">target</span></code>, then link the widget value to some property on it. E.g. here we link a <code class="docutils literal notranslate"><span class="pre">FloatSlider</span></code> value to the <code class="docutils literal notranslate"><span class="pre">line_width</span></code> of the <code class="docutils literal notranslate"><span class="pre">Line</span></code> glyph:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>
+
+<span class="n">width_slider</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Line Width'</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">width_slider</span><span class="o">.</span><span class="n">jslink</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">glyph</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'line_width'</span><span class="p">)</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">width_slider</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell18-py"></pre><pre class="pyodide-stderr" id="stderr-codecell18-py"></pre><div class="pyodide-output embedded" id="output-codecell18-py"></div>
+<script>
+              async function embed_bokeh_19 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell18-py", "root_id": "1087", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"name": "location", "reload": false}, "id": "1134", "type": "panel.models.location.Location"}, {"attributes": {}, "id": "1057", "type": "LinearScale"}, {"attributes": {}, "id": "1097", "type": "UnionRenderers"}, {"attributes": {"coordinates": null, "formatter": {"id": "1095"}, "group": null, "major_label_policy": {"id": "1096"}, "ticker": {"id": "1060"}}, "id": "1059", "type": "LinearAxis"}, {"attributes": {"overlay": {"id": "1073"}}, "id": "1069", "type": "BoxZoomTool"}, {"attributes": {"coordinates": null, "formatter": {"id": "1092"}, "group": null, "major_label_policy": {"id": "1093"}, "ticker": {"id": "1064"}}, "id": "1063", "type": "LinearAxis"}, {"attributes": {"line_alpha": 0.1, "line_color": "#1f77b4", "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1083", "type": "Line"}, {"attributes": {}, "id": "1064", "type": "BasicTicker"}, {"attributes": {"below": [{"id": "1059"}], "center": [{"id": "1062"}, {"id": "1066"}], "height": 300, "left": [{"id": "1063"}], "renderers": [{"id": "1085"}], "title": {"id": "1089"}, "toolbar": {"id": "1074"}, "width": 300, "x_range": {"id": "1051"}, "x_scale": {"id": "1055"}, "y_range": {"id": "1053"}, "y_scale": {"id": "1057"}}, "id": "1050", "subtype": "Figure", "type": "Plot"}, {"attributes": {}, "id": "1053", "type": "DataRange1d"}, {"attributes": {}, "id": "1071", "type": "ResetTool"}, {"attributes": {}, "id": "1068", "type": "WheelZoomTool"}, {"attributes": {"children": [{"id": "1088"}, {"id": "1050"}], "margin": [0, 0, 0, 0], "name": "Column04935"}, "id": "1087", "type": "Column"}, {"attributes": {}, "id": "1098", "type": "Selection"}, {"attributes": {"bottom_units": "screen", "coordinates": null, "fill_alpha": 0.5, "fill_color": "lightgrey", "group": null, "left_units": "screen", "level": "overlay", "line_alpha": 1.0, "line_color": "black", "line_dash": [4, 4], "line_width": 2, "right_units": "screen", "syncable": false, "top_units": "screen"}, "id": "1073", "type": "BoxAnnotation"}, {"attributes": {"line_alpha": 0.2, "line_color": "#1f77b4", "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1084", "type": "Line"}, {"attributes": {}, "id": "1055", "type": "LinearScale"}, {"attributes": {}, "id": "1095", "type": "BasicTickFormatter"}, {"attributes": {}, "id": "1067", "type": "PanTool"}, {"attributes": {}, "id": "1060", "type": "BasicTicker"}, {"attributes": {}, "id": "1093", "type": "AllLabels"}, {"attributes": {"source": {"id": "1081"}}, "id": "1086", "type": "CDSView"}, {"attributes": {"args": {"bidirectional": false, "properties": {"value": "line_width"}, "source": {"id": "1088"}, "target": {"id": "1082"}}, "code": "\n    var value = source['value'];\n    value = value;\n    value = value;\n    try {\n      var property = target.properties['line_width'];\n      if (property !== undefined) { property.validate(value); }\n    } catch(err) {\n      console.log('WARNING: Could not set line_width on target, raised error: ' + err);\n      return;\n    }\n    try {\n      target['line_width'] = value;\n    } catch(err) {\n      console.log(err)\n    }\n    ", "tags": [[140645145984448, [null, "value"], [null, "line_width"]]]}, "id": "1111", "type": "CustomJS"}, {"attributes": {}, "id": "1072", "type": "HelpTool"}, {"attributes": {}, "id": "1096", "type": "AllLabels"}, {"attributes": {"end": 10, "js_property_callbacks": {"change:value": [{"id": "1111"}]}, "margin": [5, 10, 5, 10], "start": 0.1, "step": 0.1, "title": "Line Width", "value": 0.1}, "id": "1088", "type": "Slider"}, {"attributes": {"coordinates": null, "data_source": {"id": "1081"}, "glyph": {"id": "1082"}, "group": null, "hover_glyph": null, "muted_glyph": {"id": "1084"}, "nonselection_glyph": {"id": "1083"}, "view": {"id": "1086"}}, "id": "1085", "type": "GlyphRenderer"}, {"attributes": {"tools": [{"id": "1067"}, {"id": "1068"}, {"id": "1069"}, {"id": "1070"}, {"id": "1071"}, {"id": "1072"}]}, "id": "1074", "type": "Toolbar"}, {"attributes": {"axis": {"id": "1059"}, "coordinates": null, "group": null, "ticker": null}, "id": "1062", "type": "Grid"}, {"attributes": {"data": {"x": {"__ndarray__": "AAAAAAAAAACIxvrQWB/KP4jG+tBYH9o/5hS8nIKX4z+IxvrQWB/qPxW8nIKXU/A/5hS8nIKX8z+3bdu2bdv2P4jG+tBYH/o/WR8a60Nj/T8VvJyCl1MAQH5orA+N9QFA5hS8nIKXA0BOwcspeDkFQLdt27Zt2wZAIBrrQ2N9CECIxvrQWB8KQPByCl5OwQtAWR8a60NjDUDCyyl4OQUPQBW8nIKXUxBASZIkSZIkEUB+aKwPjfURQLI+NNaHxhJA5hS8nIKXE0Aa60NjfWgUQE7Byyl4ORVAg5dT8HIKFkC3bdu2bdsWQOtDY31orBdAIBrrQ2N9GEBU8HIKXk4ZQIjG+tBYHxpAvJyCl1PwGkDwcgpeTsEbQCVJkiRJkhxAWR8a60NjHUCN9aGxPjQeQMLLKXg5BR9A9qGxPjTWH0AVvJyCl1MgQC+n4OUUvCBASZIkSZIkIUBjfWisD40hQH5orA+N9SFAmFPwcgpeIkCyPjTWh8YiQMwpeDkFLyNA5hS8nIKXI0AAAAAAAAAkQA==", "dtype": "float64", "order": "little", "shape": [50]}, "y": {"__ndarray__": "AAAAAAAAAADKDrbfBfHJP98CqIs0Z9k/qsl67P1j4j8pU7fk+VDnP2vgc+I3Rus/FlAz7akZ7j9ITGc3Sa3vP2UZyihV8O8/5wzYXQXg7j91/SE5p4fsP2yWTswlAOk/lyfHFAFv5D/1CHsSfwnePz91TQPV9dE/YwHr/1aNtD+VnVs0BZe/v3+Q/qjumtS/YhbLOJY64L8b16WCRXvlvxbW8Y611+m/zIE66o8h7b+4sXCq4zXvvzsDCrGY/u+/HCrLbFpz7799AOJc8JntvyhI2KgAhuq/G+XUWT9Y5r8RoHnfEj3hv4he45h41da/c3s4fVt8xL8RHWWzky+mP/+OupQ2Wc8/PjXLF7ns2z/wxPXkEILjP6Y5VPJ9Pug/NHDDWVH56z/l6EnT6YruP0Qeij381+8/mJTmnbXS7z9GixwDTnvuP+6EozEG4Os/jliKMpAc6D9kTu4N6VjjP76+hs9fj9s/kj/khTCQzj+a/bc3jfOiP8PkuyzBSMW/iZSxlR82179ST/P1nmjhvw==", "dtype": "float64", "order": "little", "shape": [50]}}, "selected": {"id": "1098"}, "selection_policy": {"id": "1097"}}, "id": "1081", "type": "ColumnDataSource"}, {"attributes": {}, "id": "1092", "type": "BasicTickFormatter"}, {"attributes": {"coordinates": null, "group": null}, "id": "1089", "type": "Title"}, {"attributes": {"axis": {"id": "1063"}, "coordinates": null, "dimension": 1, "group": null, "ticker": null}, "id": "1066", "type": "Grid"}, {"attributes": {"line_color": "#1f77b4", "line_width": 0.1, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1082", "type": "Line"}, {"attributes": {}, "id": "1051", "type": "DataRange1d"}, {"attributes": {}, "id": "1070", "type": "SaveTool"}], "root_ids": ["1087", "1134"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_19, 200)
+                }
+              };
+              embed_bokeh_19()
+            </script>
+</section>
+<section id="holoviews">
+<h3>HoloViews<a class="headerlink" href="#holoviews" title="Permalink to this heading">#</a></h3>
+<p>Bokeh models allow us to directly access the underlying models and properties, but this access is more indirect when working with HoloViews objects. HoloViews makes various models available directly in the namespace so that they can be accessed for linking:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">cds</span></code></strong>: The bokeh <code class="docutils literal notranslate"><span class="pre">ColumnDataSource</span></code> model which holds the data used to render the plot</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">glyph</span></code></strong>: The bokeh <code class="docutils literal notranslate"><span class="pre">Glyph</span></code> defining the style of the element</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">glyph_renderer</span></code></strong>: The Bokeh <code class="docutils literal notranslate"><span class="pre">GlyphRenderer</span></code> responsible for rendering the element</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">plot</span></code></strong>: The bokeh <code class="docutils literal notranslate"><span class="pre">Figure</span></code></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">xaxis</span></code>/<code class="docutils literal notranslate"><span class="pre">yaxis</span></code></strong>: The Axis models of the plot</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">x_range</span></code>/<code class="docutils literal notranslate"><span class="pre">y_range</span></code></strong>: The x/y-axis <code class="docutils literal notranslate"><span class="pre">Range1d</span></code> models defining the axis ranges</p></li>
+</ul>
+<p>All these are made available in the JS code’s namespace if we decide to provide a JS code snippet, but can also be referenced in the property mapping. We can map the widget value to a property on the <code class="docutils literal notranslate"><span class="pre">glyph</span></code> by providing a specification separated by periods. E.g. in this case we can map the value to the <code class="docutils literal notranslate"><span class="pre">glyph.size</span></code>:</p>
+<div class="pyodide highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">holoviews</span> <span class="k">as</span> <span class="nn">hv</span>
+<span class="kn">import</span> <span class="nn">holoviews.plotting.bokeh</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"black"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">,</span> <span class="s2">"gray"</span><span class="p">]</span>
+
+<span class="n">size_widget</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Size'</span><span class="p">)</span>
+<span class="n">color_widget</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Color'</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
+
+<span class="n">points</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">Points</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">padding</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
+
+<span class="n">size_widget</span><span class="o">.</span><span class="n">jslink</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'glyph.size'</span><span class="p">)</span>
+<span class="n">color_widget</span><span class="o">.</span><span class="n">jslink</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">'glyph.fill_color'</span><span class="p">)</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">pn</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">size_widget</span><span class="p">,</span> <span class="n">color_widget</span><span class="p">))</span>
+</pre></div>
+</div>
+<pre class="pyodide-stdout" id="stdout-codecell19-py"></pre><pre class="pyodide-stderr" id="stderr-codecell19-py"></pre><div class="pyodide-output embedded" id="output-codecell19-py"></div>
+<script>
+              async function embed_bokeh_20 () {
+                if (window.Bokeh && window.Bokeh.Panel) {
+                  await Bokeh.embed.embed_item({"target_id": "output-codecell19-py", "root_id": "1168", "doc": {"defs": [{"extends": null, "module": null, "name": "ReactiveHTML1", "overrides": [], "properties": []}, {"extends": null, "module": null, "name": "FlexBox1", "overrides": [], "properties": [{"default": "flex-start", "kind": null, "name": "align_content"}, {"default": "flex-start", "kind": null, "name": "align_items"}, {"default": "row", "kind": null, "name": "flex_direction"}, {"default": "wrap", "kind": null, "name": "flex_wrap"}, {"default": "flex-start", "kind": null, "name": "justify_content"}]}, {"extends": null, "module": null, "name": "GridStack1", "overrides": [], "properties": [{"default": "warn", "kind": null, "name": "mode"}, {"default": null, "kind": null, "name": "ncols"}, {"default": null, "kind": null, "name": "nrows"}, {"default": true, "kind": null, "name": "allow_resize"}, {"default": true, "kind": null, "name": "allow_drag"}, {"default": [], "kind": null, "name": "state"}]}, {"extends": null, "module": null, "name": "click1", "overrides": [], "properties": [{"default": "", "kind": null, "name": "terminal_output"}, {"default": "", "kind": null, "name": "debug_name"}, {"default": 0, "kind": null, "name": "clears"}]}, {"extends": null, "module": null, "name": "NotificationAreaBase1", "overrides": [], "properties": [{"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}]}, {"extends": null, "module": null, "name": "NotificationArea1", "overrides": [], "properties": [{"default": [], "kind": null, "name": "notifications"}, {"default": "bottom-right", "kind": null, "name": "position"}, {"default": 0, "kind": null, "name": "_clear"}, {"default": [{"background": "#ffc107", "icon": {"className": "fas fa-exclamation-triangle", "color": "white", "tagName": "i"}, "type": "warning"}, {"background": "#007bff", "icon": {"className": "fas fa-info-circle", "color": "white", "tagName": "i"}, "type": "info"}], "kind": null, "name": "types"}]}, {"extends": null, "module": null, "name": "Notification", "overrides": [], "properties": [{"default": null, "kind": null, "name": "background"}, {"default": 3000, "kind": null, "name": "duration"}, {"default": null, "kind": null, "name": "icon"}, {"default": "", "kind": null, "name": "message"}, {"default": null, "kind": null, "name": "notification_type"}, {"default": false, "kind": null, "name": "_destroyed"}]}, {"extends": null, "module": null, "name": "TemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}, {"extends": null, "module": null, "name": "MaterialTemplateActions1", "overrides": [], "properties": [{"default": 0, "kind": null, "name": "open_modal"}, {"default": 0, "kind": null, "name": "close_modal"}]}], "roots": {"references": [{"attributes": {"axis_label": "x", "coordinates": null, "formatter": {"id": "1210"}, "group": null, "major_label_policy": {"id": "1211"}, "ticker": {"id": "1181"}}, "id": "1180", "type": "LinearAxis"}, {"attributes": {"args": {"bidirectional": false, "cds": {"id": "1200"}, "glyph": {"id": "1203"}, "glyph_renderer": {"id": "1206"}, "plot": {"id": "1171"}, "properties": {"value": "glyph.size"}, "selected": {"id": "1201"}, "source": {"id": "1226"}, "target": {"id": "1203"}, "target_source": {"id": "1200"}, "x_range": {"id": "1169"}, "xaxis": {"id": "1180"}, "y_range": {"id": "1170"}, "yaxis": {"id": "1184"}}, "code": "\n    var value = source['value'];\n    value = value;\n    value = value;\n    try {\n      var property = target.properties['size'];\n      if (property !== undefined) { property.validate(value); }\n    } catch(err) {\n      console.log('WARNING: Could not set size on target, raised error: ' + err);\n      return;\n    }\n    try {\n      target['size'] = value;\n    } catch(err) {\n      console.log(err)\n    }\n    ", "tags": [[140645146538528, [null, "value"], ["glyph", "size"]]]}, "id": "1238", "type": "CustomJS"}, {"attributes": {}, "id": "1211", "type": "AllLabels"}, {"attributes": {"args": {"bidirectional": false, "cds": {"id": "1200"}, "glyph": {"id": "1203"}, "glyph_renderer": {"id": "1206"}, "plot": {"id": "1171"}, "properties": {"value": "glyph.fill_color"}, "selected": {"id": "1201"}, "source": {"id": "1227"}, "target": {"id": "1203"}, "target_source": {"id": "1200"}, "x_range": {"id": "1169"}, "xaxis": {"id": "1180"}, "y_range": {"id": "1170"}, "yaxis": {"id": "1184"}}, "code": "\n    var value = source['value'];\n    value = value;\n    value = value;\n    try {\n      var property = target.properties['fill_color'];\n      if (property !== undefined) { property.validate(value); }\n    } catch(err) {\n      console.log('WARNING: Could not set fill_color on target, raised error: ' + err);\n      return;\n    }\n    try {\n      target['fill_color'] = value;\n    } catch(err) {\n      console.log(err)\n    }\n    ", "tags": [[140645146539200, [null, "value"], ["glyph", "fill_color"]]]}, "id": "1239", "type": "CustomJS"}, {"attributes": {"below": [{"id": "1180"}], "center": [{"id": "1183"}, {"id": "1187"}], "height": 300, "left": [{"id": "1184"}], "margin": [5, 5, 5, 5], "min_border_bottom": 10, "min_border_left": 10, "min_border_right": 10, "min_border_top": 10, "renderers": [{"id": "1206"}], "sizing_mode": "fixed", "title": {"id": "1172"}, "toolbar": {"id": "1194"}, "width": 300, "x_range": {"id": "1169"}, "x_scale": {"id": "1176"}, "y_range": {"id": "1170"}, "y_scale": {"id": "1178"}}, "id": "1171", "subtype": "Figure", "type": "Plot"}, {"attributes": {"source": {"id": "1200"}}, "id": "1207", "type": "CDSView"}, {"attributes": {"coordinates": null, "data_source": {"id": "1200"}, "glyph": {"id": "1203"}, "group": null, "hover_glyph": null, "muted_glyph": {"id": "1205"}, "nonselection_glyph": {"id": "1204"}, "selection_glyph": {"id": "1208"}, "view": {"id": "1207"}}, "id": "1206", "type": "GlyphRenderer"}, {"attributes": {"tools": [{"id": "1188"}, {"id": "1189"}, {"id": "1190"}, {"id": "1191"}, {"id": "1192"}]}, "id": "1194", "type": "Toolbar"}, {"attributes": {"fill_alpha": {"value": 0.1}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0.1}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0.1}, "size": {"value": 2.449489742783178}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1204", "type": "Scatter"}, {"attributes": {"end": 20, "js_property_callbacks": {"change:value": [{"id": "1238"}]}, "margin": [5, 10, 5, 10], "start": 3, "step": 0.1, "title": "Size", "value": 8}, "id": "1226", "type": "Slider"}, {"attributes": {}, "id": "1185", "type": "BasicTicker"}, {"attributes": {"axis": {"id": "1180"}, "coordinates": null, "grid_line_color": null, "group": null, "ticker": null}, "id": "1183", "type": "Grid"}, {"attributes": {"axis": {"id": "1184"}, "coordinates": null, "dimension": 1, "grid_line_color": null, "group": null, "ticker": null}, "id": "1187", "type": "Grid"}, {"attributes": {"axis_label": "y", "coordinates": null, "formatter": {"id": "1213"}, "group": null, "major_label_policy": {"id": "1214"}, "ticker": {"id": "1185"}}, "id": "1184", "type": "LinearAxis"}, {"attributes": {"children": [{"id": "1226"}, {"id": "1227"}], "margin": [0, 0, 0, 0], "name": "Column04968"}, "id": "1225", "type": "Column"}, {"attributes": {"end": 1.0879412854309514, "reset_end": 1.0879412854309514, "reset_start": 0.01123750469122542, "start": 0.01123750469122542, "tags": [[["y", "y", null]]]}, "id": "1170", "type": "Range1d"}, {"attributes": {"overlay": {"id": "1193"}}, "id": "1191", "type": "BoxZoomTool"}, {"attributes": {"data": {"x": {"__ndarray__": "VLZ1IDL30j+KLMbs0wHfP+xtfln78e4/nI5YymwE5T8jWuRzJkjjP/ySoaItb+w/uAPpdaOp5D+EwQOL+6DFP7CeYCTQfe4/awwYMKx65z8=", "dtype": "float64", "order": "little", "shape": [10]}, "y": {"__ndarray__": "PQ4gYQNE6T/3PoEcytruP/g40B7lAOA/FGNjWzp/wT/e7PNCpG/eP8pw/Dly5+M/N5hinmLx7z8IVfMIs9i5P5Cpug3WutE//DbMA9DQxT8=", "dtype": "float64", "order": "little", "shape": [10]}}, "selected": {"id": "1201"}, "selection_policy": {"id": "1222"}}, "id": "1200", "type": "ColumnDataSource"}, {"attributes": {"bottom_units": "screen", "coordinates": null, "fill_alpha": 0.5, "fill_color": "lightgrey", "group": null, "left_units": "screen", "level": "overlay", "line_alpha": 1.0, "line_color": "black", "line_dash": [4, 4], "line_width": 2, "right_units": "screen", "syncable": false, "top_units": "screen"}, "id": "1193", "type": "BoxAnnotation"}, {"attributes": {"end": 1.0468451480714316, "reset_end": 1.0468451480714316, "reset_start": 0.08916894882851877, "start": 0.08916894882851877, "tags": [[["x", "x", null]]]}, "id": "1169", "type": "Range1d"}, {"attributes": {}, "id": "1192", "type": "ResetTool"}, {"attributes": {"angle": {"value": 0.0}, "fill_alpha": {"value": 1.0}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 1.0}, "hatch_color": {"value": "#30a2da"}, "hatch_scale": {"value": 12.0}, "hatch_weight": {"value": 1.0}, "line_alpha": {"value": 1.0}, "line_cap": {"value": "butt"}, "line_color": {"value": "black"}, "line_dash": {"value": []}, "line_dash_offset": {"value": 0}, "line_join": {"value": "bevel"}, "line_width": {"value": 1}, "marker": {"value": "circle"}, "size": {"value": 2.449489742783178}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1208", "type": "Scatter"}, {"attributes": {}, "id": "1210", "type": "BasicTickFormatter"}, {"attributes": {"children": [{"id": "1171"}, {"id": "1225"}], "margin": [0, 0, 0, 0], "name": "Row04974"}, "id": "1168", "type": "Row"}, {"attributes": {"fill_alpha": {"value": 0.2}, "fill_color": {"value": "#30a2da"}, "hatch_alpha": {"value": 0.2}, "hatch_color": {"value": "#30a2da"}, "line_alpha": {"value": 0.2}, "size": {"value": 2.449489742783178}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1205", "type": "Scatter"}, {"attributes": {}, "id": "1222", "type": "UnionRenderers"}, {"attributes": {"name": "location", "reload": false}, "id": "1260", "type": "panel.models.location.Location"}, {"attributes": {}, "id": "1190", "type": "WheelZoomTool"}, {"attributes": {"fill_color": {"value": "black"}, "hatch_color": {"value": "#30a2da"}, "size": {"value": 8}, "x": {"field": "x"}, "y": {"field": "y"}}, "id": "1203", "type": "Scatter"}, {"attributes": {}, "id": "1201", "type": "Selection"}, {"attributes": {}, "id": "1188", "type": "SaveTool"}, {"attributes": {}, "id": "1213", "type": "BasicTickFormatter"}, {"attributes": {}, "id": "1181", "type": "BasicTicker"}, {"attributes": {}, "id": "1214", "type": "AllLabels"}, {"attributes": {}, "id": "1176", "type": "LinearScale"}, {"attributes": {"coordinates": null, "group": null, "text_color": "black", "text_font_size": "12pt"}, "id": "1172", "type": "Title"}, {"attributes": {}, "id": "1178", "type": "LinearScale"}, {"attributes": {}, "id": "1189", "type": "PanTool"}, {"attributes": {"js_property_callbacks": {"change:value": [{"id": "1239"}]}, "margin": [5, 10, 5, 10], "options": ["black", "red", "blue", "green", "gray"], "title": "Color", "value": "black"}, "id": "1227", "type": "panel.models.widgets.CustomSelect"}], "root_ids": ["1168", "1260"]}, "title": "Panel Application", "version": "2.4.3"}, "version": "2.4.3"})
+                } else {
+                   setTimeout(embed_bokeh_20, 200)
+                }
+              };
+              embed_bokeh_20()
+            </script>
+<p>Of course, if you need to transform between the displayed widget value and the value to be used on the underlying Bokeh property, you can add custom JS code as shown in <a class="reference external" href="#Linking-using-custom-JS-code">the previous section</a>. Together these linking options should allow you to express whatever interactions you wish between your Panel objects.</p>
+</section>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="Param.html" id="prev-link" title="previous page">
+<i class="fas fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Using Param with Panel</p>
+</div>
+</a>
+<a class="right-next" href="Pipelines.html" id="next-link" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Pipelines</p>
+</div>
+<i class="fas fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+<footer class="bd-footer"><div class="bd-footer__inner container">
+<div class="footer-item">
+<p class="copyright">
+    © Copyright 2019-2022 Holoviz contributors.<br/>
+</p>
+</div>
+<div class="footer-item">
+<p class="last-updated">
+Last updated on 2022-10-05.<br/>
+</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1900 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>panel.io.convert — Panel v0.14.0</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/graphviz.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/runbutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/css/dataframe.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/sphinx_highlight.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script src="../../../_static/run_cell.js"></script>
+<script src="../../../_static/WorkerHandler.js"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../../../_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../../_static/design-tabs.js"></script>
+<script src="../../../_static/ServiceHandler.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script>
+<script src="https://cdn.holoviz.org/panel/0.14.0/dist/panel.min.js"></script>
+<script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-154795830-2', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
+<link href="../../../_static/favicon.ico" rel="shortcut icon">
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></link></link></head>
+<body data-default-mode="light" data-offset="180" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="bd-header-announcement container-fluid" id="banner">
+</div>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+<div id="navbar-start">
+<a class="navbar-brand logo" href="../../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../../_static/logo_horizontal.png"/>
+<img alt="Logo image" class="logo__image only-dark" src="../../../_static/logo_horizontal.png"/>
+</a>
+</div>
+<button aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar-collapsible" data-toggle="collapse" type="button">
+<span class="fas fa-bars"></span>
+</button>
+<div class="col-lg-9 collapse navbar-collapse" id="navbar-collapsible">
+<div class="mr-auto" id="navbar-center">
+<div class="navbar-center-item">
+<ul class="navbar-nav" id="navbar-main-elements">
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../index.html">
+  Overview
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../gallery/index.html">
+  Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../reference/index.html">
+  Reference Gallery
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../developer_guide/index.html">
+  Developer Guide
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../api/index.html">
+  API Reference
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../releases.html">
+  Releases
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../FAQ.html">
+  FAQ
+ </a>
+</li>
+<li class="toctree-l1 nav-item">
+<a class="reference internal nav-link" href="../../../about/index.html">
+  About
+ </a>
+</li>
+</ul>
+</div>
+</div>
+<div id="navbar-end">
+<div class="navbar-end-item">
+<ul aria-label="Icon Links" class="navbar-nav" id="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link" href="https://github.com/holoviz/panel" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://twitter.com/Panel_Org" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://discourse.holoviz.org/c/panel/5" rel="noopener" target="_blank" title="Discourse"><span><i class="fab fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bd-container container-xl">
+<div class="bd-container__inner row">
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-2 bd-sidebar">
+<div class="sidebar-start-items"><form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search the docs ..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../../index.html">
+   Overview
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../getting_started/index.html">
+   Getting Started
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../getting_started/installation.html">
+     Installation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../getting_started/build_app.html">
+     Build an app
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../getting_started/core_concepts.html">
+     Core Concepts
+    </a>
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../user_guide/index.html">
+   User Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Overview.html">
+     Overview
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Components.html">
+     Components
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/APIs.html">
+     APIs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Customization.html">
+     Customization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Interact.html">
+     Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Widgets.html">
+     Widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Param.html">
+     Parameters
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Links.html">
+     Linking
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Pipelines.html">
+     Pipelines
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Templates.html">
+     Templates
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Performance_and_Debugging.html">
+     Performance and Debugging
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Session_State_and_Callbacks.html">
+     Session state &amp; Callbacks
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Async_and_Concurrency.html">
+     Asynchronous and Concurrent Process
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Display_and_Export.html">
+     Display &amp; Export
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Running_in_Webassembly.html">
+     Running Panel in the Browser with WASM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Server_Configuration.html">
+     Server Configuration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Server_Deployment.html">
+     Server Deployment
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Authentication.html">
+     Authentication
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Django.html">
+     Django Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/FastAPI.html">
+     FastAPI Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../user_guide/Custom_Components.html">
+     Building Custom Components
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../gallery/index.html">
+   Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/VTKInteractive.html">
+     VTKInteractive
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/VTKSlicer.html">
+     VTKSlicer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/VTKWarp.html">
+     VTKWarp
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/attractors.html">
+     Attractors
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/gapminders.html">
+     Gapminders
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/glaciers.html">
+     Glaciers
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/nyc_taxi.html">
+     Nyc Taxi
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/demos/portfolio-optimizer.html">
+     Portfolio-optimizer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/altair_brushing.html">
+     Altair Brushing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/altair_choropleth.html">
+     Altair Choropleth
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/clifford_interact.html">
+     Clifford Interact
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/color_speech_recognition.html">
+     Color Speech Recognition
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/deckgl_game_of_life.html">
+     Deckgl Game Of Life
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/defer_data_load.html">
+     Defer Data Load
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/file_download_examples.html">
+     File Download Examples
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/hvplot_explorer.html">
+     Hvplot Explorer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/iris_kmeans.html">
+     Iris Kmeans
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/loading_spinner.html">
+     Loading Spinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/random_number_generator.html">
+     Random Number Generator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/save_filtered_df.html">
+     Save Filtered Df
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/sync_location.html">
+     Sync Location
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/temperature_distribution.html">
+     Temperature Distribution
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/simple/xgboost_classifier.html">
+     Xgboost Classifier
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/apis/stocks_altair.html">
+     Stocks Altair
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/apis/stocks_hvplot.html">
+     Stocks Hvplot
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/apis/stocks_matplotlib.html">
+     Stocks Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/apis/stocks_plotly.html">
+     Stocks Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/layout/distribution_tabs.html">
+     Distribution Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/layout/dynamic_tabs.html">
+     Dynamic Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/layout/plot_with_columns.html">
+     Plot With Columns
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/dynamic/dynamic_plot_layout.html">
+     Dynamic Plot Layout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/dynamic/dynamic_timeseries_image_analysis.html">
+     Dynamic Timeseries Image Analysis
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/dynamic/dynamic_ui.html">
+     Dynamic Ui
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/dynamic/dynamic_widget_values.html">
+     Dynamic Widget Values
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/action_button.html">
+     Action Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/deck_gl_global_power_plants.html">
+     Deck Gl Global Power Plants
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/download_upload_csv.html">
+     Download Upload Csv
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/loading_indicator.html">
+     Loading Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/param_subobjects.html">
+     Param Subobjects
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/precedence.html">
+     Precedence
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/reactive_plots.html">
+     Reactive Plots
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/param/reactive_tables.html">
+     Reactive Tables
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/streaming/hardware_automation.html">
+     Hardware Automation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/streaming/streaming_bokeh.html">
+     Streaming Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/streaming/streaming_indicator.html">
+     Streaming Indicator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/streaming/streaming_perspective.html">
+     Streaming Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/streaming/streaming_tabulator.html">
+     Streaming Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/components/CanvasDraw.html">
+     CanvasDraw
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/components/LeafletHeatMap.html">
+     LeafletHeatMap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/components/MaterialUI.html">
+     MaterialUI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/links/bokeh_property_editor.html">
+     Bokeh Property Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/links/deck_gl_json_editor.html">
+     Deck Gl Json Editor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/links/holoviews_glyph_link.html">
+     Holoviews Glyph Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/links/plotly_link.html">
+     Plotly Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/links/vega_heatmap_link.html">
+     Vega Heatmap Link
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/styles/MatplotlibStyle.html">
+     MatplotlibStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/styles/PlotlyStyle.html">
+     PlotlyStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/styles/SeabornStyle.html">
+     SeabornStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/styles/VegaAltairStyle.html">
+     VegaAltairStyle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/external/DataTable.html">
+     DataTable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/external/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../gallery/external/deck.gl.html">
+     Deck.gl
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../reference/index.html">
+   Reference Gallery
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Alert.html">
+     Alert
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Audio.html">
+     Audio
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Bokeh.html">
+     Bokeh
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/DeckGL.html">
+     DeckGL
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/ECharts.html">
+     ECharts
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Folium.html">
+     Folium
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/GIF.html">
+     GIF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/HTML.html">
+     HTML
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/HoloViews.html">
+     HoloViews
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/IDOM.html">
+     IDOM
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/IPyWidget.html">
+     IPyWidget
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/JPG.html">
+     JPG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/JSON.html">
+     JSON
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/LaTeX.html">
+     LaTeX
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Markdown.html">
+     Markdown
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Matplotlib.html">
+     Matplotlib
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/PDF.html">
+     PDF
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/PNG.html">
+     PNG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Param.html">
+     Param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Perspective.html">
+     Perspective
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Plotly.html">
+     Plotly
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/SVG.html">
+     SVG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Str.html">
+     Str
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Streamz.html">
+     Streamz
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/VTK.html">
+     VTK
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/VTKJS.html">
+     VTKJS
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/VTKVolume.html">
+     VTKVolume
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Vega.html">
+     Vega
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/panes/Video.html">
+     Video
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/Accordion.html">
+     Accordion
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/Card.html">
+     Card
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/Column.html">
+     Column
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/Divider.html">
+     Divider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/FlexBox.html">
+     FlexBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/GridBox.html">
+     GridBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/GridSpec.html">
+     GridSpec
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/GridStack.html">
+     GridStack
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/Row.html">
+     Row
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/Tabs.html">
+     Tabs
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/layouts/WidgetBox.html">
+     WidgetBox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/Bootstrap.html">
+     Bootstrap
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/FastGridTemplate.html">
+     FastGridTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/FastListTemplate.html">
+     FastListTemplate
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/GoldenLayout.html">
+     GoldenLayout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/Material.html">
+     Material
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/React.html">
+     React
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/templates/Vanilla.html">
+     Vanilla
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/global/Notifications.html">
+     Notifications
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/BooleanStatus.html">
+     BooleanStatus
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/Dial.html">
+     Dial
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/Gauge.html">
+     Gauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/LinearGauge.html">
+     LinearGauge
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/LoadingSpinner.html">
+     LoadingSpinner
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/Number.html">
+     Number
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/Progress.html">
+     Progress
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/Tqdm.html">
+     Tqdm
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/indicators/Trend.html">
+     Trend
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Ace.html">
+     Ace
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/ArrayInput.html">
+     ArrayInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/AutocompleteInput.html">
+     AutocompleteInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Button.html">
+     Button
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/CheckBoxGroup.html">
+     CheckBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/CheckButtonGroup.html">
+     CheckButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Checkbox.html">
+     Checkbox
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/ColorPicker.html">
+     ColorPicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/CrossSelector.html">
+     CrossSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DataFrame.html">
+     DataFrame
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DatePicker.html">
+     DatePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DateRangeSlider.html">
+     DateRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DateSlider.html">
+     DateSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DatetimeInput.html">
+     DatetimeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DatetimePicker.html">
+     DatetimePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DatetimeRangeInput.html">
+     DatetimeRangeInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DatetimeRangePicker.html">
+     DatetimeRangePicker
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DatetimeRangeSlider.html">
+     DatetimeRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Debugger.html">
+     Debugger
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DiscretePlayer.html">
+     DiscretePlayer
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/DiscreteSlider.html">
+     DiscreteSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/EditableFloatSlider.html">
+     EditableFloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/EditableIntSlider.html">
+     EditableIntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/EditableRangeSlider.html">
+     EditableRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/FileDownload.html">
+     FileDownload
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/FileInput.html">
+     FileInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/FileSelector.html">
+     FileSelector
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/FloatInput.html">
+     FloatInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/FloatSlider.html">
+     FloatSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/IntInput.html">
+     IntInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/IntRangeSlider.html">
+     IntRangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/IntSlider.html">
+     IntSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/JSONEditor.html">
+     JSONEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/LiteralInput.html">
+     LiteralInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/MenuButton.html">
+     MenuButton
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/MultiChoice.html">
+     MultiChoice
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/MultiSelect.html">
+     MultiSelect
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/PasswordInput.html">
+     PasswordInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Player.html">
+     Player
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/RadioBoxGroup.html">
+     RadioBoxGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/RadioButtonGroup.html">
+     RadioButtonGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/RangeSlider.html">
+     RangeSlider
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Select.html">
+     Select
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/SpeechToText.html">
+     SpeechToText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/StaticText.html">
+     StaticText
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Tabulator.html">
+     Tabulator
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Terminal.html">
+     Terminal
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/TextAreaInput.html">
+     TextAreaInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/TextEditor.html">
+     TextEditor
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/TextInput.html">
+     TextInput
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/TextToSpeech.html">
+     TextToSpeech
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/Toggle.html">
+     Toggle
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/ToggleGroup.html">
+     ToggleGroup
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../reference/widgets/VideoStream.html">
+     VideoStream
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../developer_guide/index.html">
+   Developer Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../developer_guide/testing.html">
+     Testing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../developer_guide/Developing_Custom_Models.html">
+     Developing custom models
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../api/index.html">
+   API Reference
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.io.html">
+     io
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.layout.html">
+     layout
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../../api/panel.pane.html">
+     pane
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.pane.vtk.html">
+       panel.vtk Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.param.html">
+     param
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.pipeline.html">
+     pipeline
+    </a>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../../api/panel.template.html">
+     template
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.template.bootstrap.html">
+       panel.bootstrap Package
+      </a>
+</li>
+<li class="toctree-l3 has-children">
+<a class="reference internal" href="../../../api/panel.template.fast.html">
+       panel.fast Package
+      </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l4">
+<a class="reference internal" href="../../../api/panel.template.fast.grid.html">
+         panel.grid Package
+        </a>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="../../../api/panel.template.fast.list.html">
+         panel.list Package
+        </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.template.golden.html">
+       panel.golden Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.template.material.html">
+       panel.material Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.template.react.html">
+       panel.react Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.template.theme.html">
+       panel.theme Package
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../api/panel.template.vanilla.html">
+       panel.vanilla Package
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.widgets.html">
+     widgets
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.viewable.html">
+     viewable
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../api/panel.util.html">
+     util
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../../releases.html">
+   Releases
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../../FAQ.html">
+   FAQ
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../about/index.html">
+   About
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../about/comparisons.html">
+     Comparisons
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class="sidebar-end-items">
+</div>
+</div>
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+</div>
+<div class="bd-content col-12 col-md-10 col-xl-8" role="main">
+<article class="bd-article" role="main">
+<h1>Source code for panel.io.convert</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">concurrent.futures</span>
+<span class="kn">import</span> <span class="nn">dataclasses</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ProcessPoolExecutor</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">bokeh.application.application</span> <span class="kn">import</span> <span class="n">SessionContext</span>
+<span class="kn">from</span> <span class="nn">bokeh.command.util</span> <span class="kn">import</span> <span class="n">build_single_handler_application</span>
+<span class="kn">from</span> <span class="nn">bokeh.core.json_encoder</span> <span class="kn">import</span> <span class="n">serialize_json</span>
+<span class="kn">from</span> <span class="nn">bokeh.core.templates</span> <span class="kn">import</span> <span class="n">FILE</span><span class="p">,</span> <span class="n">MACROS</span><span class="p">,</span> <span class="n">_env</span>
+<span class="kn">from</span> <span class="nn">bokeh.document</span> <span class="kn">import</span> <span class="n">Document</span>
+<span class="kn">from</span> <span class="nn">bokeh.embed.elements</span> <span class="kn">import</span> <span class="n">script_for_render_items</span>
+<span class="kn">from</span> <span class="nn">bokeh.embed.util</span> <span class="kn">import</span> <span class="n">RenderItem</span><span class="p">,</span> <span class="n">standalone_docs_json_and_render_items</span>
+<span class="kn">from</span> <span class="nn">bokeh.embed.wrappers</span> <span class="kn">import</span> <span class="n">wrap_in_script_tag</span>
+<span class="kn">from</span> <span class="nn">bokeh.settings</span> <span class="kn">import</span> <span class="n">settings</span> <span class="k">as</span> <span class="n">_settings</span>
+<span class="kn">from</span> <span class="nn">bokeh.util.serialization</span> <span class="kn">import</span> <span class="n">make_id</span>
+<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Literal</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">__version__</span><span class="p">,</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">..util</span> <span class="kn">import</span> <span class="n">base_version</span><span class="p">,</span> <span class="n">escape</span>
+<span class="kn">from</span> <span class="nn">.mime_render</span> <span class="kn">import</span> <span class="n">find_imports</span>
+<span class="kn">from</span> <span class="nn">.resources</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CDN_DIST</span><span class="p">,</span> <span class="n">DIST_DIR</span><span class="p">,</span> <span class="n">INDEX_TEMPLATE</span><span class="p">,</span> <span class="n">Resources</span><span class="p">,</span> <span class="n">_env</span> <span class="k">as</span> <span class="n">_pn_env</span><span class="p">,</span>
+    <span class="n">bundle_resources</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.state</span> <span class="kn">import</span> <span class="n">set_curdoc</span><span class="p">,</span> <span class="n">state</span>
+
+<span class="n">PWA_MANIFEST_TEMPLATE</span> <span class="o">=</span> <span class="n">_pn_env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">'site.webmanifest'</span><span class="p">)</span>
+<span class="n">SERVICE_WORKER_TEMPLATE</span> <span class="o">=</span> <span class="n">_pn_env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">'serviceWorker.js'</span><span class="p">)</span>
+<span class="n">WEB_WORKER_TEMPLATE</span> <span class="o">=</span> <span class="n">_pn_env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">'pyodide_worker.js'</span><span class="p">)</span>
+<span class="n">WORKER_HANDLER_TEMPLATE</span>  <span class="o">=</span> <span class="n">_pn_env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">'pyodide_handler.js'</span><span class="p">)</span>
+
+<span class="n">PANEL_ROOT</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span>
+<span class="n">BOKEH_VERSION</span> <span class="o">=</span> <span class="s1">'2.4.3'</span>
+<span class="n">PY_VERSION</span> <span class="o">=</span> <span class="n">base_version</span><span class="p">(</span><span class="n">__version__</span><span class="p">)</span>
+<span class="n">PANEL_CDN_WHL</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">CDN_DIST</span><span class="si">}</span><span class="s1">wheels/panel-</span><span class="si">{</span><span class="n">PY_VERSION</span><span class="si">}</span><span class="s1">-py3-none-any.whl'</span>
+<span class="n">BOKEH_CDN_WHL</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">CDN_DIST</span><span class="si">}</span><span class="s1">wheels/bokeh-</span><span class="si">{</span><span class="n">BOKEH_VERSION</span><span class="si">}</span><span class="s1">-py3-none-any.whl'</span>
+<span class="n">PYODIDE_URL</span> <span class="o">=</span> <span class="s1">'https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js'</span>
+<span class="n">PYSCRIPT_CSS</span> <span class="o">=</span> <span class="s1">'&lt;link rel="stylesheet" href="https://pyscript.net/releases/2022.09.1/pyscript.css" /&gt;'</span>
+<span class="n">PYSCRIPT_JS</span> <span class="o">=</span> <span class="s1">'&lt;script defer src="https://pyscript.net/releases/2022.09.1/pyscript.js"&gt;&lt;/script&gt;'</span>
+<span class="n">PYODIDE_JS</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'&lt;script src="</span><span class="si">{</span><span class="n">PYODIDE_URL</span><span class="si">}</span><span class="s1">"&gt;&lt;/script&gt;'</span>
+
+<span class="n">ICON_DIR</span> <span class="o">=</span> <span class="n">DIST_DIR</span> <span class="o">/</span> <span class="s1">'images'</span>
+<span class="n">PWA_IMAGES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">ICON_DIR</span> <span class="o">/</span> <span class="s1">'favicon.ico'</span><span class="p">,</span>
+    <span class="n">ICON_DIR</span> <span class="o">/</span> <span class="s1">'icon-vector.svg'</span><span class="p">,</span>
+    <span class="n">ICON_DIR</span> <span class="o">/</span> <span class="s1">'icon-32x32.png'</span><span class="p">,</span>
+    <span class="n">ICON_DIR</span> <span class="o">/</span> <span class="s1">'icon-192x192.png'</span><span class="p">,</span>
+    <span class="n">ICON_DIR</span> <span class="o">/</span> <span class="s1">'icon-512x512.png'</span><span class="p">,</span>
+    <span class="n">ICON_DIR</span> <span class="o">/</span> <span class="s1">'apple-touch-icon.png'</span><span class="p">,</span>
+    <span class="n">ICON_DIR</span> <span class="o">/</span> <span class="s1">'index_background.png'</span>
+<span class="p">]</span>
+
+<span class="n">Runtimes</span> <span class="o">=</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">'pyodide'</span><span class="p">,</span> <span class="s1">'pyscript'</span><span class="p">,</span> <span class="s1">'pyodide-worker'</span><span class="p">]</span>
+
+<span class="n">PRE</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">import asyncio</span>
+
+<span class="s2">from panel.io.pyodide import init_doc, write_doc</span>
+
+<span class="s2">init_doc()</span>
+<span class="s2">"""</span>
+
+<span class="n">POST</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">await write_doc()"""</span>
+
+<span class="n">PYODIDE_SCRIPT</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">&lt;script type="text/javascript"&gt;</span>
+<span class="s2">async function main() {</span>
+<span class="s2">  let pyodide = await loadPyodide();</span>
+<span class="s2">  await pyodide.loadPackage("micropip");</span>
+<span class="s2">  await pyodide.runPythonAsync(`</span>
+<span class="s2">    import micropip</span>
+<span class="s2">    await micropip.install([{{ env_spec }}]);</span>
+<span class="s2">  `);</span>
+<span class="s2">  code = `{{ code }}`</span>
+<span class="s2">  await pyodide.runPythonAsync(code);</span>
+<span class="s2">}</span>
+<span class="s2">main();</span>
+<span class="s2">&lt;/script&gt;</span>
+<span class="s2">"""</span>
+
+<span class="n">INIT_SERVICE_WORKER</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">&lt;script type="text/javascript"&gt;</span>
+<span class="s2">if ('serviceWorker' in navigator) {</span>
+<span class="s2">  navigator.serviceWorker.register('./serviceWorker.js').then(reg =&gt; {</span>
+<span class="s2">    reg.onupdatefound = () =&gt; {</span>
+<span class="s2">      const installingWorker = reg.installing;</span>
+<span class="s2">      installingWorker.onstatechange = () =&gt; {</span>
+<span class="s2">        if (installingWorker.state === 'installed' &amp;&amp;</span>
+<span class="s2">            navigator.serviceWorker.controller) {</span>
+<span class="s2">          // Reload page if service worker is replaced</span>
+<span class="s2">          location.reload();</span>
+<span class="s2">        }</span>
+<span class="s2">      }</span>
+<span class="s2">    }</span>
+<span class="s2">  })</span>
+<span class="s2">}</span>
+<span class="s2">&lt;/script&gt;</span>
+<span class="s2">"""</span>
+
+<div class="viewcode-block" id="Request"><a class="viewcode-back" href="../../../api/panel.io.html#panel.io.convert.Request">[docs]</a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+<span class="k">class</span> <span class="nc">Request</span><span class="p">:</span>
+    <span class="n">headers</span> <span class="p">:</span> <span class="nb">dict</span>
+    <span class="n">cookies</span> <span class="p">:</span> <span class="nb">dict</span>
+    <span class="n">arguments</span> <span class="p">:</span> <span class="nb">dict</span></div>
+
+
+<div class="viewcode-block" id="MockSessionContext"><a class="viewcode-back" href="../../../api/panel.io.html#panel.io.convert.MockSessionContext">[docs]</a><span class="k">class</span> <span class="nc">MockSessionContext</span><span class="p">(</span><span class="n">SessionContext</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">document</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_document</span> <span class="o">=</span> <span class="n">document</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">server_context</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MockSessionContext.with_locked_document"><a class="viewcode-back" href="../../../api/panel.io.html#panel.io.convert.MockSessionContext.with_locked_document">[docs]</a>    <span class="k">def</span> <span class="nf">with_locked_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">return</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">destroyed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Request</span><span class="p">(</span><span class="n">headers</span><span class="o">=</span><span class="p">{},</span> <span class="n">cookies</span><span class="o">=</span><span class="p">{},</span> <span class="n">arguments</span><span class="o">=</span><span class="p">{})</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">make_index</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">manifest</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">manifest</span><span class="p">:</span>
+        <span class="n">manifest</span> <span class="o">=</span> <span class="s1">'site.webmanifest'</span>
+        <span class="n">favicon</span> <span class="o">=</span> <span class="s1">'images/favicon.ico'</span>
+        <span class="n">apple_icon</span> <span class="o">=</span> <span class="s1">'images/apple-touch-icon.png'</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">manifest</span> <span class="o">=</span> <span class="n">favicon</span> <span class="o">=</span> <span class="n">apple_icon</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">{</span><span class="n">label</span><span class="p">:</span> <span class="s1">'./'</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="o">.</span><span class="n">items</span><span class="p">())}</span>
+    <span class="k">return</span> <span class="n">INDEX_TEMPLATE</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
+        <span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">,</span> <span class="n">manifest</span><span class="o">=</span><span class="n">manifest</span><span class="p">,</span> <span class="n">apple_icon</span><span class="o">=</span><span class="n">apple_icon</span><span class="p">,</span>
+        <span class="n">favicon</span><span class="o">=</span><span class="n">favicon</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">npm_cdn</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">npm_cdn</span>
+    <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">build_pwa_manifest</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">title</span> <span class="ow">or</span> <span class="s1">'Panel Applications'</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s1">'index.html'</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">title</span> <span class="ow">or</span> <span class="s1">'Panel Applications'</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">files</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">PWA_MANIFEST_TEMPLATE</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+        <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="script_to_html"><a class="viewcode-back" href="../../../api/panel.io.html#panel.io.convert.script_to_html">[docs]</a><span class="k">def</span> <span class="nf">script_to_html</span><span class="p">(</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">requirements</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">'auto'</span><span class="p">]</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'auto'</span><span class="p">,</span>
+    <span class="n">js_resources</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">'auto'</span><span class="p">]</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'auto'</span><span class="p">,</span>
+    <span class="n">css_resources</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">'auto'</span><span class="p">]</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">runtime</span><span class="p">:</span> <span class="n">Runtimes</span> <span class="o">=</span> <span class="s1">'pyodide'</span><span class="p">,</span>
+    <span class="n">prerender</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">panel_version</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">'auto'</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'auto'</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Converts a Panel or Bokeh script to a standalone WASM Python</span>
+<span class="sd">    application.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">      The filename of the Panel/Bokeh application to convert.</span>
+<span class="sd">    requirements: 'auto' | List[str]</span>
+<span class="sd">      The list of requirements to include (in addition to Panel).</span>
+<span class="sd">    js_resources: 'auto' | List[str]</span>
+<span class="sd">      The list of JS resources to include in the exported HTML.</span>
+<span class="sd">    css_resources: 'auto' | List[str] | None</span>
+<span class="sd">      The list of CSS resources to include in the exported HTML.</span>
+<span class="sd">    runtime: 'pyodide' | 'pyscript'</span>
+<span class="sd">      The runtime to use for running Python in the browser.</span>
+<span class="sd">    prerender: bool</span>
+<span class="sd">      Whether to pre-render the components so the page loads.</span>
+<span class="sd">    panel_version: 'auto' | str</span>
+<span class="sd">      The panel release version to use in the exported HTML.</span>
+<span class="sd">    """</span>
+    <span class="c1"># Configure resources</span>
+    <span class="n">_settings</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s1">'cdn'</span><span class="p">)</span>
+
+    <span class="c1"># Run script</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">'.'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">build_single_handler_application</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">absolute</span><span class="p">()))</span>
+    <span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+    <span class="n">document</span><span class="o">.</span><span class="n">_session_context</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">MockSessionContext</span><span class="p">(</span><span class="n">document</span><span class="o">=</span><span class="n">document</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">set_curdoc</span><span class="p">(</span><span class="n">document</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">initialize_document</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+        <span class="n">state</span><span class="o">.</span><span class="n">_on_load</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">_handlers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_runner</span><span class="o">.</span><span class="n">source</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">document</span><span class="o">.</span><span class="n">roots</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s1">'The file </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1"> does not publish any Panel contents. '</span>
+            <span class="s1">'Ensure you have marked items as servable or added models to '</span>
+            <span class="s1">'the bokeh document manually.'</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">requirements</span> <span class="o">==</span> <span class="s1">'auto'</span><span class="p">:</span>
+        <span class="n">requirements</span> <span class="o">=</span> <span class="n">find_imports</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">requirements</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">requirements</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+        <span class="n">requirements</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">requirements</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/n'</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">pkg_resources</span>
+            <span class="n">parsed</span> <span class="o">=</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">parse_requirements</span><span class="p">(</span><span class="n">requirements</span><span class="p">)</span>
+            <span class="n">requirements</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">requirement</span><span class="p">)</span> <span class="k">for</span> <span class="n">requirement</span> <span class="ow">in</span> <span class="n">parsed</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">'Requirements parser raised following error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">'</span>
+            <span class="p">)</span>
+
+    <span class="c1"># Environment</span>
+    <span class="k">if</span> <span class="n">panel_version</span> <span class="o">==</span> <span class="s1">'auto'</span><span class="p">:</span>
+        <span class="n">panel_req</span> <span class="o">=</span> <span class="n">PANEL_CDN_WHL</span>
+        <span class="n">bokeh_req</span> <span class="o">=</span> <span class="n">BOKEH_CDN_WHL</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">panel_req</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'panel==</span><span class="si">{</span><span class="n">panel_version</span><span class="si">}</span><span class="s1">'</span>
+        <span class="n">bokeh_req</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'bokeh==</span><span class="si">{</span><span class="n">BOKEH_VERSION</span><span class="si">}</span><span class="s1">'</span>
+    <span class="n">reqs</span> <span class="o">=</span> <span class="p">[</span><span class="n">bokeh_req</span><span class="p">,</span> <span class="n">panel_req</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+        <span class="n">req</span> <span class="k">for</span> <span class="n">req</span> <span class="ow">in</span> <span class="n">requirements</span> <span class="k">if</span> <span class="n">req</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">'panel'</span><span class="p">,</span> <span class="s1">'bokeh'</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Execution</span>
+    <span class="n">post_code</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">POST</span><span class="si">}</span><span class="s1">;'</span> <span class="k">if</span> <span class="n">runtime</span> <span class="o">==</span> <span class="s1">'pyscript'</span> <span class="k">else</span> <span class="n">POST</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">PRE</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">post_code</span><span class="p">])</span>
+    <span class="n">web_worker</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">css_resources</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">css_resources</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">runtime</span> <span class="o">==</span> <span class="s1">'pyscript'</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">js_resources</span> <span class="o">==</span> <span class="s1">'auto'</span><span class="p">:</span>
+            <span class="n">js_resources</span> <span class="o">=</span> <span class="p">[</span><span class="n">PYSCRIPT_JS</span><span class="p">]</span>
+        <span class="n">css_resources</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">css_resources</span> <span class="o">==</span> <span class="s1">'auto'</span><span class="p">:</span>
+            <span class="n">css_resources</span> <span class="o">=</span> <span class="p">[</span><span class="n">PYSCRIPT_CSS</span><span class="p">]</span>
+        <span class="n">pyenv</span> <span class="o">=</span> <span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">repr</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="k">for</span> <span class="n">req</span> <span class="ow">in</span> <span class="n">reqs</span><span class="p">])</span>
+        <span class="n">plot_script</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'&lt;py-config&gt;</span><span class="se">\n</span><span class="s1">packages = [</span><span class="si">{</span><span class="n">pyenv</span><span class="si">}</span><span class="s1">]</span><span class="se">\n</span><span class="s1">&lt;/py-config&gt;</span><span class="se">\n</span><span class="s1">&lt;py-script&gt;</span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s1">&lt;/py-script&gt;'</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">css_resources</span> <span class="o">==</span> <span class="s1">'auto'</span><span class="p">:</span>
+            <span class="n">css_resources</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">env_spec</span> <span class="o">=</span> <span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">repr</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="k">for</span> <span class="n">req</span> <span class="ow">in</span> <span class="n">reqs</span><span class="p">])</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">code</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'`'</span><span class="p">,</span> <span class="s1">'\`'</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\\</span><span class="s1">n'</span><span class="p">,</span> <span class="sa">r</span><span class="s1">'</span><span class="se">\\</span><span class="s1">n'</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">runtime</span> <span class="o">==</span> <span class="s1">'pyodide-worker'</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">js_resources</span> <span class="o">==</span> <span class="s1">'auto'</span><span class="p">:</span>
+                <span class="n">js_resources</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">worker_handler</span> <span class="o">=</span> <span class="n">WORKER_HANDLER_TEMPLATE</span><span class="o">.</span><span class="n">render</span><span class="p">({</span>
+                <span class="s1">'name'</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+                <span class="s1">'loading_spinner'</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">loading_spinner</span>
+            <span class="p">})</span>
+            <span class="n">web_worker</span> <span class="o">=</span> <span class="n">WEB_WORKER_TEMPLATE</span><span class="o">.</span><span class="n">render</span><span class="p">({</span>
+                <span class="s1">'PYODIDE_URL'</span><span class="p">:</span> <span class="n">PYODIDE_URL</span><span class="p">,</span>
+                <span class="s1">'env_spec'</span><span class="p">:</span> <span class="n">env_spec</span><span class="p">,</span>
+                <span class="s1">'code'</span><span class="p">:</span> <span class="n">code</span>
+            <span class="p">})</span>
+            <span class="n">plot_script</span> <span class="o">=</span> <span class="n">wrap_in_script_tag</span><span class="p">(</span><span class="n">worker_handler</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">js_resources</span> <span class="o">==</span> <span class="s1">'auto'</span><span class="p">:</span>
+                <span class="n">js_resources</span> <span class="o">=</span> <span class="p">[</span><span class="n">PYODIDE_JS</span><span class="p">]</span>
+            <span class="n">script_template</span> <span class="o">=</span> <span class="n">_pn_env</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">PYODIDE_SCRIPT</span><span class="p">)</span>
+            <span class="n">plot_script</span> <span class="o">=</span> <span class="n">script_template</span><span class="o">.</span><span class="n">render</span><span class="p">({</span>
+                <span class="s1">'env_spec'</span><span class="p">:</span> <span class="n">env_spec</span><span class="p">,</span>
+                <span class="s1">'code'</span><span class="p">:</span> <span class="n">code</span>
+            <span class="p">})</span>
+
+    <span class="k">if</span> <span class="n">prerender</span><span class="p">:</span>
+        <span class="n">json_id</span> <span class="o">=</span> <span class="n">make_id</span><span class="p">()</span>
+        <span class="n">docs_json</span><span class="p">,</span> <span class="n">render_items</span> <span class="o">=</span> <span class="n">standalone_docs_json_and_render_items</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+        <span class="n">render_item</span> <span class="o">=</span> <span class="n">render_items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">json</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="n">serialize_json</span><span class="p">(</span><span class="n">docs_json</span><span class="p">),</span> <span class="n">quote</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">plot_script</span> <span class="o">+=</span> <span class="n">wrap_in_script_tag</span><span class="p">(</span><span class="n">json</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">,</span> <span class="n">json_id</span><span class="p">)</span>
+        <span class="n">plot_script</span> <span class="o">+=</span> <span class="n">wrap_in_script_tag</span><span class="p">(</span><span class="n">script_for_render_items</span><span class="p">(</span><span class="n">json_id</span><span class="p">,</span> <span class="n">render_items</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">render_item</span> <span class="o">=</span> <span class="n">RenderItem</span><span class="p">(</span>
+            <span class="n">token</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span>
+            <span class="n">roots</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">roots</span><span class="p">,</span>
+            <span class="n">use_for_title</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="n">render_items</span> <span class="o">=</span> <span class="p">[</span><span class="n">render_item</span><span class="p">]</span>
+
+    <span class="c1"># Collect resources</span>
+    <span class="n">resources</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">'cdn'</span><span class="p">)</span>
+    <span class="n">bokeh_js</span><span class="p">,</span> <span class="n">bokeh_css</span> <span class="o">=</span> <span class="n">bundle_resources</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">roots</span><span class="p">,</span> <span class="n">resources</span><span class="p">)</span>
+    <span class="n">extra_js</span> <span class="o">=</span> <span class="p">[</span><span class="n">INIT_SERVICE_WORKER</span><span class="p">,</span> <span class="n">bokeh_js</span><span class="p">]</span> <span class="k">if</span> <span class="n">manifest</span> <span class="k">else</span> <span class="p">[</span><span class="n">bokeh_js</span><span class="p">]</span>
+    <span class="n">bokeh_js</span> <span class="o">=</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">extra_js</span><span class="o">+</span><span class="n">js_resources</span><span class="p">)</span>
+    <span class="n">bokeh_css</span> <span class="o">=</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">bokeh_css</span><span class="p">]</span><span class="o">+</span><span class="n">css_resources</span><span class="p">)</span>
+
+    <span class="c1"># Configure template</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">template</span>
+    <span class="n">template_variables</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">_template_variables</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">template_variables</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+        <span class="n">bokeh_js</span> <span class="o">=</span> <span class="n">bokeh_js</span><span class="p">,</span>
+        <span class="n">bokeh_css</span> <span class="o">=</span> <span class="n">bokeh_css</span><span class="p">,</span>
+        <span class="n">plot_script</span> <span class="o">=</span> <span class="n">plot_script</span><span class="p">,</span>
+        <span class="n">docs</span> <span class="o">=</span> <span class="n">render_items</span><span class="p">,</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">FILE</span><span class="p">,</span>
+        <span class="n">macros</span> <span class="o">=</span> <span class="n">MACROS</span><span class="p">,</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">render_item</span><span class="p">,</span>
+        <span class="n">roots</span> <span class="o">=</span> <span class="n">render_item</span><span class="o">.</span><span class="n">roots</span><span class="p">,</span>
+        <span class="n">manifest</span> <span class="o">=</span> <span class="n">manifest</span>
+    <span class="p">))</span>
+
+    <span class="c1"># Render</span>
+    <span class="k">if</span> <span class="n">template</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">FILE</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">_env</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="s2">"{</span><span class="si">% e</span><span class="s2">xtends base %}</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="n">template</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="p">(</span><span class="n">html</span>
+        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'&lt;body&gt;'</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'&lt;body class="bk pn-loading </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">loading_spinner</span><span class="si">}</span><span class="s1">"&gt;'</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Reset resources</span>
+    <span class="n">_settings</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">unset_value</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">html</span><span class="p">,</span> <span class="n">web_worker</span></div>
+
+
+<span class="k">def</span> <span class="nf">convert_app</span><span class="p">(</span>
+    <span class="n">app</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">dest_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">requirements</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">'auto'</span><span class="p">]</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">=</span> <span class="s1">'auto'</span><span class="p">,</span>
+    <span class="n">runtime</span><span class="p">:</span> <span class="n">Runtimes</span> <span class="o">=</span> <span class="s1">'pyodide-worker'</span><span class="p">,</span>
+    <span class="n">prerender</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">html</span><span class="p">,</span> <span class="n">js_worker</span> <span class="o">=</span> <span class="n">script_to_html</span><span class="p">(</span>
+            <span class="n">app</span><span class="p">,</span> <span class="n">requirements</span><span class="o">=</span><span class="n">requirements</span><span class="p">,</span> <span class="n">runtime</span><span class="o">=</span><span class="n">runtime</span><span class="p">,</span>
+            <span class="n">prerender</span><span class="o">=</span><span class="n">prerender</span><span class="p">,</span> <span class="n">manifest</span><span class="o">=</span><span class="n">manifest</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Failed to convert </span><span class="si">{</span><span class="n">app</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">runtime</span><span class="si">}</span><span class="s1"> target: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">'.'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">app</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">.html'</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest_path</span> <span class="o">/</span> <span class="n">filename</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">runtime</span> <span class="o">==</span> <span class="s1">'pyodide-worker'</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">.js'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">js_worker</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Successfully converted </span><span class="si">{</span><span class="n">app</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">runtime</span><span class="si">}</span><span class="s1"> target and wrote output to </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">.'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'_'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">),</span> <span class="n">filename</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="convert_apps"><a class="viewcode-back" href="../../../api/panel.io.html#panel.io.convert.convert_apps">[docs]</a><span class="k">def</span> <span class="nf">convert_apps</span><span class="p">(</span>
+    <span class="n">apps</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">dest_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">runtime</span><span class="p">:</span> <span class="n">Runtimes</span> <span class="o">=</span> <span class="s1">'pyodide-worker'</span><span class="p">,</span>
+    <span class="n">requirements</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">'auto'</span><span class="p">]</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">=</span> <span class="s1">'auto'</span><span class="p">,</span>
+    <span class="n">prerender</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">build_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">build_pwa</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">pwa_config</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">max_workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    apps: str | List[str]</span>
+<span class="sd">        The filename(s) of the Panel/Bokeh application(s) to convert.</span>
+<span class="sd">    dest_path: str | pathlib.Path</span>
+<span class="sd">        The directory to write the converted application(s) to.</span>
+<span class="sd">    title: str | None</span>
+<span class="sd">        A title for the application(s). Also used to generate unique</span>
+<span class="sd">        name for the application cache to ensure.</span>
+<span class="sd">    runtime: 'pyodide' | 'pyscript' | 'pyodide-worker'</span>
+<span class="sd">        The runtime to use for running Python in the browser.</span>
+<span class="sd">    requirements: 'auto' | List[str] | os.PathLike</span>
+<span class="sd">        The list of requirements to include (in addition to Panel).</span>
+<span class="sd">        By default automatically infers dependencies from imports</span>
+<span class="sd">        in the application. May also provide path to a requirements.txt</span>
+<span class="sd">    prerender: bool</span>
+<span class="sd">        Whether to pre-render the components so the page loads.</span>
+<span class="sd">    build_index: bool</span>
+<span class="sd">        Whether to write an index page (if there are multiple apps).</span>
+<span class="sd">    build_pwa: bool</span>
+<span class="sd">        Whether to write files to define a progressive web app (PWA) including</span>
+<span class="sd">        a manifest and a service worker that caches the application locally</span>
+<span class="sd">    pwa_config: Dict[Any, Any]</span>
+<span class="sd">        Configuration for the PWA including (see https://developer.mozilla.org/en-US/docs/Web/Manifest)</span>
+
+<span class="sd">          - display: Display options ('fullscreen', 'standalone', 'minimal-ui' 'browser')</span>
+<span class="sd">          - orientation: Preferred orientation</span>
+<span class="sd">          - background_color: The background color of the splash screen</span>
+<span class="sd">          - theme_color: The theme color of the application</span>
+<span class="sd">    max_workers: int</span>
+<span class="sd">        The maximum number of parallel workers</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">apps</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">apps</span> <span class="o">=</span> <span class="p">[</span><span class="n">apps</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">dest_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dest_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">'./'</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dest_path</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">PurePath</span><span class="p">):</span>
+        <span class="n">dest_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">dest_path</span><span class="p">)</span>
+    <span class="n">dest_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">files</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">manifest</span> <span class="o">=</span> <span class="s1">'site.webmanifest'</span> <span class="k">if</span> <span class="n">build_pwa</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">apps</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">max_workers</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">apps</span><span class="p">),</span> <span class="n">max_workers</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">ProcessPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="n">max_workers</span><span class="p">,</span> <span class="n">mp_context</span><span class="o">=</span><span class="n">mp</span><span class="o">.</span><span class="n">get_context</span><span class="p">(</span><span class="s1">'spawn'</span><span class="p">))</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+            <span class="n">futures</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">group</span><span class="p">:</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span>
+                    <span class="n">convert_app</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="n">dest_path</span><span class="p">,</span> <span class="n">requirements</span><span class="o">=</span><span class="n">requirements</span><span class="p">,</span>
+                    <span class="n">runtime</span><span class="o">=</span><span class="n">runtime</span><span class="p">,</span> <span class="n">prerender</span><span class="o">=</span><span class="n">prerender</span><span class="p">,</span> <span class="n">manifest</span><span class="o">=</span><span class="n">manifest</span><span class="p">,</span>
+                    <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
+                <span class="p">)</span>
+                <span class="n">futures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">):</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">name</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">result</span>
+                    <span class="n">files</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
+    <span class="k">if</span> <span class="n">build_index</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">make_index</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">manifest</span><span class="o">=</span><span class="n">build_pwa</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest_path</span> <span class="o">/</span> <span class="s1">'index.html'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'Successfully wrote index.html.'</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">build_pwa</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="c1"># Write icons</span>
+    <span class="n">imgs_path</span> <span class="o">=</span> <span class="p">(</span><span class="n">dest_path</span> <span class="o">/</span> <span class="s1">'images'</span><span class="p">)</span>
+    <span class="n">imgs_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">img_rel</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">PWA_IMAGES</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">imgs_path</span> <span class="o">/</span> <span class="n">img</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">())</span>
+        <span class="n">img_rel</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">'images/</span><span class="si">{</span><span class="n">img</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Successfully wrote icons and images.'</span><span class="p">)</span>
+
+    <span class="c1"># Write manifest</span>
+    <span class="n">manifest</span> <span class="o">=</span> <span class="n">build_pwa_manifest</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="o">**</span><span class="n">pwa_config</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest_path</span> <span class="o">/</span> <span class="s1">'site.webmanifest'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Successfully wrote site.manifest.'</span><span class="p">)</span>
+
+    <span class="c1"># Write service worker</span>
+    <span class="n">worker</span> <span class="o">=</span> <span class="n">SERVICE_WORKER_TEMPLATE</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
+        <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">title</span> <span class="ow">or</span> <span class="s1">'Panel Pyodide App'</span><span class="p">,</span>
+        <span class="n">pre_cache</span><span class="o">=</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">repr</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">img_rel</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest_path</span> <span class="o">/</span> <span class="s1">'serviceWorker.js'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">worker</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Successfully wrote serviceWorker.js.'</span><span class="p">)</span></div>
+</pre></div>
+</article>
+<footer class="bd-footer-article">
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+</footer>
+</div>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+<footer class="bd-footer"><div class="bd-footer__inner container">
+<div class="footer-item">
+<p class="copyright">
+    © Copyright 2019-2022 Holoviz contributors.<br/>
+</p>
+</div>
+<div class="footer-item">
+<p class="last-updated">
+Last updated on 2022-10-05.<br/>
+</p>
+</div>
+</div>
+</footer>
+</body>
+</html>
